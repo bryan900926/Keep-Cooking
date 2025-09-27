@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public GameObject spawnedCustomer;
-    public GameObject lining;
+    [SerializeField] private GameObject spawnedCustomer;
+    [SerializeField] private GameObject lining;
 
     private QueueSystem qs;
     private float spawnedTime = 0;

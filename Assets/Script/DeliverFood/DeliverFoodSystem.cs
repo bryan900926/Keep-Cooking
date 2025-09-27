@@ -20,7 +20,7 @@ public class DeliverFoodSystem : MonoBehaviour
         if (customer != null && pickedUpIdx != -1)
         {
             Customer cus = customer.GetComponent<Customer>();
-            if (pickedUpIdx == cus.orderedFoodIdx)
+            if (pickedUpIdx == cus.GetOrderedFoodIndex())
             {
                 foreach (Transform child in gameObject.transform)
                 {

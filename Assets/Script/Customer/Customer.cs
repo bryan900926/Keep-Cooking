@@ -9,10 +9,10 @@ public class Customer : MonoBehaviour
     private QueueSystem qs;
 
     private AIDestinationSetter desSetter;
-    public int liningIdx = -1;
-    public int diningIdx = -1;
+    private int liningIdx = -1;
+    private int diningIdx = -1;
 
-    public int orderedFoodIdx = -1;
+    private int orderedFoodIdx = -1;
 
     private GameObject diningObj;
 
@@ -73,5 +73,10 @@ public class Customer : MonoBehaviour
     {
         ds.FreeSeat(diningIdx);
         Destroy(transform.gameObject);
+    }
+
+    public int GetOrderedFoodIndex()
+    {
+        return orderedFoodIdx;
     }
 }

@@ -5,7 +5,7 @@ public class CookingSystem : MonoBehaviour
     private HoldingSystem holdingSystem;
     private RecipeSystem recipeSystem;
 
-    public GameObject counter;
+    [SerializeField] private GameObject counter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +16,12 @@ public class CookingSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
+        MakingFood();
+
+    }
+
+    private void MakingFood()
+    {
         int mask = 0;
         // masks of each fooditem are at RecipeSystem.cs
         foreach (GameObject food in holdingSystem.slots)

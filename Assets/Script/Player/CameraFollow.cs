@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;     // Player (or object to follow)
-    public float smoothSpeed = 0.15f;
-    public Vector3 offset = new Vector3(0, 0, -10);
+    [SerializeField] private Transform target;     // Player (or object to follow)
+    [SerializeField] private float smoothSpeed = 0.15f;
+    [SerializeField] private Vector3 offset = new Vector3(0, 0, -10);
 
     private Camera cam;
 

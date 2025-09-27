@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class InventorySystem : MonoBehaviour
 {
-    public GameObject inventoryPanel;
+    [SerializeField] private GameObject inventoryPanel;
     private bool isOpen = false;
 
     void Start()
