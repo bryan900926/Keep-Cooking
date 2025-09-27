@@ -1,0 +1,4602 @@
+fileFormatVersion: 2
+guid: 351dc361c5d254841aef6e46820a8de8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6112374615341077083
+    second: dishes-guide_0
+  - first:
+      213: -5171222489441187140
+    second: dishes-guide_1
+  - first:
+      213: -2853444503212274595
+    second: dishes-guide_2
+  - first:
+      213: -497924517100244517
+    second: dishes-guide_3
+  - first:
+      213: -5165816271310135364
+    second: dishes-guide_4
+  - first:
+      213: -9113005013127548176
+    second: dishes-guide_5
+  - first:
+      213: 4429115865903150913
+    second: dishes-guide_6
+  - first:
+      213: -1220499679040146165
+    second: dishes-guide_7
+  - first:
+      213: -4455925739089126104
+    second: dishes-guide_8
+  - first:
+      213: 3142580746650867007
+    second: dishes-guide_9
+  - first:
+      213: -1417243594579814609
+    second: dishes-guide_10
+  - first:
+      213: 2607543926390018189
+    second: dishes-guide_11
+  - first:
+      213: 6797006537919465520
+    second: dishes-guide_12
+  - first:
+      213: -8938827978325097191
+    second: dishes-guide_13
+  - first:
+      213: 3793454504211622219
+    second: dishes-guide_14
+  - first:
+      213: -7318171004095012749
+    second: dishes-guide_15
+  - first:
+      213: -770662434491517312
+    second: dishes-guide_16
+  - first:
+      213: 1059812296491458243
+    second: dishes-guide_17
+  - first:
+      213: 7423539100789459610
+    second: dishes-guide_18
+  - first:
+      213: 2783769023684892122
+    second: dishes-guide_19
+  - first:
+      213: -7312730830470472306
+    second: dishes-guide_20
+  - first:
+      213: -6787371332883482960
+    second: dishes-guide_21
+  - first:
+      213: 1274834581822209614
+    second: dishes-guide_22
+  - first:
+      213: -5713076801494233152
+    second: dishes-guide_23
+  - first:
+      213: 6642585324167345174
+    second: dishes-guide_24
+  - first:
+      213: -2726264460808166003
+    second: dishes-guide_25
+  - first:
+      213: 8543078520927685415
+    second: dishes-guide_26
+  - first:
+      213: 4961558842581344852
+    second: dishes-guide_27
+  - first:
+      213: -1452591739367422256
+    second: dishes-guide_28
+  - first:
+      213: -1757170175960262239
+    second: dishes-guide_29
+  - first:
+      213: -7354178022049413846
+    second: dishes-guide_30
+  - first:
+      213: 6223523012891618582
+    second: dishes-guide_31
+  - first:
+      213: -3144038347144591369
+    second: dishes-guide_32
+  - first:
+      213: -7014964903096992607
+    second: dishes-guide_33
+  - first:
+      213: 2947121433339468096
+    second: dishes-guide_34
+  - first:
+      213: -6877884963689438816
+    second: dishes-guide_35
+  - first:
+      213: -8242824637332448383
+    second: dishes-guide_36
+  - first:
+      213: -1403422141963173795
+    second: dishes-guide_37
+  - first:
+      213: 6617259863365654875
+    second: dishes-guide_38
+  - first:
+      213: 2470870365157207523
+    second: dishes-guide_39
+  - first:
+      213: -6456164491303253436
+    second: dishes-guide_40
+  - first:
+      213: 6799754607613776573
+    second: dishes-guide_41
+  - first:
+      213: 2576392697046517018
+    second: dishes-guide_42
+  - first:
+      213: -7816926605870294258
+    second: dishes-guide_43
+  - first:
+      213: -8516723483711712527
+    second: dishes-guide_44
+  - first:
+      213: -2541737447179413105
+    second: dishes-guide_45
+  - first:
+      213: -2649998350586819472
+    second: dishes-guide_46
+  - first:
+      213: -4454472759827168362
+    second: dishes-guide_47
+  - first:
+      213: 4747741206852480681
+    second: dishes-guide_48
+  - first:
+      213: -2778200193266632148
+    second: dishes-guide_49
+  - first:
+      213: -2402084489425123328
+    second: dishes-guide_50
+  - first:
+      213: -7045279759118424552
+    second: dishes-guide_51
+  - first:
+      213: 8492518666307593076
+    second: dishes-guide_52
+  - first:
+      213: -7095131804052093768
+    second: dishes-guide_53
+  - first:
+      213: -896373249391073901
+    second: dishes-guide_54
+  - first:
+      213: 487339248022488223
+    second: dishes-guide_55
+  - first:
+      213: -6743760559061933490
+    second: dishes-guide_56
+  - first:
+      213: 4610445950585319082
+    second: dishes-guide_57
+  - first:
+      213: 933691519122486701
+    second: dishes-guide_58
+  - first:
+      213: 3630225975656755010
+    second: dishes-guide_59
+  - first:
+      213: 6452233661058651416
+    second: dishes-guide_60
+  - first:
+      213: 4425614431145952568
+    second: dishes-guide_61
+  - first:
+      213: 6212993677576107510
+    second: dishes-guide_62
+  - first:
+      213: 8810930261486035726
+    second: dishes-guide_63
+  - first:
+      213: 5572672429571560028
+    second: dishes-guide_64
+  - first:
+      213: 6384334688273800671
+    second: dishes-guide_65
+  - first:
+      213: 3383281036120646464
+    second: dishes-guide_66
+  - first:
+      213: -6005067455776959447
+    second: dishes-guide_67
+  - first:
+      213: -7183261115656112114
+    second: dishes-guide_68
+  - first:
+      213: 8651525942822822322
+    second: dishes-guide_69
+  - first:
+      213: -1578113414663050180
+    second: dishes-guide_70
+  - first:
+      213: -3335130390383974760
+    second: dishes-guide_71
+  - first:
+      213: -2308311572186215894
+    second: dishes-guide_72
+  - first:
+      213: -8938098808996993744
+    second: dishes-guide_73
+  - first:
+      213: 1859309473891000164
+    second: dishes-guide_74
+  - first:
+      213: -3017319700878652927
+    second: dishes-guide_75
+  - first:
+      213: -168758411097526272
+    second: dishes-guide_76
+  - first:
+      213: -5853239069752363509
+    second: dishes-guide_77
+  - first:
+      213: 3050890106635674885
+    second: dishes-guide_78
+  - first:
+      213: -7150386215867498803
+    second: dishes-guide_79
+  - first:
+      213: 2521193347212324827
+    second: dishes-guide_80
+  - first:
+      213: -5753798499199417102
+    second: dishes-guide_81
+  - first:
+      213: 6705976601307098323
+    second: dishes-guide_82
+  - first:
+      213: 6197364615581990034
+    second: dishes-guide_83
+  - first:
+      213: 952088707920422317
+    second: dishes-guide_84
+  - first:
+      213: 7602969533668843916
+    second: dishes-guide_85
+  - first:
+      213: 8760357262265338042
+    second: dishes-guide_86
+  - first:
+      213: 1724272966328510900
+    second: dishes-guide_87
+  - first:
+      213: -893665533333834654
+    second: dishes-guide_88
+  - first:
+      213: 5861795849108452937
+    second: dishes-guide_89
+  - first:
+      213: -2434082903579832966
+    second: dishes-guide_90
+  - first:
+      213: -6629689343177483632
+    second: dishes-guide_91
+  - first:
+      213: 2201716662609183811
+    second: dishes-guide_92
+  - first:
+      213: -966110061923221075
+    second: dishes-guide_93
+  - first:
+      213: -677837437372005710
+    second: dishes-guide_94
+  - first:
+      213: -5691174881497849081
+    second: dishes-guide_95
+  - first:
+      213: -4960342885234528495
+    second: dishes-guide_96
+  - first:
+      213: -4829804329221481059
+    second: dishes-guide_97
+  - first:
+      213: 5312799744724362078
+    second: dishes-guide_98
+  - first:
+      213: 4406783704956599269
+    second: dishes-guide_99
+  - first:
+      213: 5296616826295445651
+    second: dishes-guide_100
+  - first:
+      213: -2823195430389827913
+    second: dishes-guide_101
+  - first:
+      213: -7712900341962882367
+    second: dishes-guide_102
+  - first:
+      213: -2526807213695428642
+    second: dishes-guide_103
+  - first:
+      213: 2869763787102824505
+    second: dishes-guide_104
+  - first:
+      213: -5602555039049824513
+    second: dishes-guide_105
+  - first:
+      213: -8165247394253924392
+    second: dishes-guide_106
+  - first:
+      213: -7521541775970372999
+    second: dishes-guide_107
+  - first:
+      213: -1843699223587197031
+    second: dishes-guide_108
+  - first:
+      213: 6809089387416321698
+    second: dishes-guide_109
+  - first:
+      213: 7718573114294443561
+    second: dishes-guide_110
+  - first:
+      213: -6820000122273055973
+    second: dishes-guide_111
+  - first:
+      213: -2612085545058798990
+    second: dishes-guide_112
+  - first:
+      213: 4307171478795683919
+    second: dishes-guide_113
+  - first:
+      213: 8921962493219057600
+    second: dishes-guide_114
+  - first:
+      213: -2269469625067284376
+    second: dishes-guide_115
+  - first:
+      213: 797803472472152095
+    second: dishes-guide_116
+  - first:
+      213: -8727699629587001611
+    second: dishes-guide_117
+  - first:
+      213: 4849489353607058508
+    second: dishes-guide_118
+  - first:
+      213: 5462437593746858252
+    second: dishes-guide_119
+  - first:
+      213: -2448509729155650062
+    second: dishes-guide_120
+  - first:
+      213: 5219599518604653073
+    second: dishes-guide_121
+  - first:
+      213: -2542495658025717265
+    second: dishes-guide_122
+  - first:
+      213: -8175760827697225967
+    second: dishes-guide_123
+  - first:
+      213: -5034704362064979051
+    second: dishes-guide_124
+  - first:
+      213: 3497121753106072691
+    second: dishes-guide_125
+  - first:
+      213: 2200050952639961799
+    second: dishes-guide_126
+  - first:
+      213: -4259164145760545581
+    second: dishes-guide_127
+  - first:
+      213: 300063908142380864
+    second: dishes-guide_128
+  - first:
+      213: 6517278454638264640
+    second: dishes-guide_129
+  - first:
+      213: 301649752083352556
+    second: dishes-guide_130
+  - first:
+      213: -6276095784572048148
+    second: dishes-guide_131
+  - first:
+      213: -615409310571953540
+    second: dishes-guide_132
+  - first:
+      213: -3860050855629718623
+    second: dishes-guide_133
+  - first:
+      213: 202446179922956663
+    second: dishes-guide_134
+  - first:
+      213: -1141485299057444914
+    second: dishes-guide_135
+  - first:
+      213: -8438396988014433453
+    second: dishes-guide_136
+  - first:
+      213: 7318614555309784850
+    second: dishes-guide_137
+  - first:
+      213: -610993767570745311
+    second: dishes-guide_138
+  - first:
+      213: -1326154141542832745
+    second: dishes-guide_139
+  - first:
+      213: -339515033508922434
+    second: dishes-guide_140
+  - first:
+      213: 7361446402851620411
+    second: dishes-guide_141
+  - first:
+      213: 5151875012920289086
+    second: dishes-guide_142
+  - first:
+      213: -3472702614144246663
+    second: dishes-guide_143
+  - first:
+      213: 163687026563033233
+    second: dishes-guide_144
+  - first:
+      213: -1430580421782785245
+    second: dishes-guide_145
+  - first:
+      213: -7621391090344661802
+    second: dishes-guide_146
+  - first:
+      213: 6168306808758019922
+    second: dishes-guide_147
+  - first:
+      213: 3743977027963951711
+    second: dishes-guide_148
+  - first:
+      213: -5683554556917348376
+    second: dishes-guide_149
+  - first:
+      213: -3353341695234966845
+    second: dishes-guide_150
+  - first:
+      213: -6322090820510277268
+    second: dishes-guide_151
+  - first:
+      213: -6872019576828131521
+    second: dishes-guide_152
+  - first:
+      213: 6409303203171256744
+    second: dishes-guide_153
+  - first:
+      213: -7521164078706672503
+    second: dishes-guide_154
+  - first:
+      213: 3948382202643028709
+    second: dishes-guide_155
+  - first:
+      213: -6608128338122917335
+    second: dishes-guide_156
+  - first:
+      213: -8854601622677117081
+    second: dishes-guide_157
+  - first:
+      213: 5214323632053568756
+    second: dishes-guide_158
+  - first:
+      213: -3941386051495801680
+    second: dishes-guide_159
+  - first:
+      213: -6243052999989875630
+    second: dishes-guide_160
+  - first:
+      213: 7318482530348656170
+    second: dishes-guide_161
+  - first:
+      213: 1334062826682911043
+    second: dishes-guide_162
+  - first:
+      213: 6568838822684814169
+    second: dishes-guide_163
+  - first:
+      213: 4143263983887118023
+    second: dishes-guide_164
+  - first:
+      213: -5931422968533775990
+    second: dishes-guide_165
+  - first:
+      213: 3256875744823226772
+    second: dishes-guide_166
+  - first:
+      213: -5341382419178941162
+    second: dishes-guide_167
+  - first:
+      213: -1614642962612675812
+    second: dishes-guide_168
+  - first:
+      213: 5316258807511179447
+    second: dishes-guide_169
+  - first:
+      213: 1722967063723069652
+    second: dishes-guide_170
+  - first:
+      213: 9057502528071003131
+    second: dishes-guide_171
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dishes-guide_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 485
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b521581f35483d450800000000000000
+      internalID: 6112374615341077083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 486
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbac85e4b802c38b0800000000000000
+      internalID: -5171222489441187140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 484
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5ccdbfa7578668d0800000000000000
+      internalID: -2853444503212274595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 486
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd138413a440719f0800000000000000
+      internalID: -497924517100244517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 486
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbf50ad88755f48b0800000000000000
+      internalID: -5165816271310135364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 486
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f2bd2c293a188180800000000000000
+      internalID: -9113005013127548176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 484
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1473430e961677d30800000000000000
+      internalID: 4429115865903150913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 484
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b057556220aef0fe0800000000000000
+      internalID: -1220499679040146165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_8
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 483
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d9218162f5922c0800000000000000
+      internalID: -4455925739089126104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_9
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 486
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f355b1af980bc9b20800000000000000
+      internalID: 3142580746650867007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_10
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 484
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f275fd8a570f45ce0800000000000000
+      internalID: -1417243594579814609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_11
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 485
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8054bcb26bdf2420800000000000000
+      internalID: 2607543926390018189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_12
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 486
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03882b42f61d35e50800000000000000
+      internalID: 6797006537919465520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_13
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 484
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9150c9b4057e2f380800000000000000
+      internalID: -8938827978325097191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_14
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 485
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49a323e5ce05a430800000000000000
+      internalID: 3793454504211622219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_15
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 485
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3706a5fbe32a07a90800000000000000
+      internalID: -7318171004095012749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_16
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 454
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0863566599e0e45f0800000000000000
+      internalID: -770662434491517312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_17
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ced6f42ba535be00800000000000000
+      internalID: 1059812296491458243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_18
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a47c60b75b50760800000000000000
+      internalID: 7423539100789459610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_19
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 453
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad559719d2fe1a620800000000000000
+      internalID: 2783769023684892122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_20
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d92cfdd06f38a90800000000000000
+      internalID: -7312730830470472306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_21
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b67fc8dbb96ec1a0800000000000000
+      internalID: -6787371332883482960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_22
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e75ec3c4f11b110800000000000000
+      internalID: 1274834581822209614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_23
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf49601be217b0b0800000000000000
+      internalID: -5713076801494233152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_24
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 614b73d88243f2c50800000000000000
+      internalID: 6642585324167345174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_25
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 454
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85e1c1daec5a2ad0800000000000000
+      internalID: -2726264460808166003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_26
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72b0a20d6ac1f8670800000000000000
+      internalID: 8543078520927685415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_27
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4526248da7ffad440800000000000000
+      internalID: 4961558842581344852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_28
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 454
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d6865b528b57dbe0800000000000000
+      internalID: -1452591739367422256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_29
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a95afbe8074d97e0800000000000000
+      internalID: -1757170175960262239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_30
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 454
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2582c49d06b0f990800000000000000
+      internalID: -7354178022049413846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_31
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 454
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61dafd2e4356e5650800000000000000
+      internalID: 6223523012891618582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f78d36f7c12e54d0800000000000000
+      internalID: -3144038347144591369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_33
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 421
+        width: 30
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ac32176696d5ae90800000000000000
+      internalID: -7014964903096992607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_34
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0499320445746e820800000000000000
+      internalID: 2947121433339468096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a16a4de018dc80a0800000000000000
+      internalID: -6877884963689438816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_36
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18b16f92aaa9b9d80800000000000000
+      internalID: -8242824637332448383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_37
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d500e5e5ffa068ce0800000000000000
+      internalID: -1403422141963173795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_38
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 421
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b591c5639ca35db50800000000000000
+      internalID: 6617259863365654875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_39
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 419
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ed2c31818b4a4220800000000000000
+      internalID: 2470870365157207523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_40
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 419
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a0164f9981766a0800000000000000
+      internalID: -6456164491303253436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_41
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 419
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db215aaf9c49d5e50800000000000000
+      internalID: 6799754607613776573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_42
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 419
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a154e55f18f21c320800000000000000
+      internalID: 2576392697046517018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_43
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 419
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b1dc5faa2b48390800000000000000
+      internalID: -7816926605870294258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_44
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 419
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2d2277d158ec980800000000000000
+      internalID: -8516723483711712527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_45
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 419
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89109c224fe9bcd0800000000000000
+      internalID: -2541737447179413105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_46
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 419
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07cc6e95a80593bd0800000000000000
+      internalID: -2649998350586819472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_47
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 419
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69309d030a88e22c0800000000000000
+      internalID: -4454472759827168362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_48
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae2de7197d53e140800000000000000
+      internalID: 4747741206852480681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_49
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2abb6dc4a9d179d0800000000000000
+      internalID: -2778200193266632148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_50
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 008075732e41aaed0800000000000000
+      internalID: -2402084489425123328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_51
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 390
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8162f76f2632a3e90800000000000000
+      internalID: -7045279759118424552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_52
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47363a15bbc7bd570800000000000000
+      internalID: 8492518666307593076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_53
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b406e04737098d90800000000000000
+      internalID: -7095131804052093768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_54
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395e1e367417f83f0800000000000000
+      internalID: -896373249391073901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_55
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f948c7bc67063c600800000000000000
+      internalID: 487339248022488223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_56
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 390
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42e2d260895962a0800000000000000
+      internalID: -6743760559061933490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_57
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaea6c43a289bff30800000000000000
+      internalID: 4610445950585319082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_58
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5371f5d7325fc00800000000000000
+      internalID: 933691519122486701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_59
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 390
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24faa658a47216230800000000000000
+      internalID: 3630225975656755010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_60
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 390
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 815183f4450fa8950800000000000000
+      internalID: 6452233661058651416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_61
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 390
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8350c4190e0fa6d30800000000000000
+      internalID: 4425614431145952568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_62
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 390
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f5fba7f4dcf83650800000000000000
+      internalID: 6212993677576107510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_63
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 390
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e036d98f366b64a70800000000000000
+      internalID: 8810930261486035726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52d936ac0c165d40800000000000000
+      internalID: 5572672429571560028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_65
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 354
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd93c5c296b99850800000000000000
+      internalID: 6384334688273800671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_66
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 353
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043694d4d24d3fe20800000000000000
+      internalID: 3383281036120646464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_67
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 353
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 924d72617f6b9aca0800000000000000
+      internalID: -6005067455776959447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_68
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 353
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e08f078e21eef4c90800000000000000
+      internalID: -7183261115656112114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_69
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 351
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1e70bd105601870800000000000000
+      internalID: 8651525942822822322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_70
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 352
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3ceab7e53a691ae0800000000000000
+      internalID: -1578113414663050180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_71
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 354
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 896ad89849c37b1d0800000000000000
+      internalID: -3335130390383974760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_72
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 354
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2acae4eada37ffd0800000000000000
+      internalID: -2308311572186215894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_73
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 354
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03564624d7e75f380800000000000000
+      internalID: -8938098808996993744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_74
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 354
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46f9ace8d189dc910800000000000000
+      internalID: 1859309473891000164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_75
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 354
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a075fe7b35026d0800000000000000
+      internalID: -3017319700878652927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_76
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 351
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0003ca58e1378adf0800000000000000
+      internalID: -168758411097526272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_77
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 351
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b06f8fde31e15cea0800000000000000
+      internalID: -5853239069752363509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_78
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 353
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 505e5ce3360f65a20800000000000000
+      internalID: 3050890106635674885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_79
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 353
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce3e5cfe99b4cc90800000000000000
+      internalID: -7150386215867498803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_80
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 294
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf2baecdf31df220800000000000000
+      internalID: 2521193347212324827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_81
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 300
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f40b0affb66620b0800000000000000
+      internalID: -5753798499199417102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_82
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 299
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dcadf8603a601d50800000000000000
+      internalID: 6705976601307098323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_83
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 299
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29cf6576846710650800000000000000
+      internalID: 6197364615581990034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_84
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 292
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da5e14ea2af763d00800000000000000
+      internalID: 952088707920422317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_85
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 292
+        width: 37
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c81e274328c238960800000000000000
+      internalID: 7602969533668843916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_86
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 294
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8c6d2048a039970800000000000000
+      internalID: 8760357262265338042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_87
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 295
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9e1d59029dde710800000000000000
+      internalID: 1724272966328510900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_88
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 299
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26470a9aeef0993f0800000000000000
+      internalID: -893665533333834654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_89
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 297
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946f7f38448495150800000000000000
+      internalID: 5861795849108452937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_90
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 299
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7dc54ade76683ed0800000000000000
+      internalID: -2434082903579832966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_91
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 301
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a96b00bac9ef3a0800000000000000
+      internalID: -6629689343177483632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_92
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 294
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34401e2b3a11e8e10800000000000000
+      internalID: 2201716662609183811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_93
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 262
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1c2217400b792f0800000000000000
+      internalID: -966110061923221075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_94
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 268
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b20bf92176d796f0800000000000000
+      internalID: -677837437372005710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_95
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 267
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703e1b13992e401b0800000000000000
+      internalID: -5691174881497849081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_96
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 270
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11fa5794d62592bb0800000000000000
+      internalID: -4960342885234528495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_97
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 263
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9d1c1e4d8619fcb0800000000000000
+      internalID: -4829804329221481059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_98
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 259
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53e41b283bdab940800000000000000
+      internalID: 5312799744724362078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_99
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 262
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebfae77e6a082d30800000000000000
+      internalID: 4406783704956599269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_100
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 266
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39862bad0fc518940800000000000000
+      internalID: 5296616826295445651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_101
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 269
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6bb18c6bef1d8d0800000000000000
+      internalID: -2823195430389827913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_102
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 263
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c24051f00646f490800000000000000
+      internalID: -7712900341962882367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_103
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 274
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed71acb0a3afeecd0800000000000000
+      internalID: -2526807213695428642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_104
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 267
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9382b8fa5f273d720800000000000000
+      internalID: 2869763787102824505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_105
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 269
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff64cd620e9bf32b0800000000000000
+      internalID: -5602555039049824513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_106
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 272
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d79f4a91c63fae80800000000000000
+      internalID: -8165247394253924392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_107
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 267
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97276080b9d1e9790800000000000000
+      internalID: -7521541775970372999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_108
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 255
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99feb61135dd966e0800000000000000
+      internalID: -1843699223587197031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_109
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 255
+        width: 39
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aef4d4c8bebe7e50800000000000000
+      internalID: 6809089387416321698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_110
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 258
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92e966a4a51ed1b60800000000000000
+      internalID: 7718573114294443561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_111
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 258
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1b3bcfc50e7a51a0800000000000000
+      internalID: -6820000122273055973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_112
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 258
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27276d3490200cbd0800000000000000
+      internalID: -2612085545058798990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_113
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 261
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f488f4cb3a526cb30800000000000000
+      internalID: 4307171478795683919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_114
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 230
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf2ea3fd9d21db70800000000000000
+      internalID: 8921962493219057600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_115
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 233
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868535176693180e0800000000000000
+      internalID: -2269469625067284376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_116
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 234
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f189641080e521b00800000000000000
+      internalID: 797803472472152095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_117
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe8820ad6bf0e680800000000000000
+      internalID: -8727699629587001611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_118
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 235
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4499c79fd8dc4340800000000000000
+      internalID: 4849489353607058508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_119
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01650fdc0a7ecb40800000000000000
+      internalID: 5462437593746858252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_120
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 240
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fde694cf55250ed0800000000000000
+      internalID: -2448509729155650062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_121
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112fa388b1ebf6840800000000000000
+      internalID: 5219599518604653073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_122
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 235
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe177647bad37bcd0800000000000000
+      internalID: -2542495658025717265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_123
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 230
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f9d8028dcd98e80800000000000000
+      internalID: -8175760827697225967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_124
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 230
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bd106ce03212ab0800000000000000
+      internalID: -5034704362064979051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_125
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 231
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374cd26b4b5488030800000000000000
+      internalID: 3497121753106072691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_126
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca5ddf5fa6288e10800000000000000
+      internalID: 2200050952639961799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_127
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 235
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d4dcd386c864e4c0800000000000000
+      internalID: -4259164145760545581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_128
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 047fdbed88a0a2400800000000000000
+      internalID: 300063908142380864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_129
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 238
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04145077936027a50800000000000000
+      internalID: 6517278454638264640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_130
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 235
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceb438fe9dcaf2400800000000000000
+      internalID: 301649752083352556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_131
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 235
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceca148d224d6e8a0800000000000000
+      internalID: -6276095784572048148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_132
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 230
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7204eb1e70a577f0800000000000000
+      internalID: -615409310571953540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_133
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 198
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab7f3fb2385e6ac0800000000000000
+      internalID: -3860050855629718623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_134
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 197
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77151706abb3fc200800000000000000
+      internalID: 202446179922956663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_135
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 205
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec7b9591b21a820f0800000000000000
+      internalID: -1141485299057444914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_136
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 203
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35b6cafd5aac4ea80800000000000000
+      internalID: -8438396988014433453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_137
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 203
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f3e319921f09560800000000000000
+      internalID: 7318614555309784850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_138
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 202
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128d7f3d7605587f0800000000000000
+      internalID: -610993767570745311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_139
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 197
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7952de3a5dd889de0800000000000000
+      internalID: -1326154141542832745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_140
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 195
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebbbbc730ecc94bf0800000000000000
+      internalID: -339515033508922434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_141
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 201
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b364c03308c192660800000000000000
+      internalID: 7361446402851620411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_142
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 203
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e37235847032f7740800000000000000
+      internalID: 5151875012920289086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_143
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 203
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c9c512f5b7ecfc0800000000000000
+      internalID: -3472702614144246663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_144
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 203
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19821a0cb78854200800000000000000
+      internalID: 163687026563033233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_145
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 202
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32332099fae852ce0800000000000000
+      internalID: -1430580421782785245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_146
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 202
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dceda5ee216b3690800000000000000
+      internalID: -7621391090344661802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_147
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 195
+        width: 35
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25725a98c5a3a9550800000000000000
+      internalID: 6168306808758019922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_148
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 163
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5a930f354745f330800000000000000
+      internalID: 3743977027963951711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_149
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 170
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e783654e35ff11b0800000000000000
+      internalID: -5683554556917348376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_150
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 171
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca7305be798671d0800000000000000
+      internalID: -3353341695234966845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_151
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 174
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c612ab505eb6348a0800000000000000
+      internalID: -6322090820510277268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_152
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 171
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3701a9ba9ea1a0a0800000000000000
+      internalID: -6872019576828131521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_153
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 176
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9cbca2e4b62f850800000000000000
+      internalID: 6409303203171256744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_154
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 163
+        width: 35
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98cb2478e157f9790800000000000000
+      internalID: -7521164078706672503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_155
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 163
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea1302a1b87bc630800000000000000
+      internalID: 3948382202643028709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_156
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 169
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92abdffa9463b44a0800000000000000
+      internalID: -6608128338122917335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_157
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 171
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 767abb4ecb22e1580800000000000000
+      internalID: -8854601622677117081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_158
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 176
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f44a7877bffc5840800000000000000
+      internalID: 5214323632053568756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_159
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 171
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bcc9edb4426d49c0800000000000000
+      internalID: -3941386051495801680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_160
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 173
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25caaa5af583c59a0800000000000000
+      internalID: -6243052999989875630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_161
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 171
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26655c1619709560800000000000000
+      internalID: 7318482530348656170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_162
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 163
+        width: 35
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3490d7c921b838210800000000000000
+      internalID: 1334062826682911043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_163
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 102
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95b6ce42b14392b50800000000000000
+      internalID: 6568838822684814169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_164
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 102
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cee24234a4df7930800000000000000
+      internalID: 4143263983887118023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_165
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 99
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8983f37c3a5fada0800000000000000
+      internalID: -5931422968533775990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_166
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 63
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49136c7fb3fb23d20800000000000000
+      internalID: 3256875744823226772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_167
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 69
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61592575df89fd5b0800000000000000
+      internalID: -5341382419178941162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_168
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 70
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b136eb7c2a799e0800000000000000
+      internalID: -1614642962612675812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_169
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 37
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0eebbf73527c940800000000000000
+      internalID: 5316258807511179447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_170
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 36
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d059e07a6539e710800000000000000
+      internalID: 1722967063723069652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dishes-guide_171
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 38
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfbefd18f86b2bd70800000000000000
+      internalID: 9057502528071003131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dishes-guide_0: 6112374615341077083
+      dishes-guide_1: -5171222489441187140
+      dishes-guide_10: -1417243594579814609
+      dishes-guide_100: 5296616826295445651
+      dishes-guide_101: -2823195430389827913
+      dishes-guide_102: -7712900341962882367
+      dishes-guide_103: -2526807213695428642
+      dishes-guide_104: 2869763787102824505
+      dishes-guide_105: -5602555039049824513
+      dishes-guide_106: -8165247394253924392
+      dishes-guide_107: -7521541775970372999
+      dishes-guide_108: -1843699223587197031
+      dishes-guide_109: 6809089387416321698
+      dishes-guide_11: 2607543926390018189
+      dishes-guide_110: 7718573114294443561
+      dishes-guide_111: -6820000122273055973
+      dishes-guide_112: -2612085545058798990
+      dishes-guide_113: 4307171478795683919
+      dishes-guide_114: 8921962493219057600
+      dishes-guide_115: -2269469625067284376
+      dishes-guide_116: 797803472472152095
+      dishes-guide_117: -8727699629587001611
+      dishes-guide_118: 4849489353607058508
+      dishes-guide_119: 5462437593746858252
+      dishes-guide_12: 6797006537919465520
+      dishes-guide_120: -2448509729155650062
+      dishes-guide_121: 5219599518604653073
+      dishes-guide_122: -2542495658025717265
+      dishes-guide_123: -8175760827697225967
+      dishes-guide_124: -5034704362064979051
+      dishes-guide_125: 3497121753106072691
+      dishes-guide_126: 2200050952639961799
+      dishes-guide_127: -4259164145760545581
+      dishes-guide_128: 300063908142380864
+      dishes-guide_129: 6517278454638264640
+      dishes-guide_13: -8938827978325097191
+      dishes-guide_130: 301649752083352556
+      dishes-guide_131: -6276095784572048148
+      dishes-guide_132: -615409310571953540
+      dishes-guide_133: -3860050855629718623
+      dishes-guide_134: 202446179922956663
+      dishes-guide_135: -1141485299057444914
+      dishes-guide_136: -8438396988014433453
+      dishes-guide_137: 7318614555309784850
+      dishes-guide_138: -610993767570745311
+      dishes-guide_139: -1326154141542832745
+      dishes-guide_14: 3793454504211622219
+      dishes-guide_140: -339515033508922434
+      dishes-guide_141: 7361446402851620411
+      dishes-guide_142: 5151875012920289086
+      dishes-guide_143: -3472702614144246663
+      dishes-guide_144: 163687026563033233
+      dishes-guide_145: -1430580421782785245
+      dishes-guide_146: -7621391090344661802
+      dishes-guide_147: 6168306808758019922
+      dishes-guide_148: 3743977027963951711
+      dishes-guide_149: -5683554556917348376
+      dishes-guide_15: -7318171004095012749
+      dishes-guide_150: -3353341695234966845
+      dishes-guide_151: -6322090820510277268
+      dishes-guide_152: -6872019576828131521
+      dishes-guide_153: 6409303203171256744
+      dishes-guide_154: -7521164078706672503
+      dishes-guide_155: 3948382202643028709
+      dishes-guide_156: -6608128338122917335
+      dishes-guide_157: -8854601622677117081
+      dishes-guide_158: 5214323632053568756
+      dishes-guide_159: -3941386051495801680
+      dishes-guide_16: -770662434491517312
+      dishes-guide_160: -6243052999989875630
+      dishes-guide_161: 7318482530348656170
+      dishes-guide_162: 1334062826682911043
+      dishes-guide_163: 6568838822684814169
+      dishes-guide_164: 4143263983887118023
+      dishes-guide_165: -5931422968533775990
+      dishes-guide_166: 3256875744823226772
+      dishes-guide_167: -5341382419178941162
+      dishes-guide_168: -1614642962612675812
+      dishes-guide_169: 5316258807511179447
+      dishes-guide_17: 1059812296491458243
+      dishes-guide_170: 1722967063723069652
+      dishes-guide_171: 9057502528071003131
+      dishes-guide_18: 7423539100789459610
+      dishes-guide_19: 2783769023684892122
+      dishes-guide_2: -2853444503212274595
+      dishes-guide_20: -7312730830470472306
+      dishes-guide_21: -6787371332883482960
+      dishes-guide_22: 1274834581822209614
+      dishes-guide_23: -5713076801494233152
+      dishes-guide_24: 6642585324167345174
+      dishes-guide_25: -2726264460808166003
+      dishes-guide_26: 8543078520927685415
+      dishes-guide_27: 4961558842581344852
+      dishes-guide_28: -1452591739367422256
+      dishes-guide_29: -1757170175960262239
+      dishes-guide_3: -497924517100244517
+      dishes-guide_30: -7354178022049413846
+      dishes-guide_31: 6223523012891618582
+      dishes-guide_32: -3144038347144591369
+      dishes-guide_33: -7014964903096992607
+      dishes-guide_34: 2947121433339468096
+      dishes-guide_35: -6877884963689438816
+      dishes-guide_36: -8242824637332448383
+      dishes-guide_37: -1403422141963173795
+      dishes-guide_38: 6617259863365654875
+      dishes-guide_39: 2470870365157207523
+      dishes-guide_4: -5165816271310135364
+      dishes-guide_40: -6456164491303253436
+      dishes-guide_41: 6799754607613776573
+      dishes-guide_42: 2576392697046517018
+      dishes-guide_43: -7816926605870294258
+      dishes-guide_44: -8516723483711712527
+      dishes-guide_45: -2541737447179413105
+      dishes-guide_46: -2649998350586819472
+      dishes-guide_47: -4454472759827168362
+      dishes-guide_48: 4747741206852480681
+      dishes-guide_49: -2778200193266632148
+      dishes-guide_5: -9113005013127548176
+      dishes-guide_50: -2402084489425123328
+      dishes-guide_51: -7045279759118424552
+      dishes-guide_52: 8492518666307593076
+      dishes-guide_53: -7095131804052093768
+      dishes-guide_54: -896373249391073901
+      dishes-guide_55: 487339248022488223
+      dishes-guide_56: -6743760559061933490
+      dishes-guide_57: 4610445950585319082
+      dishes-guide_58: 933691519122486701
+      dishes-guide_59: 3630225975656755010
+      dishes-guide_6: 4429115865903150913
+      dishes-guide_60: 6452233661058651416
+      dishes-guide_61: 4425614431145952568
+      dishes-guide_62: 6212993677576107510
+      dishes-guide_63: 8810930261486035726
+      dishes-guide_64: 5572672429571560028
+      dishes-guide_65: 6384334688273800671
+      dishes-guide_66: 3383281036120646464
+      dishes-guide_67: -6005067455776959447
+      dishes-guide_68: -7183261115656112114
+      dishes-guide_69: 8651525942822822322
+      dishes-guide_7: -1220499679040146165
+      dishes-guide_70: -1578113414663050180
+      dishes-guide_71: -3335130390383974760
+      dishes-guide_72: -2308311572186215894
+      dishes-guide_73: -8938098808996993744
+      dishes-guide_74: 1859309473891000164
+      dishes-guide_75: -3017319700878652927
+      dishes-guide_76: -168758411097526272
+      dishes-guide_77: -5853239069752363509
+      dishes-guide_78: 3050890106635674885
+      dishes-guide_79: -7150386215867498803
+      dishes-guide_8: -4455925739089126104
+      dishes-guide_80: 2521193347212324827
+      dishes-guide_81: -5753798499199417102
+      dishes-guide_82: 6705976601307098323
+      dishes-guide_83: 6197364615581990034
+      dishes-guide_84: 952088707920422317
+      dishes-guide_85: 7602969533668843916
+      dishes-guide_86: 8760357262265338042
+      dishes-guide_87: 1724272966328510900
+      dishes-guide_88: -893665533333834654
+      dishes-guide_89: 5861795849108452937
+      dishes-guide_9: 3142580746650867007
+      dishes-guide_90: -2434082903579832966
+      dishes-guide_91: -6629689343177483632
+      dishes-guide_92: 2201716662609183811
+      dishes-guide_93: -966110061923221075
+      dishes-guide_94: -677837437372005710
+      dishes-guide_95: -5691174881497849081
+      dishes-guide_96: -4960342885234528495
+      dishes-guide_97: -4829804329221481059
+      dishes-guide_98: 5312799744724362078
+      dishes-guide_99: 4406783704956599269
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
