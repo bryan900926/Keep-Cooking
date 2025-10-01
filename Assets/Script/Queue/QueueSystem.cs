@@ -1,15 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QueueSystem : SeatingSystem
 {
     [Header("Queue Settings")]
-    public int numberOfSlots = 5;     // how many queue positions
-    public float spacing = 1.5f;      // distance between each slot
-    public Vector3 direction = Vector3.left; // direction of the queue
+    [SerializeField] private int numberOfSlots = 5;     // how many queue positions
+    [SerializeField] private float spacing = 1.5f;      // distance between each slot
+    [SerializeField] private Vector3 direction = Vector3.left; // direction of the queue
 
     [Header("Slot Visuals (Optional)")]
-    public GameObject slotPrefab; // leave empty if you just want empties
+    [SerializeField] private GameObject slotPrefab; // leave empty if you just want empties
 
     protected override void Start()
     {
@@ -17,7 +16,7 @@ public class QueueSystem : SeatingSystem
         GenerateSlots();
     }
 
-    void GenerateSlots()
+    private void GenerateSlots()
     {
         for (int i = 0; i < numberOfSlots; i++)
         {

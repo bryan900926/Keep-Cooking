@@ -14,10 +14,8 @@ public class InventorySystem : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Keyboard.current);
         if (Keyboard.current.iKey.wasPressedThisFrame)
         {
-            Debug.Log("I pressed!");
             ToggleInventory();
         }
     }
