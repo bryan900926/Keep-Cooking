@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 6345315180135975248, guid: 7abf9e2246a90684cb1d7003bcee6544, type: 3}
   id: 0
-  workType: 1
+  workType: 0

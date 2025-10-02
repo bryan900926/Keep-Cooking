@@ -9,16 +9,15 @@ public class WorkInfoUI : MonoBehaviour
 
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button cookButton;
-
-    private WorkerData workerData;
+    private GameObject worker;
 
 
     // Call this when creating/initializing the UI
     public void Init()
     {
-        if (workerData != null)
+        if (worker != null)
         {
-            workerImage.sprite = workerData.image;
+            workerImage.sprite = worker.GetComponent<Cooker>().GetWorkerData().image;
             cookButton.onClick.AddListener(OnCookButtonClicked);
         }
         else
@@ -30,12 +29,17 @@ public class WorkInfoUI : MonoBehaviour
     private void OnCookButtonClicked()
     {
         string input = inputField.text;
-        Debug.Log(workerData.id + " will cook " + input);
-        // You can send this back to a manager system
+        int.TryParse(input, out int idx);
+        Cooker cooker = worker.GetComponent<Cooker>();
+        if (Vector2.Distance(worker.transform.position, cooker.Destination.position) <= 1f)
+        {
+            worker.GetComponent<Chef>().EnableCooking(idx);
+        }
     }
 
-    public void setWorkerData(WorkerData data)
+
+    public void SetWorker(GameObject workerObj)
     {
-        workerData = data;
+        worker = workerObj;
     }
 }

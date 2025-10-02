@@ -15,6 +15,10 @@ TagManager:
   - HoldingSlot
   - Holding
   - HoldingSystem
+  - FrontWorkerUI
+  - BackWorkerUI
+  - Cooking
+  - CookingSeat
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - Water
   - UI
   - Seating
-  - 
+  - Cooker
   - 
   - 
   - 
