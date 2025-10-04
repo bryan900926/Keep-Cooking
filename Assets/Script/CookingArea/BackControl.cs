@@ -10,18 +10,21 @@ public class BackControl : MonoBehaviour
 
     private HashSet<int> occupiedCookers = new HashSet<int>();
 
-    [SerializeField] private GameObject backUI;
+    private Dictionary<int, int> mapper = new Dictionary<int, int>(); // map from cooker idx to UI idx
+
+    public Dictionary<int, int> Mapper => mapper;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cookers = GameObject.FindGameObjectsWithTag("Cooking");
 
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+        cookers = GameObject.FindGameObjectsWithTag("Cooking");
         Instance = this;
         for (int i = 0; i < cookers.Length; i++)
         {
@@ -31,11 +34,15 @@ public class BackControl : MonoBehaviour
     }
 
 
-    void AssignTask(int idx)
+    void AssignTask(int cookIdx) // cookIdx: the kitchen idx
     {
-        if (occupiedCookers.Contains(idx)) return;
-        GameObject cookerObj = WorkerManager.Instance.SpawnChef(idx);
-        backUI.GetComponent<WorkerUIManager>().FillWorkerInfoUI(cookerObj);
+        if (occupiedCookers.Contains(cookIdx) || cookIdx >= cookers.Length) return;
+        GameObject cookerObj = WorkerManager.Instance.SpawnChef(cookIdx);
+        int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(cookerObj);
+        if (uiIdx != -1)
+        {
+            mapper[cookIdx] = uiIdx;
+        }
 
     }
 }

@@ -1,58 +1,91 @@
+using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
+// control the movement of the chef
 public class Cooker : MonoBehaviour
 {
-    [SerializeField] private float smoothness = 5f;
     [SerializeField] private WorkerData workerData;
 
-    public WorkerData GetWorkerData()
-    {
-        return workerData;
-    }
-
+    [Header("Runtime References")]
     private SpriteRenderer spriteRenderer;
-    private AIDestinationSetter desSetter;
+    private AIDestinationSetter destinationSetter;
 
     private Transform destination;
+    [SerializeField] private int cookIdx = -2;  // -2: waiting init, -1: quit job
 
+    // 🔹 Public accessors
+    public WorkerData WorkerData => workerData;
     public Transform Destination => destination;
+    public int CookIdx => cookIdx;
 
-    private int cookIdx = -1;
-
-
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        desSetter = GetComponent<AIDestinationSetter>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
 
-        spriteRenderer.sprite = workerData.image;
-
-
+        if (workerData != null)
+        {
+            spriteRenderer.sprite = workerData.image;
+        }
+        else
+        {
+            Debug.LogWarning($"{name} has no WorkerData assigned!");
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        TryMoveToCookingSpot();
-
+        HandleMovement();
     }
 
-    private void TryMoveToCookingSpot()
+    private void HandleMovement()
     {
-        if (destination) return;
+        // already has a destination → don’t recalc
+        if (destination != null) return;
 
-        if (cookIdx != -1)
+        // if assigned to a cooking spot
+        if (cookIdx >= 0)
         {
             GameObject[] cookers = BackControl.Instance.GetCookers;
-            destination = cookers[cookIdx].GetComponent<CookingSpot>().GetSpot;
-            desSetter.target = destination;
+            if (cookIdx < cookers.Length)
+            {
+                destination = cookers[cookIdx].GetComponent<CookingSpot>().GetSpot;
+                destinationSetter.target = destination;
+            }
+            else
+            {
+                Debug.LogWarning($"{name}: cookIdx {cookIdx} out of range!");
+            }
         }
-
     }
 
-    public void SetCookIdx(int idx)
+    public void HandleQuitJob()
     {
-        cookIdx = idx;
+        if (destination != null)
+        {
+            if (Vector2.Distance(transform.position, destination.position) <= 1f)
+            {
+                Dictionary<int, int> mapper = BackControl.Instance.Mapper;
+                if (mapper.TryGetValue(cookIdx, out int controllUiIdx))
+                {
+                    mapper.Remove(cookIdx);
+                    BackWorkerUIManager.Instance.RemoveWorkerInfoUI(controllUiIdx);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("worker cannot quit the job");
+                }
+            }
+        }
     }
 
+    // 🔹 API
+    public void SetCookIdx(int idx) => cookIdx = idx;
+    public void SetDestination(Transform target)
+    {
+        destination = target;
+        if (destinationSetter != null) destinationSetter.target = target;
+    }
 }

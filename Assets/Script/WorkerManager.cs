@@ -18,11 +18,6 @@ public class WorkerManager : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public GameObject SpawnChef(int idx)
     {
