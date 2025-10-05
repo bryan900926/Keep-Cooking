@@ -5,7 +5,6 @@ public class ChefStateManager : MonoBehaviour
     [Header("Cooking State")]
     [SerializeField] private FloatingEnergyBar floatingEnergyBar;
     [SerializeField] private GameObject leaveTarget;
-    private GameObject fires;
     private Cooker cooker;
 
     [Header("Energy")]
@@ -14,6 +13,8 @@ public class ChefStateManager : MonoBehaviour
     private float currentEnergy;
 
     private ChefState currentState;
+
+    private GameObject cookingMachine;
 
     // public data for states
     public int CurrentDishIdx { get; set; } = -1;
@@ -26,14 +27,7 @@ public class ChefStateManager : MonoBehaviour
         currentEnergy = maxEnergy;
         cooker = GetComponent<Cooker>();
 
-        GameObject cookingMachine = BackControl.Instance.GetCookers[cooker.CookIdx];
-        foreach (Transform child in cookingMachine.transform)
-        {
-            if (child.name == "Fires") fires = child.gameObject;
-        }
-
-        if (!fires) Debug.LogError("Cannot find the fires GameObject");
-        fires.SetActive(false);
+        cookingMachine = BackControl.Instance.GetCookers[cooker.CookIdx];
 
         ChangeState(new ChefNormalState(this));
     }
@@ -61,7 +55,7 @@ public class ChefStateManager : MonoBehaviour
 
     public float EnableCooking(int foodIdx)
     {
-        if (CurrentDishIdx != -1 || currentEnergy <= 0 || currentState is ChefOnFireState) return -1f;
+        if (CurrentDishIdx != -1 || currentEnergy <= 0 || cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is not CookingMachineNormalState) return -1f;
 
         CurrentDishIdx = foodIdx;
         CookingTime = Random.Range(3f, 5f);
@@ -79,8 +73,8 @@ public class ChefStateManager : MonoBehaviour
             float wrongProb = Mathf.Clamp01(1 - currentEnergy / maxEnergy);
             if (Random.value < wrongProb)
             {
+                SetFireActive(true);
                 CurrentDishIdx = Random.Range(0, menu.Length);
-                ChangeState(new ChefOnFireState(this));
             }
 
             Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
@@ -92,6 +86,13 @@ public class ChefStateManager : MonoBehaviour
 
     public void SetFireActive(bool active)
     {
-        fires.SetActive(active);
+        if (active)
+        {
+            cookingMachine.GetComponent<CookingMachineStateManager>().SetOneFire();
+        }
+        else
+        {
+            cookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
+        }
     }
 }

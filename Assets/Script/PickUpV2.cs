@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PickUp : MonoBehaviour
+public class PickUpV2 : MonoBehaviour
 {
     public string pickupTag = "Player";  // Tag of the player object
-    private Vector3 offset = new Vector3(0, 2f, 0); // Position above player
+    public Vector3 offset = new Vector3(0, 2f, 0); // Position above player
 
     private bool pickedUp = false;
     private Transform player;
@@ -41,10 +41,10 @@ public class PickUp : MonoBehaviour
                 // Pick up
                 pickedUp = true;
                 player = playerInRange;
-                if (player.GetComponent<DeliverFoodSystem>().pickedUpIdx != -1) return;
+                if (player.GetComponent<Holding>().HoldingItem) return;
 
                 transform.SetParent(player);
-                player.GetComponent<DeliverFoodSystem>().pickedUpIdx = foodIdx;
+                player.GetComponent<Holding>().SetHoldingItem(gameObject);
                 transform.localPosition = offset;
 
                 Debug.Log("Picked up: " + gameObject.name);
@@ -54,9 +54,8 @@ public class PickUp : MonoBehaviour
                 // Drop
                 pickedUp = false;
                 transform.SetParent(null);
-                player.GetComponent<DeliverFoodSystem>().pickedUpIdx = -1;
+                player.GetComponent<Holding>().RemoveHolding();
                 player = null;
-
                 Debug.Log("Dropped: " + gameObject.name);
             }
         }
