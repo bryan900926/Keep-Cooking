@@ -1,22 +1,46 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DiningSystem : SeatingSystem
 {
+    private Dictionary<int, GameObject> seatToCustomer = new Dictionary<int, GameObject>();
+
+    public Dictionary<int, GameObject> SeatToCustomer { get { return seatToCustomer; } set { seatToCustomer = value; } }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         seats = GameObject.FindGameObjectsWithTag("DiningSeat");
         for (int i = 0; i < seats.Length; i++)
-        {
+        {   GameObject seat = seats[i];
+            seat.GetComponent<Seat>().SetSeatNumber(i);
             availSeats.AddLast(i);
         }
+        // Debug.Log("Dining system initialized with " + availSeats.Count + " seats.");
 
     }
 
-    // void Update()
-    // {
-    //     Debug.Log("avail seat count: " + availSeats.Count);
-    // }
+    public GameObject GetCustomerAtSeat(int idx)
+    {
+        if (seatToCustomer.ContainsKey(idx))
+        {
+            return seatToCustomer[idx];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public override void FreeSeat(int seatIndex)
+    {
+        base.FreeSeat(seatIndex);
+        if (seatToCustomer.ContainsKey(seatIndex))
+        {
+            occupiedSeats.Remove(seatIndex);
+            seatToCustomer.Remove(seatIndex);
+            availSeats.AddLast(seatIndex); // back to the queue
+        }
+    }
 
 
 }

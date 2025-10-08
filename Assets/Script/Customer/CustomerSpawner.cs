@@ -19,7 +19,7 @@ public class CustomerSpawner : MonoBehaviour
     void Update()
     {
         spawnedTime -= Time.deltaTime;
-        Debug.Log("Available Seats: " + qs.availSeats.Count);
+        // Debug.Log("Available Seats: " + qs.availSeats.Count);
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();

@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public class PlayerDetector : MonoBehaviour
+namespace CookingArea.CookingMachine
 {
-    private CookingMachineStateManager stateManager;
-
-    private const string PLAYER_TAG = "Player";
-
-    void Start()
+    public class PlayerDetector : MonoBehaviour
     {
-        stateManager = GetComponent<CookingMachineStateManager>();
-    }
+        private CookingMachineStateManager stateManager;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (stateManager.CurrentState is CookingMachineOnFireState && other.CompareTag(PLAYER_TAG) && other.GetComponent<Holding>().HoldingItem.name == "WaterBucket")
+        private const string PLAYER_TAG = "Player";
+
+        void Start()
         {
-            Debug.Log("Player entered detection area!");
-            stateManager.SetBackToNormal();
+            stateManager = GetComponent<CookingMachineStateManager>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (stateManager.CurrentState is CookingMachineOnFireState && other.CompareTag(PLAYER_TAG) && other.GetComponent<Holding>().HoldingItem?.name == "WaterBucket")
+            {
+                stateManager.SetBackToNormal();
+            }
         }
     }
+
 }

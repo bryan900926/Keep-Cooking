@@ -14,8 +14,10 @@ public class Holding : MonoBehaviour
         holdingItem = newItem;
     }
 
-    public void RemoveHolding()
+    public GameObject RemoveHolding()
     {
+        var item = holdingItem;
         holdingItem = null;
+        return item;
     }
 }

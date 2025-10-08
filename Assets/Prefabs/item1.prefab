@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4400978137355519782}
   - component: {fileID: 6140065766255240713}
-  - component: {fileID: 7934948782706189380}
   - component: {fileID: 443090086902038426}
+  - component: {fileID: 4282084637579908154}
   m_Layer: 0
   m_Name: item1
   m_TagString: FoodItem
@@ -89,21 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7934948782706189380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8788832329371062287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0619bc6f159c2b74db2c010a8b53bdec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickupTag: Player
-  offset: {x: 0, y: 2, z: 0}
-  foodIdx: 0
 --- !u!61 &443090086902038426
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1.625}
+    oldSize: {x: 0.93333334, y: 0.8666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,3 +135,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.6875, y: 1.375}
   m_EdgeRadius: 0
+--- !u!114 &4282084637579908154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788832329371062287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea88b95c9ad19b94193bf19252db3b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupTag: Player
+  offset: {x: 0, y: 2, z: 0}
+  foodIdx: -1

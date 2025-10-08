@@ -3,25 +3,27 @@ using UnityEngine.InputSystem;
 
 public class Toggle : MonoBehaviour
 {
-    [SerializeField] private GameObject controlPanel;
+    [SerializeField] private CanvasGroup controlPanel;
     private bool isOpen = false;
 
     void Start()
     {
-        controlPanel.SetActive(isOpen);
+        UpdatePanelVisibility();
     }
 
     void Update()
     {
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            ToggleControlPanel();
+            isOpen = !isOpen;
+            UpdatePanelVisibility();
         }
     }
 
-    void ToggleControlPanel()
+    void UpdatePanelVisibility()
     {
-        isOpen = !isOpen;
-        controlPanel.SetActive(isOpen);
+        controlPanel.alpha = isOpen ? 1f : 0f;
+        controlPanel.interactable = isOpen;
+        controlPanel.blocksRaycasts = isOpen;
     }
 }

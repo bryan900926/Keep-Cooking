@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: workerData
       value: 
       objectReference: {fileID: 11400000, guid: 6c1d8be2ba864994485f8d58d3a3cbe8, type: 2}
+    - target: {fileID: 5523462207830982791, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523462207830982791, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8242034572245049226, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.04916

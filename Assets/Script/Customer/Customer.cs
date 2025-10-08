@@ -16,8 +16,8 @@ public class Customer : MonoBehaviour
 
     private GameObject diningObj;
 
-    private AIPath ai;
     private DiningSystem ds;
+    private AIPath ai;
 
 
     void Start()
@@ -25,8 +25,8 @@ public class Customer : MonoBehaviour
         queueObj = GameObject.FindGameObjectWithTag("Queue");
         diningObj = GameObject.FindGameObjectWithTag("Dining");
         qs = queueObj.GetComponent<QueueSystem>();
-        desSetter = GetComponent<AIDestinationSetter>();
         ds = diningObj.GetComponent<DiningSystem>();
+        desSetter = GetComponent<AIDestinationSetter>();
         ai = GetComponent<AIPath>();
 
     }

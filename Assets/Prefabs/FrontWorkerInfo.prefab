@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workerImage: {fileID: 1141299847278379930}
   inputField: {fileID: 4735461346088473832}
-  cookButton: {fileID: 4858436574415149588}
+  buttom: {fileID: 4858436574415149588}
   progressBar: {fileID: 325991975358537911}
 --- !u!1 &5485327378323721365
 GameObject:

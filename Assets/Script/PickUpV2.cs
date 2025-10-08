@@ -3,19 +3,22 @@ using UnityEngine.InputSystem;
 
 public class PickUpV2 : MonoBehaviour
 {
-    public string pickupTag = "Player";  // Tag of the player object
-    public Vector3 offset = new Vector3(0, 2f, 0); // Position above player
+    private string PICK_UP_TAG = "Player";  // Tag of the player object
+    private Vector3 offset = new Vector3(0, 2f, 0); // Position above player
 
     private bool pickedUp = false;
-    private Transform player;
     private bool inRange = false;
 
-    public int foodIdx = -1;
+    private Transform currentHolder;
+
+    private int foodIdx = -1;
+    public int FoodIdx { get { return foodIdx; } set { foodIdx = value; } }
+
     private Transform playerInRange;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(pickupTag))
+        if (other.CompareTag(PICK_UP_TAG))
         {
             inRange = true;
             playerInRange = other.transform;
@@ -24,7 +27,7 @@ public class PickUpV2 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(pickupTag))
+        if (other.CompareTag(PICK_UP_TAG))
         {
             inRange = false;
             playerInRange = null;
@@ -38,26 +41,37 @@ public class PickUpV2 : MonoBehaviour
             Debug.Log("pickup: " + pickedUp + " inRange: " + inRange);
             if (!pickedUp && inRange)
             {
-                // Pick up
-                pickedUp = true;
-                player = playerInRange;
-                if (player.GetComponent<Holding>().HoldingItem) return;
-
-                transform.SetParent(player);
-                player.GetComponent<Holding>().SetHoldingItem(gameObject);
-                transform.localPosition = offset;
-
-                Debug.Log("Picked up: " + gameObject.name);
+                Pick(playerInRange.gameObject);
             }
             else if (pickedUp)
             {
-                // Drop
-                pickedUp = false;
-                transform.SetParent(null);
-                player.GetComponent<Holding>().RemoveHolding();
-                player = null;
-                Debug.Log("Dropped: " + gameObject.name);
+                Drop();
+
             }
         }
+    }
+
+    public void Pick(GameObject picker)
+    {
+        // Pick up
+        pickedUp = true;
+        if (picker.GetComponent<Holding>().HoldingItem) return;
+
+        transform.SetParent(picker.transform);
+        picker.GetComponent<Holding>().SetHoldingItem(gameObject);
+        transform.localPosition = offset;
+        currentHolder = picker.transform;
+
+        Debug.Log("Picked up: " + gameObject.name);
+    }
+
+    public void Drop()
+    {
+        // Drop
+        pickedUp = false;
+        transform.SetParent(null);
+        currentHolder.GetComponent<Holding>().RemoveHolding();
+        currentHolder  = null;
+        Debug.Log("Dropped: " + gameObject.name);
     }
 }

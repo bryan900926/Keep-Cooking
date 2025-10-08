@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class SeatingSystem : MonoBehaviour
 {
-    public GameObject[]  seats;
+    public GameObject[] seats;
     protected HashSet<int> occupiedSeats = new HashSet<int>();
 
     public LinkedList<int> availSeats = new LinkedList<int>();
@@ -24,11 +24,10 @@ public abstract class SeatingSystem : MonoBehaviour
         availSeats.RemoveFirst();
 
         occupiedSeats.Add(seatIndex);
-
         return seatIndex;
     }
 
-    public void FreeSeat(int seatIndex)
+    public virtual void FreeSeat(int seatIndex)
     {
         if (occupiedSeats.Contains(seatIndex))
         {

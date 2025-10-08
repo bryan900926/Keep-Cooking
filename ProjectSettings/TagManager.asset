@@ -19,6 +19,8 @@ TagManager:
   - BackWorkerUI
   - Cooking
   - CookingSeat
+  - Exit
+  - WaiterWaiting
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - UI
   - Seating
   - Cooker
-  - 
+  - Obstacles
   - 
   - 
   - 

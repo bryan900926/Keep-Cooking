@@ -78,7 +78,7 @@ public class ChefStateManager : MonoBehaviour
             }
 
             Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
-            Instantiate(menu[CurrentDishIdx], spawnPos, Quaternion.identity);
+            Menu.Instance.SpawnForPlayer(CurrentDishIdx, spawnPos);
         }
 
         CurrentDishIdx = -1;

@@ -1,20 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
 
 public class WorkInfoUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private Image workerImage;
     [SerializeField] private TMP_InputField inputField;
-    [SerializeField] private Button cookButton;
+    [SerializeField] private Button buttom;
     [SerializeField] private ProgressBar progressBar;
 
     private GameObject worker;
 
     void Start()
     {
-        if (!workerImage || !inputField || !cookButton || !progressBar)
+        if (!workerImage || !inputField || !buttom || !progressBar)
         {
             Debug.LogError("Please attach the property for WorkInfo script");
         }
@@ -43,18 +44,48 @@ public class WorkInfoUI : MonoBehaviour
         }
     }
 
+    private void OnDeliverButtonClicked()
+    {
+        if (worker == null) return;
 
-    public void SetWorker(GameObject workerObj)
+        string input = inputField.text;
+        if (string.IsNullOrEmpty(input)) return;
+
+        if (!int.TryParse(input, out int idx)) return;
+
+        WaiterStateManager waiterStateManager = worker.GetComponent<WaiterStateManager>();
+        waiterStateManager.tableIdx = idx;
+
+    }
+
+
+
+    public void SetWorker(GameObject workerObj, bool isCooker = true)
     {
         worker = workerObj;
 
         if (worker != null)
         {
-            var cooker = worker.GetComponent<Cooker>();
-            workerImage.sprite = cooker.WorkerData.image;
+            if (isCooker)
+            {
+                var cooker = worker.GetComponent<Cooker>();
+                workerImage.sprite = cooker.WorkerData.image;
+            }
+            else
+            {
+                var waiter = worker.GetComponent<WaiterStateManager>();
+                workerImage.sprite = waiter.WorkerData.image;
+            }
 
-            cookButton.onClick.RemoveAllListeners();
-            cookButton.onClick.AddListener(OnCookButtonClicked);
+            buttom.onClick.RemoveAllListeners();
+            if (isCooker)
+            {
+                buttom.onClick.AddListener(OnCookButtonClicked);
+            }
+            else
+            {
+                buttom.onClick.AddListener(OnDeliverButtonClicked);
+            }
 
         }
     }
@@ -62,6 +93,6 @@ public class WorkInfoUI : MonoBehaviour
     {
         workerImage.sprite = null;
         inputField.text = "";
-        cookButton.onClick.RemoveAllListeners();
+        buttom.onClick.RemoveAllListeners();
     }
 }

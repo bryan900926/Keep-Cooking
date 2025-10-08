@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
         for (int i = 0; i < foodPrefabs.Length; i++)
         {
             GameObject obj = foodPrefabs[i];
-            obj.GetComponent<PickUp>().foodIdx = i;
+            obj.GetComponent<PickUpV2>().FoodIdx = i;
         }
     }
 
@@ -36,6 +36,7 @@ public class Menu : MonoBehaviour
         GameObject newPickup = Instantiate(foodPrefabs[index], customer.transform.position, Quaternion.identity);
         newPickup.transform.SetParent(customer.transform);
         newPickup.transform.localPosition = new Vector3(0, 2f, 0);
+        customer.GetComponent<Holding>().SetHoldingItem(newPickup);
 
         return index;
     }
@@ -45,6 +46,7 @@ public class Menu : MonoBehaviour
         if (foodPrefabs.Length == 0 || idx < 0 || idx >= foodPrefabs.Length) return;
 
         GameObject newPickup = Instantiate(foodPrefabs[idx], spawnPos, Quaternion.identity);
+        newPickup.GetComponent<PickUpV2>().FoodIdx = idx;
     }
 
 }

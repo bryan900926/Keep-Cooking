@@ -1,48 +1,54 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class BackControl : MonoBehaviour
 {
     public static BackControl Instance { get; private set; }
+
     private GameObject[] cookers;
-
-    public GameObject[] GetCookers => cookers;
-
     private HashSet<int> occupiedCookers = new HashSet<int>();
-
-    private Dictionary<int, int> mapper = new Dictionary<int, int>(); // map from cooker idx to UI idx
+    private Dictionary<int, int> mapper = new Dictionary<int, int>();
 
     public Dictionary<int, int> Mapper => mapper;
+    public GameObject[] GetCookers => cookers;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        cookers = GameObject.FindGameObjectsWithTag("Cooking");
         Instance = this;
+    }
+
+    void Start()
+    {
+        cookers = GameObject.FindGameObjectsWithTag("Cooking");
+        StartCoroutine(InitializeAfterUIManagerReady());
+    }
+
+    private IEnumerator InitializeAfterUIManagerReady()
+    {
+        // Wait until BackWorkerUIManager instance exists
+        yield return new WaitUntil(() => BackWorkerUIManager.Instance != null);
+
         for (int i = 0; i < cookers.Length; i++)
         {
             AssignTask(i);
-            occupiedCookers.Add(i);
         }
     }
 
-
-    void AssignTask(int cookIdx) // cookIdx: the kitchen idx
+    void AssignTask(int cookIdx)
     {
         if (occupiedCookers.Contains(cookIdx) || cookIdx >= cookers.Length) return;
+
         GameObject cookerObj = WorkerManager.Instance.SpawnChef(cookIdx);
         int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(cookerObj);
         if (uiIdx != -1)
         {
             mapper[cookIdx] = uiIdx;
+            occupiedCookers.Add(cookIdx); // only mark as occupied after successful assignment
         }
-
     }
 }

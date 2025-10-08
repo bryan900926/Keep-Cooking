@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6091806673158544063}
   - component: {fileID: 1476516786990619111}
   - component: {fileID: 7419769983937057535}
-  - component: {fileID: 7352655359175911696}
+  - component: {fileID: -1005947930997591505}
   m_Layer: 0
   m_Name: item2
   m_TagString: FoodItem
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.625, y: 1.25}
+    oldSize: {x: 0.8666667, y: 0.6666667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0948696, y: 1.1138446}
   m_EdgeRadius: 0
---- !u!114 &7352655359175911696
+--- !u!114 &-1005947930997591505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +144,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2675420959885421844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0619bc6f159c2b74db2c010a8b53bdec, type: 3}
+  m_Script: {fileID: 11500000, guid: ea88b95c9ad19b94193bf19252db3b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pickupTag: Player
   offset: {x: 0, y: 2, z: 0}
-  foodIdx: 1
+  foodIdx: -1
