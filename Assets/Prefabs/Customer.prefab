@@ -234,11 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49fb3bd0061ff04b8d3f63bb92a6995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workerData: {fileID: 0}
   queueSystem: {fileID: 0}
   diningSystem: {fileID: 0}
   destinationSetter: {fileID: 4394132540162943719}
   aiPath: {fileID: 5592558939418472162}
-  smoothness: 5
-  liningIdx: -1
-  diningIdx: -1
-  orderedFoodIdx: -1

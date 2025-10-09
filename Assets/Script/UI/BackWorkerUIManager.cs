@@ -45,6 +45,7 @@ public class BackWorkerUIManager : MonoBehaviour
     public void RemoveWorkerInfoUI(int idx)
     {
         var uiObj = workerInfos[idx];
+        occupiedUI.Remove(idx);
         uiObj.GetComponent<WorkInfoUI>().ClearUI();
     }
 }

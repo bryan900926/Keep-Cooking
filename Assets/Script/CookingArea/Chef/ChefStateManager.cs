@@ -1,18 +1,18 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChefStateManager : MonoBehaviour
 {
-    [Header("Cooking State")]
+    private ChefState currentState;
     [SerializeField] private FloatingEnergyBar floatingEnergyBar;
     [SerializeField] private GameObject leaveTarget;
     private Cooker cooker;
 
     [Header("Energy")]
-    [SerializeField] private float maxEnergy = 100f;
-    [SerializeField] private float energyDecay = 3f;
+    [SerializeField] private float maxEnergy = 50f;
+    [SerializeField] private float energyDecay = 100f;
     private float currentEnergy;
 
-    private ChefState currentState;
 
     private GameObject cookingMachine;
 

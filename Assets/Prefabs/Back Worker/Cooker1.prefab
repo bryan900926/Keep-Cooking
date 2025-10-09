@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerData: {fileID: 11400000, guid: 676894b5f79af1a49a0e309cf734f784, type: 2}
+  destination: {fileID: 0}
   cookIdx: -2
 --- !u!114 &4202889338884286236
 MonoBehaviour:
@@ -252,8 +253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 7109111838755793957}
   leaveTarget: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-  maxEnergy: 100
-  energyDecay: 2
+  maxEnergy: 50
+  energyDecay: 10
 --- !u!1 &2233673893475815800
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,11 +11,11 @@ public class Cooker : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private AIDestinationSetter destinationSetter;
 
-    private Transform destination;
+    [SerializeField] private Transform destination;
     [SerializeField] private int cookIdx = -2;  // -2: waiting init, -1: quit job
 
     // 🔹 Public accessors
-    public WorkerData WorkerData => workerData;
+    public WorkerData WorkerData { get => workerData; set => workerData = value; }
     public Transform Destination => destination;
     public int CookIdx => cookIdx;
 

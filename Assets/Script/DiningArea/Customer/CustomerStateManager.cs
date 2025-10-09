@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class CustomerStateManager : MonoBehaviour
 {
+    [SerializeField] private WorkerData workerData;
+
+    public WorkerData WorkerData { get => workerData; set => workerData = value; }
     public QueueSystem queueSystem;
     private GameObject queueObj;
 
@@ -12,9 +15,6 @@ public class CustomerStateManager : MonoBehaviour
 
     public AIDestinationSetter destinationSetter;
     public AIPath aiPath;
-
-    [Header("Parameters")]
-    public float smoothness = 5f;
 
     private int liningIdx = -1;
     private int diningIdx = -1;
@@ -29,6 +29,7 @@ public class CustomerStateManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = workerData.image;
         queueObj = GameObject.FindGameObjectWithTag("Queue");
         diningObj = GameObject.FindGameObjectWithTag("Dining");
         diningSystem = diningObj.GetComponent<DiningSystem>();

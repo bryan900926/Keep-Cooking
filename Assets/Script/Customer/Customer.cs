@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    public float smoothness = 5f;
-
     private GameObject queueObj;
     private QueueSystem qs;
 

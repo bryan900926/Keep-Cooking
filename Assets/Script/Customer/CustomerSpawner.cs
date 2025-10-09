@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnedCustomer;
+    [SerializeField] private GameObject[] spawnedCustomer;
     [SerializeField] private GameObject lining;
 
     private QueueSystem qs;
@@ -29,6 +29,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        Instantiate(spawnedCustomer, transform.position, Quaternion.identity);
+        int randomIndex = Random.Range(0, spawnedCustomer.Length);
+        Instantiate(spawnedCustomer[randomIndex], transform.position, Quaternion.identity);
     }
 }
