@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7556797761835759622}
   - component: {fileID: 4165999629980572055}
   - component: {fileID: 2185719792639122793}
+  - component: {fileID: -7069377352832562787}
   m_Layer: 7
   m_Name: Cooker1
   m_TagString: Untagged
@@ -251,8 +252,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4220e424aafe3954f9634e017b60b765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingEnergyBar: {fileID: 7109111838755793957}
   leaveTarget: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
+  energy: {fileID: -7069377352832562787}
+--- !u!114 &-7069377352832562787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71a67fc27742c244af2ace3ac8fcc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingEnergyBar: {fileID: 7109111838755793957}
   maxEnergy: 50
   energyDecay: 10
 --- !u!1 &2233673893475815800

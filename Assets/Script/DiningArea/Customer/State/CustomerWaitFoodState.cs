@@ -11,7 +11,7 @@ public class CustomerWaitFoodState : CustomerState
         // Move to dining table seat
         if (customerStateManager.DiningIdx != -1)
         {
-            customerStateManager.destinationSetter.target = customerStateManager.diningSystem.seats[customerStateManager.DiningIdx].transform;
+            customerStateManager.DestinationSetter.target = customerStateManager.DiningSystem.seats[customerStateManager.DiningIdx].transform;
         }
         else
         {
@@ -22,7 +22,7 @@ public class CustomerWaitFoodState : CustomerState
     public override void Update()
     {
         if (customerStateManager.OrderedFoodIdx == -1 &&
-    Vector2.Distance(customerStateManager.diningSystem.seats[customerStateManager.DiningIdx].transform.position,
+    Vector2.Distance(customerStateManager.DiningSystem.seats[customerStateManager.DiningIdx].transform.position,
                      customerStateManager.transform.position) <= 0.5f)
         {
             customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);

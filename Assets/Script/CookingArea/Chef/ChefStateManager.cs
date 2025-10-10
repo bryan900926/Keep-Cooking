@@ -1,19 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChefStateManager : MonoBehaviour
 {
     private ChefState currentState;
-    [SerializeField] private FloatingEnergyBar floatingEnergyBar;
     [SerializeField] private GameObject leaveTarget;
     private Cooker cooker;
-
-    [Header("Energy")]
-    [SerializeField] private float maxEnergy = 50f;
-    [SerializeField] private float energyDecay = 100f;
-    private float currentEnergy;
-
-
     private GameObject cookingMachine;
 
     // public data for states
@@ -22,9 +13,10 @@ public class ChefStateManager : MonoBehaviour
     public Cooker Cooker => cooker;
     public GameObject LeaveTarget => leaveTarget;
 
+    [SerializeField] private Energy energy;
+
     private void Start()
     {
-        currentEnergy = maxEnergy;
         cooker = GetComponent<Cooker>();
 
         cookingMachine = BackControl.Instance.GetCookers[cooker.CookIdx];
@@ -34,16 +26,10 @@ public class ChefStateManager : MonoBehaviour
 
     private void Update()
     {
-        currentEnergy -= Time.deltaTime * energyDecay;
-        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-
-        if (currentEnergy <= 0)
+        if (energy.CurrentEnergy <= 0)
         {
             ChangeState(new ChefExhaustedState(this));
-            return;
         }
-
-        currentState?.Update();
     }
 
     public void ChangeState(ChefState newState)
@@ -55,7 +41,7 @@ public class ChefStateManager : MonoBehaviour
 
     public float EnableCooking(int foodIdx)
     {
-        if (CurrentDishIdx != -1 || currentEnergy <= 0 || cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is not CookingMachineNormalState) return -1f;
+        if (CurrentDishIdx != -1 || energy.CurrentEnergy <= 0 || cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is not CookingMachineNormalState) return -1f;
 
         CurrentDishIdx = foodIdx;
         CookingTime = Random.Range(3f, 5f);
@@ -70,7 +56,7 @@ public class ChefStateManager : MonoBehaviour
 
         if (CurrentDishIdx != -1 && CurrentDishIdx < menu.Length && cooker.CookIdx != -1)
         {
-            float wrongProb = Mathf.Clamp01(1 - currentEnergy / maxEnergy);
+            float wrongProb = Mathf.Clamp01(1 - energy.CurrentEnergy / energy.MaxEnergy);
             if (Random.value < wrongProb)
             {
                 SetFireActive(true);

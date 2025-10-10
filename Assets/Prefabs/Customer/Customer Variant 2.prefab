@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &192925076637569508
+--- !u!1001 &2566636325449353676
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,26 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8817391628698140055, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: floatingEnergyBar
+      value: 
+      objectReference: {fileID: 1478653051081421125}
     - target: {fileID: -3294923774849331490, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
       value: 
-      objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
+      objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     - target: {fileID: 1382719886654397292, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_Name
-      value: Customer Variant (1) Variant
+      value: Customer Variant (2) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2730002662295988495, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
       value: 
-      objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
-    - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.45997
@@ -68,51 +64,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5863748221622863445, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 5117677814717042575, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: energyDecay
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5863748221622863445, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
       value: 
-      objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
-    - target: {fileID: 6766253158261020677, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766253158261020677, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     - target: {fileID: 6888022811926264675, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
       value: 
-      objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
+      objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1382719886654397292, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6327730470024256162}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
---- !u!1 &1269170931827739272 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1382719886654397292, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
-  m_PrefabInstance: {fileID: 192925076637569508}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6327730470024256162
+--- !u!114 &1478653051081421125 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3970975571277822089, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+  m_PrefabInstance: {fileID: 2566636325449353676}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269170931827739272}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1017b911d753854cae1d0b677883036, type: 3}
+  m_Script: {fileID: 11500000, guid: 73c7c9b480454544d8b4c2b6df696ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workerData: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
-  destination: {fileID: 0}
-  cookIdx: -2

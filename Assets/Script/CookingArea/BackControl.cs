@@ -57,19 +57,7 @@ public class BackControl : MonoBehaviour
             if (!mapper.ContainsKey(i))
             {
                 Debug.Log($"Assigning cookIdx {i} to new chef.");
-                Cooker cooker = customer.GetComponent<Cooker>();
-                cooker.SetDestination(cookers[i].GetComponent<CookingSpot>().GetSpot);
-                cooker.SetCookIdx(i);
-                int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(customer);
-                if (uiIdx != -1)
-                {
-                    mapper[i] = uiIdx;
-                } else
-                {
-                    Debug.LogWarning("Failed to assign UI to new chef.");
-                }
-                customer.GetComponent<ChefStateManager>().enabled = true;
-                customer.GetComponent<CustomerStateManager>().enabled = false;
+                customer.GetComponent<CustomerStateManager>().ChangeState(new CustomerToChefState(customer.GetComponent<CustomerStateManager>(), i));
                 break;
             }
         }

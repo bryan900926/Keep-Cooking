@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 926344961493348779}
   - component: {fileID: 5117677814717042575}
   - component: {fileID: -3294923774849331490}
+  - component: {fileID: -8817391628698140055}
   m_Layer: 0
   m_Name: Customer Variant
   m_TagString: Customer
@@ -316,10 +317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerData: {fileID: 0}
-  queueSystem: {fileID: 0}
-  diningSystem: {fileID: 0}
-  destinationSetter: {fileID: 8504997153366393008}
-  aiPath: {fileID: 531437002441114805}
+  energy: {fileID: -8817391628698140055}
+  viewEffect: {fileID: 0}
 --- !u!114 &352996976105228518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,10 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4220e424aafe3954f9634e017b60b765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingEnergyBar: {fileID: 3970975571277822089}
   leaveTarget: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-  maxEnergy: 100
-  energyDecay: 10
+  energy: {fileID: -8817391628698140055}
 --- !u!114 &-3294923774849331490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,6 +410,21 @@ MonoBehaviour:
   workerData: {fileID: 0}
   destination: {fileID: 0}
   cookIdx: -2
+--- !u!114 &-8817391628698140055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382719886654397292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71a67fc27742c244af2ace3ac8fcc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingEnergyBar: {fileID: 0}
+  maxEnergy: 50
+  energyDecay: 10
 --- !u!1 &5413183749182296309
 GameObject:
   m_ObjectHideFlags: 0

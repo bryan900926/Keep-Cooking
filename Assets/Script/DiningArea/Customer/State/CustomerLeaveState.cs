@@ -10,13 +10,14 @@ public class CustomerLeaveState : CustomerState
     public override void Enter()
     {
         Transform exitPoint = GameObject.FindGameObjectWithTag(EXIT_TAG).transform;
-        customerStateManager.destinationSetter.target = exitPoint;
+        customerStateManager.DestinationSetter.target = exitPoint;
     }
 
     public override void Update()
     {
-        if (customerStateManager.aiPath.reachedDestination)
+        if (customerStateManager.AiPath.reachedDestination)
         {
+            customerStateManager.ViewEffect.ApplyEffect();
             Object.Destroy(customerStateManager.gameObject);
         }
 

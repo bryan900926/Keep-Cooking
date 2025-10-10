@@ -6,15 +6,18 @@ public class CustomerStateManager : MonoBehaviour
     [SerializeField] private WorkerData workerData;
 
     public WorkerData WorkerData { get => workerData; set => workerData = value; }
-    public QueueSystem queueSystem;
+    private QueueSystem queueSystem;
+    public QueueSystem QueueSystem => queueSystem;
     private GameObject queueObj;
 
     private GameObject diningObj;
 
-    public DiningSystem diningSystem;
+    private DiningSystem diningSystem;
 
-    public AIDestinationSetter destinationSetter;
-    public AIPath aiPath;
+    public DiningSystem DiningSystem => diningSystem;
+
+    private AIDestinationSetter destinationSetter;
+    private AIPath aiPath;
 
     private int liningIdx = -1;
     private int diningIdx = -1;
@@ -24,7 +27,14 @@ public class CustomerStateManager : MonoBehaviour
     public int DiningIdx { get => diningIdx; set => diningIdx = value; }
     public int OrderedFoodIdx { get => orderedFoodIdx; set => orderedFoodIdx = value; }
 
-    public CustomerState currentState;
+    public AIDestinationSetter DestinationSetter => destinationSetter;
+    public AIPath AiPath => aiPath;
+
+    private CustomerState currentState;
+
+    [SerializeField] private Energy energy;
+    private ViewEffect viewEffect;
+    public ViewEffect ViewEffect => viewEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,12 +45,24 @@ public class CustomerStateManager : MonoBehaviour
         diningSystem = diningObj.GetComponent<DiningSystem>();
         queueSystem = queueObj.GetComponent<QueueSystem>();
         currentState = new CustomerWaitLineState(this);
+        viewEffect = GameObject.FindGameObjectWithTag("PostProcess").GetComponent<ViewEffect>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
+        aiPath = GetComponent<AIPath>();
         currentState.Enter();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentState is CustomerWaitFoodState)
+        {
+            energy.UpdateEnergy(Time.deltaTime);
+
+        }
+        if (energy.CurrentEnergy <= 0 && !(currentState is CustomerToChefState))
+        {
+            ChangeState(new CustomerLeaveState(this));
+        }
         currentState?.Update();
     }
 

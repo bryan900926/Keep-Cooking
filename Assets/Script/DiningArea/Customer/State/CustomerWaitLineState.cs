@@ -1,6 +1,3 @@
-
-using UnityEngine;
-
 public class CustomerWaitLineState : CustomerState
 {
     public CustomerWaitLineState(CustomerStateManager customerStateManager) : base(customerStateManager)
@@ -9,7 +6,7 @@ public class CustomerWaitLineState : CustomerState
 
     public override void Update()
     {
-        if (customerStateManager.LiningIdx != -1 && customerStateManager.aiPath.reachedDestination)
+        if (customerStateManager.LiningIdx != -1 && customerStateManager.AiPath.reachedDestination)
         {
             TryToDine(customerStateManager);
         }
@@ -19,22 +16,22 @@ public class CustomerWaitLineState : CustomerState
     private void TryToWaitLine(CustomerStateManager customer)
     {
         if (customer.LiningIdx != -1) return; // Already in line
-        int idx = customer.queueSystem.FetchAvailSeat();
+        int idx = customer.QueueSystem.FetchAvailSeat();
         if (idx != -1)
         {
             customer.LiningIdx = idx;
-            customer.destinationSetter.target = customer.queueSystem.seats[idx].transform;
+            customer.DestinationSetter.target = customer.QueueSystem.seats[idx].transform;
         }
     }
     private void TryToDine(CustomerStateManager customer)
     {
         if (customer.DiningIdx != -1 ) return; // Already dining
-        int idx = customer.diningSystem.FetchAvailSeat();
+        int idx = customer.DiningSystem.FetchAvailSeat();
         if (idx != -1)
         {
             customer.DiningIdx = idx;
-            customer.queueSystem.FreeSeat(customer.LiningIdx);
-            customer.diningSystem.SeatToCustomer[customer.DiningIdx] = customer.gameObject;
+            customer.QueueSystem.FreeSeat(customer.LiningIdx);
+            customer.DiningSystem.SeatToCustomer[customer.DiningIdx] = customer.gameObject;
             customer.ChangeState(new CustomerWaitFoodState(customer));
         }
     }

@@ -20,14 +20,14 @@ public class CustomerEatingState : CustomerState
         if (elapsedTime >= eatingDuration)
         {
             // Finished eating, transition to leaving state
-            customerStateManager.diningSystem.FreeSeat(customerStateManager.DiningIdx);
+            customerStateManager.DiningSystem.FreeSeat(customerStateManager.DiningIdx);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }
 
     public override void Exit()
     {
-        customerStateManager.diningSystem.FreeSeat(customerStateManager.DiningIdx);
+        customerStateManager.DiningSystem.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
         GameObject food = customerStateManager.GetComponent<Holding>().HoldingItem;
         if (food != null)

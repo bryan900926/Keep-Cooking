@@ -21,6 +21,7 @@ TagManager:
   - CookingSeat
   - Exit
   - WaiterWaiting
+  - PostProcess
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Seating
   - Cooker
   - Obstacles
-  - 
+  - PostProcess
   - 
   - 
   - 
