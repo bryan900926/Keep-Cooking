@@ -30,11 +30,10 @@ public class WorkInfoUI : MonoBehaviour
 
         if (!int.TryParse(input, out int idx)) return;
 
-        Cooker cooker = worker.GetComponent<Cooker>();
         ChefStateManager chefStateManager = worker.GetComponent<ChefStateManager>();
 
         // Check if worker is at destination and not already cooking
-        if (Vector2.Distance(worker.transform.position, cooker.Destination.position) <= 1f)
+        if (chefStateManager.BeenToWorkingStation())
         {
             float cookingTime = chefStateManager.EnableCooking(idx);
             if (cookingTime > 0)
@@ -68,7 +67,7 @@ public class WorkInfoUI : MonoBehaviour
         {
             if (isCooker)
             {
-                var cooker = worker.GetComponent<Cooker>();
+                var cooker = worker.GetComponent<ChefStateManager>();
                 workerImage.sprite = cooker.WorkerData.image;
             }
             else

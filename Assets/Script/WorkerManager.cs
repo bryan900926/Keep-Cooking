@@ -22,7 +22,7 @@ public class WorkerManager : MonoBehaviour
     public GameObject SpawnChef(int idx)
     {
         GameObject cooker = Instantiate(chefs[idx], transform.position, Quaternion.identity);
-        cooker.GetComponent<Cooker>().SetCookIdx(idx);
+        cooker.GetComponent<ChefStateManager>().Initialize(idx);
         return cooker;
 
     }

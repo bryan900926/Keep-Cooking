@@ -54,7 +54,7 @@ public class CustomerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState is CustomerWaitFoodState)
+        if (orderedFoodIdx != -1)
         {
             energy.UpdateEnergy(Time.deltaTime);
 

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: workerData
       value: 
       objectReference: {fileID: 11400000, guid: ef8edc58c711e8f4c85203f1de701e65, type: 2}
+    - target: {fileID: 2185719792639122793, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
+      propertyPath: workerData
+      value: 
+      objectReference: {fileID: 11400000, guid: ef8edc58c711e8f4c85203f1de701e65, type: 2}
     - target: {fileID: 8242034572245049226, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.04916

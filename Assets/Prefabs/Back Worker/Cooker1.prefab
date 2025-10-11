@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8242034572245049226}
   - component: {fileID: 6045910762960266208}
-  - component: {fileID: 1719354430924675328}
   - component: {fileID: 4202889338884286236}
   - component: {fileID: 1093801049181336830}
   - component: {fileID: 7556797761835759622}
@@ -95,21 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1719354430924675328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64547900985569952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1017b911d753854cae1d0b677883036, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerData: {fileID: 11400000, guid: 676894b5f79af1a49a0e309cf734f784, type: 2}
-  destination: {fileID: 0}
-  cookIdx: -2
 --- !u!114 &4202889338884286236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4220e424aafe3954f9634e017b60b765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaveTarget: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
+  workerData: {fileID: 11400000, guid: 676894b5f79af1a49a0e309cf734f784, type: 2}
   energy: {fileID: -7069377352832562787}
+  destination: {fileID: 0}
+  leaveTarget: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
+  cookIdx: -2
 --- !u!114 &-7069377352832562787
 MonoBehaviour:
   m_ObjectHideFlags: 0

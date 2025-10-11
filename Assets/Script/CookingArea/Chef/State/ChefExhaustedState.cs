@@ -1,25 +1,44 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChefExhaustedState : ChefState
 {
-    public ChefExhaustedState(ChefStateManager chefStateManager) : base(chefStateManager) { }
+    private int cookIdx;
+    public ChefExhaustedState(ChefStateManager chefStateManager, int cookIdx) : base(chefStateManager)
+    {
+        this.cookIdx = cookIdx;
+    }
 
     public override void Enter()
     {
-        if (chefStateManager.Cooker != null)
+        RemoveWorkerData();
+        chefStateManager.Destination = chefStateManager.LeaveTarget.transform;
+        chefStateManager.DestinationSetter.target = chefStateManager.Destination;
+
+    }
+
+    public override void Update()
+    {
+        if (chefStateManager.Destination == null) return;
+        float dist = Vector3.Distance(chefStateManager.transform.position, chefStateManager.Destination.position);
+        if (dist < 0.1f)
         {
-            chefStateManager.Cooker.SetDestination(chefStateManager.LeaveTarget.transform);
-            chefStateManager.StartCoroutine(QuitWhenArrived());
+            GameObject.Destroy(chefStateManager.gameObject);
         }
     }
 
-    private IEnumerator QuitWhenArrived()
+    private void RemoveWorkerData()
     {
-        while (Vector2.Distance(chefStateManager.transform.position, chefStateManager.LeaveTarget.transform.position) > 0.1f)
+        Dictionary<int, int> mapper = BackControl.Instance.Mapper;
+        if (mapper.TryGetValue(cookIdx, out int controllUiIdx))
         {
-            yield return null;
+            mapper.Remove(cookIdx);
+            BackWorkerUIManager.Instance.RemoveWorkerInfoUI(controllUiIdx);
         }
-        chefStateManager.Cooker.HandleQuitJob();
+        else
+        {
+            Debug.LogWarning("worker cannot quit the job");
+        }
     }
+
 }
