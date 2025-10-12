@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Holding : MonoBehaviour
 {
-    [SerializeField] private GameObject holdingItem;
+    private GameObject holdingItem;
     public GameObject HoldingItem => holdingItem;
 
     public void SetHoldingItem(GameObject newItem)

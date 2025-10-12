@@ -12,6 +12,7 @@ public class ChefExhaustedState : ChefState
     public override void Enter()
     {
         RemoveWorkerData();
+        chefStateManager.CookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
         chefStateManager.Destination = chefStateManager.LeaveTarget.transform;
         chefStateManager.DestinationSetter.target = chefStateManager.Destination;
 

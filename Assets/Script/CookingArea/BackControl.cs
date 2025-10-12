@@ -51,14 +51,14 @@ public class BackControl : MonoBehaviour
         return uiIdx;
     }
     public void RecruitChef(GameObject customer)
-    {
+    {   Debug.Log("Recruiting chef...");
         for (int i = 0; i < cookers.Length; i++)
         {
             if (!mapper.ContainsKey(i))
             {
                 Debug.Log($"Assigning cookIdx {i} to new chef.");
                 customer.GetComponent<CustomerStateManager>().ChangeState(new CustomerToChefState(customer.GetComponent<CustomerStateManager>(), i));
-                break;
+                return;
             }
         }
     }

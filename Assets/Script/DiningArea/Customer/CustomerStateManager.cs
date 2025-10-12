@@ -31,8 +31,10 @@ public class CustomerStateManager : MonoBehaviour
     public AIPath AiPath => aiPath;
 
     private CustomerState currentState;
+    public CustomerState CurrentState => currentState;
 
     [SerializeField] private Energy energy;
+    public Energy Energy { get => energy; set => energy = value; }
     private ViewEffect viewEffect;
     public ViewEffect ViewEffect => viewEffect;
 

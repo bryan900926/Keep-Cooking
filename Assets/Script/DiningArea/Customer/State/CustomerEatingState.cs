@@ -11,6 +11,7 @@ public class CustomerEatingState : CustomerState
 
     public override void Enter()
     {
+        customerStateManager.Energy.gameObject.SetActive(false);
         elapsedTime = 0f;
     }
 

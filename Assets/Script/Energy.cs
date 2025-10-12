@@ -23,5 +23,11 @@ public class Energy : MonoBehaviour
         floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
     }
 
+    public void Reset()
+    {
+        currentEnergy = maxEnergy;
+        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+    }
+
 
 }

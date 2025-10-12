@@ -488,6 +488,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 283359028}
     m_Modifications:
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8642658358530519443, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
       propertyPath: m_Name
       value: CookeringV2 (2)
@@ -2718,6 +2722,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4421004454709748764, guid: 3d3aa845b504e284c8af3f2e34acf91a, type: 3}
   m_PrefabInstance: {fileID: 1814310320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802134072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2574094584765812198, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+  m_PrefabInstance: {fileID: 5188263423863466497}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1814310320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2877,107 +2886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da31a74eb048824d8efdcea5f128c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetIntensity: 1
+  targetIntensity: 0
   fadeDuration: 5
   autoRemove: 1
   holdTime: 2
---- !u!1 &1831643207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1831643210}
-  - component: {fileID: 1831643209}
-  - component: {fileID: 1831643208}
-  m_Layer: 0
-  m_Name: ' OilSpotSpawner'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1831643208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831643207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43cacbe97e841174a9fd35bbcea832bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oilPrefab: {fileID: 1438468903522170984, guid: 2ba8114d8ae90f641acf9c8138c0ce66, type: 3}
-  numberOfSpots: 10
-  spotRadius: 0.5
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!61 &1831643209
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831643207}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 3.7538595, y: -0.021698475}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 11.024759, y: 9.853032}
-  m_EdgeRadius: 0
---- !u!4 &1831643210
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831643207}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37133, y: 0.04313, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1856894179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2986,6 +2898,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 283359028}
     m_Modifications:
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8642658358530519443, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
       propertyPath: m_Name
       value: CookeringV2 (1)
@@ -3154,7 +3070,7 @@ Transform:
   m_GameObject: {fileID: 1988472131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2666, y: -2.94788, z: 0}
+  m_LocalPosition: {x: 8.3, y: -4.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3215,6 +3131,71 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4421004454709748764, guid: 3d3aa845b504e284c8af3f2e34acf91a, type: 3}
   m_PrefabInstance: {fileID: 617983135866935742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &57280609338000208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.37133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04313
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051094139859188077, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838275772602890125, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_Name
+      value: ' OilSpotSpawner'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838275772602890125, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940103650664900809, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+      propertyPath: obstacleLayer.m_Bits
+      value: 448
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
 --- !u!1001 &617983135866935742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3325,6 +3306,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 283359028}
     m_Modifications:
+    - target: {fileID: 8224442452979398922, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: smokeEffect
+      value: 
+      objectReference: {fileID: 1802134072}
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.78867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.78867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389493294816297701, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.78867924
+      objectReference: {fileID: 0}
     - target: {fileID: 8642658358530519443, guid: c0e300ad6e3cf80499b4f97caf3c3ca4, type: 3}
       propertyPath: m_Name
       value: CookeringV2
@@ -3434,67 +3435,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b27841f03c470a49b33c937ebfab0c1, type: 3}
---- !u!1001 &6767703855278962725
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4566901467915652309, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_Name
-      value: Leave
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5156356753786189665, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6656753622451655003, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c88f2ec9ffb6c3c468baa9ff6dcf7b88, type: 3}
 --- !u!1001 &8085263489906710264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3673,7 +3613,6 @@ SceneRoots:
   - {fileID: 683335898}
   - {fileID: 72897550}
   - {fileID: 5697852492884551698}
-  - {fileID: 6767703855278962725}
   - {fileID: 2090330391}
   - {fileID: 1988472132}
   - {fileID: 677690795}
@@ -3681,6 +3620,6 @@ SceneRoots:
   - {fileID: 1601378784}
   - {fileID: 932085901}
   - {fileID: 538409187}
-  - {fileID: 1831643210}
+  - {fileID: 57280609338000208}
   - {fileID: 445452037}
   - {fileID: 1830570454}

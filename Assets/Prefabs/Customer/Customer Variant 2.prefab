@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8817391628698140055, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: maxEnergy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8817391628698140055, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: floatingEnergyBar
       value: 
       objectReference: {fileID: 1478653051081421125}
@@ -18,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     - target: {fileID: 1382719886654397292, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_Name
-      value: Customer Variant (2) Variant
+      value: Customer Variant 2
       objectReference: {fileID: 0}
     - target: {fileID: 2730002662295988495, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
@@ -64,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5117677814717042575, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: workerData
+      value: 
+      objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
     - target: {fileID: 5117677814717042575, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: energyDecay
       value: 10

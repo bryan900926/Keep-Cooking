@@ -4,8 +4,13 @@ public class CookingMachineStateManager : MonoBehaviour
 {
     private CookingMachineState currentState;
 
+    [SerializeField] private GameObject smokeEffect;
+
+    public GameObject SmokeEffect => smokeEffect;
+
     public CookingMachineState CurrentState => currentState;
-    public GameObject fires;
+    [SerializeField] private GameObject fires;
+    public GameObject Fires => fires;
     void Start()
     {
         ChangeState(new CookingMachineNormalState(this));
@@ -26,6 +31,10 @@ public class CookingMachineStateManager : MonoBehaviour
     public void SetBackToNormal()
     {
         ChangeState(new CookingMachineNormalState(this));
+    }
+    public void ChangeToCookState()
+    {
+        ChangeState(new CookingMachineCookState(this));
     }
 
 }

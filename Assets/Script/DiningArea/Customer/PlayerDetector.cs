@@ -10,7 +10,7 @@ namespace DiningArea.Customer
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (other.CompareTag(PLAYER_TAG) && !GetComponent<ChefStateManager>().enabled && Keyboard.current.rKey.isPressed)
+            if (other.CompareTag(PLAYER_TAG) && GetComponent<CustomerStateManager>().CurrentState is CustomerWaitFoodState && Keyboard.current.rKey.isPressed)
             {
                 BackControl.Instance.RecruitChef(gameObject);
                 Debug.Log("Customer became Chef");

@@ -15,11 +15,10 @@ public class CustomerToChefState : CustomerState
         {
             Object.Destroy(holdItem);
         }
-        Cooker cooker = customerStateManager.GetComponent<Cooker>();
-        cooker.SetCookIdx(cookerIdx);
         Transform cookerSpot = BackControl.Instance.GetCookers[cookerIdx].GetComponent<CookingSpot>().GetSpot;
         customerStateManager.DestinationSetter.target = cookerSpot;
         int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(customerStateManager.gameObject);
+        BackControl.Instance.Mapper.Add(cookerIdx, uiIdx);
         if (uiIdx != -1)
         {
             BackControl.Instance.Mapper[cookerIdx] = uiIdx;
@@ -32,6 +31,8 @@ public class CustomerToChefState : CustomerState
         if (Vector2.Distance(customerStateManager.transform.position, customerStateManager.DestinationSetter.target.position) < 0.1f)
         {
             customerStateManager.GetComponent<ChefStateManager>().enabled = true;
+            customerStateManager.GetComponent<ChefStateManager>().Initialize(cookerIdx);
+            customerStateManager.GetComponent<Energy>().Reset();
             customerStateManager.GetComponent<CustomerStateManager>().enabled = false;
         }
     }

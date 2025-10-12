@@ -11,6 +11,7 @@ public class OilSpotSpawner : MonoBehaviour
     private BoxCollider2D spawnArea;
 
     private float spawnInterval;
+    private int currentSpots = 0;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class OilSpotSpawner : MonoBehaviour
     void Update()
     {
         spawnInterval -= Time.deltaTime;
-        if (spawnInterval <= 0)
+        if (spawnInterval <= 0 && currentSpots < numberOfSpots)
         {
             SpawnOilSpots();
             spawnInterval = Random.Range(5f, 10f);
@@ -57,7 +58,8 @@ public class OilSpotSpawner : MonoBehaviour
 
         if (validPosition)
         {
-            Instantiate(oilPrefab, randomPos, Quaternion.Euler(0, 0, Random.Range(0f, 360f)), transform);
+            Instantiate(oilPrefab, randomPos, Quaternion.identity, transform);
+            currentSpots++;
         }
         else
         {

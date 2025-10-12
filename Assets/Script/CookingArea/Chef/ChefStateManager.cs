@@ -10,7 +10,7 @@ public class ChefStateManager : MonoBehaviour
     [SerializeField] private WorkerData workerData;
     [SerializeField] private Energy energy;
     [SerializeField] private Transform destination;
-    [SerializeField] private GameObject leaveTarget;
+    private GameObject leaveTarget;
 
     [Header("State Data")]
     [SerializeField] private int cookIdx = -2; // -2: waiting init, -1: quit job
@@ -22,6 +22,7 @@ public class ChefStateManager : MonoBehaviour
     private AIDestinationSetter destinationSetter;
     private ChefState currentState;
     private GameObject cookingMachine;
+    public GameObject CookingMachine => cookingMachine;
 
     // =======================
     // === Public Properties ===
@@ -60,7 +61,8 @@ public class ChefStateManager : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
     }
     public void Initialize(int cookIdx)
-    {   if (spriteRenderer == null)
+    {
+        if (spriteRenderer == null)
         {
             Debug.LogError("spriteRenderer is null");
         }
@@ -68,12 +70,14 @@ public class ChefStateManager : MonoBehaviour
         spriteRenderer.sprite = workerData.image;
         cookingMachine = BackControl.Instance.GetCookers[cookIdx];
         ChangeState(new ChefNormalState(this));
+        leaveTarget = GameObject.FindGameObjectWithTag("Exit");
+
     }
 
     private void Update()
     {
         energy.UpdateEnergy(Time.deltaTime);
-        if (energy.CurrentEnergy <= 0)
+        if (energy.CurrentEnergy <= 0 && !(currentState is ChefExhaustedState))
         {
             ChangeState(new ChefExhaustedState(this, cookIdx));
         }
@@ -104,6 +108,7 @@ public class ChefStateManager : MonoBehaviour
         CookingTime = Random.Range(3f, 5f);
 
         ChangeState(new ChefCookingState(this));
+        cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
         return CookingTime;
     }
 
@@ -119,6 +124,10 @@ public class ChefStateManager : MonoBehaviour
             {
                 SetFireActive(true);
                 CurrentDishIdx = Random.Range(0, menu.Length);
+            }
+            else
+            {
+                cookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
             }
 
             Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
