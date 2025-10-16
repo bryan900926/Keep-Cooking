@@ -11,7 +11,11 @@ public class CustomerEatingState : CustomerState
 
     public override void Enter()
     {
-        customerStateManager.Energy.gameObject.SetActive(false);
+        GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem;
+        if (holdingFood != null)
+        {
+            holdingFood.GetComponent<DishStateManager>().ChangeState(new DishEatenState(holdingFood.GetComponent<DishStateManager>(), eatingDuration));
+        }
         elapsedTime = 0f;
     }
 
@@ -21,14 +25,13 @@ public class CustomerEatingState : CustomerState
         if (elapsedTime >= eatingDuration)
         {
             // Finished eating, transition to leaving state
-            customerStateManager.DiningSystem.FreeSeat(customerStateManager.DiningIdx);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }
 
     public override void Exit()
-    {
-        customerStateManager.DiningSystem.FreeSeat(customerStateManager.DiningIdx);
+    {   
+        DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
         GameObject food = customerStateManager.GetComponent<Holding>().HoldingItem;
         if (food != null)

@@ -4,17 +4,14 @@ using UnityEngine;
 public class CustomerStateManager : MonoBehaviour
 {
     [SerializeField] private WorkerData workerData;
-
     public WorkerData WorkerData { get => workerData; set => workerData = value; }
     private QueueSystem queueSystem;
     public QueueSystem QueueSystem => queueSystem;
     private GameObject queueObj;
 
-    private GameObject diningObj;
 
     private DiningSystem diningSystem;
 
-    public DiningSystem DiningSystem => diningSystem;
 
     private AIDestinationSetter destinationSetter;
     private AIPath aiPath;
@@ -43,8 +40,7 @@ public class CustomerStateManager : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = workerData.image;
         queueObj = GameObject.FindGameObjectWithTag("Queue");
-        diningObj = GameObject.FindGameObjectWithTag("Dining");
-        diningSystem = diningObj.GetComponent<DiningSystem>();
+        diningSystem = DiningSystem.Instance;
         queueSystem = queueObj.GetComponent<QueueSystem>();
         currentState = new CustomerWaitLineState(this);
         viewEffect = GameObject.FindGameObjectWithTag("PostProcess").GetComponent<ViewEffect>();
@@ -56,7 +52,7 @@ public class CustomerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (orderedFoodIdx != -1)
+        if (orderedFoodIdx != -1 && currentState is CustomerWaitFoodState)
         {
             energy.UpdateEnergy(Time.deltaTime);
 

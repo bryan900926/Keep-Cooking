@@ -13,7 +13,6 @@ public class WaiterStateManager : MonoBehaviour
 
     public AIDestinationSetter destinationSetter;
 
-    private GameObject diningObj;
 
     private DiningSystem diningSystem;
     public AIPath aiPath;
@@ -25,8 +24,7 @@ public class WaiterStateManager : MonoBehaviour
 
     void Start()
     {
-        diningObj = GameObject.FindGameObjectWithTag("Dining");
-        diningSystem = diningObj.GetComponent<DiningSystem>();
+        diningSystem = DiningSystem.Instance;
         waitingSpot = GameObject.FindGameObjectWithTag("WaiterWaiting").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -54,11 +52,6 @@ public class WaiterStateManager : MonoBehaviour
         currentState?.Exit();
         currentState = newState;
         currentState.Enter();
-    }
-
-    public DiningSystem GetDiningSystem()
-    {
-        return diningSystem;
     }
 
     public Transform GetWaitingSpot()

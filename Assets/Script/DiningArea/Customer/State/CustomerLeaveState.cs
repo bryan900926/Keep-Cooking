@@ -17,8 +17,10 @@ public class CustomerLeaveState : CustomerState
 
     public override void Update()
     {
-        if (IsAtExit())
+        if (IsAtExit() && customerStateManager.DiningIdx != -1)
         {
+            DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
+            customerStateManager.DiningIdx = -1;
             customerStateManager.ViewEffect.ApplyEffect();
             Object.Destroy(customerStateManager.gameObject);
         }

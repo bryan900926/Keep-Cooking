@@ -13,7 +13,7 @@ public class WaiterServeFoodState : WaiterState
         if (waiterStateManager.foodIdx != -1 && waiterStateManager.tableIdx != -1)
         {
             Debug.Log($"Waiter is serving food {waiterStateManager.foodIdx} to table {waiterStateManager.tableIdx}.");
-            waiterStateManager.destinationSetter.target = waiterStateManager.GetDiningSystem().seats[waiterStateManager.tableIdx].transform;
+            waiterStateManager.destinationSetter.target = DiningSystem.Instance.seats[waiterStateManager.tableIdx].transform;
         }
         else
         {
@@ -46,7 +46,7 @@ public class WaiterServeFoodState : WaiterState
     private void CheckIfDishRight()
     {
         int tableIdx = waiterStateManager.tableIdx;
-        GameObject customer = waiterStateManager.GetDiningSystem().GetCustomerAtSeat(tableIdx);
+        GameObject customer = DiningSystem.Instance.GetCustomerAtSeat(tableIdx);
         if (customer != null && waiterStateManager.foodIdx == customer.GetComponent<CustomerStateManager>().OrderedFoodIdx)
         {
             CustomerStateManager customerStateManager = customer.GetComponent<CustomerStateManager>();

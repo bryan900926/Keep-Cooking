@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static Recipe;
 
 public class Crafting : MonoBehaviour
-{   
+{
     public static Crafting instance;
 
     [SerializeField] private GameObject[] slots = new GameObject[9];
@@ -16,7 +15,11 @@ public class Crafting : MonoBehaviour
         Mission
     }
 
-    public Recipe_status status = Recipe_status.Normal;
+    private Recipe_status status = Recipe_status.Normal;
+
+    private GameObject currentCheft;
+
+    public GameObject CurrentCheft { get => currentCheft; set => currentCheft = value; }
 
     public void Awake()
     {
@@ -24,17 +27,6 @@ public class Crafting : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetIngredient(int slotIndex, Ingredients Data)
@@ -63,20 +55,35 @@ public class Crafting : MonoBehaviour
 
     public void Match(List<Ingredients> inputRecipe, Dictionary<List<Ingredients>, GameObject> reference, Vector2 spawnPos)
     {
+        for (int i = 0; i < inputRecipe.Count; i++)
+        {
+            Debug.Log($"slot idx: {i} + {inputRecipe[i]}");
+        }
         foreach (var pair in reference)
         {
             List<Ingredients> correctRecipe = pair.Key;
-            GameObject prefab = pair.Value;
+            GameObject foodPrefab = pair.Value;
 
             if (AreListsEqualInOrder(correctRecipe, inputRecipe))
             {
-                Instantiate(prefab, spawnPos, Quaternion.identity);
-                Debug.Log($"製作中{prefab.name}...");
+                if (currentCheft == null)
+                {
+                    Debug.LogError("no chef available");
+                    return;
+                }
+                ChefStateManager chefStateManager = currentCheft.GetComponent<ChefStateManager>();
+                int foodidx = foodPrefab.GetComponent<DishProperty>().Foodidx;
+                if (foodidx < 0)
+                {
+                    Debug.LogError("food idx error");
+                    return;
+                }
+                chefStateManager.EnableCooking(foodidx);
                 return;
             }
         }
 
-        Debug.Log("未知食物");
+        Debug.Log("not match any recipe");
     }
 
     private bool AreListsEqualInOrder(List<Ingredients> a, List<Ingredients> b)

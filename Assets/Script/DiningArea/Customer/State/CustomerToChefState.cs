@@ -15,6 +15,8 @@ public class CustomerToChefState : CustomerState
         {
             Object.Destroy(holdItem);
         }
+        Debug.Log($"{customerStateManager.gameObject.name} is going to chef at cooker index {cookerIdx}.");
+        DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         Transform cookerSpot = BackControl.Instance.GetCookers[cookerIdx].GetComponent<CookingSpot>().GetSpot;
         customerStateManager.DestinationSetter.target = cookerSpot;
         int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(customerStateManager.gameObject);

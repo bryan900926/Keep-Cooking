@@ -6,7 +6,7 @@ public class CustomerWaitLineState : CustomerState
 
     public override void Update()
     {
-        if (customerStateManager.LiningIdx != -1 && customerStateManager.AiPath.reachedDestination)
+        if (customerStateManager.DiningIdx == -1 && customerStateManager.LiningIdx != -1 && customerStateManager.AiPath.reachedDestination)
         {
             TryToDine(customerStateManager);
         }
@@ -26,12 +26,12 @@ public class CustomerWaitLineState : CustomerState
     private void TryToDine(CustomerStateManager customer)
     {
         if (customer.DiningIdx != -1 ) return; // Already dining
-        int idx = customer.DiningSystem.FetchAvailSeat();
+        int idx = DiningSystem.Instance.FetchAvailSeat();
         if (idx != -1)
         {
             customer.DiningIdx = idx;
             customer.QueueSystem.FreeSeat(customer.LiningIdx);
-            customer.DiningSystem.SeatToCustomer[customer.DiningIdx] = customer.gameObject;
+            DiningSystem.Instance.SeatToCustomer[customer.DiningIdx] = customer.gameObject;
             customer.ChangeState(new CustomerWaitFoodState(customer));
         }
     }

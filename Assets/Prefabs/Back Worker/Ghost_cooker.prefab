@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2623164930793033123, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 0f674d5861032fc4da01f8ac50decb5d, type: 2}
     - target: {fileID: 64547900985569952, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
       propertyPath: m_Name
-      value: Cooker3 Variant
+      value: Ghost_cooker
       objectReference: {fileID: 0}
     - target: {fileID: 1719354430924675328, guid: d59f8108c3428074499ee2f84ef5e336, type: 3}
       propertyPath: workerData

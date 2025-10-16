@@ -27,6 +27,7 @@ public class NpcAnimation : MonoBehaviour
         {
             animator.SetFloat("MoveX", 0);
             animator.SetFloat("MoveY", 0);
+            transform.localScale = new Vector3(1, 1, 1);
             return;
 
         }
@@ -37,7 +38,7 @@ public class NpcAnimation : MonoBehaviour
         // Flip sprite only if horizontal
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            transform.localScale = new Vector3(direction.x < 0 ? 1 : -1, 1, 1);
+            transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
         }
     }
 }

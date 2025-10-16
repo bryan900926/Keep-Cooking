@@ -105,7 +105,7 @@ public class ChefStateManager : MonoBehaviour
         if (!canCook) return -1f;
 
         CurrentDishIdx = foodIdx;
-        CookingTime = Random.Range(3f, 5f);
+        CookingTime = Random.Range(1f, 3f);
 
         ChangeState(new ChefCookingState(this));
         cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();

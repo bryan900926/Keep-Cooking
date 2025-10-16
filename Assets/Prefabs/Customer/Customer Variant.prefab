@@ -408,7 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 0}
   maxEnergy: 100
-  energyDecay: 2
+  energyDecay: 10
 --- !u!1 &5413183749182296309
 GameObject:
   m_ObjectHideFlags: 0

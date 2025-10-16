@@ -5,6 +5,7 @@ public class Menu : MonoBehaviour
     public static Menu Instance { get; private set; }
 
     [SerializeField] private GameObject[] foodPrefabs; // assign prefabs in inspector
+    [SerializeField] private GameObject[] orderFoodsPrefabs; // assign prefabs in inspector // for customer order display
     public GameObject[] FoodPrefabs => foodPrefabs;
 
     void Awake()
@@ -33,8 +34,7 @@ public class Menu : MonoBehaviour
 
         int index = Random.Range(0, foodPrefabs.Length);
 
-        GameObject newPickup = Instantiate(foodPrefabs[index], customer.transform.position, Quaternion.identity);
-        newPickup.GetComponent<PickUpV2>().Pickable = false;
+        GameObject newPickup = Instantiate(orderFoodsPrefabs[index], customer.transform.position, Quaternion.identity);
         newPickup.transform.SetParent(customer.transform);
         newPickup.transform.localPosition = new Vector3(0, 1f, 0);
         customer.GetComponent<Holding>().SetHoldingItem(newPickup);

@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382719886654397292, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_Name
-      value: Customer 3
+      value: Elf
       objectReference: {fileID: 0}
     - target: {fileID: 2730002662295988495, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: workerData
@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: 6345315180135975248, guid: 7abf9e2246a90684cb1d7003bcee6544, type: 3}
     - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45997
+      value: 1.70918
       objectReference: {fileID: 0}
     - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.27094
+      value: -2.42972
       objectReference: {fileID: 0}
     - target: {fileID: 4611824127916494204, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_LocalPosition.z
@@ -130,7 +130,7 @@ Animator:
   m_GameObject: {fileID: 5116683599938769100}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e55e5d3645f01543951d08e4a2c9df2, type: 2}
+  m_Controller: {fileID: 9100000, guid: d912931b5f650bc4ab6320ceacea8a95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
