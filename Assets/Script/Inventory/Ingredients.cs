@@ -1,5 +1,5 @@
 public enum Ingredients
-{   
+{
     None = 0,
     dish81 = 1 << 0, // 0001 -> 1
     dish83 = 1 << 1, // 0010 -> 2
