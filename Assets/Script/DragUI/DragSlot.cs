@@ -8,7 +8,7 @@ public class DragSlot : MonoBehaviour, IDropHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -25,7 +25,7 @@ public class DragSlot : MonoBehaviour, IDropHandler
         }
 
         Ingredients = eventData.pointerDrag.GetComponent<FoodProperty>().Ingredient.type;
-        
+
         Crafting.instance.SetIngredient(slotindex, Ingredients);
 
         Crafting.instance.DebugItem();

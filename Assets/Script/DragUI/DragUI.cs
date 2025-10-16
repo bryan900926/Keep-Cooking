@@ -21,7 +21,7 @@ public class DragUI : MonoBehaviour
         float dist;
         float mindist = 10000f;
         GameObject goalslot = null;
-        
+
         foreach (var slot in slots)
         {
             dist = Vector3.Distance(transform.position, slot.transform.position);

@@ -32,7 +32,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         if (dropped && !droppeddrag)
         {
-            CreateObject(); 
+            CreateObject();
         }
 
         if (droppeddrag)
@@ -43,7 +43,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         dropped = false;
 
         transform.SetParent(draglayer); // Move to the independent DragLayer
-        
+
         CanvasGroup.blocksRaycasts = false;
         CanvasGroup.alpha = 0.65f;
     }
@@ -62,7 +62,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             //Destroy(placeholder);
         }
-        
+
 
         CanvasGroup.blocksRaycasts = true;
         CanvasGroup.alpha = 1f;
@@ -78,8 +78,8 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         dropped = true;
         droppeddrag = true;
         slotindex = index;
-        
-        Debug.Log($"{gameObject.name} drop ¦¨¥\!");
+
+        Debug.Log($"{gameObject.name} dropped successfully!");
     }
 
     public void CreateObject()
@@ -92,7 +92,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         placeholder.transform.localRotation = RectTrans.localRotation;
         placeholder.transform.localScale = RectTrans.localScale; // adjust the size
         placeholder.AddComponent<DragInterface>();
-        
+
         placeholder.AddComponent<FoodProperty>();
         var food = placeholder.GetComponent<FoodProperty>();
         food.Ingredient = FoodProperty.Ingredient;
@@ -112,13 +112,13 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             img.sprite = originalImage.sprite;
             img.color = new Color(1, 1, 1, 1f);
-            img.raycastTarget = true; // Á×§K¼vÅT¨Æ¥ó
+            img.raycastTarget = true; // ï¿½×§Kï¿½vï¿½Tï¿½Æ¥ï¿½
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
