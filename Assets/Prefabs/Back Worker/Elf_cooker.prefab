@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 7109111838755793957}
   maxEnergy: 100
-  energyDecay: 2
+  energyDecay: 0
 --- !u!95 &-2623164930793033123
 Animator:
   serializedVersion: 7

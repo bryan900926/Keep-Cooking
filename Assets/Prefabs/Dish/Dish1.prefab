@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d147907d1c5b2ae4fad337dcba542b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal_recipe: 000000000000000002000000010000000000000000000000000000000400000000000000
+  normal_recipe: 010000000000000002000000000000000000000000000000000000000400000000000000
   random_recipe: 
   mission_recipe: 
+  foodidx: 0
 --- !u!212 &5913495737333457624
 SpriteRenderer:
   m_ObjectHideFlags: 0
