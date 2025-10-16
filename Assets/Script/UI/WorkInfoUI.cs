@@ -21,6 +21,14 @@ public class WorkInfoUI : MonoBehaviour
         }
     }
 
+    private void OnCraftButtonClicked()
+    {
+        if (worker == null) return;
+        Crafting.instance.CurrentCheft = worker;
+        Toggle.Instance.OpenCraftUI();
+
+    }
+
     private void OnCookButtonClicked()
     {
         if (worker == null) return;
@@ -79,11 +87,11 @@ public class WorkInfoUI : MonoBehaviour
             buttom.onClick.RemoveAllListeners();
             if (isCooker)
             {
-                buttom.onClick.AddListener(OnCookButtonClicked);
+                buttom.onClick.AddListener(OnCraftButtonClicked);
             }
             else
             {
-                buttom.onClick.AddListener(OnDeliverButtonClicked);
+                buttom.onClick.AddListener(OnCraftButtonClicked);
             }
 
         }
