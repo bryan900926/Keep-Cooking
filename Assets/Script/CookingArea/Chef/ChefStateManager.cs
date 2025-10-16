@@ -1,5 +1,6 @@
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChefStateManager : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class ChefStateManager : MonoBehaviour
     public int CurrentDishIdx { get; set; } = -1;
     public float CookingTime { get; set; }
 
+    public Energy Energy => energy;
     // =======================
     // === Unity Methods ===
     // =======================
@@ -82,6 +84,7 @@ public class ChefStateManager : MonoBehaviour
             ChangeState(new ChefExhaustedState(this, cookIdx));
         }
         currentState?.Update();
+        ServeDrink();
     }
 
     // =======================
@@ -97,15 +100,16 @@ public class ChefStateManager : MonoBehaviour
     // =======================
     // === Cooking Logic ===
     // =======================
-    public float EnableCooking(int foodIdx)
+    public float EnableCooking(int foodIdx) // foodIdx = -2 means leftover
     {
         bool canCook = CurrentDishIdx == -1 &&
                        energy.CurrentEnergy > 0 &&
-                       cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState;
+                       cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
+                       currentState is ChefNormalState;
         if (!canCook) return -1f;
 
         CurrentDishIdx = foodIdx;
-        CookingTime = Random.Range(1f, 3f);
+        CookingTime = Random.Range(2f, 3f);
 
         ChangeState(new ChefCookingState(this));
         cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
@@ -118,6 +122,7 @@ public class ChefStateManager : MonoBehaviour
 
         if (CurrentDishIdx != -1 && CurrentDishIdx < menu.Length && cookIdx != -1)
         {
+
             float wrongProb = Mathf.Clamp01(1 - energy.CurrentEnergy / energy.MaxEnergy);
 
             if (Random.value < wrongProb)
@@ -153,5 +158,22 @@ public class ChefStateManager : MonoBehaviour
     public bool BeenToWorkingStation()
     {
         return Vector2.Distance(cookingMachine.GetComponent<CookingSpot>().GetSpot.position, transform.position) < 1f;
+    }
+
+    public GameObject CreateLeftover()
+    {
+        Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
+        GameObject leftover = Menu.Instance.SpawnForPlayer(-2, spawnPos); // -2 for leftover
+        return leftover;
+    }
+    public void ServeDrink()
+    {
+        if (Keyboard.current.eKey.isPressed && energy.IsReplenishing)
+        {
+            energy.Replenish(1f);
+        } else
+        {
+            energy.IsReplenishing = false;
+        }
     }
 }

@@ -14,8 +14,23 @@ public class ChefCookingState : ChefState
         chefStateManager.CookingTime -= Time.deltaTime;
         if (chefStateManager.CookingTime <= 0f)
         {
-            chefStateManager.CreateDish();
-            chefStateManager.ChangeState(new ChefNormalState(chefStateManager));
+            if (chefStateManager.CurrentDishIdx != -2)
+            {
+                chefStateManager.CreateDish();
+                chefStateManager.ChangeState(new ChefNormalState(chefStateManager));
+            }
+            else
+            {
+                GameObject leftover = chefStateManager.CreateLeftover();
+                chefStateManager.ChangeState(new ChefFoodRottenState(chefStateManager, leftover));
+            }
+
         }
+    }
+
+    public override void Exit()
+    {
+        chefStateManager.CurrentDishIdx = -1;
+        chefStateManager.CookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
     }
 }
