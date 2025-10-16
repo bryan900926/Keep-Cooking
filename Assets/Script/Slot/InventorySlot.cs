@@ -7,8 +7,8 @@ public class InventorySlot : Slot
     [SerializeField] private Button button;
     void Start()
     {
+        holdingSystem = GameObject.FindGameObjectWithTag("HoldingSystem");
         image = GetComponentInChildren<Image>();
-        holdingSystem = GameObject.FindWithTag("HoldingSystem");
         if (button != null)
             button.onClick.AddListener(OnClick);
     }
@@ -22,7 +22,7 @@ public class InventorySlot : Slot
     {
         if (currentItem != null)
         {
-            holdingSystem.GetComponent<HoldingSystem>().AddIngredient(currentItem);
+            holdingSystem.GetComponent<HoldingSystem>().AddProp(currentItem);
         }
     }
 
