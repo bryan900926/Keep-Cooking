@@ -8,14 +8,8 @@ public class DishProperty : MonoBehaviour
     public List<Ingredients> random_recipe = new List<Ingredients>();
     public List<Ingredients> mission_recipe = new List<Ingredients>();
 
-    void Start()
-    {
-       
-    }
+    [SerializeField] private int foodidx;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Foodidx { get => foodidx; set => foodidx = value; }
+
 }
