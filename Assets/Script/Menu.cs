@@ -6,6 +6,8 @@ public class Menu : MonoBehaviour
 
     [SerializeField] private GameObject[] foodPrefabs; // assign prefabs in inspector
     [SerializeField] private GameObject[] orderFoodsPrefabs; // assign prefabs in inspector // for customer order display
+
+    [SerializeField] private GameObject leftoverFoods; // assign prefabs in inspector
     public GameObject[] FoodPrefabs => foodPrefabs;
 
     void Awake()
@@ -42,12 +44,16 @@ public class Menu : MonoBehaviour
         return index;
     }
 
-    public void SpawnForPlayer(int idx, Vector3 spawnPos)
+    public GameObject SpawnForPlayer(int idx, Vector3 spawnPos)
     {
-        if (foodPrefabs.Length == 0 || idx < 0 || idx >= foodPrefabs.Length) return;
-
+        if (foodPrefabs.Length == 0 || idx == -1 || idx >= foodPrefabs.Length) return null;
+        if (idx == -2) // -2 means leftover
+        {
+            return Instantiate(leftoverFoods, spawnPos, Quaternion.identity);
+        }
         GameObject newPickup = Instantiate(foodPrefabs[idx], spawnPos, Quaternion.identity);
         newPickup.GetComponent<PickUpV2>().FoodIdx = idx;
+        return newPickup;
     }
 
 }
