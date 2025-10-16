@@ -7,7 +7,7 @@ public class Recipe : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static Recipe instance;
     public List<GameObject> Dishes = new List<GameObject>();
-    
+
     public Dictionary<List<Ingredients>, GameObject> Normal_recipe = new Dictionary<List<Ingredients>, GameObject>();
     public Dictionary<List<Ingredients>, GameObject> Random_recipe = new Dictionary<List<Ingredients>, GameObject>();
     public Dictionary<List<Ingredients>, GameObject> Mission_recipe = new Dictionary<List<Ingredients>, GameObject>();
@@ -25,14 +25,6 @@ public class Recipe : MonoBehaviour
     {
         BuildRecipeDictionary();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Event is occurred) renew the random dictionary
-    }
-
-
 
     public List<Ingredients> RandomRecipe(List<Ingredients> recipe)
     {
@@ -68,7 +60,7 @@ public class Recipe : MonoBehaviour
             List<Ingredients> recipe = property.normal_recipe;
             if (recipe == null || recipe.Count == 0)
             {
-                Debug.LogWarning($"{dish.name} is empty.");
+                Debug.LogWarning($"{dish.name} recipe is empty.");
                 continue;
             }
 
