@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Slot : MonoBehaviour
+public abstract class Slot: MonoBehaviour
 {
     protected Image image;
-    public IngredientData currentItem;
+    public PropData currentItem;
 
     protected virtual void Update()
     {
@@ -15,7 +15,7 @@ public abstract class Slot : MonoBehaviour
         else
         {
             image.enabled = true;
-            image.sprite = currentItem.image;
+            image.sprite = currentItem.Image;
         }
     }
 }
