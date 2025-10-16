@@ -13,7 +13,7 @@ public class HoldingSystem : MonoBehaviour
 
     }
 
-    public void AddIngredient(IngredientData ingredient)
+    public void AddProp(PropData prop)
     {
         for (int i = 0; i < slots.Length; i++)
         {
@@ -21,7 +21,7 @@ public class HoldingSystem : MonoBehaviour
             if (slot.currentItem == null)
             {
                 Debug.Log("Slot " + i + " is empty");
-                slot.currentItem = ingredient;
+                slot.currentItem = prop;
                 break;
             }
         }
