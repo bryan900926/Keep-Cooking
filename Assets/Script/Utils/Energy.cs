@@ -8,26 +8,49 @@ public class Energy : MonoBehaviour
     [SerializeField] private float energyDecay = 10f;
     private float currentEnergy;
 
-    public float CurrentEnergy => currentEnergy;
-    public float MaxEnergy => maxEnergy;
+    public float CurrentEnergy
+    {
+        get => currentEnergy;
+        set => currentEnergy = value;
+    }
+    public float MaxEnergy
+    {
+        get => maxEnergy;
+        set => maxEnergy = value;
+    }
+
+    private bool isReplenishing = false;
+    public bool IsReplenishing
+    {
+        get => isReplenishing;
+        set => isReplenishing = value;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        currentEnergy = maxEnergy;
-    }
+{
+    currentEnergy = maxEnergy;
+}
 
-    public void UpdateEnergy(float delta)
-    {
-        currentEnergy -= energyDecay * delta;
-        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
-        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-    }
+public void UpdateEnergy(float delta)
+{
+    if (isReplenishing) return;
+    currentEnergy -= energyDecay * delta;
+    currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+}
 
-    public void Reset()
-    {
-        currentEnergy = maxEnergy;
-        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-    }
+public void Reset()
+{
+    currentEnergy = maxEnergy;
+    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+}
+
+public void Replenish(float amount)
+{
+    currentEnergy += amount;
+    currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+}
 
 
 }

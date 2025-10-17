@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c802a44daecc064c9dae485989c60fb, type: 3}
   m_Name: Scroll
   m_EditorClassIdentifier: 
-  type: 0
-  image: {fileID: -980463779519648628, guid: 7bbf11f8d2042cc429ea034dd09ebf7a, type: 3}
+  Type: 0
+  Image: {fileID: -980463779519648628, guid: 7bbf11f8d2042cc429ea034dd09ebf7a, type: 3}

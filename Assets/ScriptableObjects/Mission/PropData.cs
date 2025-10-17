@@ -7,7 +7,9 @@ public class PropData : ScriptableObject
     public enum Tools
     {
         SCROLL,
-        WATER
+        WATER,
+        DRINK,
+        BEER,
     } // Enum dropdown
     public Tools Type;
     public Sprite Image;

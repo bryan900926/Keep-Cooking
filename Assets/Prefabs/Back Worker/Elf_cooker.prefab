@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: -7069377352832562787}
   - component: {fileID: -2623164930793033123}
   - component: {fileID: 4246378860160337310}
+  - component: {fileID: 8017285435227609815}
+  - component: {fileID: 3448254258094578719}
   m_Layer: 7
   m_Name: Elf_cooker
   m_TagString: Untagged
@@ -256,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 7109111838755793957}
   maxEnergy: 100
-  energyDecay: 0
+  energyDecay: 2
 --- !u!95 &-2623164930793033123
 Animator:
   serializedVersion: 7
@@ -291,6 +293,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b97b4f434a91bc409d127ae820d224e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8017285435227609815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c0000e90ecdd3479c0357c041a132d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &3448254258094578719
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2
 --- !u!1 &2233673893475815800
 GameObject:
   m_ObjectHideFlags: 0

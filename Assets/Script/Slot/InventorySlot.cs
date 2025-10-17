@@ -22,7 +22,7 @@ public class InventorySlot : Slot
     {
         if (currentItem != null)
         {
-            holdingSystem.GetComponent<HoldingSystem>().AddProp(currentItem);
+            HoldingSystem.Instance.AddProp(currentItem);
         }
     }
 

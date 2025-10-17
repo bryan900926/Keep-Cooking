@@ -23,7 +23,7 @@ public class CustomerSpawner : MonoBehaviour
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();
-            spawnedTime = Random.Range(3, 5);
+            spawnedTime = Random.Range(5, 10);
         }
     }
 

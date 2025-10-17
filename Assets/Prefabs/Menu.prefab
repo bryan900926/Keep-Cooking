@@ -48,3 +48,5 @@ MonoBehaviour:
   - {fileID: 8788832329371062287, guid: 07f1a2e1d61465540b6d1d80b5f39a04, type: 3}
   - {fileID: 2675420959885421844, guid: fd4dffe79aecab64ab04520364a1813b, type: 3}
   - {fileID: 2428213800571995993, guid: b336c4c7cc844fa4a8ab27cad9ef054d, type: 3}
+  orderFoodsPrefabs: []
+  leftoverFoods: {fileID: 8569368667927435279, guid: 9efb69ca5432cf046a0e8b753bcce51c, type: 3}
