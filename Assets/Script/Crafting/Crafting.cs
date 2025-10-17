@@ -17,9 +17,9 @@ public class Crafting : MonoBehaviour
 
     private Recipe_status status = Recipe_status.Normal;
 
-    private GameObject currentCheft;
+    private GameObject currentChef;
 
-    public GameObject CurrentCheft { get => currentCheft; set => currentCheft = value; }
+    public GameObject CurrentCheft { get => currentChef; set => currentChef = value; }
 
     public void Awake()
     {
@@ -55,41 +55,34 @@ public class Crafting : MonoBehaviour
 
     public void Match(List<Ingredients> inputRecipe, Dictionary<List<Ingredients>, GameObject> reference, Vector2 spawnPos)
     {
-        for (int i = 0; i < inputRecipe.Count; i++)
-        {
-            Debug.Log($"slot idx: {i} + {inputRecipe[i]}");
-        }
+        if (currentChef == null) return;
+        ChefStateManager chefStateManager = currentChef.GetComponent<ChefStateManager>();
         foreach (var pair in reference)
         {
             List<Ingredients> correctRecipe = pair.Key;
             GameObject foodPrefab = pair.Value;
 
-            if (AreListsEqualInOrder(correctRecipe, inputRecipe))
+            if (currentChef != null && AreListsEqualInOrder(correctRecipe, inputRecipe))
             {
-                if (currentCheft == null)
-                {
-                    Debug.LogError("no chef available");
-                    return;
-                }
-                ChefStateManager chefStateManager = currentCheft.GetComponent<ChefStateManager>();
                 int foodidx = foodPrefab.GetComponent<DishProperty>().Foodidx;
-                if (foodidx < 0)
+                if (chefStateManager == null)
                 {
-                    Debug.LogError("food idx error");
+                    Debug.LogWarning("Chef leaved");
+                    Toggle.Instance.CloseAllUIPanels();
                     return;
                 }
-                chefStateManager.EnableCooking(foodidx);
+                chefStateManager?.EnableCooking(foodidx);
                 return;
             }
         }
-
+        chefStateManager?.EnableCooking(-2);
+        Toggle.Instance.CloseAllUIPanels();
         Debug.Log("not match any recipe");
     }
 
     private bool AreListsEqualInOrder(List<Ingredients> a, List<Ingredients> b)
     {
-        if (a == null || b == null) return false;
-        if (a.Count != b.Count) return false;
+        if (a == null || b == null || a.Count != b.Count) return false;
 
         for (int i = 0; i < a.Count; i++)
         {
