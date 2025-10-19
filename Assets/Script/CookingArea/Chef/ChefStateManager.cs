@@ -1,3 +1,4 @@
+using System;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,13 @@ public class ChefStateManager : MonoBehaviour
     private ChefState currentState;
     private GameObject cookingMachine;
     public GameObject CookingMachine => cookingMachine;
+
+    private event Action onChefDestroyed;
+    public event Action OnChefDestroyed
+    {
+        add { onChefDestroyed += value; }
+        remove { onChefDestroyed -= value; }
+    }
 
     // =======================
     // === Public Properties ===
@@ -102,6 +110,10 @@ public class ChefStateManager : MonoBehaviour
     // =======================
     public float EnableCooking(int foodIdx) // foodIdx = -2 means leftover
     {
+        if (currentState is ChefFoodRottenState)
+        {
+            CenterMessage.Instance.ShowMessage(CenterMessage.FOOD_ROTTEN);
+        }
         bool canCook = CurrentDishIdx == -1 &&
                        energy.CurrentEnergy > 0 &&
                        cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
@@ -109,7 +121,7 @@ public class ChefStateManager : MonoBehaviour
         if (!canCook) return -1f;
 
         CurrentDishIdx = foodIdx;
-        CookingTime = Random.Range(2f, 3f);
+        CookingTime = UnityEngine.Random.Range(2f, 3f);
 
         ChangeState(new ChefCookingState(this));
         cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
@@ -125,10 +137,10 @@ public class ChefStateManager : MonoBehaviour
 
             float wrongProb = Mathf.Clamp01(1 - energy.CurrentEnergy / energy.MaxEnergy);
 
-            if (Random.value < wrongProb)
+            if (UnityEngine.Random.value < wrongProb)
             {
                 SetFireActive(true);
-                CurrentDishIdx = Random.Range(0, menu.Length);
+                CurrentDishIdx = UnityEngine.Random.Range(0, menu.Length);
             }
             else
             {
@@ -171,9 +183,15 @@ public class ChefStateManager : MonoBehaviour
         if (Keyboard.current.eKey.isPressed && energy.IsReplenishing)
         {
             energy.Replenish(1f);
-        } else
+        }
+        else
         {
             energy.IsReplenishing = false;
         }
+    }
+
+    void OnDestroy()
+    {
+        onChefDestroyed?.Invoke();
     }
 }
