@@ -21,7 +21,6 @@ public class CustomerLeaveState : CustomerState
         {
             DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
             customerStateManager.DiningIdx = -1;
-            customerStateManager.ViewEffect.ApplyEffect();
             Object.Destroy(customerStateManager.gameObject);
         }
 
@@ -30,5 +29,11 @@ public class CustomerLeaveState : CustomerState
     bool IsAtExit()
     {
         return Vector3.Distance(customerStateManager.transform.position, exitPoint.position) < 0.1f;
+    }
+
+    private void RandomMenuEffect()
+    {
+        Recipe.instance.BuildOtherRecipeDictionary();
+        CenterMessage.Instance.ShowMessage(CenterMessage.MENU_UPDATED);
     }
 }

@@ -48,7 +48,8 @@ MonoBehaviour:
   normal_recipe: 000000002000000000000000000000001000000000000000000000000800000000000000
   random_recipe: 
   mission_recipe: 
-  foodidx: 2
+  foodidx: 1
+  state: 0
 --- !u!212 &5913495737333457624
 SpriteRenderer:
   m_ObjectHideFlags: 0

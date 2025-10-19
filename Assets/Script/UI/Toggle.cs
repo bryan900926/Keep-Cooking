@@ -12,15 +12,23 @@ public class Toggle : MonoBehaviour
 
     private readonly Dictionary<Key, CanvasGroup> keyToPanel = new();
     private readonly Dictionary<Key, bool> toggleStates = new();
+
+    private List<Key> keysList;
+
+    public static readonly Key keyOpenCrafting = Key.V;
+
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
+        if (Instance != null && Instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
     void Start()
     {
+        keysList = keyElements.ToList();
         InitializePanels();
     }
 
@@ -28,7 +36,7 @@ public class Toggle : MonoBehaviour
     {
         if (Keyboard.current == null) return;
 
-        foreach (var key in keyToPanel.Keys.ToList())
+        foreach (var key in keysList)
         {
             if (Keyboard.current[key].wasPressedThisFrame)
             {
@@ -62,19 +70,16 @@ public class Toggle : MonoBehaviour
         }
     }
 
-    // ✅ Toggle logic — close others, open selected
     private void TogglePanel(Key key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
 
         bool newState = !toggleStates[key];
-        CloseAllUIPanels();  // Ensure only one is open
-
-        toggleStates[key] = newState;
-        SetPanelVisibility(keyToPanel[key], newState);
+        if (newState)
+            OpenPanel(key);
+        else
+            ClosePanel(key);
     }
-
-    // ✅ Helper to set visibility
     private static void SetPanelVisibility(CanvasGroup panel, bool visible)
     {
         if (panel == null) return;
@@ -84,17 +89,15 @@ public class Toggle : MonoBehaviour
         panel.blocksRaycasts = visible;
     }
 
-    // ✅ Closes all managed UI panels
-    public void CloseAllUIPanels()
+     void CloseAllUIPanels()
     {
-        foreach (var key in toggleStates.Keys.ToList())
+        foreach (var key in keysList)
             toggleStates[key] = false;
 
         foreach (var panel in keyToPanel.Values.ToList())
             SetPanelVisibility(panel, false);
     }
 
-    // ✅ Open any specific panel (e.g. from button)
     public void OpenPanel(Key key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
@@ -104,15 +107,14 @@ public class Toggle : MonoBehaviour
         SetPanelVisibility(keyToPanel[key], true);
     }
 
-    // ✅ For buttons (like Craft)
-    public void OpenCraftUI()
+    public void ClosePanel(Key key)
     {
-        // If you know the craft key (for example, index 1 or Key.C):
-        var key = keyElements.Length > 1 ? keyElements[1] : Key.C;
-        OpenPanel(key);
+        if (!keyToPanel.ContainsKey(key)) return;
+
+        toggleStates[key] = false;
+        SetPanelVisibility(keyToPanel[key], false);
     }
 
-    // ✅ Validation helper
     private bool ValidateUIElement(GameObject ui, Key key)
     {
         if (ui == null)

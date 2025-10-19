@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class WorkInfoUI : MonoBehaviour
 {
@@ -24,8 +26,8 @@ public class WorkInfoUI : MonoBehaviour
     private void OnCraftButtonClicked()
     {
         if (worker == null) return;
-        Crafting.instance.CurrentCheft = worker;
-        Toggle.Instance.OpenCraftUI();
+        Crafting.instance.SetCurrentChef(worker);
+        Toggle.Instance.OpenPanel(Key.V);
 
     }
 

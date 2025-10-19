@@ -16,10 +16,13 @@ public class Crafting : MonoBehaviour
     }
 
     private Recipe_status status = Recipe_status.Normal;
+    public Recipe_status Status { get => status; set => status = value; }
 
     private GameObject currentChef;
 
     public GameObject CurrentCheft { get => currentChef; set => currentChef = value; }
+
+
 
     public void Awake()
     {
@@ -28,7 +31,6 @@ public class Crafting : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
     public void SetIngredient(int slotIndex, Ingredients Data)
     {
         multipleIngredients[slotIndex] = Data;
@@ -55,6 +57,7 @@ public class Crafting : MonoBehaviour
 
     public void Match(List<Ingredients> inputRecipe, Dictionary<List<Ingredients>, GameObject> reference, Vector2 spawnPos)
     {
+        bool findMatch = false;
         if (currentChef == null) return;
         ChefStateManager chefStateManager = currentChef.GetComponent<ChefStateManager>();
         foreach (var pair in reference)
@@ -62,22 +65,20 @@ public class Crafting : MonoBehaviour
             List<Ingredients> correctRecipe = pair.Key;
             GameObject foodPrefab = pair.Value;
 
-            if (currentChef != null && AreListsEqualInOrder(correctRecipe, inputRecipe))
+            if (chefStateManager != null && AreListsEqualInOrder(correctRecipe, inputRecipe))
             {
                 int foodidx = foodPrefab.GetComponent<DishProperty>().Foodidx;
-                if (chefStateManager == null)
-                {
-                    Debug.LogWarning("Chef leaved");
-                    Toggle.Instance.CloseAllUIPanels();
-                    return;
-                }
-                chefStateManager?.EnableCooking(foodidx);
-                return;
+                Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
+                CenterMessage.Instance.ShowMessage(CenterMessage.SUCCESSFUL_COOK);
+                chefStateManager.EnableCooking(foodidx);
+                findMatch = true;
+                break;
             }
         }
-        chefStateManager?.EnableCooking(-2);
-        Toggle.Instance.CloseAllUIPanels();
-        Debug.Log("not match any recipe");
+        if (!findMatch && chefStateManager != null)
+        {
+            chefStateManager.EnableCooking(-2);
+        }
     }
 
     private bool AreListsEqualInOrder(List<Ingredients> a, List<Ingredients> b)
@@ -105,11 +106,39 @@ public class Crafting : MonoBehaviour
         DebugItem();
     }
 
+    public void SetCurrentChef(GameObject chef)
+    {
+        if (chef != null && chef == currentChef) return;
+        ChefStateManager chefManager = chef.GetComponent<ChefStateManager>();
+
+        if (currentChef != null)
+        {
+            ChefStateManager currentChefManager = currentChef.GetComponent<ChefStateManager>();
+            if (currentChefManager != null)
+                currentChefManager.OnChefDestroyed -= OnChefDestroyed;
+        }
+
+        currentChef = chef;
+
+        if (chef != null)
+        {
+            chefManager = chef.GetComponent<ChefStateManager>();
+            if (chefManager != null)
+                chefManager.OnChefDestroyed += OnChefDestroyed;
+        }
+    }
+
     public void DebugItem()
     {
         for (int i = 0; i < multipleIngredients.Count; i++)
         {
             Debug.Log(multipleIngredients[i]);
         }
+    }
+    private void OnChefDestroyed()
+    {
+        currentChef = null;
+        CenterMessage.Instance.ShowMessage(CenterMessage.CHEF_LEAVE);
+        Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
     }
 }
