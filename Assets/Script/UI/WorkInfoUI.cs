@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Globalization;
-using Unity.VisualScripting;
 using UnityEngine.InputSystem;
 
 public class WorkInfoUI : MonoBehaviour
@@ -26,31 +24,9 @@ public class WorkInfoUI : MonoBehaviour
     private void OnCraftButtonClicked()
     {
         if (worker == null) return;
-        Crafting.instance.SetCurrentChef(worker);
+        Craftingv2.Instance.SetCurrentChef(worker);
         Toggle.Instance.OpenPanel(Key.V);
 
-    }
-
-    private void OnCookButtonClicked()
-    {
-        if (worker == null) return;
-
-        string input = inputField.text;
-        if (string.IsNullOrEmpty(input)) return;
-
-        if (!int.TryParse(input, out int idx)) return;
-
-        ChefStateManager chefStateManager = worker.GetComponent<ChefStateManager>();
-
-        // Check if worker is at destination and not already cooking
-        if (chefStateManager.BeenToWorkingStation())
-        {
-            float cookingTime = chefStateManager.EnableCooking(idx);
-            if (cookingTime > 0)
-            {
-                progressBar.StartTimer(cookingTime);
-            }
-        }
     }
 
     private void OnDeliverButtonClicked()

@@ -7,13 +7,20 @@ public class DishBtn : MonoBehaviour
     private Button button;
     [SerializeField] private int dishID;
 
+    [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private Color darkColor = Color.gray;
+
+    [SerializeField] private DishBtnManager dishBtnManager;
+
+    private Image icon;
+
     void Start()
     {
         button = GetComponent<Button>();
+        icon = GetComponent<Image>();
         UpdateButtonAction();
     }
 
-    // 🔁 If your dishID changes at runtime, you can call this again
     public void UpdateButtonAction()
     {
         button.onClick.RemoveAllListeners();
@@ -22,14 +29,16 @@ public class DishBtn : MonoBehaviour
 
     private void OnDishClicked()
     {
-        // This is the method actually called by the button click
         DishProperty dishProperty = Recipe.instance.Dishes[dishID].GetComponent<DishProperty>();
         List<Ingredients> ingredients = dishProperty.GetCurrentRecipe();
 
         MenuDisplayer.Instance.RefreshMenuSlots(ingredients);
+        dishBtnManager.OnDishBtnClicked(this);
 
-        // You can now do whatever you need with the recipe
         Debug.Log($"Dish {dishID} clicked, recipe has {ingredients.Count} ingredients!");
-        // Example: display it in UI, etc.
+    }
+    public void SetSelected(bool isSelected)
+    {
+        icon.color = isSelected ? darkColor : normalColor;
     }
 }

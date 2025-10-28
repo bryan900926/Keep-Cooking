@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5708131524990481592}
   - component: {fileID: 2985033023955805747}
   - component: {fileID: 6647929121032053801}
+  - component: {fileID: -1972869196801486874}
   m_Layer: 0
   m_Name: Spot
   m_TagString: Untagged
@@ -139,6 +140,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 6488373720557121610}
+  oilSpotSpawner: {fileID: 7940103650664900809, guid: b8caf9b3b400ad643a3f4ec902a0e2ac, type: 3}
+--- !u!114 &-1972869196801486874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241792888820548707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f9941c5cac7d499bc6e3e28827170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7405140089458190689
 PrefabInstance:
   m_ObjectHideFlags: 0

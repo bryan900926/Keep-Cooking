@@ -16,17 +16,25 @@ public class ChefStateManager : MonoBehaviour
 
     [Header("State Data")]
     [SerializeField] private int cookIdx = -2; // -2: waiting init, -1: quit job
+    [SerializeReference]
+    public ChefState currentState;
 
     // =======================
     // === Private Fields ===
     // =======================
     private SpriteRenderer spriteRenderer;
     private AIDestinationSetter destinationSetter;
-    private ChefState currentState;
     private GameObject cookingMachine;
     public GameObject CookingMachine => cookingMachine;
 
+    private ChefRecipe chefRecipe;
+
     private event Action onChefDestroyed;
+
+    private bool chefHasCorrectRecipe = true;
+
+    private float flickerTimer = 0f;
+    private bool isRed = false;
     public event Action OnChefDestroyed
     {
         add { onChefDestroyed += value; }
@@ -61,14 +69,23 @@ public class ChefStateManager : MonoBehaviour
     public float CookingTime { get; set; }
 
     public Energy Energy => energy;
-    // =======================
-    // === Unity Methods ===
-    // =======================
+
+    public ChefRecipe ChefRecipe => chefRecipe;
+
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         destinationSetter = GetComponent<AIDestinationSetter>();
+        chefRecipe = GetComponent<ChefRecipe>();
+    }
+
+    void Start()
+    {
+        if (chefRecipe != null)
+        {
+            chefRecipe.OnRecipeChanged += SetChefHasCorrectRecipe;
+        }
     }
     public void Initialize(int cookIdx)
     {
@@ -93,11 +110,9 @@ public class ChefStateManager : MonoBehaviour
         }
         currentState?.Update();
         ServeDrink();
+        HandleRecipeFlicker();
     }
 
-    // =======================
-    // === State Handling ===
-    // =======================
     public void ChangeState(ChefState newState)
     {
         currentState?.Exit();
@@ -105,27 +120,22 @@ public class ChefStateManager : MonoBehaviour
         currentState.Enter();
     }
 
-    // =======================
-    // === Cooking Logic ===
-    // =======================
-    public float EnableCooking(int foodIdx) // foodIdx = -2 means leftover
+    public void EnableCooking(int foodIdx) // foodIdx = -2 means leftover
     {
         if (currentState is ChefFoodRottenState)
         {
             CenterMessage.Instance.ShowMessage(CenterMessage.FOOD_ROTTEN);
+            return;
         }
-        bool canCook = CurrentDishIdx == -1 &&
-                       energy.CurrentEnergy > 0 &&
+        if (gameObject == null || cookingMachine == null) return;
+        bool canCook = energy.CurrentEnergy > 0 &&
                        cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
                        currentState is ChefNormalState;
-        if (!canCook) return -1f;
-
+        if (!canCook) return;
         CurrentDishIdx = foodIdx;
-        CookingTime = UnityEngine.Random.Range(2f, 3f);
-
-        ChangeState(new ChefCookingState(this));
+        CookingTime = UnityEngine.Random.Range(3f, 5f);
+        ChangeState(new ChefCookingState(this, CookingTime));
         cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
-        return CookingTime;
     }
 
     public void CreateDish()
@@ -140,7 +150,6 @@ public class ChefStateManager : MonoBehaviour
             if (UnityEngine.Random.value < wrongProb)
             {
                 SetFireActive(true);
-                CurrentDishIdx = UnityEngine.Random.Range(0, menu.Length);
             }
             else
             {
@@ -150,13 +159,8 @@ public class ChefStateManager : MonoBehaviour
             Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
             Menu.Instance.SpawnForPlayer(CurrentDishIdx, spawnPos);
         }
-
-        CurrentDishIdx = -1;
     }
 
-    // =======================
-    // === Fire Control ===
-    // =======================
     public void SetFireActive(bool active)
     {
         var machineState = cookingMachine.GetComponent<CookingMachineStateManager>();
@@ -189,9 +193,45 @@ public class ChefStateManager : MonoBehaviour
             energy.IsReplenishing = false;
         }
     }
-
-    void OnDestroy()
+    public bool CheckChefForgetRecipe(float k = 0.5f)
     {
+        float normalized = 1f - (energy.CurrentEnergy / energy.MaxEnergy);
+        float prob = 1f - Mathf.Exp(-k * normalized);
+        return Mathf.Clamp01(prob) > UnityEngine.Random.value;
+    }
+    public void SetChefHasCorrectRecipe(bool isCorrect)
+    {
+        chefHasCorrectRecipe = isCorrect;
+    }
+
+    private void HandleRecipeFlicker()
+    {
+        if (!chefHasCorrectRecipe)
+        {
+            flickerTimer += Time.deltaTime;
+
+            if (flickerTimer >= 0.2f) // flicker every 0.2s
+            {
+                flickerTimer = 0f;
+                isRed = !isRed;
+                spriteRenderer.color = isRed ? Color.red : Color.white;
+            }
+        }
+        else
+        {
+            // reset to normal color
+            if (spriteRenderer.color != Color.white)
+                spriteRenderer.color = Color.white;
+
+            flickerTimer = 0f;
+            isRed = false;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (chefRecipe != null)
+            chefRecipe.OnRecipeChanged -= SetChefHasCorrectRecipe;
         onChefDestroyed?.Invoke();
     }
 }

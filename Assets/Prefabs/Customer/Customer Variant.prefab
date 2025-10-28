@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8069130602830340609}
   - component: {fileID: 7632422532805559071}
   - component: {fileID: 5053862991508513010}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,9 +93,8 @@ GameObject:
   - component: {fileID: 352996976105228518}
   - component: {fileID: 952180948067181428}
   - component: {fileID: 926344961493348779}
-  - component: {fileID: 5117677814717042575}
   - component: {fileID: -8817391628698140055}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Customer Variant
   m_TagString: Customer
   m_Icon: {fileID: 0}
@@ -273,7 +272,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -363,8 +362,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.005252719, y: 0}
-  m_Size: {x: 1.9264486, y: 2}
+  m_Offset: {x: 0.023185253, y: 0}
+  m_Size: {x: 2.3814626, y: 2.3814626}
   m_Direction: 0
 --- !u!114 &926344961493348779
 MonoBehaviour:
@@ -378,22 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6ca300fbd51ae43832b08ad20c85ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5117677814717042575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382719886654397292}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4220e424aafe3954f9634e017b60b765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerData: {fileID: 0}
-  energy: {fileID: -8817391628698140055}
-  destination: {fileID: 0}
-  cookIdx: -2
 --- !u!114 &-8817391628698140055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,9 +389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71a67fc27742c244af2ace3ac8fcc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingEnergyBar: {fileID: 0}
+  floatingEnergyBar: {fileID: 3970975571277822089}
   maxEnergy: 100
-  energyDecay: 10
+  energyDecay: 2
 --- !u!1 &5413183749182296309
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +404,7 @@ GameObject:
   - component: {fileID: 8622662148610758066}
   - component: {fileID: 2485097236736726140}
   - component: {fileID: 1307096127594439155}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +505,7 @@ GameObject:
   - component: {fileID: 3371374356491774606}
   - component: {fileID: 1974677175722850797}
   - component: {fileID: 3970975571277822089}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c7c9b480454544d8b4c2b6df696ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 1974677175722850797}
 --- !u!1 &8541852653790417834
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +608,7 @@ GameObject:
   - component: {fileID: 6766253158261020677}
   - component: {fileID: 6243352989197675402}
   - component: {fileID: 7058284486363660051}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6133080531733869150}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

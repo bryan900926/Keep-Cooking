@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class WaiterIdleState : WaiterState
 {
     public WaiterIdleState(WaiterStateManager waiterStateManager) : base(waiterStateManager)
@@ -8,19 +7,28 @@ public class WaiterIdleState : WaiterState
 
     public override void Enter()
     {
-        waiterStateManager.destinationSetter.target = waiterStateManager.GetWaitingSpot();
+        Debug.Log("Waiter " + waiterStateManager.gameObject.GetInstanceID() + " entering Idle State");
+        waiterStateManager.FindStandbySpot();
     }
 
     public override void Update()
     {
-        if (waiterStateManager.foodIdx != -1 && waiterStateManager.tableIdx != -1)
+        if (waiterStateManager.foodIdx != -1)
         {
-            waiterStateManager.ChangeState(new WaiterServeFoodState(waiterStateManager));
+            OrderInfo orderInfo = OrderSystem.Instance.GetHighestPriorityOrder(waiterStateManager.foodIdx);
+            if (orderInfo != null)
+            {
+                waiterStateManager.tableIdx = orderInfo.TableIdx;
+                waiterStateManager.ChangeState(new WaiterServeFoodState(waiterStateManager, orderInfo));
+            }
         }
 
     }
 
     public override void Exit()
     {
+        Debug.Log("Waiter " + waiterStateManager.gameObject.GetInstanceID() + " exiting Idle State");
+        waiterStateManager.ClearStandbySpot();
+
     }
 }

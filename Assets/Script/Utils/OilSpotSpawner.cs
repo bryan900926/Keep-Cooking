@@ -4,7 +4,7 @@ using UnityEngine;
 public class OilSpotSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject oilPrefab;
-    [SerializeField] private int numberOfSpots = 10;
+    [SerializeField] private int numberOfSpots = 12;
     [SerializeField] private float spotRadius = 2f; // radius of oil spot
     [SerializeField] private LayerMask obstacleLayer; // assign floor objects here
 
@@ -16,9 +16,13 @@ public class OilSpotSpawner : MonoBehaviour
     private void Awake()
     {
         spawnArea = GetComponent<BoxCollider2D>();
-        spawnInterval = Random.Range(5f, 10f);
+        spawnInterval = Random.Range(8f, 10f);
     }
 
+    public void RemoveSpot()
+    {
+        currentSpots--;
+    }
 
 
     void Update()
@@ -27,7 +31,7 @@ public class OilSpotSpawner : MonoBehaviour
         if (spawnInterval <= 0 && currentSpots < numberOfSpots)
         {
             SpawnOilSpots();
-            spawnInterval = Random.Range(5f, 10f);
+            spawnInterval = Random.Range(8f, 10f);
         }
     }
     private void SpawnOilSpots()
@@ -58,8 +62,12 @@ public class OilSpotSpawner : MonoBehaviour
 
         if (validPosition)
         {
-            Instantiate(oilPrefab, randomPos, Quaternion.identity, transform);
+            GameObject spotObj = Instantiate(oilPrefab, randomPos, Quaternion.identity, transform);
+
+            OilSpot oilSpot = spotObj.GetComponent<OilSpot>();
             currentSpots++;
+            if (oilSpot != null)
+                oilSpot.SetSpawner(this);
         }
         else
         {

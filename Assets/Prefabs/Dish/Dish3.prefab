@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normal_recipe: 400000000000000080000000000000000000000000000000000000000001000000000000
-  random_recipe: 
+  random_recipe: 400000000000000000000000000000000000000000000000000000008000000000010000
   mission_recipe: 
   foodidx: 2
+  state: 0
 --- !u!212 &5913495737333457624
 SpriteRenderer:
   m_ObjectHideFlags: 0

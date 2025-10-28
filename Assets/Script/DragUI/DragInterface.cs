@@ -37,7 +37,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         if (droppeddrag)
         {
-            Crafting.instance.DeleteIngredient(slotindex);
+            Craftingv2.Instance.DeleteIngredient(slotindex);
         }
 
         dropped = false;

@@ -1,11 +1,11 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor;
 using UnityEngine;
 
 public class WaiterServeFoodState : WaiterState
 {
-    public WaiterServeFoodState(WaiterStateManager waiterStateManager) : base(waiterStateManager)
+    private OrderInfo orderInfo;
+    public WaiterServeFoodState(WaiterStateManager waiterStateManager, OrderInfo orderInfo) : base(waiterStateManager)
     {
+        this.orderInfo = orderInfo;
     }
 
     public override void Enter()
@@ -29,6 +29,10 @@ public class WaiterServeFoodState : WaiterState
         {
             CheckIfDishRight();
         }
+        if (waiterStateManager.foodIdx == -1)
+        {
+            FailToServe();
+        }
     }
 
     public override void Exit()
@@ -51,6 +55,15 @@ public class WaiterServeFoodState : WaiterState
         {
             CustomerStateManager customerStateManager = customer.GetComponent<CustomerStateManager>();
             customerStateManager.ChangeState(new CustomerEatingState(customerStateManager));
+        }
+        waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
+    }
+
+    private void FailToServe()
+    {
+        if (orderInfo != null)
+        {
+            OrderSystem.Instance.AddFailOrder(orderInfo, true);
         }
         waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
     }

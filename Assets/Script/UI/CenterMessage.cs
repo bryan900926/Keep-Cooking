@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.InputSystem;
 using System;
 
 public class CenterMessage : MonoBehaviour
@@ -21,13 +20,19 @@ public class CenterMessage : MonoBehaviour
 
     public readonly static string FOOD_ROTTEN = "Please clean up the rotten food left by the chef.";
 
+    public readonly static string NO_CHEF = "No chef assigned! Please assign a chef to start cooking.";
+
+    public readonly static string FAILED_COOK = "Oops! The recipe didn't match any known dishes.";
+
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
+        if (Instance != null && Instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         canvasGroup.alpha = 0f;
         messageText.text = "";
     }

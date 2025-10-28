@@ -58,7 +58,11 @@ public class Crafting : MonoBehaviour
     public void Match(List<Ingredients> inputRecipe, Dictionary<List<Ingredients>, GameObject> reference, Vector2 spawnPos)
     {
         bool findMatch = false;
-        if (currentChef == null) return;
+        if (currentChef == null)
+        {
+            CenterMessage.Instance.ShowMessage(CenterMessage.NO_CHEF);
+            return;
+        }
         ChefStateManager chefStateManager = currentChef.GetComponent<ChefStateManager>();
         foreach (var pair in reference)
         {
@@ -68,8 +72,6 @@ public class Crafting : MonoBehaviour
             if (chefStateManager != null && AreListsEqualInOrder(correctRecipe, inputRecipe))
             {
                 int foodidx = foodPrefab.GetComponent<DishProperty>().Foodidx;
-                Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
-                CenterMessage.Instance.ShowMessage(CenterMessage.SUCCESSFUL_COOK);
                 chefStateManager.EnableCooking(foodidx);
                 findMatch = true;
                 break;
@@ -77,8 +79,10 @@ public class Crafting : MonoBehaviour
         }
         if (!findMatch && chefStateManager != null)
         {
+            CenterMessage.Instance.ShowMessage(CenterMessage.FAILED_COOK);
             chefStateManager.EnableCooking(-2);
         }
+        Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
     }
 
     private bool AreListsEqualInOrder(List<Ingredients> a, List<Ingredients> b)

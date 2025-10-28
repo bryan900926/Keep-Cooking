@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class ChefFoodRottenState : ChefState
 {
     private GameObject rottenFood;

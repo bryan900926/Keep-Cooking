@@ -18,16 +18,16 @@ public class MenuDisplayer : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        for (int i = 0; i < menuSlotPrefab.Length; i++)
-        {
-            menuSlotPrefab[i].GetComponent<MenuSlot>().Image.enabled = false;
-        }
 
         Instance = this;
 
     }
     void Start()
     {
+        for (int i = 0; i < menuSlotPrefab.Length; i++)
+        {
+            menuSlotPrefab[i].GetComponent<MenuSlot>().Image.enabled = false;
+        }
         ingredientDataDict = new Dictionary<int, IngredientData>();
         foreach (var data in ingredientDatas)
         {

@@ -13,7 +13,7 @@ public class NavBarController : MonoBehaviour
 
     void Start()
     {
-        ShowPanel(frontPanel); // default
+        ShowPanel(backPanel); // default
         frontBtn.onClick.AddListener(() => ShowPanel(frontPanel));
         backBtn.onClick.AddListener(() => ShowPanel(backPanel));
     }

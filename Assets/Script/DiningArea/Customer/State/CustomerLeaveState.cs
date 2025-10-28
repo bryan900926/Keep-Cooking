@@ -17,10 +17,9 @@ public class CustomerLeaveState : CustomerState
 
     public override void Update()
     {
-        if (IsAtExit() && customerStateManager.DiningIdx != -1)
+        if (IsAtExit())
         {
             DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
-            customerStateManager.DiningIdx = -1;
             Object.Destroy(customerStateManager.gameObject);
         }
 
@@ -28,7 +27,7 @@ public class CustomerLeaveState : CustomerState
 
     bool IsAtExit()
     {
-        return Vector3.Distance(customerStateManager.transform.position, exitPoint.position) < 0.1f;
+        return Vector3.Distance(customerStateManager.transform.position, exitPoint.position) < 1f;
     }
 
     private void RandomMenuEffect()

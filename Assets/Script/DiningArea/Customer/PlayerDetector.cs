@@ -12,8 +12,12 @@ namespace DiningArea.Customer
         {
             if (other.CompareTag(PLAYER_TAG) && GetComponent<CustomerStateManager>().CurrentState is CustomerWaitFoodState && Keyboard.current.rKey.isPressed)
             {
-                BackControl.Instance.RecruitChef(gameObject);
-                Debug.Log("Customer became Chef");
+                int idx = HoldingSystem.Instance.FindProp(PropData.Tools.SCROLL);
+                if (idx != -1)
+                {
+                    HoldingSystem.Instance.RemoveProp(idx);
+                    BackControl.Instance.RecruitChef(gameObject);
+                }
             }
 
         }

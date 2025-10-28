@@ -4,8 +4,8 @@ public class Energy : MonoBehaviour
 {
     [Header("Energy")]
     [SerializeField] private FloatingEnergyBar floatingEnergyBar;
-    [SerializeField] private float maxEnergy = 50f;
-    [SerializeField] private float energyDecay = 10f;
+    [SerializeField] private float maxEnergy;
+    [SerializeField] private float energyDecay;
     private float currentEnergy;
 
     public float CurrentEnergy
@@ -25,32 +25,39 @@ public class Energy : MonoBehaviour
         get => isReplenishing;
         set => isReplenishing = value;
     }
+
+    private float surviveTime;
+    public float SurviveTime
+    {
+        get => surviveTime;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-{
-    currentEnergy = maxEnergy;
-}
+    {
+        currentEnergy = maxEnergy;
+        surviveTime = maxEnergy / energyDecay;
+    }
 
-public void UpdateEnergy(float delta)
-{
-    if (isReplenishing) return;
-    currentEnergy -= energyDecay * delta;
-    currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
-    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-}
+    public void UpdateEnergy(float delta)
+    {
+        if (isReplenishing) return;
+        currentEnergy -= energyDecay * delta;
+        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+    }
 
-public void Reset()
-{
-    currentEnergy = maxEnergy;
-    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-}
+    public void Reset()
+    {
+        currentEnergy = maxEnergy;
+        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+    }
 
-public void Replenish(float amount)
-{
-    currentEnergy += amount;
-    currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
-    floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
-}
+    public void Replenish(float amount)
+    {
+        currentEnergy += amount;
+        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+        floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+    }
 
 
 }

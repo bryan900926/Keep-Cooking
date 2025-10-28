@@ -12,6 +12,8 @@ public class Recipe : MonoBehaviour
     public Dictionary<List<Ingredients>, GameObject> Random_recipe = new Dictionary<List<Ingredients>, GameObject>();
     public Dictionary<List<Ingredients>, GameObject> Mission_recipe = new Dictionary<List<Ingredients>, GameObject>();
 
+    public Dictionary<int, List<Ingredients>> Food_recipes = new Dictionary<int, List<Ingredients>>();
+
     public GameObject[] Dishes
     {
         get => dishes;
@@ -29,6 +31,22 @@ public class Recipe : MonoBehaviour
     void Start()
     {
         BuildRecipeDictionary();
+    }
+
+    public bool CheckRecipeCorrect(int foodIdx, List<Ingredients> recipe)
+    {
+        if (Food_recipes.ContainsKey(foodIdx))
+        {
+            List<Ingredients> correctRecipe = Food_recipes[foodIdx];
+            bool isCorrect = correctRecipe.SequenceEqual(recipe);
+            Debug.Log($"Recipe for foodIdx {foodIdx} is {(isCorrect ? "correct" : "incorrect")}");
+            return isCorrect;
+        }
+        else
+        {
+            Debug.LogWarning($"No recipe found for foodIdx {foodIdx}");
+            return false;
+        }
     }
 
     public List<Ingredients> RandomRecipe(List<Ingredients> recipe)
@@ -62,6 +80,7 @@ public class Recipe : MonoBehaviour
                 continue;
             }
             List<Ingredients> recipe = property.normal_recipe;
+            Food_recipes.Add(property.Foodidx, recipe);
             if (recipe == null || recipe.Count != 9)
             {
                 Debug.LogWarning($"{dish.name} recipe is empty.");

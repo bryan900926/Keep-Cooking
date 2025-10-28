@@ -6,11 +6,16 @@ namespace Accident.Spot
     public class PlayerDetector : MonoBehaviour
     {
         [SerializeField] private GameObject hint;
+
+        [SerializeField] private OilSpotSpawner oilSpotSpawner;
         private bool playerInside = false; // track if player is in trigger
+
+        private SpriteRenderer hintRenderer;
 
         void Start()
         {
-            hint.GetComponent<SpriteRenderer>().enabled = false;
+            hintRenderer = hint.GetComponent<SpriteRenderer>();
+            hintRenderer.enabled = false;
         }
 
         void Update()
@@ -23,6 +28,7 @@ namespace Accident.Spot
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log(other.name + " entered oil spot");
             playerInside = true;
             ShowHint(true);
 
@@ -34,6 +40,11 @@ namespace Accident.Spot
                     Destroy(heldItem);
                 }
             }
+            if (other.TryGetComponent<WaiterStateManager>(out WaiterStateManager waiterStateManager))
+            {
+                Debug.Log("waiter lose the food due to oil spot");
+                waiterStateManager.foodIdx = -1;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -44,7 +55,7 @@ namespace Accident.Spot
 
         private void ShowHint(bool show)
         {
-            hint.GetComponent<SpriteRenderer>().enabled = show;
+            hintRenderer.enabled = show;
         }
     }
 }

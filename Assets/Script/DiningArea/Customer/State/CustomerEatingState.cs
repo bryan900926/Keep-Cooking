@@ -30,7 +30,7 @@ public class CustomerEatingState : CustomerState
     }
 
     public override void Exit()
-    {   
+    {
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
         GameObject food = customerStateManager.GetComponent<Holding>().HoldingItem;

@@ -17,11 +17,17 @@ public class DishProperty : MonoBehaviour
         Random,
         Mission
     }
-    [SerializeField] private DishType state = DishType.Normal;
+    [System.NonSerialized]
+    private DishType state = DishType.Normal;
     public DishType State { get => state; set => state = value; }
 
+    void Update()
+    {
+
+    }
     public List<Ingredients> GetCurrentRecipe()
     {
+        Debug.Log($"Getting recipe for dish {foodidx} of type {state}");
         switch (state)
         {
             case DishType.Normal:

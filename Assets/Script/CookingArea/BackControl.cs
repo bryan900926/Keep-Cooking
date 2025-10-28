@@ -32,17 +32,16 @@ public class BackControl : MonoBehaviour
         // Wait until BackWorkerUIManager instance exists
         yield return new WaitUntil(() => BackWorkerUIManager.Instance != null);
 
-        for (int i = 0; i < cookers.Length; i++)
+        for (int i = 0; i < 2; i++)
         {
             AssignTask(i);
         }
     }
 
-    private int AssignTask(int cookIdx)
+    public int AssignTask(int cookIdx, int workerIdx = -1)
     {
         if (mapper.ContainsKey(cookIdx) || cookIdx >= cookers.Length) return -1;
-
-        GameObject cookerObj = WorkerManager.Instance.SpawnChef(cookIdx);
+        GameObject cookerObj = WorkerManager.Instance.SpawnChef(cookIdx, workerIdx);
         int uiIdx = BackWorkerUIManager.Instance.FillWorkerInfoUI(cookerObj);
         if (uiIdx != -1)
         {
@@ -52,12 +51,10 @@ public class BackControl : MonoBehaviour
     }
     public void RecruitChef(GameObject customer)
     {
-        Debug.Log("Recruiting chef...");
         for (int i = 0; i < cookers.Length; i++)
         {
             if (!mapper.ContainsKey(i))
             {
-                Debug.Log($"Assigning cookIdx {i} to new chef.");
                 customer.GetComponent<CustomerStateManager>().ChangeState(new CustomerToChefState(customer.GetComponent<CustomerStateManager>(), i));
                 return;
             }

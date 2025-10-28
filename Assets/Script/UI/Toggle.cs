@@ -9,6 +9,7 @@ public class Toggle : MonoBehaviour
     [Header("UI Configuration")]
     [SerializeField] private GameObject[] uiElements;
     [SerializeField] private Key[] keyElements;
+    private CanvasGroup parentCanvasGroup;
 
     private readonly Dictionary<Key, CanvasGroup> keyToPanel = new();
     private readonly Dictionary<Key, bool> toggleStates = new();
@@ -28,6 +29,7 @@ public class Toggle : MonoBehaviour
     }
     void Start()
     {
+        parentCanvasGroup = GetComponent<CanvasGroup>();
         keysList = keyElements.ToList();
         InitializePanels();
     }
@@ -46,7 +48,6 @@ public class Toggle : MonoBehaviour
         }
     }
 
-    // 🧩 Initialize mappings
     private void InitializePanels()
     {
         if (uiElements.Length != keyElements.Length)
@@ -89,7 +90,7 @@ public class Toggle : MonoBehaviour
         panel.blocksRaycasts = visible;
     }
 
-     void CloseAllUIPanels()
+    private void CloseAllUIPanels()
     {
         foreach (var key in keysList)
             toggleStates[key] = false;
@@ -102,9 +103,9 @@ public class Toggle : MonoBehaviour
     {
         if (!keyToPanel.ContainsKey(key)) return;
 
-        CloseAllUIPanels();
         toggleStates[key] = true;
         SetPanelVisibility(keyToPanel[key], true);
+        parentCanvasGroup.blocksRaycasts = true;
     }
 
     public void ClosePanel(Key key)
@@ -113,6 +114,8 @@ public class Toggle : MonoBehaviour
 
         toggleStates[key] = false;
         SetPanelVisibility(keyToPanel[key], false);
+        if (toggleStates.Values.All(state => !state))
+            parentCanvasGroup.blocksRaycasts = false;
     }
 
     private bool ValidateUIElement(GameObject ui, Key key)

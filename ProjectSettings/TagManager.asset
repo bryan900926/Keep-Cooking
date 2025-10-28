@@ -33,10 +33,10 @@ TagManager:
   - Cooker
   - Obstacles
   - PostProcess
-  - 
-  - 
-  - 
-  - 
+  - Clickable
+  - Waiter
+  - Player
+  - Customer
   - 
   - 
   - 

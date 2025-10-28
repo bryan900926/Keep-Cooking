@@ -21,5 +21,5 @@ public class Holding : MonoBehaviour
         return item;
     }
 
-    
+
 }

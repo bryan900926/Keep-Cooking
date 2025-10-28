@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3051094139859188077
 Transform:
   m_ObjectHideFlags: 0
@@ -96,4 +96,4 @@ MonoBehaviour:
   spotRadius: 0.5
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 448

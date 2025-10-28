@@ -5,6 +5,7 @@ public class WorkerManager : MonoBehaviour
     public static WorkerManager Instance { get; private set; }
     [SerializeField] private GameObject[] chefs;
     [SerializeField] private GameObject[] waiters;
+    public GameObject[] Waiters => waiters;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,10 +20,14 @@ public class WorkerManager : MonoBehaviour
     }
 
 
-    public GameObject SpawnChef(int idx)
+    public GameObject SpawnChef(int cookIdx, int workerIdx = -1)
     {
-        GameObject cooker = Instantiate(chefs[idx], transform.position, Quaternion.identity);
-        cooker.GetComponent<ChefStateManager>().Initialize(idx);
+        if (workerIdx == -1)
+        {
+            workerIdx = cookIdx;
+        }
+        GameObject cooker = Instantiate(chefs[workerIdx], transform.position, Quaternion.identity);
+        cooker.GetComponent<ChefStateManager>().Initialize(cookIdx);
         return cooker;
 
     }

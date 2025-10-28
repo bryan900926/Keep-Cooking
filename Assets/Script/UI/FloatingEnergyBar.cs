@@ -3,14 +3,8 @@ using UnityEngine.UI;
 
 public class FloatingEnergyBar : MonoBehaviour
 {
-    private Slider slider;
+    [SerializeField] private Slider slider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        slider = GetComponent<Slider>();
-
-    }
-
     public void UpdateEnergy(float ratio)
     {
         slider.value = ratio;

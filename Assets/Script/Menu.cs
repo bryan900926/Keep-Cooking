@@ -49,7 +49,9 @@ public class Menu : MonoBehaviour
         if (foodPrefabs.Length == 0 || idx == -1 || idx >= foodPrefabs.Length) return null;
         if (idx == -2) // -2 means leftover
         {
-            return Instantiate(leftoverFoods, spawnPos, Quaternion.identity);
+            GameObject leftover = Instantiate(leftoverFoods, spawnPos, Quaternion.identity);
+            leftover.GetComponent<PickUpV2>().FoodIdx = -2;
+            return leftover;
         }
         GameObject newPickup = Instantiate(foodPrefabs[idx], spawnPos, Quaternion.identity);
         newPickup.GetComponent<PickUpV2>().FoodIdx = idx;

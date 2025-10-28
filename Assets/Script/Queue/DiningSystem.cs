@@ -6,7 +6,7 @@ public class DiningSystem : SeatingSystem
 
     public static DiningSystem Instance { get; private set; }
 
-    private Dictionary<int, GameObject> seatToCustomer = new Dictionary<int, GameObject>();
+    private Dictionary<int, GameObject> seatToCustomer = new();
 
     public Dictionary<int, GameObject> SeatToCustomer { get { return seatToCustomer; } set { seatToCustomer = value; } }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

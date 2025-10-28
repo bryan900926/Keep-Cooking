@@ -5,6 +5,8 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] private GameObject[] spawnedCustomer;
     [SerializeField] private GameObject lining;
 
+    [SerializeField] private float[] spawnIntervals;
+
     private QueueSystem qs;
     private float spawnedTime = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,7 +25,7 @@ public class CustomerSpawner : MonoBehaviour
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();
-            spawnedTime = Random.Range(5, 10);
+            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
     }
 

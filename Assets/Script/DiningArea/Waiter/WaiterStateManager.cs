@@ -17,16 +17,21 @@ public class WaiterStateManager : MonoBehaviour
     private DiningSystem diningSystem;
     public AIPath aiPath;
 
-    private Transform waitingSpot;
+    private WaiterStandby waiterStandby;
 
+    public WaiterStandby WaiterStandby
+    {
+        get { return waiterStandby; }
+        set { waiterStandby = value; }
+    }
     private SpriteRenderer spriteRenderer;
 
+    private int standbySeatIdx = -1;
 
     void Start()
     {
         diningSystem = DiningSystem.Instance;
-        waitingSpot = GameObject.FindGameObjectWithTag("WaiterWaiting").transform;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        waiterStandby = GameObject.FindGameObjectWithTag("WaiterWaiting").GetComponent<WaiterStandby>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         destinationSetter = GetComponent<AIDestinationSetter>();
 
@@ -54,8 +59,27 @@ public class WaiterStateManager : MonoBehaviour
         currentState.Enter();
     }
 
-    public Transform GetWaitingSpot()
+    public void FindStandbySpot()
     {
-        return waitingSpot;
+        int idx = waiterStandby.FetchAvailSeat();
+        standbySeatIdx = idx;
+        if (idx == -1)
+        {
+            Debug.LogError("No available standby spot for waiter!");
+            return;
+        }
+        Debug.Log("Waiter " + gameObject.GetInstanceID() + " assigned to standby spot index: " + idx);
+        destinationSetter.target = waiterStandby.seats[idx].transform;
+    }
+
+    public void ClearStandbySpot()
+    {
+        if (standbySeatIdx == -1)
+        {
+            Debug.LogError("Standby seat index is invalid!");
+            return;
+        }
+        waiterStandby.FreeSeat(seatIndex: standbySeatIdx);
+        standbySeatIdx = -1;
     }
 }

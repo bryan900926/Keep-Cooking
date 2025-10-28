@@ -26,9 +26,14 @@ public class DragSlot : MonoBehaviour, IDropHandler
 
         Ingredients = eventData.pointerDrag.GetComponent<FoodProperty>().Ingredient.type;
 
-        Crafting.instance.SetIngredient(slotindex, Ingredients);
+        Craftingv2.Instance.SetIngredient(slotindex, Ingredients);
 
-        Crafting.instance.DebugItem();
+        // Crafting.Instance.DebugItem();
+    }
+
+    public void InitData()
+    {
+
     }
 
 }

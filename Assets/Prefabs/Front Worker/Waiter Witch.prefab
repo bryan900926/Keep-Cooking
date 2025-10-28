@@ -8,13 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4432186276100611164, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 9207b2ad46c21dd44b6f1183a6a6eb00, type: 2}
     - target: {fileID: -2577768684911283006, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
       propertyPath: workerData
       value: 
       objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
     - target: {fileID: 643545912579834569, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
       propertyPath: m_Name
-      value: Waiter Variant
+      value: Waiter Ghost
       objectReference: {fileID: 0}
     - target: {fileID: 1866872290307040329, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
       propertyPath: m_LocalPosition.x

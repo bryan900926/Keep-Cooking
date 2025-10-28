@@ -1,18 +1,20 @@
 using UnityEngine;
-
 public class ChefCookingState : ChefState
 {
-    public ChefCookingState(ChefStateManager chefStateManager) : base(chefStateManager) { }
+    float cookingTime;
+    public ChefCookingState(ChefStateManager chefStateManager, float cookingTime) : base(chefStateManager)
+    {
+        this.cookingTime = cookingTime;
+    }
 
     public override void Enter()
     {
-        // Cooking already initialized in EnableCooking
     }
 
     public override void Update()
     {
-        chefStateManager.CookingTime -= Time.deltaTime;
-        if (chefStateManager.CookingTime <= 0f)
+        cookingTime -= Time.deltaTime;
+        if (cookingTime <= 0f)
         {
             if (chefStateManager.CurrentDishIdx != -2)
             {

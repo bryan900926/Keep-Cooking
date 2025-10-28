@@ -26,6 +26,7 @@ public class CustomerWaitFoodState : CustomerState
                      customerStateManager.transform.position) <= 0.5f)
         {
             customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);
+            OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
 
         }
     }

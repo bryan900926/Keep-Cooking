@@ -1,7 +1,7 @@
 using UnityEngine;
-
 public class ChefNormalState : ChefState
 {
+    private bool isCooking = false;
     public ChefNormalState(ChefStateManager chefStateManager) : base(chefStateManager) { }
 
     public override void Enter()
@@ -28,5 +28,31 @@ public class ChefNormalState : ChefState
 
     public override void Update()
     {
+        if (!isCooking)
+        {
+            TableOrder();
+        }
+    }
+
+    private void TableOrder()
+    {
+        OrderInfo order = OrderSystem.Instance.GetOrderForChef();
+        if (order == null) return;
+        if (chefStateManager.CheckChefForgetRecipe())
+        {
+            Debug.Log("@Chef forgot recipe, randomizing");
+            chefStateManager.GetComponent<ChefRecipe>().RandomizeRecipe(order.FoodIdx);
+        }
+        isCooking = true;
+        if (Recipe.instance.CheckRecipeCorrect(order.FoodIdx, chefStateManager.GetComponent<ChefRecipe>().GetRecipe(order.FoodIdx)))
+        {
+            chefStateManager.EnableCooking(order.FoodIdx);
+        }
+        else
+        {
+            Debug.Log("@Chef forgot recipe, randomizing");
+            chefStateManager.EnableCooking(-2); // -2 for leftover
+            OrderSystem.Instance.AddFailOrder(order, false);
+        }
     }
 }
