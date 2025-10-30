@@ -19,7 +19,7 @@ public class ChefCookingState : ChefState
             if (chefStateManager.CurrentDishIdx != -2)
             {
                 chefStateManager.CreateDish();
-                chefStateManager.ChangeState(new ChefNormalState(chefStateManager));
+                chefStateManager.ChangeState(new ChefDeliverFoodState(chefStateManager));
             }
             else
             {

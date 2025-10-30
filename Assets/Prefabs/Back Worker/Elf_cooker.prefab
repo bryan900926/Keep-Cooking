@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8017285435227609815}
   - component: {fileID: 3448254258094578719}
   - component: {fileID: 5718104367975474734}
+  - component: {fileID: 1028435214098052398}
   m_Layer: 7
   m_Name: Elf_cooker
   m_TagString: Untagged
@@ -267,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 7109111838755793957}
   maxEnergy: 100
-  energyDecay: 1
+  energyDecay: 0
 --- !u!95 &-2623164930793033123
 Animator:
   serializedVersion: 7
@@ -360,6 +361,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2aa2747c7489ebc43b80c6e25a604a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1028435214098052398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7557519670ba48547b0dc37effb86d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2233673893475815800

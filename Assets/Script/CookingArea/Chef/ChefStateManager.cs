@@ -157,7 +157,10 @@ public class ChefStateManager : MonoBehaviour
             }
 
             Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
-            Menu.Instance.SpawnForPlayer(CurrentDishIdx, spawnPos);
+            GameObject food = Menu.Instance.SpawnForPlayer(CurrentDishIdx, spawnPos);
+            PickUpV2 pickUp = food.GetComponent<PickUpV2>();
+            pickUp.Pick(gameObject);
+            pickUp.Pickable = false;
         }
     }
 
@@ -169,11 +172,6 @@ public class ChefStateManager : MonoBehaviour
             machineState.SetOneFire();
         else
             machineState.SetBackToNormal();
-    }
-
-    public bool BeenToWorkingStation()
-    {
-        return Vector2.Distance(cookingMachine.GetComponent<CookingSpot>().GetSpot.position, transform.position) < 1f;
     }
 
     public GameObject CreateLeftover()
