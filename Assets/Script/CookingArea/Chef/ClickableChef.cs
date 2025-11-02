@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Collider2D))]
 public class ClickableChef : MonoBehaviour, IPointerClickHandler
 {
     private ChefStateManager chefStateManager;
+
+    [SerializeField] private Level levelSystem;
 
     private void Start()
     {
@@ -18,9 +19,9 @@ public class ClickableChef : MonoBehaviour, IPointerClickHandler
         Debug.Log("Chef clicked");
         if (chefStateManager != null)
         {
-            Craftingv2.Instance.SetCurrentChef(chefStateManager.gameObject);
-            Toggle.Instance.OpenPanel(Key.V);
-
+            levelSystem.LevelUp();
+            // Craftingv2.Instance.SetCurrentChef(chefStateManager.gameObject);
+            // Toggle.Instance.OpenPanel(Key.V);
         }
     }
 }
