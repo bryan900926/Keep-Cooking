@@ -15,7 +15,7 @@ namespace CookingArea.CookingMachine
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (stateManager.CurrentState is CookingMachineOnFireState && other.CompareTag(PLAYER_TAG) && other.GetComponent<Holding>().HoldingItem?.name == "WaterBucket")
+            if (stateManager.CurrentState is CookingMachineOnFireState && other.CompareTag(PLAYER_TAG))
             {
                 stateManager.SetBackToNormal();
             }

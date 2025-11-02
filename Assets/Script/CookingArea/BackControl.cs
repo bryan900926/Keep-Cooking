@@ -32,7 +32,7 @@ public class BackControl : MonoBehaviour
         // Wait until BackWorkerUIManager instance exists
         yield return new WaitUntil(() => BackWorkerUIManager.Instance != null);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             AssignTask(i);
         }
