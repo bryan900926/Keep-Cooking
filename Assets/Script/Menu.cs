@@ -39,7 +39,7 @@ public class Menu : MonoBehaviour
         GameObject newPickup = Instantiate(orderFoodsPrefabs[index], customer.transform.position, Quaternion.identity);
         newPickup.transform.SetParent(customer.transform);
         newPickup.transform.localPosition = new Vector3(0, 1f, 0);
-        customer.GetComponent<Holding>().SetHoldingItem(newPickup);
+        customer.GetComponent<Holding>().PickUpItem(newPickup);
 
         return index;
     }

@@ -34,16 +34,11 @@ namespace Accident.Spot
 
             if (other.TryGetComponent<Holding>(out Holding holding))
             {
-                if (holding.HoldingItem != null)
-                {
-                    GameObject heldItem = holding.RemoveHolding();
-                    Destroy(heldItem);
-                }
+                holding.RemoveAllHolding();
             }
             if (other.TryGetComponent<WaiterStateManager>(out WaiterStateManager waiterStateManager))
             {
-                Debug.Log("waiter lose the food due to oil spot");
-                waiterStateManager.foodIdx = -1;
+                waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
             }
         }
 

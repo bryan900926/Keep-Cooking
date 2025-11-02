@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PickUpV2 : MonoBehaviour
 {
     private string PICK_UP_TAG = "Player";  // Tag of the player object
-    private Vector3 offset = new Vector3(0, 2f, 0); // Position above player
+    private Vector3 offset = new(0, 2f, 0); // Position above player
 
     private bool pickedUp = false;
     private bool inRange = false;
@@ -41,7 +41,7 @@ public class PickUpV2 : MonoBehaviour
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && pickable)
         {
-            if (!pickedUp && inRange && playerInRange != null && !playerInRange.GetComponent<Holding>().HoldingItem)
+            if (!pickedUp && inRange && playerInRange != null && playerInRange.GetComponent<Holding>().HasSpace())
             {
                 Pick(playerInRange.gameObject);
             }
@@ -57,14 +57,9 @@ public class PickUpV2 : MonoBehaviour
     {
         // Pick up
         pickedUp = true;
-        if (picker.GetComponent<Holding>().HoldingItem) return;
-
-        transform.SetParent(picker.transform);
-        picker.GetComponent<Holding>().SetHoldingItem(gameObject);
-        transform.localPosition = offset;
+        if (!picker.GetComponent<Holding>().HasSpace()) return;
+        picker.GetComponent<Holding>().PickUpItem(gameObject);
         currentHolder = picker.transform;
-
-        Debug.Log("Picked up: " + gameObject.name);
     }
 
     public void Drop()
@@ -72,8 +67,7 @@ public class PickUpV2 : MonoBehaviour
         // Drop
         pickedUp = false;
         transform.SetParent(null);
-        currentHolder.GetComponent<Holding>().RemoveHolding();
+        currentHolder.GetComponent<Holding>().RemoveHoldingItem(gameObject);
         currentHolder  = null;
-        Debug.Log("Dropped: " + gameObject.name);
     }
 }

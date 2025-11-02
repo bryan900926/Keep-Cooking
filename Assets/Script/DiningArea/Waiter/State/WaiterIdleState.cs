@@ -1,13 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
+
 public class WaiterIdleState : WaiterState
 {
-    private int counterIdx = -1;
+    private List<int> targetCounters = new(); // counters to visit
+    private int currentCounterIdx = -1;
+    private List<OrderInfo> pendingOrders = new();
 
+    private int idx = 0;
 
-
-    public WaiterIdleState(WaiterStateManager waiterStateManager) : base(waiterStateManager)
-    {
-    }
+    public WaiterIdleState(WaiterStateManager waiterStateManager) : base(waiterStateManager) { }
 
     public override void Enter()
     {
@@ -17,40 +19,57 @@ public class WaiterIdleState : WaiterState
 
     public override void Update()
     {
-        if (counterIdx == -1 && waiterStateManager.foodIdx == -1)
+        var holding = waiterStateManager.Holding;
+
+        // --- Step 1: if not full, keep fetching food from counters ---
+        if (targetCounters.Count == 0 && holding.HasSpace() && CounterManager.Instance.GetFoodCountOnCounter > 0)
         {
-            FindCounter();
+            List<int> currentCounterIdxs = CounterManager.Instance.FetchFoodsFromCounter(holding.AvailableSpace);
+            targetCounters.AddRange(currentCounterIdxs);
+            MoveToNextCounter();
         }
-        else if (counterIdx != -1 && Vector2.Distance(waiterStateManager.transform.position, CounterManager.Instance.seats[counterIdx].transform.position) < 0.5f)
+        if (currentCounterIdx != -1 && Vector2.Distance(waiterStateManager.transform.position, CounterManager.Instance.seats[currentCounterIdx].transform.position) < 0.3f)
         {
-            CounterManager.Instance.RemoveFoodFromCounter(counterIdx, waiterStateManager);
-            counterIdx = -1;
+            waiterStateManager.Holding.PickUpItem(CounterManager.Instance.RemoveFoodFromCounter(currentCounterIdx));
         }
-        if (waiterStateManager.foodIdx != -1)
+        if (idx < targetCounters.Count) {
+            MoveToNextCounter();
+        }
+        if (idx >= targetCounters.Count)
         {
-            OrderInfo orderInfo = OrderSystem.Instance.GetHighestPriorityOrder(waiterStateManager.foodIdx);
-            if (orderInfo != null)
+            foreach (var item in holding.HoldingItem)
             {
-                waiterStateManager.tableIdx = orderInfo.TableIdx;
-                waiterStateManager.ChangeState(new WaiterServeFoodState(waiterStateManager, orderInfo));
+                var food = item.GetComponent<PickUpV2>();
+                if (food == null) continue;
+
+                OrderInfo orderInfo = OrderSystem.Instance.GetHighestPriorityOrder(food.FoodIdx);
+                if (orderInfo != null)
+                {
+                    pendingOrders.Add(orderInfo);
+                }
+            }
+
+            if (pendingOrders.Count > 0)
+            {
+                waiterStateManager.ChangeState(new WaiterServeFoodState(waiterStateManager, pendingOrders));
             }
         }
-
     }
 
     public override void Exit()
     {
         Debug.Log("Waiter " + waiterStateManager.gameObject.GetInstanceID() + " exiting Idle State");
         waiterStateManager.ClearStandbySpot();
-
     }
 
-    private void FindCounter()
+    private void MoveToNextCounter()
     {
-        counterIdx = CounterManager.Instance.FetchFoodFromCounter();
-        if (counterIdx != -1)
+        if (idx >= targetCounters.Count)
         {
-            waiterStateManager.destinationSetter.target = CounterManager.Instance.seats[counterIdx].transform;
+            return;
         }
+        currentCounterIdx = targetCounters[idx];
+        waiterStateManager.destinationSetter.target = CounterManager.Instance.seats[currentCounterIdx].transform;
+        idx++;
     }
 }

@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CounterManager : SeatingSystem
 {
     public static CounterManager Instance;
+
+    private HashSet<int> counterHoldingFood = new();
+    public int GetFoodCountOnCounter => counterHoldingFood.Count;
 
     void Awake()
     {
@@ -37,34 +41,38 @@ public class CounterManager : SeatingSystem
 
         // optional: reset local position if you want exact local alignment
         food.transform.localPosition = Vector3.zero;
+        counterHoldingFood.Add(counterIndex);
     }
 
-    public int FetchFoodFromCounter()
+    public List<int> FetchFoodsFromCounter(int maxfetch = 1)
     {
+        List<int> fetchedCounterIdxs = new();
         for (int i = 0; i < seats.Length; i++)
         {
             if (occupiedSeats.Contains(i) && seats[i].transform.childCount > 0)
             {
                 occupiedSeats.Remove(i);
                 availSeats.AddLast(i);
-                return i;
+                fetchedCounterIdxs.Add(i);
+                if (fetchedCounterIdxs.Count >= maxfetch)
+                    break;
             }
         }
-        return -1;
+        return fetchedCounterIdxs;
     }
 
-    public void RemoveFoodFromCounter(int counterIndex, WaiterStateManager waiterStateManager)
+    public GameObject RemoveFoodFromCounter(int counterIndex)
     {
         if (counterIndex >= 0 && counterIndex < seats.Length)
         {
             if (seats[counterIndex].transform.childCount > 0)
             {
                 GameObject foodItem = seats[counterIndex].transform.GetChild(0).gameObject;
-                foodItem.GetComponent<PickUpV2>().Pick(waiterStateManager.gameObject);
-                foodItem.GetComponent<PickUpV2>().Pickable = false;
-                waiterStateManager.foodIdx = foodItem.GetComponent<PickUpV2>().FoodIdx;
+
+                return foodItem;
             }
         }
+        return null;
     }
 
 }

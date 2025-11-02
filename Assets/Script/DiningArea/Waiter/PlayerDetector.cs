@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiningArea.Waiter
@@ -17,13 +18,18 @@ namespace DiningArea.Waiter
         {
             if (stateManager.CurrentState is WaiterIdleState && other.CompareTag(PLAYER_TAG))
             {
-                GameObject foodItem = other.GetComponent<Holding>().HoldingItem;
-                if (foodItem != null && GetComponent<Holding>().HoldingItem == null && foodItem.GetComponent<PickUpV2>().FoodIdx != -2)
+                List<GameObject> foodItems = other.GetComponent<Holding>().HoldingItem;
+                if (foodItems != null && GetComponent<Holding>().HasSpace())
                 {
-                    other.GetComponent<Holding>().RemoveHolding();
-                    foodItem.GetComponent<PickUpV2>().Pick(gameObject);
-                    foodItem.GetComponent<PickUpV2>().Pickable = false;
-                    stateManager.foodIdx = foodItem.GetComponent<PickUpV2>().FoodIdx;
+                    foreach (var foodItem in foodItems.ToArray())
+                    {
+                        if (foodItem.GetComponent<PickUpV2>().FoodIdx != -2)
+                        {
+                            other.GetComponent<Holding>().RemoveHoldingItem(foodItem);
+                            foodItem.GetComponent<PickUpV2>().Pickable = false;
+                            GetComponent<Holding>().PickUpItem(foodItem);
+                        }
+                    }
                 }
             }
         }

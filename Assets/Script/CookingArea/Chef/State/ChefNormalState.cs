@@ -50,7 +50,7 @@ public class ChefNormalState : ChefState
         }
         else
         {
-            Debug.Log("@Chef forgot recipe, randomizing");
+            Debug.Log($"Chef forgot recipe {order.FoodIdx}, creating leftover");
             chefStateManager.EnableCooking(-2); // -2 for leftover
             OrderSystem.Instance.AddFailOrder(order, false);
         }

@@ -49,9 +49,10 @@ public class ChefDeliverFoodState : ChefState
     {
         if (counterIndex != -1 && Vector2.Distance(chefStateManager.transform.position, chefStateManager.Destination.position) < 0.3f)
         {
-            GameObject food = chefStateManager.GetComponent<Holding>().RemoveHolding();
-            CounterManager.Instance.ChefFoodToCounter(counterIndex, food);
+            GameObject food = chefStateManager.GetComponent<Holding>().HoldingItem[0];
+            chefStateManager.GetComponent<Holding>().RemoveHoldingItem(food);
             hasDelivered = true;
+            CounterManager.Instance.ChefFoodToCounter(counterIndex, food);
 
             // Now go back to the cooking station
             chefStateManager.Destination = chefStateManager.CookingMachine.GetComponent<CookingSpot>().GetSpot;

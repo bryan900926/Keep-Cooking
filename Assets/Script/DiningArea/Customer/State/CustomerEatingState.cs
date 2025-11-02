@@ -11,7 +11,7 @@ public class CustomerEatingState : CustomerState
 
     public override void Enter()
     {
-        GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem;
+        GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem[0];
         if (holdingFood != null)
         {
             holdingFood.GetComponent<DishStateManager>().ChangeState(new DishEatenState(holdingFood.GetComponent<DishStateManager>(), eatingDuration));
@@ -33,10 +33,6 @@ public class CustomerEatingState : CustomerState
     {
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
-        GameObject food = customerStateManager.GetComponent<Holding>().HoldingItem;
-        if (food != null)
-        {
-            Object.Destroy(food);
-        }
+        customerStateManager.GetComponent<Holding>().RemoveAllHolding();
     }
 }

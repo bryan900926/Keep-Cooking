@@ -7,8 +7,15 @@ public class WaiterStateManager : MonoBehaviour
     public WorkerData WorkerData => workerData;
     [SerializeField] private WaiterState currentState;
 
-    public WaiterState CurrentState => currentState;
-    public int foodIdx = -1;
+    public WaiterState CurrentState
+    {
+        get { return currentState; }
+        set { currentState = value; }
+    }
+
+    private Holding holding;
+
+    public Holding Holding => holding;
     public int tableIdx = -1;
 
     public AIDestinationSetter destinationSetter;
@@ -34,6 +41,7 @@ public class WaiterStateManager : MonoBehaviour
         waiterStandby = GameObject.FindGameObjectWithTag("WaiterWaiting").GetComponent<WaiterStandby>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         destinationSetter = GetComponent<AIDestinationSetter>();
+        holding = GetComponent<Holding>();
 
         if (workerData != null)
         {

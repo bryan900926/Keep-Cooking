@@ -14,11 +14,7 @@ public class CustomerToChefState : CustomerState
     public override void Enter()
     {
         exitPoint = GameObject.FindGameObjectWithTag(EXIT_TAG).transform;
-        GameObject holdItem = customerStateManager.GetComponent<Holding>().RemoveHolding();
-        if (holdItem)
-        {
-            Object.Destroy(holdItem);
-        }
+        customerStateManager.GetComponent<Holding>().RemoveAllHolding();
         Debug.Log($"{customerStateManager.gameObject.name} is going to chef at cooker index {cookerIdx}.");
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DestinationSetter.target = exitPoint;
