@@ -18,6 +18,7 @@ public class WaiterServeFoodState : WaiterState
 
     public override void Enter()
     {
+        Debug.Log($"Waiter {waiterStateManager.name} starts serving food.");
         if (pendingOrders.Count == 0)
         {
             Debug.LogWarning("Waiter has no orders to serve.");
@@ -30,16 +31,17 @@ public class WaiterServeFoodState : WaiterState
 
     public override void Update()
     {
-        if (waiterStateManager.aiPath.reachedDestination && currentOrder != null)
+        // If no more dishes, return to Idle
+        if (pendingOrders.Count == 0)
+        {
+            waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
+        }
+
+        if (pendingOrders.Count > 0 && waiterStateManager.aiPath.reachedDestination && currentOrder != null)
         {
             TryServeDish(currentOrder);
         }
 
-        // If no more dishes, return to Idle
-        if (pendingOrders.Count == 0 && waiterStateManager.Holding.HoldingCount == 0)
-        {
-            waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
-        }
     }
 
     public override void Exit()
@@ -71,11 +73,16 @@ public class WaiterServeFoodState : WaiterState
         GameObject customer = DiningSystem.Instance.GetCustomerAtSeat(order.TableIdx);
         if (customer != null)
         {
-            var customerState = customer.GetComponent<CustomerStateManager>();
-            if (customerState.OrderedFoodIdx == order.FoodIdx)
+            var customerStateManager = customer.GetComponent<CustomerStateManager>();
+            if (customerStateManager.CurrentState is not CustomerWaitFoodState)
+            {
+                Debug.Log(customerStateManager.CurrentState.GetType().Name);
+                return;
+            }
+            if (customerStateManager.OrderedFoodIdx == order.FoodIdx)
             {
                 Debug.Log($"Waiter served correct dish {order.FoodIdx} to table {order.TableIdx}");
-                customerState.ChangeState(new CustomerEatingState(customerState));
+                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager));
 
                 // Remove the served item from waiter’s hands
                 var holding = waiterStateManager.Holding;
@@ -86,7 +93,7 @@ public class WaiterServeFoodState : WaiterState
             }
             else
             {
-                Debug.LogWarning($"Wrong dish! Expected {customerState.OrderedFoodIdx}, got {order.FoodIdx}");
+                Debug.LogWarning($"Wrong dish! Expected {customerStateManager.OrderedFoodIdx}, got {order.FoodIdx}");
                 OrderSystem.Instance.AddFailOrder(order, true);
             }
             pendingOrders.Dequeue();

@@ -3,6 +3,7 @@ using UnityEngine;
 public class BeerMachineStateManager : MonoBehaviour
 {
     private BeerMachineState currentState;
+    public BeerMachineState CurrentState => currentState;
     [SerializeField] private CanvasGroup fillProgressCanvasGroup;
 
     public CanvasGroup FillProgressCanvasGroup {

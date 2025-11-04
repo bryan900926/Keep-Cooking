@@ -249,6 +249,7 @@ MonoBehaviour:
   cookIdx: -2
   currentState:
     rid: -2
+  currentDishIdxs: 
   references:
     version: 2
     RefIds:
@@ -375,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7557519670ba48547b0dc37effb86d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalSpacing: 1
 --- !u!1 &390721976175079358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 7332072550583970513}
   levelUpHint: {fileID: 4866476662178880118}
+  holdingSystem: {fileID: 1028435214098052398}
 --- !u!1 &7772959863588163116
 GameObject:
   m_ObjectHideFlags: 0

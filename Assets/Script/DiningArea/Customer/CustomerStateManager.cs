@@ -57,7 +57,7 @@ public class CustomerStateManager : MonoBehaviour
             energy.UpdateEnergy(Time.deltaTime);
 
         }
-        if (energy.CurrentEnergy <= 0 && !(currentState is CustomerToChefState))
+        if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
         {
             ChangeState(new CustomerLeaveState(this));
         }

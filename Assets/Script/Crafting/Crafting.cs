@@ -72,7 +72,6 @@ public class Crafting : MonoBehaviour
             if (chefStateManager != null && AreListsEqualInOrder(correctRecipe, inputRecipe))
             {
                 int foodidx = foodPrefab.GetComponent<DishProperty>().Foodidx;
-                chefStateManager.EnableCooking(foodidx);
                 findMatch = true;
                 break;
             }
@@ -80,7 +79,6 @@ public class Crafting : MonoBehaviour
         if (!findMatch && chefStateManager != null)
         {
             CenterMessage.Instance.ShowMessage(CenterMessage.FAILED_COOK);
-            chefStateManager.EnableCooking(-2);
         }
         Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
     }

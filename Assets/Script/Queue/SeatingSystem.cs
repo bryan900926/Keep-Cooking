@@ -14,7 +14,7 @@ public abstract class SeatingSystem : MonoBehaviour
     {
     }
 
-    public int FetchAvailSeat()
+    public virtual int FetchAvailSeat()
     {
         lock (seatLock)
         {

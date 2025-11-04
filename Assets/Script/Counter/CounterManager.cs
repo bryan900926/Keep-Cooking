@@ -5,14 +5,17 @@ public class CounterManager : SeatingSystem
 {
     public static CounterManager Instance;
 
-    private HashSet<int> counterHoldingFood = new();
-    public int GetFoodCountOnCounter => counterHoldingFood.Count;
+    public int GetFoodCountOnCounter => occupiedSeats.Count;
+
+    private readonly HashSet<int> reservedSeats = new();
+
+    private HashSet<int> counterWithFood = new();
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -36,26 +39,28 @@ public class CounterManager : SeatingSystem
         food.transform.SetParent(seats[counterIndex].transform, false);
 
         // align position and rotation with the seat
-        food.transform.position = seats[counterIndex].transform.position;
-        food.transform.rotation = seats[counterIndex].transform.rotation;
+        food.transform.SetPositionAndRotation(seats[counterIndex].transform.position, seats[counterIndex].transform.rotation);
 
         // optional: reset local position if you want exact local alignment
         food.transform.localPosition = Vector3.zero;
-        counterHoldingFood.Add(counterIndex);
+        counterWithFood.Add(counterIndex);
     }
 
     public List<int> FetchFoodsFromCounter(int maxfetch = 1)
     {
+        if (occupiedSeats.Count == 0)
+            return new List<int>();
         List<int> fetchedCounterIdxs = new();
         for (int i = 0; i < seats.Length; i++)
         {
-            if (occupiedSeats.Contains(i) && seats[i].transform.childCount > 0)
+            if (counterWithFood.Contains(i) && !reservedSeats.Contains(i))
             {
-                occupiedSeats.Remove(i);
-                availSeats.AddLast(i);
                 fetchedCounterIdxs.Add(i);
+                reservedSeats.Add(i);
                 if (fetchedCounterIdxs.Count >= maxfetch)
+                {
                     break;
+                }
             }
         }
         return fetchedCounterIdxs;
@@ -65,14 +70,19 @@ public class CounterManager : SeatingSystem
     {
         if (counterIndex >= 0 && counterIndex < seats.Length)
         {
-            if (seats[counterIndex].transform.childCount > 0)
+            if (counterWithFood.Contains(counterIndex))
             {
                 GameObject foodItem = seats[counterIndex].transform.GetChild(0).gameObject;
-
+                reservedSeats.Remove(counterIndex);
+                counterWithFood.Remove(counterIndex);
+                FreeSeat(counterIndex);
                 return foodItem;
+            }
+            else
+            {
+                Debug.LogError("No food item found on counter " + counterIndex);
             }
         }
         return null;
     }
-
 }

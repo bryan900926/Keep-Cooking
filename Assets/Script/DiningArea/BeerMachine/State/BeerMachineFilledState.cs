@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BeerMachineFilledState : BeerMachineState
 {
-    private float fillingTime;
+    private readonly float fillingTime;
 
 
     private float elapsedTime = 0f;
@@ -24,8 +24,13 @@ public class BeerMachineFilledState : BeerMachineState
         stateManager.GetComponent<Energy>().Replenish(Time.deltaTime);
         if (elapsedTime >= fillingTime)
         {
-            Menu.Instance.SpawnForPlayer(3, stateManager.transform.position + Vector3.forward * 0.25f);
-            stateManager.ChangeState(new BeerMachineNormalState(stateManager));
+            int counterIndex = CounterManager.Instance.FetchAvailSeat();
+            if (counterIndex != -1)
+            {
+                GameObject beer = Menu.Instance.SpawnForPlayer(3, stateManager.transform.position);
+                CounterManager.Instance.ChefFoodToCounter(counterIndex, beer);
+                stateManager.ChangeState(new BeerMachineNormalState(stateManager));
+            }
         }
     }
 

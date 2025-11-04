@@ -3,19 +3,19 @@ using UnityEngine;
 public class ChefDeliverFoodState : ChefState
 {
     private int counterIndex = -1;
-    private bool hasDelivered = false;
+    private Holding holding;
 
     public ChefDeliverFoodState(ChefStateManager chefStateManager) : base(chefStateManager) { }
 
     public override void Enter()
     {
-        hasDelivered = false;
+        holding = chefStateManager.GetComponent<Holding>();
         counterIndex = -1;
     }
 
     public override void Update()
     {
-        if (!hasDelivered)
+        if (holding.HoldingCount > 0)
         {
             FindCounterForFood();
             DeliverToCounter();
@@ -29,7 +29,6 @@ public class ChefDeliverFoodState : ChefState
     public override void Exit()
     {
         counterIndex = -1;
-        hasDelivered = false;
     }
 
     private void FindCounterForFood()
@@ -49,14 +48,10 @@ public class ChefDeliverFoodState : ChefState
     {
         if (counterIndex != -1 && Vector2.Distance(chefStateManager.transform.position, chefStateManager.Destination.position) < 0.3f)
         {
-            GameObject food = chefStateManager.GetComponent<Holding>().HoldingItem[0];
-            chefStateManager.GetComponent<Holding>().RemoveHoldingItem(food);
-            hasDelivered = true;
+            GameObject food = holding.HoldingItem[0];
+            holding.RemoveHoldingItem(food);
             CounterManager.Instance.ChefFoodToCounter(counterIndex, food);
-
-            // Now go back to the cooking station
-            chefStateManager.Destination = chefStateManager.CookingMachine.GetComponent<CookingSpot>().GetSpot;
-            chefStateManager.DestinationSetter.target = chefStateManager.Destination;
+            counterIndex = -1;
         }
     }
 
@@ -65,6 +60,7 @@ public class ChefDeliverFoodState : ChefState
         if (Vector2.Distance(chefStateManager.transform.position, chefStateManager.Destination.position) < 0.3f)
         {
             Debug.Log("Chef returned to cooking station");
+            chefStateManager.Destination = null;
             chefStateManager.ChangeState(new ChefNormalState(chefStateManager));
         }
     }

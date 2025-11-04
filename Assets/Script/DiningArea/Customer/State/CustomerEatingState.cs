@@ -11,6 +11,10 @@ public class CustomerEatingState : CustomerState
 
     public override void Enter()
     {
+        if (customerStateManager.GetComponent<Holding>().HoldingItem.Count == 0)
+        {
+            Debug.LogError("Customer has no food to eat!");
+        }
         GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem[0];
         if (holdingFood != null)
         {

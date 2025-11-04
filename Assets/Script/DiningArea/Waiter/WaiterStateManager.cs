@@ -69,15 +69,17 @@ public class WaiterStateManager : MonoBehaviour
 
     public void FindStandbySpot()
     {
-        int idx = waiterStandby.FetchAvailSeat();
-        standbySeatIdx = idx;
-        if (idx == -1)
+        if (standbySeatIdx == -1)
         {
-            Debug.LogError("No available standby spot for waiter!");
-            return;
+            standbySeatIdx = waiterStandby.FetchAvailSeat();
+            if (standbySeatIdx == -1)
+            {
+                Debug.LogError("No available standby spot for waiter!");
+                return;
+            }
         }
-        Debug.Log("Waiter " + gameObject.GetInstanceID() + " assigned to standby spot index: " + idx);
-        destinationSetter.target = waiterStandby.seats[idx].transform;
+        Debug.Log("Waiter " + gameObject.GetInstanceID() + " assigned to standby spot index: " + standbySeatIdx);
+        destinationSetter.target = waiterStandby.seats[standbySeatIdx].transform;
     }
 
     public void ClearStandbySpot()

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class OrderSystem : MonoBehaviour
 {
@@ -40,19 +39,25 @@ public class OrderSystem : MonoBehaviour
 
     public void AddFailOrder(OrderInfo orderInfo, bool isWaiterOrder)
     {
-        chefOrders.Enqueue(orderInfo, orderInfo.EndTime);
+        if (orderInfo.FoodIdx < Menu.Instance.FoodPrefabs.Length - 1)
+            chefOrders.Enqueue(orderInfo, orderInfo.EndTime);
         if (isWaiterOrder)
         {
             tableToOrders[orderInfo.FoodIdx].Enqueue(orderInfo, orderInfo.EndTime);
         }
     }
 
-    public OrderInfo GetOrderForChef()
+    public List<OrderInfo> GetOrderForChef(int maxOrders = 1)
     {
-        if (chefOrders.Count == 0)
-            return null;
-        OrderInfo orderInfo = chefOrders.Dequeue();
-        return orderInfo;
+        List<OrderInfo> orderInfos = new();
+        int cnt = 0;
+        while (cnt < maxOrders && chefOrders.Count > 0)
+        {
+            orderInfos.Add(chefOrders.Dequeue());
+            cnt++;
+        }
+        Debug.Log($"Dequeue {cnt} orders for chef");
+        return orderInfos;
     }
 
 }

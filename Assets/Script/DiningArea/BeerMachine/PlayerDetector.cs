@@ -17,7 +17,7 @@ namespace DiningArea.BeerMachine
 
         void Update()
         {
-            if (playerInside && Keyboard.current.rKey.wasPressedThisFrame)
+            if (playerInside && Keyboard.current.rKey.wasPressedThisFrame && stateManager.CurrentState is BeerMachineNormalState)
             {
                 int idx = HoldingSystem.Instance.FindProp(PropData.Tools.BEER);
                 if (idx != -1)

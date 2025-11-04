@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -65,12 +66,18 @@ public class ChefStateManager : MonoBehaviour
 
     public WorkerData WorkerData => workerData;
 
-    public int CurrentDishIdx { get; set; } = -1;
+    public List<int> currentDishIdxs = new();
+    public List<int> CurrentDishIdxs { get => currentDishIdxs; set => currentDishIdxs = value; }
     public float CookingTime { get; set; }
 
     public Energy Energy => energy;
 
     public ChefRecipe ChefRecipe => chefRecipe;
+
+    private Holding holding;
+
+    public Holding Holding => holding;
+
 
 
     void Awake()
@@ -78,6 +85,7 @@ public class ChefStateManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         chefRecipe = GetComponent<ChefRecipe>();
+        holding = GetComponent<Holding>();
     }
 
     void Start()
@@ -120,48 +128,19 @@ public class ChefStateManager : MonoBehaviour
         currentState.Enter();
     }
 
-    public void EnableCooking(int foodIdx) // foodIdx = -2 means leftover
+    public void EnableCookingManyFoods()
     {
-        if (currentState is ChefFoodRottenState)
-        {
-            CenterMessage.Instance.ShowMessage(CenterMessage.FOOD_ROTTEN);
-            return;
-        }
         if (gameObject == null || cookingMachine == null) return;
         bool canCook = energy.CurrentEnergy > 0 &&
                        cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
                        currentState is ChefNormalState;
         if (!canCook) return;
-        CurrentDishIdx = foodIdx;
+        List<OrderInfo> orderInfos = OrderSystem.Instance.GetOrderForChef(Holding.AvailableSpace);
+        if (orderInfos == null || orderInfos.Count == 0) return;
         CookingTime = UnityEngine.Random.Range(3f, 5f);
-        ChangeState(new ChefCookingState(this, CookingTime));
+        ChangeState(new ChefCookingState(this, CookingTime, orderInfos));
         cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
-    }
 
-    public void CreateDish()
-    {
-        var menu = Menu.Instance.FoodPrefabs;
-
-        if (CurrentDishIdx != -1 && CurrentDishIdx < menu.Length && cookIdx != -1)
-        {
-
-            float wrongProb = Mathf.Clamp01(1 - energy.CurrentEnergy / energy.MaxEnergy);
-
-            if (UnityEngine.Random.value < wrongProb)
-            {
-                SetFireActive(true);
-            }
-            else
-            {
-                cookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
-            }
-
-            Vector2 spawnPos = (Vector2)transform.position + Vector2.right;
-            GameObject food = Menu.Instance.SpawnForPlayer(CurrentDishIdx, spawnPos);
-            PickUpV2 pickUp = food.GetComponent<PickUpV2>();
-            pickUp.Pick(gameObject);
-            pickUp.Pickable = false;
-        }
     }
 
     public void SetFireActive(bool active)
