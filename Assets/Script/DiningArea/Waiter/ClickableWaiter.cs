@@ -1,0 +1,1 @@
+public class ClickableWaiter : ClickableCharacter<WaiterStateManager> { }
