@@ -56,7 +56,6 @@ public class OrderSystem : MonoBehaviour
             orderInfos.Add(chefOrders.Dequeue());
             cnt++;
         }
-        Debug.Log($"Dequeue {cnt} orders for chef");
         return orderInfos;
     }
 

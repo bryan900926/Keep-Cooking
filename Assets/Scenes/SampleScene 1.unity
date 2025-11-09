@@ -2673,7 +2673,10 @@ MonoBehaviour:
   - {fileID: 1645563423}
   multipleIngredients: 000000000000000000000000000000000000000000000000000000000000000000000000
   abc: {x: 100, y: 100}
+<<<<<<< HEAD
   status: 0
+=======
+>>>>>>> cb37ed3a5ea3271a15168182224a12dfd9398159
 --- !u!1 &981144801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3735,10 @@ RectTransform:
   - {fileID: 975726706}
   - {fileID: 1530109518}
   - {fileID: 1752575431}
+<<<<<<< HEAD
   - {fileID: 1945645402}
+=======
+>>>>>>> cb37ed3a5ea3271a15168182224a12dfd9398159
   m_Father: {fileID: 1162314779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5039,8 +5045,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e368ff98fb8ea4c8838a8b20801cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   Dishes:
   - {fileID: 1483259110756269131, guid: 89317727fd88dbc468f8d77519bd5769, type: 3}
+=======
+  dishes: []
+>>>>>>> cb37ed3a5ea3271a15168182224a12dfd9398159
 --- !u!1 &1763552352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotindex: 3
+<<<<<<< HEAD
 --- !u!1 &1945645401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,6 +5653,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945645401}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> cb37ed3a5ea3271a15168182224a12dfd9398159
 --- !u!1 &1961568146
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,6 +5998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ingredient: {fileID: 11400000, guid: 62f8c4b35543c614e9332cf7ccefe6bc, type: 2}
+<<<<<<< HEAD
 --- !u!1 &2007726108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,6 +6135,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007726108}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> cb37ed3a5ea3271a15168182224a12dfd9398159
 --- !u!1 &2008620804
 GameObject:
   m_ObjectHideFlags: 0

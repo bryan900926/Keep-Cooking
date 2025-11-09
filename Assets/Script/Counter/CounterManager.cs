@@ -75,6 +75,7 @@ public class CounterManager : SeatingSystem
                 GameObject foodItem = seats[counterIndex].transform.GetChild(0).gameObject;
                 reservedSeats.Remove(counterIndex);
                 counterWithFood.Remove(counterIndex);
+                Debug.Log("Food item removed from counter " + counterIndex);
                 FreeSeat(counterIndex);
                 return foodItem;
             }
