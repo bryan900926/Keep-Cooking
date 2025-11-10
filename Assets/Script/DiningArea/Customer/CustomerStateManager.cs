@@ -35,6 +35,9 @@ public class CustomerStateManager : MonoBehaviour
     private ViewEffect viewEffect;
     public ViewEffect ViewEffect => viewEffect;
 
+    private float buyingPrice;
+    public float BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

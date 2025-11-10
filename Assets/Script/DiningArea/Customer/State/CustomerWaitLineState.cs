@@ -8,7 +8,7 @@ public class CustomerWaitLineState : CustomerState
     {
         if (customerStateManager.DiningIdx == -1 && customerStateManager.LiningIdx != -1 && customerStateManager.AiPath.reachedDestination)
         {
-            TryToDine(customerStateManager);
+            TryToReceipt(customerStateManager);
         }
         TryToWaitLine(customerStateManager);
     }
@@ -23,16 +23,14 @@ public class CustomerWaitLineState : CustomerState
             customer.DestinationSetter.target = customer.QueueSystem.seats[idx].transform;
         }
     }
-    private void TryToDine(CustomerStateManager customer)
+    private void TryToReceipt(CustomerStateManager customer)
     {
         if (customer.DiningIdx != -1 ) return; // Already dining
-        int idx = DiningSystem.Instance.FetchAvailSeat();
+        int idx = ReceiptSystem.Instance.FetchAvailSeat();
         if (idx != -1)
         {
-            customer.DiningIdx = idx;
             customer.QueueSystem.FreeSeat(customer.LiningIdx);
-            DiningSystem.Instance.SeatToCustomer[customer.DiningIdx] = customer.gameObject;
-            customer.ChangeState(new CustomerWaitFoodState(customer));
+            customer.ChangeState(new CustomerOrderState(customer, idx));
         }
     }
 }
