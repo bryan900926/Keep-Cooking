@@ -38,5 +38,6 @@ public class CustomerEatingState : CustomerState
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
+        ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
     }
 }

@@ -78,7 +78,6 @@ public class WaiterStateManager : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("Waiter " + gameObject.GetInstanceID() + " assigned to standby spot index: " + standbySeatIdx);
         destinationSetter.target = waiterStandby.seats[standbySeatIdx].transform;
     }
 

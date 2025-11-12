@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
     {
         if (foodPrefabs.Length == 0) return -1;
 
-        int index = Random.Range(0, foodPrefabs.Length);
+        int index = Random.Range(0, foodPrefabs.Length - 1);
 
         GameObject newPickup = Instantiate(orderFoodsPrefabs[index], customer.transform.position, Quaternion.identity);
         newPickup.transform.SetParent(customer.transform);

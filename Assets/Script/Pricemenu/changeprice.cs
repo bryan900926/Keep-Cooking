@@ -3,76 +3,85 @@ using TMPro;
 
 public class PriceEditor : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField priceField1;
-    [SerializeField] private TMP_InputField priceField2;
-    [SerializeField] private TMP_InputField priceField3;
+    [SerializeField] private TMP_InputField[] priceFields;
+    [SerializeField] private float[] menuPrices;
 
-    public TMP_InputField PriceField1 => priceField1;
-    public TMP_InputField PriceField2 => priceField2;
-    public TMP_InputField PriceField3 => priceField3;
+    private float[] initialPrices;
 
-    public static int price1 = 10;
-    public static int price2 = 10;
-    public static int price3 = 10;
+    public static PriceEditor Instance;
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
-        SetupPriceField(priceField1, price1, 1);
-        SetupPriceField(priceField2, price2, 2);
-        SetupPriceField(priceField3, price3, 3);
+        for (int i = 0; i < menuPrices.Length; i++)
+        {
+            TMP_InputField field = priceFields[i];
+            if (field != null)
+            {
+                SetupPriceField(field, menuPrices[i], i);
+            }
+        }
+        initialPrices = (float[])menuPrices.Clone();
     }
 
-    private void SetupPriceField(TMP_InputField field, int defaultValue, int index)
+    private void SetupPriceField(TMP_InputField field, float defaultValue, int index)
     {
         field.contentType = TMP_InputField.ContentType.IntegerNumber;
         field.text = defaultValue + "\u0024";
 
         field.onEndEdit.AddListener((value) => OnPriceChanged(field, value, index));
+        field.onSelect.AddListener((_) => OnClickPriceButton(index));
     }
 
     private void OnPriceChanged(TMP_InputField field, string value, int index)
     {
-        int oldValue = GetPrice(index); // 先存舊值，錯誤時回復用
-
-        if (int.TryParse(value, out int newValue))
+        if (float.TryParse(value, out float newValue))
         {
-            SetPrice(index, newValue);
+            menuPrices[index] = newValue;
             field.text = newValue + "\u0024";
-            Debug.Log($"更新價格 {index} 為：" + field.text);
-        }
-        else
-        {
-            // 回填舊值
-            field.text = oldValue + "\u0024";
-            Debug.LogWarning("輸入不是有效數字：" + value + " 已回復舊值");
         }
     }
 
-    private int GetPrice(int index)
+    private void OnClickPriceButton(int index)
     {
-        switch (index)
-        {
-            case 1: return price1;
-            case 2: return price2;
-            case 3: return price3;
-        }
-        return 0;
-    }
-
-    private void SetPrice(int index, int newValue)
-    {
-        switch (index)
-        {
-            case 1: price1 = newValue; break;
-            case 2: price2 = newValue; break;
-            case 3: price3 = newValue; break;
-        }
+        var field = priceFields[index];
+        field.text = field.text.Replace("\u0024", "");
     }
 
     public void IntPriceChange(TMP_InputField field, int value)
     {
-       field.text = value.ToString() + "\u0024";
-       Debug.Log("更新價格為：" + field.text);
+        field.text = value.ToString() + "\u0024";
     }
+
+    public float GetPriceForCustomer(int foodIdx)
+    {
+        if (foodIdx < 0 || foodIdx >= menuPrices.Length)
+        {
+            Debug.LogWarning("Invalid food index: " + foodIdx);
+            return -1;
+        }
+
+        float timeRatio = TimeManager.Instance.GetRemainingTimeRatio();
+        return Mathf.Lerp(initialPrices[foodIdx], 0, 1 - timeRatio); // price decreases over 500 sec
+    }
+
+    public float GetSellingPrice(int foodIdx)
+    {
+        if (foodIdx < 0 || foodIdx >= menuPrices.Length)
+        {
+            Debug.LogWarning("Invalid food index: " + foodIdx);
+            return -1;
+        }
+        return menuPrices[foodIdx];
+    }
+
 }

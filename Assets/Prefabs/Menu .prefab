@@ -223,6 +223,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dishID: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  darkColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  dishBtnManager: {fileID: 0}
 --- !u!1 &1810644998075051059
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dishID: 2
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  darkColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  dishBtnManager: {fileID: 0}
 --- !u!1 &2172218931645000841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1342,6 @@ GameObject:
   - component: {fileID: 7258663689523522125}
   - component: {fileID: 5080439723943797680}
   - component: {fileID: 4887956114306091269}
-  - component: {fileID: 8281220946318854877}
   m_Layer: 5
   m_Name: 'Menu '
   m_TagString: Untagged
@@ -1403,18 +1408,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &8281220946318854877
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6115498588790448475}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &6245995028944706415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,3 +2198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dishID: 1
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  darkColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  dishBtnManager: {fileID: 0}

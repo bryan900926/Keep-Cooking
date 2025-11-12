@@ -26,6 +26,7 @@ public class Toggle : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {
@@ -76,6 +77,17 @@ public class Toggle : MonoBehaviour
         if (!keyToPanel.ContainsKey(key)) return;
 
         bool newState = !toggleStates[key];
+        if (key == Key.Escape)
+        {
+            if (newState)
+            {
+                GameManager.Instance.PauseGame();
+            }
+            else
+            {
+                GameManager.Instance.ResumeGame();
+            }
+        }
         if (newState)
             OpenPanel(key);
         else
@@ -90,7 +102,7 @@ public class Toggle : MonoBehaviour
         panel.blocksRaycasts = visible;
     }
 
-    private void CloseAllUIPanels()
+    public void CloseAllUIPanels()
     {
         foreach (var key in keysList)
             toggleStates[key] = false;
@@ -133,5 +145,10 @@ public class Toggle : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void OnClickSetting()
+    {
+        TogglePanel(Key.Escape);
     }
 }

@@ -11,6 +11,8 @@ public class MenuDisplayer : MonoBehaviour
     [SerializeField] private IngredientData[] ingredientDatas;
     private Dictionary<int, IngredientData> ingredientDataDict;
 
+    public IngredientData[] IngredientDatas => ingredientDatas;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
