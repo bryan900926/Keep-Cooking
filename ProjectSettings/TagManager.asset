@@ -22,6 +22,7 @@ TagManager:
   - Exit
   - WaiterWaiting
   - PostProcess
+  - GameRoot
   layers:
   - Default
   - TransparentFX

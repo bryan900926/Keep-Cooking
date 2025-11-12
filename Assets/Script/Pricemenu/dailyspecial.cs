@@ -21,12 +21,12 @@ public class Dailyspecial : MonoBehaviour
 
     private void Start()
     {
-        // °O¦í­ì©l¦WºÙ
+        // ï¿½Oï¿½ï¿½ï¿½ï¿½lï¿½Wï¿½ï¿½
         originalname1 = pickone1.text;
         originalname2 = pickone2.text;
         originalname3 = pickone3.text;
 
-        // µ¹«ö¶s¸j©w¨Æ¥ó
+        // ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½jï¿½wï¿½Æ¥ï¿½
         chooseone1.onClick.AddListener(() => SetSpecial(1));
         chooseone2.onClick.AddListener(() => SetSpecial(2));
         chooseone3.onClick.AddListener(() => SetSpecial(3));
@@ -37,13 +37,13 @@ public class Dailyspecial : MonoBehaviour
     private void SetSpecial(int index)
     { 
         if (preindex == index) return;
-        // ¥þ³¡«ì´_­ì¦W
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½W
         pickone1.text = originalname1;
         pickone2.text = originalname2;
         pickone3.text = originalname3;
 
 
-        // «ü©wªº¨º­Ó¥[ (*)
+        // ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½ï¿½ï¿½Ó¥[ (*)
         switch (index)
         {   
             case 1: pickone1.text = originalname1 + " (*)"; 
@@ -76,6 +76,6 @@ public class Dailyspecial : MonoBehaviour
 
         preindex = index;
 
-        Debug.Log("¯SÀ\§ó´«¬°¡G" + index + " ¸¹À\");
+        // Debug.Log("ï¿½Sï¿½\ï¿½ó´«¬ï¿½ï¿½G" + index + " ï¿½ï¿½ï¿½\");
     }
 }

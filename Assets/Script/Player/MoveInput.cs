@@ -16,4 +16,9 @@ public class MoveInput : MonoBehaviour
         input = input.normalized;
         return input;
     }
+
+    void OnDestroy()
+    {
+        playerMovementInput.Disable();
+    }
 }

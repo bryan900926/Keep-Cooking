@@ -19,18 +19,6 @@ public class CustomerWaitFoodState : CustomerState
         }
     }
 
-    public override void Update()
-    {
-        if (customerStateManager.OrderedFoodIdx == -1 &&
-    Vector2.Distance(DiningSystem.Instance.seats[customerStateManager.DiningIdx].transform.position,
-                     customerStateManager.transform.position) <= 0.5f)
-        {
-            customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);
-            OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
-
-        }
-    }
-
     public override void Exit()
     {
     }

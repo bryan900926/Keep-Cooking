@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: dish89
   m_EditorClassIdentifier: 
   type: 16
-  image: {fileID: 5861795849108452937, guid: 351dc361c5d254841aef6e46820a8de8, type: 3}
+  image: {fileID: 416856543, guid: 351dc361c5d254841aef6e46820a8de8, type: 3}
