@@ -3,25 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static SceneController Instance;
     private CanvasGroup cg;
+    public static SceneController Instance;
     void Awake()
     {
-        // 確保只有一個存在
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        HideUI("optionmenu");
+
     }
     public void ChangeScene(string sceneName)
     {
@@ -32,21 +29,5 @@ public class SceneController : MonoBehaviour
     {
         Debug.Log("Exit");
         Application.Quit();
-    }
-
-    public void HideUI(string name)
-    {
-        cg = GameObject.Find(name).GetComponent<CanvasGroup>();
-        cg.alpha = 0;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
-    }
-
-    public void ShowUI(string name)
-    {
-        cg = GameObject.Find(name).GetComponent<CanvasGroup>();
-        cg.alpha = 1;
-        cg.interactable = true;
-        cg.blocksRaycasts = true;
     }
 }

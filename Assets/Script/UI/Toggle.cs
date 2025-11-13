@@ -2,19 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Toggle : MonoBehaviour
 {
     public static Toggle Instance;
     [Header("UI Configuration")]
-    [SerializeField] private GameObject[] uiElements;
+    [SerializeField] private CanvasGroup[] uiElements;
     [SerializeField] private Key[] keyElements;
-    private CanvasGroup parentCanvasGroup;
 
     private readonly Dictionary<Key, CanvasGroup> keyToPanel = new();
     private readonly Dictionary<Key, bool> toggleStates = new();
 
-    private List<Key> keysList;
+    private List<Key> keysList = new();
 
     public static readonly Key keyOpenCrafting = Key.V;
 
@@ -30,17 +30,19 @@ public class Toggle : MonoBehaviour
     }
     void Start()
     {
-        parentCanvasGroup = GetComponent<CanvasGroup>();
-        keysList = keyElements.ToList();
-        InitializePanels();
+
     }
 
     void Update()
     {
         if (Keyboard.current == null) return;
 
-        foreach (var key in keysList)
+        if (SceneManager.GetActiveScene().name != "Chaos Kitchen") return;
+
+        foreach (var kvp in keyToPanel)
         {
+            Key key = kvp.Key;
+
             if (Keyboard.current[key].wasPressedThisFrame)
             {
                 TogglePanel(key);
@@ -49,49 +51,35 @@ public class Toggle : MonoBehaviour
         }
     }
 
-    private void InitializePanels()
-    {
-        if (uiElements.Length != keyElements.Length)
-        {
-            Debug.LogError("UI elements and key elements arrays must be of the same length.");
-            return;
-        }
-
-        for (int i = 0; i < uiElements.Length; i++)
-        {
-            var ui = uiElements[i];
-            var key = keyElements[i];
-
-            if (!ValidateUIElement(ui, key)) continue;
-
-            var canvas = ui.GetComponent<CanvasGroup>();
-            keyToPanel[key] = canvas;
-            toggleStates[key] = false;
-
-            SetPanelVisibility(canvas, false);
-        }
-    }
-
     private void TogglePanel(Key key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
 
         bool newState = !toggleStates[key];
-        if (key == Key.Escape)
-        {
-            if (newState)
+        if (newState){
+            OpenPanel(key);
+
+            if (key == Key.Escape)
             {
                 GameManager.Instance.PauseGame();
-            }
-            else
-            {
-                GameManager.Instance.ResumeGame();
+                toggleStates[key] = !toggleStates[key];
             }
         }
-        if (newState)
-            OpenPanel(key);
-        else
-            ClosePanel(key);
+        else ClosePanel(key);
+    }
+
+    public void RegisterPanel(Key key, CanvasGroup panel)
+    {
+        if (!keyToPanel.ContainsKey(key))
+        {
+            uiElements.Append(panel);
+            keyElements.Append(key);
+            keyToPanel[key] = panel;
+            toggleStates[key] = false;
+            SetPanelVisibility(panel, false);
+            keysList.Add(key);
+            Debug.Log(key);
+        }
     }
     private static void SetPanelVisibility(CanvasGroup panel, bool visible)
     {
@@ -117,7 +105,6 @@ public class Toggle : MonoBehaviour
 
         toggleStates[key] = true;
         SetPanelVisibility(keyToPanel[key], true);
-        parentCanvasGroup.blocksRaycasts = true;
     }
 
     public void ClosePanel(Key key)
@@ -126,29 +113,5 @@ public class Toggle : MonoBehaviour
 
         toggleStates[key] = false;
         SetPanelVisibility(keyToPanel[key], false);
-        if (toggleStates.Values.All(state => !state))
-            parentCanvasGroup.blocksRaycasts = false;
-    }
-
-    private bool ValidateUIElement(GameObject ui, Key key)
-    {
-        if (ui == null)
-        {
-            Debug.LogWarning($"UI element for key {key} is null. Skipping.");
-            return false;
-        }
-
-        if (ui.GetComponent<CanvasGroup>() == null)
-        {
-            Debug.LogWarning($"UI element '{ui.name}' has no CanvasGroup. Adding one automatically.");
-            ui.AddComponent<CanvasGroup>();
-        }
-
-        return true;
-    }
-
-    public void OnClickSetting()
-    {
-        TogglePanel(Key.Escape);
     }
 }

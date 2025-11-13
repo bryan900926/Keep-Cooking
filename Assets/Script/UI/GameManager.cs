@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
 
     public void TogglePause()
     {
@@ -77,16 +80,25 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        isPaused = false;
         Time.timeScale = 1f;
         Toggle.Instance.CloseAllUIPanels();
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        TimeManager.Instance.ResetTimer();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameplayRoot = GameObject.FindWithTag(GAMEPLAY_ROOT_TAG);
-        TimeManager.Instance.ResetTimer();
-        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent leaks
+        if (gameplayRoot == null) return;
+        GameManager.Instance.ResumeGame();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        // Unsubscribe to prevent leaks
+    }
+
+    public void StartClick()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 }
