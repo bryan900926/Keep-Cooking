@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,14 @@ public class Toggle : MonoBehaviour
     private List<Key> keysList = new();
 
     public static readonly Key keyOpenCrafting = Key.V;
+
+        private CanvasGroup uiRootCanvasGroup;
+
+    public CanvasGroup UIRootCanvasGroup
+    {
+        get { return uiRootCanvasGroup; }
+        set { uiRootCanvasGroup = value; }
+    }
 
     void Awake()
     {
@@ -81,6 +90,19 @@ public class Toggle : MonoBehaviour
             Debug.Log(key);
         }
     }
+
+    public void UnregisterPanel(Key key)
+    {
+        if (keyToPanel.ContainsKey(key))
+        {
+            CanvasGroup panel = keyToPanel[key];
+            uiElements = uiElements.Where(e => e != panel).ToArray();
+            keyElements = keyElements.Where(k => k != key).ToArray();
+            keyToPanel.Remove(key);
+            toggleStates.Remove(key);
+            keysList.Remove(key);
+        }
+    }
     private static void SetPanelVisibility(CanvasGroup panel, bool visible)
     {
         if (panel == null) return;
@@ -102,7 +124,10 @@ public class Toggle : MonoBehaviour
     public void OpenPanel(Key key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
-
+        if (uiRootCanvasGroup != null)
+        {
+            uiRootCanvasGroup.blocksRaycasts = true;
+        }
         toggleStates[key] = true;
         SetPanelVisibility(keyToPanel[key], true);
     }
@@ -110,8 +135,36 @@ public class Toggle : MonoBehaviour
     public void ClosePanel(Key key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
-
         toggleStates[key] = false;
+        if (uiRootCanvasGroup != null && !keysList.Any(k => toggleStates[k]))
+        {
+            uiRootCanvasGroup.blocksRaycasts = false;
+        }
         SetPanelVisibility(keyToPanel[key], false);
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Chaos Kitchen")
+        {
+            // Automatically find your UI root
+            uiRootCanvasGroup = GameObject.FindWithTag("UIRoot")?.GetComponent<CanvasGroup>();
+
+            if (uiRootCanvasGroup == null)
+                Debug.LogWarning("UIRoot CanvasGroup not found in Chaos Kitchen scene!");
+            else
+            {
+                Debug.Log("UIRoot CanvasGroup assigned successfully!");
+                uiRootCanvasGroup.blocksRaycasts = false;
+            }
+        }
     }
 }
