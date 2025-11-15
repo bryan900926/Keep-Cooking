@@ -23,6 +23,7 @@ TagManager:
   - WaiterWaiting
   - PostProcess
   - GameRoot
+  - UIRoot
   layers:
   - Default
   - TransparentFX

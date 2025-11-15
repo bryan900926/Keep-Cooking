@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class UIPanel : MonoBehaviour
 {
     [Header("Hotkey Setting")]
-    public Key hotkey;  // 例如 Key.V、Key.Escape
+    public Key hotkey;
 
     private CanvasGroup canvasGroup;
 
@@ -16,10 +16,16 @@ public class UIPanel : MonoBehaviour
 
     private void Start()
     {
-        // 自動註冊到 Toggle 管理器
         if (Toggle.Instance != null)
         {
             Toggle.Instance.RegisterPanel(hotkey, canvasGroup);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (Toggle.Instance != null)
+        {
+            Toggle.Instance.UnregisterPanel(hotkey);
         }
     }
 }
