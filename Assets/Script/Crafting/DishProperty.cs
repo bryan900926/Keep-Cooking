@@ -20,24 +20,43 @@ public class DishProperty : MonoBehaviour
     [System.NonSerialized]
     private DishType state = DishType.Normal;
     public DishType State { get => state; set => state = value; }
+    [SerializeField] private float freshness = 50f;
 
+    public float Freshness { get => freshness;}
+
+    [SerializeField] private GameObject decaySmokePrefab;
+    private void Start()
+    {
+        if (decaySmokePrefab != null)
+        {
+            decaySmokePrefab.SetActive(false);
+        }
+    }
     void Update()
     {
-
+        if (freshness > 0)
+        {
+            DecayFreshness();
+        }
     }
     public List<Ingredients> GetCurrentRecipe()
     {
         Debug.Log($"Getting recipe for dish {foodidx} of type {state}");
-        switch (state)
+        return state switch
         {
-            case DishType.Normal:
-                return normal_recipe;
-            case DishType.Random:
-                return random_recipe;
-            case DishType.Mission:
-                return mission_recipe;
-            default:
-                return normal_recipe;
+            DishType.Normal => normal_recipe,
+            DishType.Random => random_recipe,
+            DishType.Mission => mission_recipe,
+            _ => normal_recipe,
+        };
+    }
+
+    private void DecayFreshness()
+    {
+        freshness -= Time.deltaTime;
+        if (freshness < 0 && decaySmokePrefab != null)
+        {
+            decaySmokePrefab.SetActive(true);
         }
     }
 
