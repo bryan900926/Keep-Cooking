@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class UIPanel : MonoBehaviour
 {
     [Header("Hotkey Setting")]
-    public Key hotkey;
+    public KeysForUI hotkey;
 
     private CanvasGroup canvasGroup;
 

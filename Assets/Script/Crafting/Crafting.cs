@@ -80,7 +80,7 @@ public class Crafting : MonoBehaviour
         {
             CenterMessage.Instance.ShowMessage(CenterMessage.FAILED_COOK);
         }
-        Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
+        Toggle.Instance.ClosePanel(KeysForUI.Crafting);
     }
 
     private bool AreListsEqualInOrder(List<Ingredients> a, List<Ingredients> b)
@@ -141,6 +141,6 @@ public class Crafting : MonoBehaviour
     {
         currentChef = null;
         CenterMessage.Instance.ShowMessage(CenterMessage.CHEF_LEAVE);
-        Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
+        Toggle.Instance.ClosePanel(KeysForUI.Crafting);
     }
 }

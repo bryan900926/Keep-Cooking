@@ -26,7 +26,7 @@ public class IngredientUIFactory : MonoBehaviour
         }
     }
 
-    public GameObject CreateIngredientUI(int ingredientId)
+    public GameObject CreateIngredientUI(int ingredientId, int slotIndex)
     {
         if (ingredientUIPrefab.ContainsKey(ingredientId))
         {
@@ -38,6 +38,8 @@ public class IngredientUIFactory : MonoBehaviour
             ingredientUI.AddComponent<CanvasGroup>();
             Image img = ingredientUI.AddComponent<Image>();
             img.sprite = ingredientUIPrefab[ingredientId].image;
+            var dragInterface = ingredientUI.AddComponent<DragInterface>();
+            dragInterface.OnDroppedSuccessfully(slotIndex);
             return ingredientUI;
         }
         Debug.LogError("Ingredient ID not found: " + ingredientId);

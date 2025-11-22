@@ -112,7 +112,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             img.sprite = originalImage.sprite;
             img.color = new Color(1, 1, 1, 1f);
-            img.raycastTarget = true; // �קK�v�T�ƥ�
+            img.raycastTarget = true;
         }
     }
 

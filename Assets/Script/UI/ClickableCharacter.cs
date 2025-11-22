@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class ClickableCharacter<T> : MonoBehaviour, IPointerClickHandler where T : MonoBehaviour
 {
-    private T stateManager;
+    protected T stateManager;
 
     [SerializeField] private Level levelSystem;
 
@@ -13,7 +13,7 @@ public class ClickableCharacter<T> : MonoBehaviour, IPointerClickHandler where T
         stateManager = GetComponentInParent<T>();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log($"{typeof(T).Name} clicked");
 

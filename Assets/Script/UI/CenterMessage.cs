@@ -42,7 +42,7 @@ public class CenterMessage : MonoBehaviour
         if (activeCoroutine != null)
             StopCoroutine(activeCoroutine);
 
-        gameObject.SetActive(true);
+        gameObject?.SetActive(true);
         activeCoroutine = StartCoroutine(FadeInOut(message));
     }
 

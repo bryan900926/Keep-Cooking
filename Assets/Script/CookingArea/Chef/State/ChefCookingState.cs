@@ -3,15 +3,17 @@ using UnityEngine;
 public class ChefCookingState : ChefState
 {
     float cookingTime;
-    List<OrderInfo> orderInfos;
-    public ChefCookingState(ChefStateManager chefStateManager, float cookingTime, List<OrderInfo> orderInfos) : base(chefStateManager)
+    readonly List<OrderInfo> orderInfos;
+
+    public ChefCookingState(ChefStateManager chefStateManager, List<OrderInfo> orderInfos) : base(chefStateManager)
     {
-        this.cookingTime = cookingTime;
+        this.cookingTime = UnityEngine.Random.Range(3f, 5f);
         this.orderInfos = orderInfos;
     }
 
     public override void Enter()
     {
+        chefStateManager.CookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
     }
 
     public override void Update()
@@ -39,20 +41,7 @@ public class ChefCookingState : ChefState
         {
             if (dishIdx != -1 && dishIdx < menu.Length && chefStateManager.CookIdx != -1)
             {
-
-                float wrongProb = Mathf.Clamp01(1 - chefStateManager.Energy.CurrentEnergy / chefStateManager.Energy.MaxEnergy);
-
-                if (UnityEngine.Random.value < wrongProb)
-                {
-                    chefStateManager.SetFireActive(true);
-                }
-                else
-                {
-                    chefStateManager.CookingMachine.GetComponent<CookingMachineStateManager>().SetBackToNormal();
-                }
-
-                Vector2 spawnPos = (Vector2)chefStateManager.transform.position + Vector2.right;
-                GameObject food = Menu.Instance.SpawnForPlayer(dishIdx, spawnPos);
+                GameObject food = Menu.Instance.SpawnForPlayer(dishIdx, (Vector2)chefStateManager.transform.position);
                 PickUpV2 pickUp = food.GetComponent<PickUpV2>();
                 pickUp.Pick(chefStateManager.gameObject);
                 pickUp.Pickable = false;

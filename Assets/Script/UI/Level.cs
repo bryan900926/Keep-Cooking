@@ -6,6 +6,8 @@ public class Level : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMeshPro;
     private int level = 1;
 
+    public int LevelValue => level;
+
     [SerializeField] private LevelUpHint levelUpHint;
 
     [SerializeField] private Holding holdingSystem;

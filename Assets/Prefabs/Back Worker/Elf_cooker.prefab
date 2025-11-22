@@ -19,9 +19,9 @@ GameObject:
   - component: {fileID: -2623164930793033123}
   - component: {fileID: 4246378860160337310}
   - component: {fileID: 8017285435227609815}
-  - component: {fileID: 3448254258094578719}
   - component: {fileID: 5718104367975474734}
   - component: {fileID: 1028435214098052398}
+  - component: {fileID: 1850287034106893265}
   m_Layer: 7
   m_Name: Elf_cooker
   m_TagString: Untagged
@@ -316,8 +316,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c0000e90ecdd3479c0357c041a132d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &3448254258094578719
-CircleCollider2D:
+--- !u!114 &5718104367975474734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa2747c7489ebc43b80c6e25a604a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1028435214098052398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64547900985569952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7557519670ba48547b0dc37effb86d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpacing: 1
+--- !u!70 &1850287034106893265
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -351,32 +376,8 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
---- !u!114 &5718104367975474734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64547900985569952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa2747c7489ebc43b80c6e25a604a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1028435214098052398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64547900985569952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7557519670ba48547b0dc37effb86d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpacing: 1
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &390721976175079358
 GameObject:
   m_ObjectHideFlags: 0
