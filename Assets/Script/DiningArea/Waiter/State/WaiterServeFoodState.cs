@@ -6,6 +6,8 @@ public class WaiterServeFoodState : WaiterState
     private readonly Queue<OrderInfo> pendingOrders = new();
     private OrderInfo currentOrder;
 
+    private Holding holding;
+
     public WaiterServeFoodState(WaiterStateManager waiterStateManager, List<OrderInfo> orderInfos)
         : base(waiterStateManager)
     {
@@ -18,6 +20,7 @@ public class WaiterServeFoodState : WaiterState
 
     public override void Enter()
     {
+        holding = waiterStateManager.Holding;
         Debug.Log($"Waiter {waiterStateManager.name} starts serving food.");
         if (pendingOrders.Count == 0)
         {
@@ -82,11 +85,10 @@ public class WaiterServeFoodState : WaiterState
             if (customerStateManager.OrderedFoodIdx == order.FoodIdx)
             {
                 Debug.Log($"Waiter served correct dish {order.FoodIdx} to table {order.TableIdx}");
-                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager));
-
-                // Remove the served item from waiter’s hands
-                var holding = waiterStateManager.Holding;
                 GameObject servedItem = holding.HoldingItem.Find(i => i.GetComponent<PickUpV2>().FoodIdx == order.FoodIdx);
+                float freshness = servedItem.GetComponent<DishProperty>().Freshness;
+                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager, freshness));
+                // Remove the served item from waiter’s hands
                 if (servedItem != null)
                     holding.RemoveHoldingItem(servedItem);
                 Object.Destroy(servedItem);

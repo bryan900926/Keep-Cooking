@@ -4,9 +4,11 @@ public class CustomerEatingState : CustomerState
 {
     private float eatingDuration = 5f; // Duration for eating in seconds
     private float elapsedTime = 0f;
+    private readonly float freshness;
 
-    public CustomerEatingState(CustomerStateManager customerStateManager) : base(customerStateManager)
+    public CustomerEatingState(CustomerStateManager customerStateManager, float freashness) : base(customerStateManager)
     {
+        this.freshness = freashness;
     }
 
     public override void Enter()
@@ -14,6 +16,11 @@ public class CustomerEatingState : CustomerState
         if (customerStateManager.GetComponent<Holding>().HoldingItem.Count == 0)
         {
             Debug.LogError("Customer has no food to eat!");
+        }
+        if (freshness <= 0)
+        {
+            customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
+            return;
         }
         GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem[0];
         if (holdingFood != null)
@@ -38,6 +45,7 @@ public class CustomerEatingState : CustomerState
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.DiningIdx = -1;
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
-        ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
+        if (freshness > 0)
+            ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
     }
 }

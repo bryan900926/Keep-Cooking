@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIPanel : MonoBehaviour
 {
     [Header("Hotkey Setting")]
-    public Key hotkey;  
+    public Key hotkey;
 
     private CanvasGroup canvasGroup;
 
@@ -20,6 +20,13 @@ public class UIPanel : MonoBehaviour
         if (Toggle.Instance != null)
         {
             Toggle.Instance.RegisterPanel(hotkey, canvasGroup);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (Toggle.Instance != null)
+        {
+            Toggle.Instance.UnregisterPanel(hotkey);
         }
     }
 }
