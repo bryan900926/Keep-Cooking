@@ -25,7 +25,7 @@ public class RecipeSystem : MonoBehaviour
         // Register recipes
         recipes[(int)(Ingredients.dish81 | Ingredients.dish83 | Ingredients.dish84)] = 0;
         recipes[(int)(Ingredients.dish87 | Ingredients.dish89 | Ingredients.dish91)] = 1;
-        recipes[(int)(Ingredients.dish94 | Ingredients.dish96 | Ingredients.dish97)] = 2;
+        recipes[(int)(Ingredients.dish94 | Ingredients.dish95 | Ingredients.dish107)] = 2;
 
     }
 
