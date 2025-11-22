@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aef2d2c1c408ad34e8b3fc9b631fe3ad, type: 3}
-  m_Name: dish96
+  m_Name: dish95
   m_EditorClassIdentifier: 
   type: 128
+  Name: Corn
   image: {fileID: 2023887422, guid: 351dc361c5d254841aef6e46820a8de8, type: 3}

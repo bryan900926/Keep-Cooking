@@ -5,6 +5,7 @@ using UnityEngine;
 public class IngredientData : ScriptableObject
 {
     public Ingredients type;   // Enum dropdown
+    public string Name;
     public Sprite image;
 
     public int Mask => (int)type;

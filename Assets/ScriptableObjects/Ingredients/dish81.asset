@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: dish81
   m_EditorClassIdentifier: 
   type: 1
+  Name: Dumplings
   image: {fileID: -5753798499199417102, guid: 351dc361c5d254841aef6e46820a8de8, type: 3}

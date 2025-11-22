@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: dish91
   m_EditorClassIdentifier: 
   type: 32
+  Name: Mushroom
   image: {fileID: -94898947, guid: 351dc361c5d254841aef6e46820a8de8, type: 3}
