@@ -71,7 +71,7 @@ public class PriceEditor : MonoBehaviour
         }
 
         float timeRatio = TimeManager.Instance.GetRemainingTimeRatio();
-        return Mathf.Lerp(initialPrices[foodIdx], 0, 1 - timeRatio); // price decreases over 500 sec
+        return Mathf.Lerp(initialPrices[foodIdx], 0, 1 - timeRatio) + 20; // price decreases over 500 sec
     }
 
     public float GetSellingPrice(int foodIdx)

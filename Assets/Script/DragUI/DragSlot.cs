@@ -15,11 +15,14 @@ public class DragSlot : MonoBehaviour, IDropHandler
     {
         Debug.Log("Drooooooooooooooop");
         var droppedItem = eventData.pointerDrag.GetComponent<RectTransform>();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
         droppedItem.SetParent(transform);
         droppedItem.anchoredPosition = Vector2.zero;
 
-        var dragScript = eventData.pointerDrag.GetComponent<DragInterface>();
-        if (dragScript != null)
+        if (eventData.pointerDrag.TryGetComponent<DragInterface>(out var dragScript))
         {
             dragScript.OnDroppedSuccessfully(slotindex);
         }
@@ -28,7 +31,6 @@ public class DragSlot : MonoBehaviour, IDropHandler
 
         Craftingv2.Instance.SetIngredient(slotindex, Ingredients);
 
-        // Crafting.Instance.DebugItem();
     }
 
     public void InitData()

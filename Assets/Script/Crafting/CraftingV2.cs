@@ -112,11 +112,9 @@ public class Craftingv2 : MonoBehaviour
         if (chef != null && chef == currentChef) return;
         ChefStateManager chefManager = chef.GetComponent<ChefStateManager>();
 
-        if (currentChef != null)
+        if (currentChef != null && currentChef.TryGetComponent<ChefStateManager>(out var currentChefManager))
         {
-            ChefStateManager currentChefManager = currentChef.GetComponent<ChefStateManager>();
-            if (currentChefManager != null)
-                currentChefManager.OnChefDestroyed -= OnChefDestroyed;
+            currentChefManager.OnChefDestroyed -= OnChefDestroyed;
         }
 
         currentChef = chef;
@@ -135,7 +133,7 @@ public class Craftingv2 : MonoBehaviour
     {
         currentChef = null;
         CenterMessage.Instance.ShowMessage(CenterMessage.CHEF_LEAVE);
-        Toggle.Instance.ClosePanel(Toggle.keyOpenCrafting);
+        Toggle.Instance.ClosePanel(KeysForUI.Crafting);
     }
     public void GetRecipeFromChef()
     {
@@ -148,7 +146,7 @@ public class Craftingv2 : MonoBehaviour
         {
             multipleIngredients[i] = recipe[i];
             if (recipe[i] == Ingredients.None) continue;
-            var ingredientUI = IngredientUIFactory.Instance.CreateIngredientUI((int)recipe[i]);
+            var ingredientUI = IngredientUIFactory.Instance.CreateIngredientUI((int)recipe[i], i);
             ingredientUI.transform.SetParent(slots[i].transform, false);
         }
 

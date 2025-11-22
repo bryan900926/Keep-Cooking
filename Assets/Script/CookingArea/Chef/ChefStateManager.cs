@@ -34,6 +34,8 @@ public class ChefStateManager : MonoBehaviour
 
     private bool chefHasCorrectRecipe = true;
 
+    public bool ChefHasCorrectRecipe => chefHasCorrectRecipe;
+
     private float flickerTimer = 0f;
     private bool isRed = false;
     public event Action OnChefDestroyed
@@ -112,7 +114,7 @@ public class ChefStateManager : MonoBehaviour
     private void Update()
     {
         energy.UpdateEnergy(Time.deltaTime);
-        if (energy.CurrentEnergy <= 0 && !(currentState is ChefExhaustedState))
+        if (energy.CurrentEnergy <= 0 && currentState is not ChefExhaustedState)
         {
             ChangeState(new ChefExhaustedState(this, cookIdx));
         }
@@ -137,9 +139,13 @@ public class ChefStateManager : MonoBehaviour
         if (!canCook) return;
         List<OrderInfo> orderInfos = OrderSystem.Instance.GetOrderForChef(Holding.AvailableSpace);
         if (orderInfos == null || orderInfos.Count == 0) return;
-        CookingTime = UnityEngine.Random.Range(3f, 5f);
-        ChangeState(new ChefCookingState(this, CookingTime, orderInfos));
-        cookingMachine.GetComponent<CookingMachineStateManager>().ChangeToCookState();
+        if (CheckChefForgetRecipe())
+        {
+            ChangeState(new ChefForgetState(this, orderInfos));
+        } else
+        {
+            ChangeState(new ChefCookingState(this, orderInfos));
+        }
 
     }
 
@@ -172,9 +178,9 @@ public class ChefStateManager : MonoBehaviour
     }
     public bool CheckChefForgetRecipe(float k = 0.5f)
     {
-        float normalized = 1f - (energy.CurrentEnergy / energy.MaxEnergy);
-        float prob = 1f - Mathf.Exp(-k * normalized);
-        return Mathf.Clamp01(prob) > UnityEngine.Random.value;
+        // float normalized = 1f - (energy.CurrentEnergy / energy.MaxEnergy);
+        // float prob = 1f - Mathf.Exp(-k * normalized);
+        return 0.3 > UnityEngine.Random.value;
     }
     public void SetChefHasCorrectRecipe(bool isCorrect)
     {

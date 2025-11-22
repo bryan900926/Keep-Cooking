@@ -2707,7 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8128157dd3ede469373a14a904dd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hotkey: 60
+  hotkey: 2
 --- !u!1 &1006423944
 GameObject:
   m_ObjectHideFlags: 0

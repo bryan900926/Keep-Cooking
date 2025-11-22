@@ -10,22 +10,28 @@ public class Toggle : MonoBehaviour
     public static Toggle Instance;
     [Header("UI Configuration")]
     [SerializeField] private CanvasGroup[] uiElements;
-    [SerializeField] private Key[] keyElements;
+    [SerializeField] private KeysForUI[] keyElements;
 
-    private readonly Dictionary<Key, CanvasGroup> keyToPanel = new();
-    private readonly Dictionary<Key, bool> toggleStates = new();
+    private readonly Dictionary<KeysForUI, CanvasGroup> keyToPanel = new();
+    private readonly Dictionary<KeysForUI, bool> toggleStates = new();
 
-    private List<Key> keysList = new();
+    private readonly List<KeysForUI> keysList = new();
 
-    public static readonly Key keyOpenCrafting = Key.V;
+    private CanvasGroup uiRootCanvasGroup;
 
-        private CanvasGroup uiRootCanvasGroup;
+    private readonly Dictionary<Key, KeysForUI> keyMapping = new()
+    {
+        { Key.I, KeysForUI.Inventory },
+        { Key.V, KeysForUI.Menu },
+        { Key.Escape, KeysForUI.Settings },
+    };
 
     public CanvasGroup UIRootCanvasGroup
     {
         get { return uiRootCanvasGroup; }
         set { uiRootCanvasGroup = value; }
     }
+    private static readonly string mainSceneName = "Chaos Kitchen";
 
     void Awake()
     {
@@ -46,13 +52,17 @@ public class Toggle : MonoBehaviour
     {
         if (Keyboard.current == null) return;
 
-        if (SceneManager.GetActiveScene().name != "Chaos Kitchen") return;
+        if (SceneManager.GetActiveScene().name != mainSceneName) return;
 
         foreach (var kvp in keyToPanel)
         {
-            Key key = kvp.Key;
+            KeysForUI key = kvp.Key;
+            // Safe lookup
+            var pair = keyMapping.FirstOrDefault(x => x.Value == key);
+            if (pair.Equals(default(KeyValuePair<Key, KeysForUI>)))
+                continue; // Skip keys that are not mapped to keyboard
 
-            if (Keyboard.current[key].wasPressedThisFrame)
+            if (Keyboard.current[pair.Key].wasPressedThisFrame)
             {
                 TogglePanel(key);
                 break;
@@ -60,15 +70,16 @@ public class Toggle : MonoBehaviour
         }
     }
 
-    private void TogglePanel(Key key)
+    public void TogglePanel(KeysForUI key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
 
         bool newState = !toggleStates[key];
-        if (newState){
+        if (newState)
+        {
             OpenPanel(key);
 
-            if (key == Key.Escape)
+            if (key == KeysForUI.Settings)
             {
                 GameManager.Instance.PauseGame();
                 toggleStates[key] = !toggleStates[key];
@@ -77,7 +88,7 @@ public class Toggle : MonoBehaviour
         else ClosePanel(key);
     }
 
-    public void RegisterPanel(Key key, CanvasGroup panel)
+    public void RegisterPanel(KeysForUI key, CanvasGroup panel)
     {
         if (!keyToPanel.ContainsKey(key))
         {
@@ -87,11 +98,10 @@ public class Toggle : MonoBehaviour
             toggleStates[key] = false;
             SetPanelVisibility(panel, false);
             keysList.Add(key);
-            Debug.Log(key);
         }
     }
 
-    public void UnregisterPanel(Key key)
+    public void UnregisterPanel(KeysForUI key)
     {
         if (keyToPanel.ContainsKey(key))
         {
@@ -121,24 +131,29 @@ public class Toggle : MonoBehaviour
             SetPanelVisibility(panel, false);
     }
 
-    public void OpenPanel(Key key)
+    public void OpenPanel(KeysForUI key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
-        if (uiRootCanvasGroup != null)
-        {
-            uiRootCanvasGroup.blocksRaycasts = true;
-        }
+        ToggleUIRoot(true);
         toggleStates[key] = true;
         SetPanelVisibility(keyToPanel[key], true);
     }
 
-    public void ClosePanel(Key key)
+    public void ToggleUIRoot(bool enable)
+    {
+        if (uiRootCanvasGroup != null)
+        {
+            uiRootCanvasGroup.blocksRaycasts = enable;
+        }
+    }
+
+    public void ClosePanel(KeysForUI key)
     {
         if (!keyToPanel.ContainsKey(key)) return;
         toggleStates[key] = false;
         if (uiRootCanvasGroup != null && !keysList.Any(k => toggleStates[k]))
         {
-            uiRootCanvasGroup.blocksRaycasts = false;
+            ToggleUIRoot(false);
         }
         SetPanelVisibility(keyToPanel[key], false);
     }
@@ -153,7 +168,7 @@ public class Toggle : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Chaos Kitchen")
+        if (scene.name == mainSceneName)
         {
             // Automatically find your UI root
             uiRootCanvasGroup = GameObject.FindWithTag("UIRoot")?.GetComponent<CanvasGroup>();
