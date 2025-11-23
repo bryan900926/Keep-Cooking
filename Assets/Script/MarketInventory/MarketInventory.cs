@@ -101,17 +101,13 @@ public class MarketInventory : MonoBehaviour
 
     public void UpdateMenu()
     {
+        float multiplier = Mathf.Pow(2, 0.1f);
         foreach (var slot in slots)
         {
-            if (slot.Currentcount > 0 && slot.limited >= slot.Currentcount)
-            {
-                slot.limited -= slot.Currentcount;
-                AddItem(slot.item, slot.Currentcount);
-                slot.Currentcount = 0;
-                MarketUI.Instance.RefreshUI(page);
-                // Need Economy System to deduct money
-            }
+            slot.price = (int) (slot.price * multiplier);
         }
+        
+        MarketUI.Instance.RefreshUI(page);
     }
 
 

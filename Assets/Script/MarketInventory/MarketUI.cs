@@ -18,12 +18,6 @@ public class MarketUI : MonoBehaviour
         MarketInventory.Instance.page = 1;
     }
 
-    private void OnEnable()
-    {
-        RefreshUI(1);
-        MarketInventory.Instance.page = 1;
-    }
-
     public void UpclickButtom()
     {   
         if (MarketInventory.Instance.page >= 3)
