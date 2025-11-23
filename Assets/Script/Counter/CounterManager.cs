@@ -43,6 +43,7 @@ public class CounterManager : SeatingSystem
 
         // optional: reset local position if you want exact local alignment
         food.transform.localPosition = Vector3.zero;
+        Debug.Log("Food placed on counter " + counterIndex);
         counterWithFood.Add(counterIndex);
     }
 
@@ -81,7 +82,7 @@ public class CounterManager : SeatingSystem
             }
             else
             {
-                Debug.LogError("No food item found on counter " + counterIndex);
+                Debug.LogWarning("No food item found on counter " + counterIndex);
             }
         }
         return null;

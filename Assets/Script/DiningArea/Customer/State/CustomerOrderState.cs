@@ -4,6 +4,7 @@ public class CustomerOrderState : CustomerState
 {
     private GameObject receipt;
     private int receiptIdx;
+    private bool ifDine;
     public CustomerOrderState(CustomerStateManager customerStateManager, int receiptIdx) : base(customerStateManager)
     {
         this.receipt = ReceiptSystem.Instance.seats[receiptIdx];
@@ -17,15 +18,24 @@ public class CustomerOrderState : CustomerState
 
     public override void Update()
     {
-        if (IsReachedReceipt())
+        if (IsReachedReceipt() && !ifDine)
         {
             GetOrderedFood();
+        }
+        if (ifDine)
+        {
+            TryToDine(customerStateManager);
+            if (customerStateManager.DiningIdx != -1)
+            {
+                customerStateManager.ChangeState(new CustomerWaitFoodState(customerStateManager));
+            }
         }
     }
 
     public override void Exit()
     {
         ReceiptSystem.Instance.FreeSeat(receiptIdx);
+        OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
     }
 
     private void TryToDine(CustomerStateManager customer)
@@ -52,11 +62,10 @@ public class CustomerOrderState : CustomerState
         float sellingPrice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
         if (desiredPrice > sellingPrice)
         {
-            TryToDine(customerStateManager);
-            OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
             customerStateManager.BuyingPrice = sellingPrice;
-            customerStateManager.ChangeState(new CustomerWaitFoodState(customerStateManager));
-        } else
+            ifDine = true;
+        }
+        else
         {
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
