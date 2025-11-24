@@ -24,6 +24,8 @@ public class CenterMessage : MonoBehaviour
 
     public readonly static string FAILED_COOK = "Oops! The recipe didn't match any known dishes.";
 
+    public readonly static string INSUFFICIENT_FUNDS = "You do not have enough funds to make this purchase.";
+
 
     void Awake()
     {

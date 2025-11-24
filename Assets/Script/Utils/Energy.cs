@@ -31,6 +31,11 @@ public class Energy : MonoBehaviour
     {
         get => surviveTime;
     }
+
+    public float EnergyRatio
+    {
+        get => currentEnergy / maxEnergy;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

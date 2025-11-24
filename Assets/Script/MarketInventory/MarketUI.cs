@@ -39,7 +39,7 @@ public class MarketUI : MonoBehaviour
         int startIndex = 4 * (page - 1);
         int endIndex = Mathf.Min(startIndex + 4, MarketInventory.Instance.slots.Count);
 
-        for (int j = 0; j < 4; j++) // ©T©w¹M¾ú 4 ­Ó UI slot
+        for (int j = 0; j < 4; j++)
         {
             Transform slot = trans[j];
 

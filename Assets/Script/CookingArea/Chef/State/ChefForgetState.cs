@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ChefForgetState : ChefState
 {
@@ -15,6 +16,8 @@ public class ChefForgetState : ChefState
         {
             chefStateManager.GetComponent<ChefRecipe>().RandomizeRecipe(order.FoodIdx);
         }
+        chefStateManager.ToggleLowStockIndicator(true);
+        chefStateManager.HandleSideEffectFlicker(true, Color.red);
     }
 
     public override void Update()
@@ -27,5 +30,7 @@ public class ChefForgetState : ChefState
 
     public override void Exit()
     {
+        chefStateManager.ToggleLowStockIndicator(false);
+        chefStateManager.HandleSideEffectFlicker(false, Color.red);
     }
 }

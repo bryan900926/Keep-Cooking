@@ -1,6 +1,3 @@
-using UnityEngine;
-
-
 [System.Serializable]
 public class MarketSlot
 {
@@ -11,8 +8,8 @@ public class MarketSlot
     public int limited;
     public int Currentcount;
 
-    public MarketSlot(IngredientData item){
-        
+    public MarketSlot(IngredientData item)
+    {
         this.item = item;
         this.name = item.name;
         this.amount = 0;

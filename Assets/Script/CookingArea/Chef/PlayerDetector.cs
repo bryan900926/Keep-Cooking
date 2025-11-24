@@ -4,10 +4,17 @@ using UnityEngine.InputSystem;
 
 namespace Chef.Detector
 {
+    [RequireComponent(typeof(Energy))]
     public class PlayerDetector : MonoBehaviour
     {
+        private Energy energy;
         private const String PLAYER_TAG = "Player";
         private bool playerInside = false; // track if player is in trigger
+
+        void Start()
+        {
+            energy = GetComponent<Energy>();
+        }
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag(PLAYER_TAG))
@@ -26,12 +33,19 @@ namespace Chef.Detector
         {
             if (playerInside && Keyboard.current.eKey.isPressed)
             {
-                int resIdx = HoldingSystem.Instance.FindProp(PropData.Tools.DRINK);
-                HoldingSystem.Instance.RemoveProp(resIdx);
-                if (resIdx != -1)
-                {
-                    GetComponent<ChefStateManager>().Energy.IsReplenishing = true;
-                }
+                energy.IsReplenishing = true;
+                ServeDrink();
+            }
+        }
+        public void ServeDrink()
+        {
+            if (Keyboard.current.eKey.isPressed && energy.IsReplenishing)
+            {
+                energy.Replenish(1f);
+            }
+            else
+            {
+                energy.IsReplenishing = false;
             }
         }
     }

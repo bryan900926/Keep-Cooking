@@ -4,6 +4,10 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AIDestinationSetter))]
+[RequireComponent(typeof(ChefRecipe))]
+[RequireComponent(typeof(Holding))]
 public class ChefStateManager : MonoBehaviour
 {
     // =======================
@@ -11,7 +15,6 @@ public class ChefStateManager : MonoBehaviour
     // =======================
     [Header("References")]
     [SerializeField] private WorkerData workerData;
-    [SerializeField] private Energy energy;
     [SerializeField] private Transform destination;
     private GameObject leaveTarget;
 
@@ -72,14 +75,13 @@ public class ChefStateManager : MonoBehaviour
     public List<int> CurrentDishIdxs { get => currentDishIdxs; set => currentDishIdxs = value; }
     public float CookingTime { get; set; }
 
-    public Energy Energy => energy;
-
     public ChefRecipe ChefRecipe => chefRecipe;
 
     private Holding holding;
 
     public Holding Holding => holding;
 
+    [SerializeField] private SpriteRenderer lowStockSprite;
 
 
     void Awake()
@@ -96,13 +98,10 @@ public class ChefStateManager : MonoBehaviour
         {
             chefRecipe.OnRecipeChanged += SetChefHasCorrectRecipe;
         }
+        lowStockSprite.enabled = false;
     }
     public void Initialize(int cookIdx)
     {
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("spriteRenderer is null");
-        }
         CookIdx = cookIdx;
         spriteRenderer.sprite = workerData.image;
         cookingMachine = BackControl.Instance.GetCookers[cookIdx];
@@ -113,14 +112,7 @@ public class ChefStateManager : MonoBehaviour
 
     private void Update()
     {
-        energy.UpdateEnergy(Time.deltaTime);
-        if (energy.CurrentEnergy <= 0 && currentState is not ChefExhaustedState)
-        {
-            ChangeState(new ChefExhaustedState(this, cookIdx));
-        }
         currentState?.Update();
-        ServeDrink();
-        HandleRecipeFlicker();
     }
 
     public void ChangeState(ChefState newState)
@@ -133,12 +125,11 @@ public class ChefStateManager : MonoBehaviour
     public void EnableCookingManyFoods()
     {
         if (gameObject == null || cookingMachine == null) return;
-        bool canCook = energy.CurrentEnergy > 0 &&
-                       cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
+        bool canCook = cookingMachine.GetComponent<CookingMachineStateManager>().CurrentState is CookingMachineNormalState &&
                        currentState is ChefNormalState;
         if (!canCook) return;
         List<OrderInfo> orderInfos = OrderSystem.Instance.GetOrderForChef(Holding.AvailableSpace);
-        if (orderInfos == null || orderInfos.Count == 0) return;
+        if (orderInfos.Count == 0) return;
         if (CheckChefForgetRecipe())
         {
             ChangeState(new ChefForgetState(this, orderInfos));
@@ -166,30 +157,24 @@ public class ChefStateManager : MonoBehaviour
         GameObject leftover = Menu.Instance.SpawnForPlayer(-2, spawnPos); // -2 for leftover
         return leftover;
     }
-    public void ServeDrink()
-    {
-        if (Keyboard.current.eKey.isPressed && energy.IsReplenishing)
-        {
-            energy.Replenish(1f);
-        }
-        else
-        {
-            energy.IsReplenishing = false;
-        }
-    }
     public bool CheckChefForgetRecipe()
     {
         // return 0.08 > UnityEngine.Random.value;
-        return true;
+        return false;
     }
     public void SetChefHasCorrectRecipe(bool isCorrect)
     {
         chefHasCorrectRecipe = isCorrect;
     }
 
-    private void HandleRecipeFlicker()
+    public void HandleLowStockEffect(bool isLowStock)
     {
-        if (!chefHasCorrectRecipe)
+        lowStockSprite.enabled = isLowStock;
+    }
+
+    public void HandleSideEffectFlicker(bool isActive, Color flickerColor)
+    {
+        if (isActive)
         {
             flickerTimer += Time.deltaTime;
 
@@ -197,7 +182,7 @@ public class ChefStateManager : MonoBehaviour
             {
                 flickerTimer = 0f;
                 isRed = !isRed;
-                spriteRenderer.color = isRed ? Color.red : Color.white;
+                spriteRenderer.color = isRed ? flickerColor : Color.white;
             }
         }
         else
@@ -211,6 +196,10 @@ public class ChefStateManager : MonoBehaviour
         }
     }
 
+    public void ToggleLowStockIndicator(bool isActive)
+    {
+        lowStockSprite.enabled = isActive;
+    }
     private void OnDestroy()
     {
         if (chefRecipe != null)

@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class CustomerEatingState : CustomerState
 {
-    private float eatingDuration = 5f; // Duration for eating in seconds
+    private readonly float eatingDuration; // Duration for eating in seconds
     private float elapsedTime = 0f;
     private readonly float freshness;
 
     public CustomerEatingState(CustomerStateManager customerStateManager, float freashness) : base(customerStateManager)
     {
         this.freshness = freashness;
+        eatingDuration = Random.Range(5f, 10f);
     }
 
     public override void Enter()
@@ -46,6 +47,9 @@ public class CustomerEatingState : CustomerState
         customerStateManager.DiningIdx = -1;
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
         if (freshness > 0)
+        {
+            ReputationSystem.Instance.IncreaseReputation(5f);
             ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
+        }
     }
 }

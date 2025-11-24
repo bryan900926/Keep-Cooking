@@ -14,6 +14,8 @@ public class Recipe : MonoBehaviour
 
     public Dictionary<int, List<Ingredients>> Food_recipes = new Dictionary<int, List<Ingredients>>();
 
+    public List<DishProperty> dishProperties = new();
+
     public GameObject[] Dishes
     {
         get => dishes;
@@ -73,12 +75,12 @@ public class Recipe : MonoBehaviour
 
         foreach (var dish in Dishes)
         {
-            var property = dish.GetComponent<DishProperty>();
-            if (property == null)
+            if (!dish.TryGetComponent<DishProperty>(out var property))
             {
                 Debug.LogWarning($"{dish.name} skip!!!");
                 continue;
             }
+            dishProperties.Add(property);
             List<Ingredients> recipe = property.normal_recipe;
             Food_recipes.Add(property.Foodidx, recipe);
             if (recipe == null || recipe.Count != 9)

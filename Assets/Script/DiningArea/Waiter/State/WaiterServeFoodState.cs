@@ -83,7 +83,6 @@ public class WaiterServeFoodState : WaiterState
             var customerStateManager = customer.GetComponent<CustomerStateManager>();
             if (customerStateManager.CurrentState is not CustomerWaitFoodState)
             {
-                Debug.Log(customerStateManager.CurrentState.GetType().Name);
                 return;
             }
             if (customerStateManager.OrderedFoodIdx == order.FoodIdx)
@@ -100,14 +99,12 @@ public class WaiterServeFoodState : WaiterState
             else
             {
                 Debug.LogWarning($"Wrong dish! Expected {customerStateManager.OrderedFoodIdx}, got {order.FoodIdx}");
-                OrderSystem.Instance.AddFailOrder(order, true);
             }
             pendingOrders.Dequeue();
         }
         else
         {
             Debug.LogWarning($"No customer found at table {order.TableIdx}");
-            OrderSystem.Instance.AddFailOrder(order, true);
         }
 
         // After serving, move to the next table (if any left)

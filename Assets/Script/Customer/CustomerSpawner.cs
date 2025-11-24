@@ -13,8 +13,7 @@ public class CustomerSpawner : MonoBehaviour
     void Start()
     {
         qs = lining.GetComponent<QueueSystem>();
-        spawnedTime = Random.Range(3, 5);
-
+        spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
     }
 
     // Update is called once per frame
@@ -25,7 +24,7 @@ public class CustomerSpawner : MonoBehaviour
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();
-            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
+            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]) * (1f - ReputationSystem.Instance.GetReputationRatio());
         }
     }
 

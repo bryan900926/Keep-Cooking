@@ -10,6 +10,8 @@ public class PriceEditor : MonoBehaviour
 
     public static PriceEditor Instance;
 
+    private float startTime;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,6 +33,7 @@ public class PriceEditor : MonoBehaviour
             }
         }
         initialPrices = (float[])menuPrices.Clone();
+        startTime = Time.time;
     }
 
     private void SetupPriceField(TMP_InputField field, float defaultValue, int index)
@@ -69,9 +72,9 @@ public class PriceEditor : MonoBehaviour
             Debug.LogWarning("Invalid food index: " + foodIdx);
             return -1;
         }
-
-        float timeRatio = TimeManager.Instance.GetRemainingTimeRatio();
-        return Mathf.Lerp(initialPrices[foodIdx], 0, 1 - timeRatio) + 20; // price decreases over 500 sec
+        int cnt = (int)((Time.time - startTime) / 30);
+        float multiplier = Mathf.Pow(4, 0.1f);
+        return (initialPrices[foodIdx] + 20) * Mathf.Pow(multiplier, cnt);
     }
 
     public float GetSellingPrice(int foodIdx)
