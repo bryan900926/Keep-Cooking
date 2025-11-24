@@ -64,7 +64,11 @@ public class WaiterServeFoodState : WaiterState
             return;
 
         currentOrder = pendingOrders.Peek();
-
+        if (currentOrder.TableIdx < 0 || currentOrder.TableIdx >= DiningSystem.Instance.seats.Length)
+        {
+            Debug.LogWarning($"Invalid table index {currentOrder.TableIdx} for order.");
+            return;
+        }
         var targetSeat = DiningSystem.Instance.seats[currentOrder.TableIdx].transform;
         waiterStateManager.destinationSetter.target = targetSeat;
 

@@ -53,7 +53,7 @@ public class DishProperty : MonoBehaviour
 
     private void DecayFreshness()
     {
-        freshness -= Time.deltaTime;
+        // freshness -= Time.deltaTime;
         if (freshness < 0 && decaySmokePrefab != null)
         {
             decaySmokePrefab.SetActive(true);

@@ -9,7 +9,7 @@ public class WaiterIdleState : WaiterState
     private int currentCounterIdx = -1;
 
     [SerializeField] private readonly float checkInterval = 3f;
-    private List<OrderInfo> pendingOrders = new();
+    private readonly List<OrderInfo> pendingOrders = new();
 
     private Holding holding;
 
@@ -31,7 +31,7 @@ public class WaiterIdleState : WaiterState
         {
             float dist = Vector2.Distance(waiterStateManager.transform.position,
                                           CounterManager.Instance.seats[currentCounterIdx].transform.position);
-            if (dist < 0.3f)
+            if (dist < 0.3f && idx < targetCounters.Count)
             {
                 var food = CounterManager.Instance.RemoveFoodFromCounter(currentCounterIdx);
                 if (food != null)

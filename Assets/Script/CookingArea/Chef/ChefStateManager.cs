@@ -142,7 +142,8 @@ public class ChefStateManager : MonoBehaviour
         if (CheckChefForgetRecipe())
         {
             ChangeState(new ChefForgetState(this, orderInfos));
-        } else
+        }
+        else
         {
             ChangeState(new ChefCookingState(this, orderInfos));
         }
@@ -176,11 +177,10 @@ public class ChefStateManager : MonoBehaviour
             energy.IsReplenishing = false;
         }
     }
-    public bool CheckChefForgetRecipe(float k = 0.5f)
+    public bool CheckChefForgetRecipe()
     {
-        // float normalized = 1f - (energy.CurrentEnergy / energy.MaxEnergy);
-        // float prob = 1f - Mathf.Exp(-k * normalized);
-        return 0.3 > UnityEngine.Random.value;
+        // return 0.08 > UnityEngine.Random.value;
+        return true;
     }
     public void SetChefHasCorrectRecipe(bool isCorrect)
     {

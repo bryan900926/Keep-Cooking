@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +22,7 @@ public class MarketInventory : MonoBehaviour
     {
         for (int i = 0; i < inputs.Length; i++)
         {
-            int index = i; 
+            int index = i;
 
             inputs[i].onValueChanged.AddListener((value) =>
             {
@@ -40,8 +39,8 @@ public class MarketInventory : MonoBehaviour
                 else
                 {
                     Debug.Log("No Update");
-                }   
-                    
+                }
+
             });
         }
 
@@ -112,8 +111,8 @@ public class MarketInventory : MonoBehaviour
     {
         foreach (var slot in slots)
         {
-            if (slot.Currentcount > 0 &&¡@slot.limited >= slot.Currentcount)
-            {   
+            if (slot.Currentcount > 0 && slot.limited >= slot.Currentcount)
+            {
                 slot.limited -= slot.Currentcount;
                 AddItem(slot.name, slot.Currentcount);
                 slot.Currentcount = 0;

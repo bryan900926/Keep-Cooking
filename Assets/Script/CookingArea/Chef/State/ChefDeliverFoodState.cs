@@ -49,6 +49,11 @@ public class ChefDeliverFoodState : ChefState
         if (counterIndex != -1 && Vector2.Distance(chefStateManager.transform.position, chefStateManager.Destination.position) < 0.3f)
         {
             GameObject food = holding.HoldingItem[0];
+            if (food == null)
+            {
+                Debug.LogWarning("No food to deliver!");
+                return;
+            }
             holding.RemoveHoldingItem(food);
             CounterManager.Instance.ChefFoodToCounter(counterIndex, food);
             counterIndex = -1;
