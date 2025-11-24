@@ -4,8 +4,8 @@ using System.Collections;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public TMP_Text timeText;
-    public float countdownTime = 30f;
+    public TMP_Text timeText;   // ��J UI ��ܥ�
+    public float countdownTime = 45f;  // �w�] 45 ��
 
     private float currentTime;
 
@@ -34,7 +34,8 @@ public class CountdownTimer : MonoBehaviour
 
             timeText.text = "0S";
 
-            MarketInventory.Instance.UpdateMenu();
+            MarketEventManager.Instance.TriggerRandomEvent();
+
         }
     }
 

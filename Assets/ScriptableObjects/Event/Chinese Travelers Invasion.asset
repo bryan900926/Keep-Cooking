@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
+  m_Name: Chinese Travelers Invasion
+  m_EditorClassIdentifier: 
+  eventName: Chinese Travelers Invasion
+  description: A sudden wave of mysterious travelers from another world arrives,
+    desperately craving authentic Chinese dishes. Demand for dumplings skyrockets
+    overnight.
+  goods:
+  - Dumplings
+  limits: 08000000
+  prices:
+  - 1.3

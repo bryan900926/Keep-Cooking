@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class MarketInventory : MonoBehaviour
 {
-    public List<MarketSlot> slots = new();
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public List<MarketSlot> slots = new List<MarketSlot>();
+    public Dictionary<string, MarketSlot> slotDict = new();
     public TMP_InputField[] inputs = new TMP_InputField[4];
     public int maxSlots = 9;
     public int page = 1;
@@ -51,40 +53,57 @@ public class MarketInventory : MonoBehaviour
 
             });
         }
-        for (int i = 0; i < slots.Count; i++)
+
+        slotDict.Clear();
+        foreach (var slot in slots)
         {
-            MarketSlot marketSlot = slots[i];
-            slotDictionary[marketSlot.item.Mask] = slots[i];
+            if (slot != null && slot.item != null)
+            {
+                slotDict[slot.item.Name] = slot;
+            }
         }
     }
 
-    public void AddItem(IngredientData item, int amount)
+    public void AddItem(string name, int amount)
     {
-        foreach (var slot in slots)
+        if (slotDict.ContainsKey(name))
         {
-            if (slot.item == item) slot.amount += amount;
+            slotDict[name].amount += amount;
         }
     }
-    public void DecreaseItem(IngredientData item, int amount)
+    public void DecreaseItem(string name, int amount)
     {
-        foreach (var slot in slots)
+        if (slotDict.ContainsKey(name))
         {
-            if (slot.item == item) slot.amount -= amount;
-        }
-    }
-    public void ChangeLimit(IngredientData item, int amount)
-    {
-        foreach (var slot in slots)
-        {
-            if (slot.item == item) slot.limited = amount;
+            slotDict[name].amount -= amount;
         }
     }
 
-    public void ChangePrice(IngredientData item, int amount)
+    public void ChangeLimit(string name, int amount)
+    {
+        if (slotDict.ContainsKey(name))
+        {
+            slotDict[name].limited = amount;
+        }
+    }
+
+    public void RecoverLimit(int amount)
     {
         foreach (var slot in slots)
         {
-            if (slot.item == item) slot.price = amount;
+            if (slot != null && slot.item != null)
+            {
+                slot.limited = amount;
+            }
+        }
+    }
+
+    public void ChangePrice(string name, float amount, bool reverse)
+    {
+        if (slotDict.ContainsKey(name))
+        {
+            if (!reverse) slotDict[name].price = (int)(slotDict[name].price * amount);
+            else slotDict[name].price = (int)(slotDict[name].price / amount);
         }
     }
 
@@ -106,8 +125,9 @@ public class MarketInventory : MonoBehaviour
         {
             if (slot.Currentcount > 0)
             {
-                // slot.limited -= slot.Currentcount;
-                AddItem(slot.item, slot.Currentcount);
+                slot.limited -= slot.Currentcount;
+                AddItem(slot.name, slot.Currentcount);
+                slot.Currentcount = 0;
                 MarketUI.Instance.RefreshUI(page);
                 anyItemPurchased = true;
                 slot.Currentcount = 0;
@@ -121,26 +141,16 @@ public class MarketInventory : MonoBehaviour
 
     }
 
-    public void UpdateMenu()
+    public void UpdateMenu() // Inflation every 45 seconds
     {
-        float multiplier = Mathf.Pow(2, 0.1f);
+        float multiplier = Mathf.Pow(2, 0.15f);
         foreach (var slot in slots)
         {
             slot.price = (int)(slot.price * multiplier);
         }
-
         MarketUI.Instance.RefreshUI(page);
     }
 
-    public bool IsIngredientSufficient(Ingredients ingredient, int requiredAmount)
-    {
-        int itemMask = (int)ingredient;
-        if (slotDictionary.TryGetValue(itemMask, out MarketSlot slot))
-        {
-            return slot.amount >= requiredAmount;
-        }
-        return false;
-    }
 
     // Tries to consume ingredients for a LIST of dishes at once.
     // Atomic: Either ALL are consumed, or NONE are consumed.

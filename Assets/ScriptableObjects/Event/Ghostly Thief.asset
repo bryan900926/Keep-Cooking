@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
+  m_Name: Ghostly Thief
+  m_EditorClassIdentifier: 
+  eventName: Ghostly Thief
+  description: A mischievous ghost sneaks into the market and steals ingredients
+    only when customers try to buy them, causing sudden shortages and panic.
+  goods:
+  - Dumplings
+  - Brocooli
+  - Drumstick
+  - Lettuce
+  - Pepper
+  - Mushroom
+  - Chicken
+  - Corn
+  - Potato
+  limits: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  prices:
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
+  - 1.3
