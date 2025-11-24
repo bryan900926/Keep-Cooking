@@ -5,7 +5,7 @@ using System.Collections;
 public class CountdownTimer : MonoBehaviour
 {
     public TMP_Text timeText;   // 拖入 UI 顯示用
-    public float countdownTime = 30f;  // 預設 30 秒
+    public float countdownTime = 45f;  // 預設 45 秒
 
     private float currentTime;
     private bool isCounting = false;
@@ -37,7 +37,8 @@ public class CountdownTimer : MonoBehaviour
 
             timeText.text = "0S";
 
-            MarketInventory.Instance.UpdateMenu();  
+            MarketEventManager.Instance.TriggerRandomEvent();
+
         }
     }
 
