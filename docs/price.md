@@ -14,11 +14,13 @@
 
 ### Customer propety
 
-#### price volility
-
-#### patience
-
-#### walking speed
+- moving speed
+- patience for waiting the food
+- dining together
+- dining duration
+- level of dercreasing the reputation
+- decreasing the revenue
+- price fluctuation
 
 ### Cusomter spawning
 
@@ -26,7 +28,7 @@
 
 ## Chef forgeting the recipe
 
-13.3% percent forgeting rate
+0.8% percent forgeting rate
 
 ## Chef waste the ingredients
 

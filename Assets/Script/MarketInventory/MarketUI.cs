@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;   
+using UnityEngine.UI;
 
 public class MarketUI : MonoBehaviour
 {
@@ -13,23 +13,35 @@ public class MarketUI : MonoBehaviour
         Instance = this;
     }
     private void Start()
-    {   
+    {
         RefreshUI(1);
         MarketInventory.Instance.page = 1;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            UpclickButtom();
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            DownclickButtom();
+        }
+    }
+
     public void UpclickButtom()
-    {   
-        if (MarketInventory.Instance.page >= 3)
-            return;
+    {
+        MarketInventory.Instance.page %= 3;
         MarketInventory.Instance.page += 1;
         RefreshUI(MarketInventory.Instance.page);
     }
 
     public void DownclickButtom()
     {
-        if (MarketInventory.Instance.page <= 1)
-            return;
+        if (MarketInventory.Instance.page <= 1){
+            MarketInventory.Instance.page = 4;
+        }
         MarketInventory.Instance.page -= 1;
         RefreshUI(MarketInventory.Instance.page);
     }
@@ -83,8 +95,8 @@ public class MarketUI : MonoBehaviour
                 TMP_InputField numberText = slot.Find("number").GetComponent<TMP_InputField>();
 
                 food.sprite = null;
-                frame.enabled = false; 
-                food.enabled = false; 
+                frame.enabled = false;
+                food.enabled = false;
                 nameText.text = "";
                 priceText.text = "";
                 stockText.text = "";

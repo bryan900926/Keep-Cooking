@@ -4,8 +4,8 @@ using System.Collections;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public TMP_Text timeText;   // ��J UI ��ܥ�
-    public float countdownTime = 45f;  // �w�] 45 ��
+    public TMP_Text timeText;
+    public float countdownTime = 45f;
 
     private float currentTime;
 

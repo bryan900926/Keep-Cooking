@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
@@ -39,8 +40,6 @@ public class ChefStateManager : MonoBehaviour
 
     public bool ChefHasCorrectRecipe => chefHasCorrectRecipe;
 
-    private float flickerTimer = 0f;
-    private bool isRed = false;
     public event Action OnChefDestroyed
     {
         add { onChefDestroyed += value; }
@@ -83,6 +82,7 @@ public class ChefStateManager : MonoBehaviour
 
     [SerializeField] private SpriteRenderer lowStockSprite;
 
+    private Coroutine flickerRoutine;
 
     void Awake()
     {
@@ -159,8 +159,7 @@ public class ChefStateManager : MonoBehaviour
     }
     public bool CheckChefForgetRecipe()
     {
-        // return 0.08 > UnityEngine.Random.value;
-        return false;
+        return UnityEngine.Random.value < 0.06f;
     }
     public void SetChefHasCorrectRecipe(bool isCorrect)
     {
@@ -172,27 +171,37 @@ public class ChefStateManager : MonoBehaviour
         lowStockSprite.enabled = isLowStock;
     }
 
-    public void HandleSideEffectFlicker(bool isActive, Color flickerColor)
+    public void HandleSideEffectFlicker(bool isActive)
     {
         if (isActive)
         {
-            flickerTimer += Time.deltaTime;
-
-            if (flickerTimer >= 0.2f) // flicker every 0.2s
-            {
-                flickerTimer = 0f;
-                isRed = !isRed;
-                spriteRenderer.color = isRed ? flickerColor : Color.white;
-            }
+            // If not already flickering, start it
+            flickerRoutine ??= StartCoroutine(FlickerRoutine());
         }
         else
         {
-            // reset to normal color
-            if (spriteRenderer.color != Color.white)
-                spriteRenderer.color = Color.white;
+            // Stop flickering and reset color
+            if (flickerRoutine != null)
+            {
+                StopCoroutine(flickerRoutine);
+                flickerRoutine = null;
+            }
 
-            flickerTimer = 0f;
-            isRed = false;
+            spriteRenderer.color = Color.white;
+        }
+    }
+
+    private IEnumerator FlickerRoutine()
+    {
+        bool isRed = false;
+
+        while (true)
+        {
+            // Toggle color
+            isRed = !isRed;
+            spriteRenderer.color = isRed ? Color.red : Color.white;
+
+            yield return new WaitForSeconds(0.2f); // flicker frequency
         }
     }
 

@@ -12,12 +12,12 @@ public class ChefForgetState : ChefState
 
     public override void Enter()
     {
+        Debug.Log("Chef has forgotten the recipe!");
         foreach (var order in orderInfos)
         {
             chefStateManager.GetComponent<ChefRecipe>().RandomizeRecipe(order.FoodIdx);
         }
-        chefStateManager.ToggleLowStockIndicator(true);
-        chefStateManager.HandleSideEffectFlicker(true, Color.red);
+        chefStateManager.HandleSideEffectFlicker(true);
     }
 
     public override void Update()
@@ -30,7 +30,6 @@ public class ChefForgetState : ChefState
 
     public override void Exit()
     {
-        chefStateManager.ToggleLowStockIndicator(false);
-        chefStateManager.HandleSideEffectFlicker(false, Color.red);
+        chefStateManager.HandleSideEffectFlicker(false);
     }
 }
