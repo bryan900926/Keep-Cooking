@@ -23,7 +23,7 @@ public class MarketInventory : MonoBehaviour
         for (int i = 0; i < inputs.Length; i++)
         {
             int index = i;
-
+            inputs[i].contentType = TMP_InputField.ContentType.IntegerNumber;
             inputs[i].onValueChanged.AddListener((value) =>
             {
                 if (((page - 1) * 4 + index) < maxSlots)
