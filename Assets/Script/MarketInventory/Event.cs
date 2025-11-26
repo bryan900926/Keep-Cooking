@@ -4,7 +4,7 @@ using UnityEngine;
 public class MarketEvent : ScriptableObject
 {
     [Header("Basic Info")]
-    public string eventName;       
+    public string eventName;
     [TextArea(2, 5)]
     public string description;
 

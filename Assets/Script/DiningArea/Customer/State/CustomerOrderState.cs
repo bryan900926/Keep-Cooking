@@ -67,6 +67,7 @@ public class CustomerOrderState : CustomerState
         }
         else
         {
+            ReputationSystem.Instance.DecreaseReputation(5f);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class DishProperty : MonoBehaviour
 {
-    public List<Ingredients> normal_recipe = new List<Ingredients>();
-    public List<Ingredients> random_recipe = new List<Ingredients>();
-    public List<Ingredients> mission_recipe = new List<Ingredients>();
+    public List<Ingredients> normal_recipe = new();
+    public List<Ingredients> random_recipe = new();
+    public List<Ingredients> mission_recipe = new();
 
     [SerializeField] private int foodidx;
 
@@ -22,7 +22,7 @@ public class DishProperty : MonoBehaviour
     public DishType State { get => state; set => state = value; }
     [SerializeField] private float freshness = 50f;
 
-    public float Freshness { get => freshness;}
+    public float Freshness { get => freshness; }
 
     [SerializeField] private GameObject decaySmokePrefab;
     private void Start()
@@ -59,5 +59,4 @@ public class DishProperty : MonoBehaviour
             decaySmokePrefab.SetActive(true);
         }
     }
-
 }

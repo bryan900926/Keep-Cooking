@@ -7,7 +7,9 @@ public class MarketEventManager : MonoBehaviour
 
     public MarketEvent currentEvent;
 
+
     public List<MarketEvent> allEvents = new List<MarketEvent>();
+
 
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class MarketEventManager : MonoBehaviour
     {
         if (currentEvent != null)
             RecoverEvent(currentEvent);
-
+        CenterMessage.Instance.ShowMessage(e.description);
         MarketInventory.Instance.UpdateMenu();
 
         string[] goods = e.goods;
@@ -75,7 +77,7 @@ public class MarketEventManager : MonoBehaviour
         {
             MarketUI.Instance.RefreshUI(i);
         }
-        
+
         Debug.Log("Triggered Market Event: " + e.eventName);
     }
 }

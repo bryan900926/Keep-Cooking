@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject leftoverFoods; // assign prefabs in inspector
     public GameObject[] FoodPrefabs => foodPrefabs;
 
+
     void Awake()
     {
         if (Instance != null && Instance != this)

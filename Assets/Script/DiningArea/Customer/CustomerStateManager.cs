@@ -62,6 +62,7 @@ public class CustomerStateManager : MonoBehaviour
         }
         if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
         {
+            ReputationSystem.Instance.DecreaseReputation(10f);
             ChangeState(new CustomerLeaveState(this));
         }
         currentState?.Update();

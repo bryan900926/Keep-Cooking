@@ -1,20 +1,33 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class MarketInventory : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public List<MarketSlot> slots = new List<MarketSlot>();
-    public Dictionary<string, MarketSlot> slotDict = new Dictionary<string, MarketSlot>();
+    public List<MarketSlot> slots = new();
+    public Dictionary<string, MarketSlot> slotDict = new();
     public TMP_InputField[] inputs = new TMP_InputField[4];
     public int maxSlots = 9;
     public int page = 1;
 
     public static MarketInventory Instance;
 
+    public event Action OnInventoryUpdated;
+
+    readonly private Dictionary<string, int> initPrice = new();
+
+    readonly private Dictionary<int, string> Mask2String = new();
+
+    private float startTime;
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
@@ -28,12 +41,10 @@ public class MarketInventory : MonoBehaviour
             {
                 if (((page - 1) * 4 + index) < maxSlots)
                 {
-                    int num = 0;
-                    int.TryParse(value, out num);
+                    int.TryParse(value, out int num);
 
                     MarketSlot slotData = slots[(page - 1) * 4 + index];
-                    slotData.Currentcount = num;
-
+                    slotData.Currentcount = Math.Min(num, slotData.limited);
                     MarketUI.Instance.RefreshUI(page);
                 }
                 else
@@ -42,6 +53,7 @@ public class MarketInventory : MonoBehaviour
                 }
 
             });
+            startTime = Time.time;
         }
 
         slotDict.Clear();
@@ -50,6 +62,8 @@ public class MarketInventory : MonoBehaviour
             if (slot != null && slot.item != null)
             {
                 slotDict[slot.item.Name] = slot;
+                initPrice[slot.item.Name] = slot.price;
+                Mask2String[slot.item.Mask] = slot.item.Name;
             }
         }
     }
@@ -68,7 +82,7 @@ public class MarketInventory : MonoBehaviour
             slotDict[name].amount -= amount;
         }
     }
-    
+
     public void ChangeLimit(string name, int amount)
     {
         if (slotDict.ContainsKey(name))
@@ -102,43 +116,116 @@ public class MarketInventory : MonoBehaviour
         int total = 0;
         foreach (var slot in slots)
         {
-            total += slot.Currentcount * slot.price;
+            total += Mathf.Min(slot.Currentcount, slot.limited) * slot.price;
         }
         return total;
     }
 
     public void Purchase()
     {
+        int totalCost = AllTotal();
+        bool anyItemPurchased = false;
         foreach (var slot in slots)
         {
-            if (slot.Currentcount > 0 && slot.limited >= slot.Currentcount)
+            if (slot.Currentcount > 0)
             {
+                slot.Currentcount = Mathf.Min(slot.Currentcount, slot.limited);
                 slot.limited -= slot.Currentcount;
-                AddItem(slot.name, slot.Currentcount);
+                AddItem(slot.item.Name, slot.Currentcount);
                 slot.Currentcount = 0;
                 MarketUI.Instance.RefreshUI(page);
-                // Need Economy System to deduct money
+                anyItemPurchased = true;
             }
         }
+        if (anyItemPurchased)
+        {
+            ScoreManager.Instance.AddRevenue(-totalCost);
+            OnInventoryUpdated?.Invoke();
+        }
+
     }
 
     public void UpdateMenu() // Inflation every 45 seconds
     {
         float multiplier = Mathf.Pow(2, 0.15f);
+        float elapsedTime = Time.time - startTime;
+        int intervals = (int)(elapsedTime / 45f);
         foreach (var slot in slots)
         {
-            slot.price = (int) (slot.price * multiplier);
+            slot.price = (int)(initPrice[slot.item.Name] * Mathf.Pow(multiplier, intervals));
         }
-    }
-
-    public void MarketEvent()
-    {
-
+        MarketUI.Instance.RefreshUI(page);
     }
 
 
-    // Update is called once per frame
-    void Update()
+    // Tries to consume ingredients for a LIST of dishes at once.
+    // Atomic: Either ALL are consumed, or NONE are consumed.
+    public bool TryConsumeIngredientsForBatch(List<DishProperty> dishes, float wasteProb, int id = -1)
     {
+        // 1. TALLY UP THE TOTAL NEEDS
+        // We use a temporary dictionary to sum up how much of each ingredient we need total.
+        // Key = Ingredient Mask (int), Value = Total Amount Needed
+        Dictionary<int, int> totalRequirements = new();
+
+        for (int i = 0; i < dishes.Count; i++)
+        {
+            DishProperty dish = dishes[i];
+
+            foreach (var ingredient in dish.normal_recipe)
+            {
+                if (ingredient == Ingredients.None) continue;
+
+                int mask = (int)ingredient;
+                if (totalRequirements.ContainsKey(mask))
+                {
+                    totalRequirements[mask] += 1;
+                }
+                else
+                {
+                    totalRequirements.Add(mask, 1);
+                }
+            }
+        }
+
+        // 2. CHECK IF WE HAVE ENOUGH (The "Look" Phase)
+        foreach (var req in totalRequirements)
+        {
+            int mask = req.Key;
+            int amountNeeded = req.Value;
+            string name = Mask2String[mask];
+
+            if (!slotDict.TryGetValue(name, out MarketSlot slot) || slot.amount < amountNeeded)
+            {
+                return false;
+            }
+            else if (!slotDict.ContainsKey(name))
+            {
+                Debug.LogError("Ingredient not found in inventory: " + name);
+            }
+        }
+
+        // 3. CONSUME (The "Leap" Phase)
+        // If we got here, we guarantee we have enough for EVERYTHING.
+        foreach (var req in totalRequirements)
+        {
+            int mask = req.Key;
+            int amountToTake = req.Value;
+            if (Mask2String.ContainsKey(mask) == false)
+            {
+                Debug.LogError("Ingredient mask not found in Mask2String: " + mask);
+                continue;
+            }
+            else
+            {
+            }
+            string name = Mask2String[mask];
+            Debug.Log("@Consuming Ingredient: " + mask + " Name: " + Mask2String[mask]);
+            slotDict[name].amount -= amountToTake;
+        }
+        Debug.Log("@@ " + id + " Consumed ingredients for batch.");
+        // 4. NOTIFY
+        MarketUI.Instance.RefreshUI(page);
+
+        return true;
     }
 }
