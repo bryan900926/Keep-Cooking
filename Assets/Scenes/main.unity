@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 197424549}
   - component: {fileID: 197424548}
   - component: {fileID: 197424550}
+  - component: {fileID: 197424551}
   m_Layer: 5
   m_Name: mainmenu
   m_TagString: Untagged
@@ -679,6 +680,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &197424551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197424546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b212f8a65f4484fb8b0e9c2297a148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startBtn: {fileID: 330062716}
+  optionBtn: {fileID: 795532060}
+  exitBtn: {fileID: 1292916175}
 --- !u!1 &205510732
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,43 +989,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 330062714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1867508082}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Chaos Kitchen
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickHideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 772654768}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &332553773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,19 +1238,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 576848379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 772654768}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &576848379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,31 +2037,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 745214613}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 772654768}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickHideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &745214613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,31 +2391,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 795532058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickHideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: optionmenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickShowUI
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: optionmenu
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &831200684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2562,6 +2482,7 @@ GameObject:
   - component: {fileID: 846678453}
   - component: {fileID: 846678457}
   - component: {fileID: 846678458}
+  - component: {fileID: 846678459}
   m_Layer: 5
   m_Name: setting
   m_TagString: Untagged
@@ -2695,6 +2616,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hotkey: 2
+--- !u!114 &846678459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846678451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6c4faf8063397448f2fe965153a71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueBtn: {fileID: 745214612}
+  restartBtn: {fileID: 576848378}
+  optionBtn: {fileID: 2114302024}
+  exitBtn: {fileID: 1330213287}
 --- !u!1 &1006423944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,19 +3203,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1292916173}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1313723531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,43 +3322,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1330213288}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: ChangeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: main
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickShowUI
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: mainmenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickHideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1330213288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4516,31 +4405,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2114302025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickHideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Settings
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 192146037}
-        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
-        m_MethodName: ClickShowUI
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: optionmenu
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2114302025
 MonoBehaviour:
   m_ObjectHideFlags: 0

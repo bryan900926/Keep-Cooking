@@ -76,10 +76,4 @@ public class UImanager : MonoBehaviour
             HideUI(kvp.Value);
         }
     }
-
-    public void ClickShowOption()
-    {
-        ClickShowUI(MenuOptions.option);
-    }
-
 }
