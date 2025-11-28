@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Setting : MonoBehaviour
@@ -10,7 +11,8 @@ public class Setting : MonoBehaviour
         pauseButton = GetComponent<Button>();
         if (pauseButton != null)
         {
-            pauseButton.onClick.AddListener(PauseGame);
+            pauseButton.onClick.AddListener(GameManager.Instance.PauseGame);
+            pauseButton.onClick.AddListener(() => UImanager.Instance.ClickShowUI("setting")); ;
         }
     }
     void PauseGame()

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MarketEventManager : MonoBehaviour
@@ -6,7 +7,9 @@ public class MarketEventManager : MonoBehaviour
 
     public MarketEvent currentEvent;
 
-    public MarketEvent[] allEvents;
+
+    public List<MarketEvent> allEvents = new List<MarketEvent>();
+
 
     private void Awake()
     {
@@ -34,11 +37,12 @@ public class MarketEventManager : MonoBehaviour
 
     public void TriggerRandomEvent()
     {
-        if (allEvents.Length == 0) return;
-        int randomIndex = Random.Range(0, allEvents.Length);
+        if (allEvents.Count == 0) return;
+        int randomIndex = Random.Range(0, allEvents.Count);
         MarketEvent randomEvent = allEvents[randomIndex];
         ApplyMarketEvent(randomEvent);
         currentEvent = randomEvent;
+        allEvents.RemoveAt(randomIndex);
     }
 
     private void ApplyMarketEvent(MarketEvent e)
