@@ -15,8 +15,68 @@ MonoBehaviour:
   m_GroupName: Audio
   m_GUID: 0de81c64b812ab0418ef26670486ffe2
   m_SerializeEntries:
+  - m_GUID: 32d1f5ee13cc30f4193f1bec0ab44ed1
+    m_Address: Assets/Audio/SFX/UI/ChangePage.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e7d71ba995c4784094b1c424f38239d
     m_Address: Assets/Audio/BGM/0F.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8904912d0787cfb4588695647a06cba8
+    m_Address: Assets/Audio/BGM/BGM.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98f7f97895535374ba8f3abca56ca9da
+    m_Address: Assets/Audio/SFX/UI/Pencil.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8c9aea0c657568498c3cc592fc16acb
+    m_Address: Assets/Audio/SFX/UI/Purchasing.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af79f35e93454e64eac5cc7667ac3091
+    m_Address: Assets/Audio/SFX/Player/walking.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4cc12c9695df684dadbc349ea346c5f
+    m_Address: Assets/Audio/SFX/Ktichen/cooking.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bebbc9ede02bb3045895b24a29d875e5
+    m_Address: Assets/Audio/SFX/UI/ButtonClick.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c628af48975166743ae9c8f5dee04a05
+    m_Address: Assets/Audio/SFX/UI/PlaceItem.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e15fed619913aa6479b36a4526cae132
+    m_Address: Assets/Audio/SFX/Dining/CustomerEating.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e66620c7486739f4b83a7378bbfe5924
+    m_Address: Assets/Audio/SFX/Dining/money.mp3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Audio

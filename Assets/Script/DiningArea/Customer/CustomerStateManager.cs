@@ -38,6 +38,9 @@ public class CustomerStateManager : MonoBehaviour
     private float buyingPrice;
     public float BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
 
+    private CustomerSFX customerSFX;
+    public CustomerSFX CustomerSFX { get => customerSFX; set => customerSFX = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +52,7 @@ public class CustomerStateManager : MonoBehaviour
         viewEffect = GameObject.FindGameObjectWithTag("PostProcess").GetComponent<ViewEffect>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
+        customerSFX = GetComponent<CustomerSFX>();
         currentState.Enter();
     }
 

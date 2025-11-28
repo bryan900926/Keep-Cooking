@@ -16,11 +16,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] private float spawnYOffset = 0.1f; // small offset to prevent collider overlap
 
+    private PlayerSFX playerSFX;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         moveInput = GetComponent<MoveInput>();
+        playerSFX = GetComponent<PlayerSFX>();
 
 
         // Ensure player is slightly above initial ground to prevent sticking

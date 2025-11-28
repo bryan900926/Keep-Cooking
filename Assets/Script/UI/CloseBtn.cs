@@ -12,6 +12,7 @@ public class CloseBtn : MonoBehaviour
     }
     void ClosePanel()
     {
+        UISFX.Instance.PlayButtonClick();
         Toggle.Instance.ClosePanel(key);
     }
 }

@@ -14,6 +14,7 @@ public class CustomerEatingState : CustomerState
 
     public override void Enter()
     {
+        customerStateManager.CustomerSFX.PlayEating();
         if (customerStateManager.GetComponent<Holding>().HoldingItem.Count == 0)
         {
             Debug.LogError("Customer has no food to eat!");
@@ -51,5 +52,7 @@ public class CustomerEatingState : CustomerState
             ReputationSystem.Instance.IncreaseReputation(5f);
             ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
         }
+        customerStateManager.CustomerSFX.StopEating();
+        customerStateManager.CustomerSFX.PaidMoney();
     }
 }

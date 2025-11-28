@@ -21,12 +21,10 @@ public class Dailyspecial : MonoBehaviour
 
     private void Start()
     {
-        // �O����l�W��
         originalname1 = pickone1.text;
         originalname2 = pickone2.text;
         originalname3 = pickone3.text;
 
-        // �����s�j�w�ƥ�
         chooseone1.onClick.AddListener(() => SetSpecial(1));
         chooseone2.onClick.AddListener(() => SetSpecial(2));
         chooseone3.onClick.AddListener(() => SetSpecial(3));
@@ -35,7 +33,7 @@ public class Dailyspecial : MonoBehaviour
     }
 
     private void SetSpecial(int index)
-    { 
+    {
         if (preindex == index) return;
         // ������_��W
         pickone1.text = originalname1;
@@ -45,19 +43,22 @@ public class Dailyspecial : MonoBehaviour
 
         // ���w�����ӥ[ (*)
         switch (index)
-        {   
-            case 1: pickone1.text = originalname1 + " (*)"; 
-                    //PriceEditor.price1 = Mathf.FloorToInt(PriceEditor.price1 * 0.8f);
-                    //priceeditor.IntPriceChange(priceeditor.PriceField1, PriceEditor.price1);
-                    break;
-            case 2: pickone2.text = originalname2 + " (*)"; 
-                    //PriceEditor.price2 = Mathf.FloorToInt(PriceEditor.price2 * 0.8f);
-                    //priceeditor.IntPriceChange(priceeditor.PriceField2, PriceEditor.price2);
-                    break;
-            case 3: pickone3.text = originalname3 + " (*)";
-                    //PriceEditor.price3 = Mathf.FloorToInt(PriceEditor.price3 * 0.8f);
-                    //priceeditor.IntPriceChange(priceeditor.PriceField3, PriceEditor.price3);
-                    break;
+        {
+            case 1:
+                pickone1.text = originalname1 + " (*)";
+                //PriceEditor.price1 = Mathf.FloorToInt(PriceEditor.price1 * 0.8f);
+                //priceeditor.IntPriceChange(priceeditor.PriceField1, PriceEditor.price1);
+                break;
+            case 2:
+                pickone2.text = originalname2 + " (*)";
+                //PriceEditor.price2 = Mathf.FloorToInt(PriceEditor.price2 * 0.8f);
+                //priceeditor.IntPriceChange(priceeditor.PriceField2, PriceEditor.price2);
+                break;
+            case 3:
+                pickone3.text = originalname3 + " (*)";
+                //PriceEditor.price3 = Mathf.FloorToInt(PriceEditor.price3 * 0.8f);
+                //priceeditor.IntPriceChange(priceeditor.PriceField3, PriceEditor.price3);
+                break;
         }
 
 

@@ -78,7 +78,7 @@ public class DragInterface : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         dropped = true;
         droppeddrag = true;
         slotindex = index;
-
+        UISFX.Instance.PlayPlaceItem();
         Debug.Log($"{gameObject.name} dropped successfully!");
     }
 

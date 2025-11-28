@@ -22,11 +22,13 @@ public class SceneController : MonoBehaviour
     }
     public void ChangeScene(string sceneName)
     {
+        UISFX.Instance.PlayButtonClick();
         SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame()
     {
+        UISFX.Instance.PlayButtonClick();
         Debug.Log("Exit");
         Application.Quit();
     }

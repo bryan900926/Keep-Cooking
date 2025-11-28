@@ -18,22 +18,11 @@ public class MarketUI : MonoBehaviour
         MarketInventory.Instance.page = 1;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            UpclickButtom();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            DownclickButtom();
-        }
-    }
-
     public void UpclickButtom()
     {
         MarketInventory.Instance.page %= 3;
         MarketInventory.Instance.page += 1;
+        UISFX.Instance.PlayChangePage();
         RefreshUI(MarketInventory.Instance.page);
     }
 
@@ -43,6 +32,7 @@ public class MarketUI : MonoBehaviour
             MarketInventory.Instance.page = 4;
         }
         MarketInventory.Instance.page -= 1;
+        UISFX.Instance.PlayChangePage();
         RefreshUI(MarketInventory.Instance.page);
     }
 

@@ -17,6 +17,10 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private float interestRate = 0.01f; // 1% interest rate
 
+    private int servedCnt = 0;
+
+    public int ServedCnt => servedCnt;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,6 +44,9 @@ public class ScoreManager : MonoBehaviour
         if (revenue < 0)
         {
             loanQueue.Enqueue(new Loan(revenue, interestRate), Time.time);
+        } else
+        {
+            servedCnt++;
         }
         while (loanQueue.Count > 0 && revenue > 0)
         {

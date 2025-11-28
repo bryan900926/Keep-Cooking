@@ -4,9 +4,11 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
-    [SerializeField] private float gameDuration = 300f; // 5 minutes
+    [SerializeField] private float gameDuration = 10f; // 5 minutes
 
     private float remainingTime;
+
+    public float RemainingTime => remainingTime;
     private TextMeshProUGUI timerText;
     void Awake()
     {

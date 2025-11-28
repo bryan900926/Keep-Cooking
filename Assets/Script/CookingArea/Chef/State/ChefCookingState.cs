@@ -6,7 +6,6 @@ public class ChefCookingState : ChefState
 {
     float cookingTime;
     readonly List<OrderInfo> orderInfos;
-    List<DishProperty> dishProperties;
 
     private bool isWaitingForIngredients = false;
 
@@ -14,6 +13,8 @@ public class ChefCookingState : ChefState
 
     readonly private Energy energy;
     float wastedIngredientProb = 0f;
+
+    readonly Dictionary<int, int> totalRequirements = new();
 
     public ChefCookingState(ChefStateManager chefStateManager, List<OrderInfo> orderInfos)
         : base(chefStateManager)
@@ -26,20 +27,37 @@ public class ChefCookingState : ChefState
 
     public override void Enter()
     {
-        Debug.Log("@ChefCookingState:" + chefStateManager.GetInstanceID() + " Entering Cooking State");
 
         // Get the required dishes
-        dishProperties = Recipe.instance.dishProperties
+        List<DishProperty> dishProperties = Recipe.instance.dishProperties
             .Where(dish => orderInfos.Any(order => order.FoodIdx == dish.Foodidx))
             .ToList();
 
+        for (int i = 0; i < dishProperties.Count; i++)
+        {
+            DishProperty dish = dishProperties[i];
+
+            foreach (var ingredient in dish.normal_recipe)
+            {
+                if (ingredient == Ingredients.None) continue;
+
+                int mask = (int)ingredient;
+                if (totalRequirements.ContainsKey(mask))
+                {
+                    totalRequirements[mask] += 1;
+                }
+                else
+                {
+                    totalRequirements.Add(mask, 1);
+                }
+            }
+        }
         // 🔒 Only try consuming ONCE per cycle
         if (!hasConsumedIngredients)
         {
             isWaitingForIngredients =
                 !MarketInventory.Instance.TryConsumeIngredientsForBatch(
-                    dishProperties,
-                    wastedIngredientProb,
+                    totalRequirements,
                     chefStateManager.gameObject.GetInstanceID()
                 );
 
@@ -87,13 +105,14 @@ public class ChefCookingState : ChefState
         // 🔄 Reset for next cooking cycle
         hasConsumedIngredients = false;
         isWaitingForIngredients = false;
+        chefStateManager.ChefSFX.StopCooking();
     }
-
     private void StartCookingProcess()
     {
         chefStateManager.CookingMachine
             .GetComponent<CookingMachineStateManager>()
             .ChangeToCookState();
+        chefStateManager.ChefSFX.PlayCooking();
 
         chefStateManager.HandleLowStockEffect(false);
 
@@ -124,8 +143,7 @@ public class ChefCookingState : ChefState
         Debug.Log("@ChefCookingState → OnInventoryReplenished");
 
         bool success = MarketInventory.Instance.TryConsumeIngredientsForBatch(
-            dishProperties,
-            wastedIngredientProb,
+            totalRequirements,
             chefStateManager.gameObject.GetInstanceID()
         );
 

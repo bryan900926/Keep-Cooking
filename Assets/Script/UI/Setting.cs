@@ -15,7 +15,7 @@ public class Setting : MonoBehaviour
     }
     void PauseGame()
     {
-        Debug.Log("Pause Key Pressed");
+        UISFX.Instance.PlayButtonClick();
         Toggle.Instance.TogglePanel(KeysForUI.Settings);
     }
 

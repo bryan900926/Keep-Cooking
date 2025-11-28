@@ -49,6 +49,7 @@ public class PriceEditor : MonoBehaviour
     {
         if (float.TryParse(value, out float newValue))
         {
+            UISFX.Instance.PlayChangePrice();
             menuPrices[index] = newValue;
             field.text = newValue + "\u0024";
         }

@@ -585,10 +585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd6b8f1ccd190748ac480855945057b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElements:
-  - {fileID: 197424546}
-  - {fileID: 448051945}
-  - {fileID: 846678451}
+  options: {fileID: 448051945}
+  main: {fileID: 197424546}
+  setting: {fileID: 846678451}
 --- !u!1 &197424546
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +974,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1867508080}
+      - m_Target: {fileID: 1867508082}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -2473,18 +2472,6 @@ MonoBehaviour:
           m_StringArgument: optionmenu
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1593054128}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayBGM
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 0F
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &831200684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3280,7 +3267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1867508080}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -3411,7 +3398,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1867508080}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -3846,6 +3833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593054126}
   - component: {fileID: 1593054128}
+  - component: {fileID: 1593054129}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3884,8 +3872,27 @@ MonoBehaviour:
   bgmvalue: {fileID: 1484650899}
   sfxvalue: {fileID: 2075997544}
   poolSize: 20
-  sfxvolume: 0.25
-  bgmvolume: 0.25
+  sfxvolume: 0.08
+  bgmvolume: 0.02
+--- !u!114 &1593054129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593054125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bef625f665611249b0bd07ef04586dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profiles:
+  - {fileID: 11400000, guid: a8d15b1298ac2f9478793ee128803567, type: 2}
+  - {fileID: 11400000, guid: 34b7de9cc50678c4dbb64eab7c2126cf, type: 2}
+  - {fileID: 11400000, guid: 83b35d3c0a2a89948946110fb8e1c0d9, type: 2}
+  - {fileID: 11400000, guid: bad9254e10698fb4283d30f37039fcf4, type: 2}
+  - {fileID: 11400000, guid: 5f47cbdb46ed1fa4784455e26010a734, type: 2}
+  - {fileID: 11400000, guid: 7c4bd899c4d91844490090f17096e6f1, type: 2}
 --- !u!1 &1633487267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,7 +4217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867508081}
-  - component: {fileID: 1867508080}
+  - component: {fileID: 1867508082}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -4218,18 +4225,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1867508080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867508079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f516a10228a39e4684277df2518da33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1867508081
 Transform:
   m_ObjectHideFlags: 0
@@ -4245,6 +4240,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1867508082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867508079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49407aac14d8db4490439264b5e402b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1915239045
 GameObject:
   m_ObjectHideFlags: 0

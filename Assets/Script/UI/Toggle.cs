@@ -19,6 +19,8 @@ public class Toggle : MonoBehaviour
 
     private CanvasGroup uiRootCanvasGroup;
 
+    private bool gameEnd = false;
+
     private readonly Dictionary<Key, KeysForUI> keyMapping = new()
     {
         { Key.I, KeysForUI.Inventory },
@@ -43,14 +45,10 @@ public class Toggle : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    void Start()
-    {
-
-    }
 
     void Update()
     {
-        if (Keyboard.current == null) return;
+        if (Keyboard.current == null || gameEnd) return;
 
         if (SceneManager.GetActiveScene().name != mainSceneName) return;
 
@@ -181,5 +179,10 @@ public class Toggle : MonoBehaviour
                 uiRootCanvasGroup.blocksRaycasts = false;
             }
         }
+    }
+
+    public void SetGameEnd(bool isGameEnd)
+    {
+        gameEnd = isGameEnd;
     }
 }

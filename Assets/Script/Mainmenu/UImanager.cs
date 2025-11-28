@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 
 public class UImanager : MonoBehaviour
 {
+    public enum MenuOptions
+    {
+        option,
+        main,
+        setting,
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static UImanager Instance;
-    [SerializeField] private GameObject[] uiElements;
-    private Dictionary<GameObject, CanvasGroup> canvasgroup = new Dictionary<GameObject, CanvasGroup>();
-    private CanvasGroup Currentcg;
-    private CanvasGroup Priorcg;
+    [SerializeField] private GameObject options;
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject setting;
+    private Dictionary<MenuOptions, CanvasGroup> canvasgroup = new();
+    private MenuOptions currentMenu;
 
     private void Awake()
     {
@@ -24,26 +29,16 @@ public class UImanager : MonoBehaviour
     }
     void Start()
     {
-        for (int i = 0; i < uiElements.Length; i++) {
-            canvasgroup[uiElements[i]] = uiElements[i].GetComponent<CanvasGroup>();
-            if (i >= 1)
-            {
-                HideUI(uiElements[i].GetComponent<CanvasGroup>());
-            }
-        }
-        Currentcg = uiElements[0].GetComponent<CanvasGroup>();
+        canvasgroup.Add(MenuOptions.option, options.GetComponent<CanvasGroup>());
+        canvasgroup.Add(MenuOptions.main, main.GetComponent<CanvasGroup>());
+        canvasgroup.Add(MenuOptions.setting, setting.GetComponent<CanvasGroup>());
+        currentMenu = MenuOptions.main;
+        HideAllUI();
+        ShowUI(canvasgroup[currentMenu]);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ReturnUI()
     {
-        ClickShowUI(Priorcg.gameObject.name);
-        ClickHideUI();
+        ClickShowUI(MenuOptions.main);
     }
 
     public void HideUI(CanvasGroup canvasGroup)
@@ -62,19 +57,29 @@ public class UImanager : MonoBehaviour
 
     public void ClickHideUI()
     {
-        GameObject current = EventSystem.current.currentSelectedGameObject;
-        if (current.GetComponentInParent<CanvasGroup>() == null) return;
-        Currentcg = current.GetComponentInParent<CanvasGroup>();
-        HideUI(Currentcg);
-        Priorcg = Currentcg;
+        UISFX.Instance.PlayButtonClick();
+        HideUI(canvasgroup[currentMenu]);
     }
 
-    public void ClickShowUI(string name)
+    public void ClickShowUI(MenuOptions name)
     {
-        GameObject current = GameObject.Find(name);
-        Currentcg = current.GetComponentInParent<CanvasGroup>();
-        ShowUI(Currentcg);
+        UISFX.Instance.PlayButtonClick();
+        currentMenu = name;
+        HideAllUI();
+        ShowUI(canvasgroup[currentMenu]);
     }
 
+    private void HideAllUI()
+    {
+        foreach (var kvp in canvasgroup)
+        {
+            HideUI(kvp.Value);
+        }
+    }
+
+    public void ClickShowOption()
+    {
+        ClickShowUI(MenuOptions.option);
+    }
 
 }

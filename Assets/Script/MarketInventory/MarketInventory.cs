@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -140,6 +141,7 @@ public class MarketInventory : MonoBehaviour
         if (anyItemPurchased)
         {
             ScoreManager.Instance.AddRevenue(-totalCost);
+            UISFX.Instance.PlayPurchaseItem();
             OnInventoryUpdated?.Invoke();
         }
 
@@ -160,72 +162,33 @@ public class MarketInventory : MonoBehaviour
 
     // Tries to consume ingredients for a LIST of dishes at once.
     // Atomic: Either ALL are consumed, or NONE are consumed.
-    public bool TryConsumeIngredientsForBatch(List<DishProperty> dishes, float wasteProb, int id = -1)
+    public bool TryConsumeIngredientsForBatch(Dictionary<int, int> totalRequirements, int id = -1)
     {
-        // 1. TALLY UP THE TOTAL NEEDS
-        // We use a temporary dictionary to sum up how much of each ingredient we need total.
-        // Key = Ingredient Mask (int), Value = Total Amount Needed
-        Dictionary<int, int> totalRequirements = new();
-
-        for (int i = 0; i < dishes.Count; i++)
-        {
-            DishProperty dish = dishes[i];
-
-            foreach (var ingredient in dish.normal_recipe)
-            {
-                if (ingredient == Ingredients.None) continue;
-
-                int mask = (int)ingredient;
-                if (totalRequirements.ContainsKey(mask))
-                {
-                    totalRequirements[mask] += 1;
-                }
-                else
-                {
-                    totalRequirements.Add(mask, 1);
-                }
-            }
-        }
-
-        // 2. CHECK IF WE HAVE ENOUGH (The "Look" Phase)
-        foreach (var req in totalRequirements)
+        foreach (var req in totalRequirements.ToList())   // avoid modifying while iterating
         {
             int mask = req.Key;
             int amountNeeded = req.Value;
+
+            // Already satisfied → skip
+            if (amountNeeded <= 0) continue;
+
             string name = Mask2String[mask];
 
-            if (!slotDict.TryGetValue(name, out MarketSlot slot) || slot.amount < amountNeeded)
-            {
-                return false;
-            }
-            else if (!slotDict.ContainsKey(name))
+            if (!slotDict.TryGetValue(name, out MarketSlot slot))
             {
                 Debug.LogError("Ingredient not found in inventory: " + name);
-            }
-        }
-
-        // 3. CONSUME (The "Leap" Phase)
-        // If we got here, we guarantee we have enough for EVERYTHING.
-        foreach (var req in totalRequirements)
-        {
-            int mask = req.Key;
-            int amountToTake = req.Value;
-            if (Mask2String.ContainsKey(mask) == false)
-            {
-                Debug.LogError("Ingredient mask not found in Mask2String: " + mask);
                 continue;
             }
-            else
-            {
-            }
-            string name = Mask2String[mask];
-            Debug.Log("@Consuming Ingredient: " + mask + " Name: " + Mask2String[mask]);
-            slotDict[name].amount -= amountToTake;
-        }
-        Debug.Log("@@ " + id + " Consumed ingredients for batch.");
-        // 4. NOTIFY
-        MarketUI.Instance.RefreshUI(page);
 
-        return true;
+            // Fetch as many as available
+            int takenCnt = Mathf.Min(amountNeeded, slot.amount);
+
+            slot.amount -= takenCnt;
+            totalRequirements[mask] -= takenCnt;
+        }
+
+        // Return true only when all requirements are satisfied
+        return totalRequirements.Values.All(v => v <= 0);
+
     }
 }

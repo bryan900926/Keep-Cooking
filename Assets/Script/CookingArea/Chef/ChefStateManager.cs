@@ -84,12 +84,30 @@ public class ChefStateManager : MonoBehaviour
 
     private Coroutine flickerRoutine;
 
+    private ChefSFX chefSFX;
+
+    public ChefSFX ChefSFX
+    {
+        get => chefSFX;
+        set => chefSFX = value;
+    }
+
+    [SerializeField] private GameObject sweatEffect;
+
+    public GameObject SweatEffect
+    {
+        get => sweatEffect;
+        set => sweatEffect = value;
+    }
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         chefRecipe = GetComponent<ChefRecipe>();
         holding = GetComponent<Holding>();
+        chefSFX = GetComponent<ChefSFX>();
+        sweatEffect.SetActive(false);
     }
 
     void Start()
@@ -169,45 +187,6 @@ public class ChefStateManager : MonoBehaviour
     public void HandleLowStockEffect(bool isLowStock)
     {
         lowStockSprite.enabled = isLowStock;
-    }
-
-    public void HandleSideEffectFlicker(bool isActive)
-    {
-        if (isActive)
-        {
-            // If not already flickering, start it
-            flickerRoutine ??= StartCoroutine(FlickerRoutine());
-        }
-        else
-        {
-            // Stop flickering and reset color
-            if (flickerRoutine != null)
-            {
-                StopCoroutine(flickerRoutine);
-                flickerRoutine = null;
-            }
-
-            spriteRenderer.color = Color.white;
-        }
-    }
-
-    private IEnumerator FlickerRoutine()
-    {
-        bool isRed = false;
-
-        while (true)
-        {
-            // Toggle color
-            isRed = !isRed;
-            spriteRenderer.color = isRed ? Color.red : Color.white;
-
-            yield return new WaitForSeconds(0.2f); // flicker frequency
-        }
-    }
-
-    public void ToggleLowStockIndicator(bool isActive)
-    {
-        lowStockSprite.enabled = isActive;
     }
     private void OnDestroy()
     {

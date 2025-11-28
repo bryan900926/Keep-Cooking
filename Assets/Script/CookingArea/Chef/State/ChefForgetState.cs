@@ -17,7 +17,7 @@ public class ChefForgetState : ChefState
         {
             chefStateManager.GetComponent<ChefRecipe>().RandomizeRecipe(order.FoodIdx);
         }
-        chefStateManager.HandleSideEffectFlicker(true);
+        chefStateManager.SweatEffect.SetActive(true);
     }
 
     public override void Update()
@@ -30,6 +30,6 @@ public class ChefForgetState : ChefState
 
     public override void Exit()
     {
-        chefStateManager.HandleSideEffectFlicker(false);
+        chefStateManager.SweatEffect.SetActive(false);
     }
 }

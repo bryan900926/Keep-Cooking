@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.Composites;
 using UnityEngine.UI;
 
 
@@ -14,8 +13,16 @@ public class NavBarController : MonoBehaviour
     void Start()
     {
         ShowPanel(backPanel); // default
-        frontBtn.onClick.AddListener(() => ShowPanel(frontPanel));
-        backBtn.onClick.AddListener(() => ShowPanel(backPanel));
+        frontBtn.onClick.AddListener(() =>
+        {
+            UISFX.Instance.PlayButtonClick();
+            ShowPanel(frontPanel);
+        });
+        backBtn.onClick.AddListener(() =>
+        {
+            UISFX.Instance.PlayButtonClick();
+            ShowPanel(backPanel);
+        });
     }
 
     public void ShowPanel(GameObject panel)
