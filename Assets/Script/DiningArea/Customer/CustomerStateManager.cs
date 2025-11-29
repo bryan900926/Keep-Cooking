@@ -41,6 +41,9 @@ public class CustomerStateManager : MonoBehaviour
     private CustomerSFX customerSFX;
     public CustomerSFX CustomerSFX { get => customerSFX; set => customerSFX = value; }
 
+    [SerializeField] private GameObject coinPrefab;
+    public GameObject CoinPrefab { get => coinPrefab; set => coinPrefab = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

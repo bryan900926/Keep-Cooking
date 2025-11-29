@@ -1,3 +1,4 @@
+using System.Collections;
 using Pathfinding;
 using UnityEngine;
 
@@ -35,6 +36,13 @@ public class WaiterStateManager : MonoBehaviour
 
     private int standbySeatIdx = -1;
 
+    private Coroutine speedRoutine;
+    readonly private float normalSpeed = 4f;
+
+    private float slowedSpeed = 1f;      // lowest allowed speed
+    private float recoverTimer = 0f;     // counts elapsed recovery time
+    private float recoverDuration = 2f;  // how long until fully recovered
+
     void Start()
     {
         diningSystem = DiningSystem.Instance;
@@ -53,6 +61,7 @@ public class WaiterStateManager : MonoBehaviour
         }
         currentState = new WaiterIdleState(this);
         currentState.Enter();
+        aiPath.maxSpeed = normalSpeed;
     }
 
     void Update()
@@ -91,4 +100,41 @@ public class WaiterStateManager : MonoBehaviour
         waiterStandby.FreeSeat(seatIndex: standbySeatIdx);
         standbySeatIdx = -1;
     }
+
+    public void SlowDown(float slowAmount = 2f, float extraRecover = 1f)
+    {
+        // Apply additional slowdown
+        aiPath.maxSpeed = Mathf.Max(aiPath.maxSpeed - slowAmount, slowedSpeed);
+
+        // Each new hit extends how long recovery needs
+        recoverDuration += extraRecover;
+
+        // Restart the timer so we restart "recovery interval"
+        recoverTimer = 0f;
+
+        speedRoutine ??= StartCoroutine(RecoverSpeedRoutine());
+    }
+    private IEnumerator RecoverSpeedRoutine()
+    {
+        float startSpeed = aiPath.maxSpeed;
+
+        while (recoverTimer < recoverDuration)
+        {
+            recoverTimer += Time.deltaTime;
+
+            float t = recoverTimer / recoverDuration;
+            aiPath.maxSpeed = Mathf.Lerp(startSpeed, normalSpeed, t);
+
+            yield return null;
+        }
+
+        aiPath.maxSpeed = normalSpeed;
+
+        // Reset for next time
+        recoverDuration = 2f;  // default recovery time back
+        recoverTimer = 0f;
+        speedRoutine = null;
+    }
+
+
 }
