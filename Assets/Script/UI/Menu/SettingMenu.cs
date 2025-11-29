@@ -27,6 +27,7 @@ public class SettingMenu : MonoBehaviour
         });
         exitBtn.onClick.AddListener(() =>
         {
+            UImanager.Instance.ClickHideUI();
             UnityEngine.SceneManagement.SceneManager.LoadScene("main");
             UImanager.Instance.ClickShowUI(UImanager.MenuOptions.main);
         });

@@ -25,7 +25,7 @@ public class Toggle : MonoBehaviour
     {
         { Key.I, KeysForUI.Inventory },
         { Key.V, KeysForUI.Menu },
-        { Key.Tab, KeysForUI.Settings },
+        { Key.Escape, KeysForUI.Settings },
     };
 
     public CanvasGroup UIRootCanvasGroup
@@ -70,6 +70,7 @@ public class Toggle : MonoBehaviour
 
     public void TogglePanel(KeysForUI key)
     {
+
         if (!keyToPanel.ContainsKey(key)) return;
 
         bool newState = !toggleStates[key];
@@ -80,23 +81,45 @@ public class Toggle : MonoBehaviour
             if (key == KeysForUI.Settings)
             {
                 GameManager.Instance.PauseGame();
+                UImanager.Instance.Settingchangemenu();
                 toggleStates[key] = !toggleStates[key];
             }
         }
         else ClosePanel(key);
     }
 
+    //public void RegisterPanel(KeysForUI key, CanvasGroup panel)
+    //{
+    //    if (!keyToPanel.ContainsKey(key))
+    //    {
+    //        uiElements.Append(panel);
+    //        keyElements.Append(key);
+    //        keyToPanel[key] = panel;
+    //        toggleStates[key] = false;
+    //        SetPanelVisibility(panel, false);
+    //        keysList.Add(key);
+    //    }
+    //}
+
     public void RegisterPanel(KeysForUI key, CanvasGroup panel)
     {
-        if (!keyToPanel.ContainsKey(key))
+        if (keyToPanel.ContainsKey(key))
         {
-            uiElements.Append(panel);
-            keyElements.Append(key);
             keyToPanel[key] = panel;
-            toggleStates[key] = false;
-            SetPanelVisibility(panel, false);
-            keysList.Add(key);
+            toggleStates[key] = false; 
+            Debug.Log($"[Toggle] Updated existing panel for key: {key}");
         }
+        else
+        {
+            keyToPanel.Add(key, panel);
+            toggleStates.Add(key, false);
+            keysList.Add(key);
+            Debug.Log($"[Toggle] Registered new panel for key: {key}");
+        }
+
+        SetPanelVisibility(panel, false);
+        keyElements = keysList.ToArray();
+        uiElements = keysList.Select(k => keyToPanel[k]).ToArray();
     }
 
     public void UnregisterPanel(KeysForUI key)
@@ -178,6 +201,13 @@ public class Toggle : MonoBehaviour
                 Debug.Log("UIRoot CanvasGroup assigned successfully!");
                 uiRootCanvasGroup.blocksRaycasts = false;
             }
+        }
+
+        foreach (var key in keysList)
+        {
+            toggleStates[key] = false;
+            Debug.Log($"toggle state for {toggleStates[key]}");
+            Debug.Log(keyToPanel.ContainsKey(key));
         }
     }
 

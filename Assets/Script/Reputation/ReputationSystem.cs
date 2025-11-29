@@ -4,7 +4,7 @@ using UnityEngine;
 public class ReputationSystem : MonoBehaviour
 {
     public static ReputationSystem Instance { get; private set; }
-    float reputationLevel = 50f;
+    float reputationLevel = 0f;
     readonly float maxReputation = 100f;
 
     public static Action OnReputationChanged;

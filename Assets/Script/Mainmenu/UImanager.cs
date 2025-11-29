@@ -16,6 +16,7 @@ public class UImanager : MonoBehaviour
     [SerializeField] private GameObject setting;
     private Dictionary<MenuOptions, CanvasGroup> canvasgroup = new();
     private MenuOptions currentMenu;
+    private MenuOptions previousMenu;
 
     private void Awake()
     {
@@ -33,12 +34,19 @@ public class UImanager : MonoBehaviour
         canvasgroup.Add(MenuOptions.main, main.GetComponent<CanvasGroup>());
         canvasgroup.Add(MenuOptions.setting, setting.GetComponent<CanvasGroup>());
         currentMenu = MenuOptions.main;
+        previousMenu = MenuOptions.main;
+        
         HideAllUI();
         ShowUI(canvasgroup[currentMenu]);
     }
     public void ReturnUI()
     {
-        ClickShowUI(MenuOptions.main);
+        ClickShowUI(previousMenu);
+    }
+
+    public void Settingchangemenu()
+    {
+        currentMenu = MenuOptions.setting;
     }
 
     public void HideUI(CanvasGroup canvasGroup)
@@ -62,7 +70,8 @@ public class UImanager : MonoBehaviour
     }
 
     public void ClickShowUI(MenuOptions name)
-    {
+    {   
+        previousMenu = currentMenu;
         UISFX.Instance.PlayButtonClick();
         currentMenu = name;
         HideAllUI();

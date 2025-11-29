@@ -14,14 +14,14 @@ public class UIPanel : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (Toggle.Instance != null)
         {
             Toggle.Instance.RegisterPanel(hotkey, canvasGroup);
         }
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (Toggle.Instance != null)
         {
