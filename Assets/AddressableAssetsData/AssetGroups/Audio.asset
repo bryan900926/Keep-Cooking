@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Audio
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bcbb3641b65ff9409fce77dc74e6549
+    m_Address: Assets/Audio/SFX/UI/LevelUp.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e7d71ba995c4784094b1c424f38239d
     m_Address: Assets/Audio/BGM/0F.mp3
     m_ReadOnly: 0
@@ -65,6 +71,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c628af48975166743ae9c8f5dee04a05
     m_Address: Assets/Audio/SFX/UI/PlaceItem.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf518f1ae3c4f1b47ab42be656aac73c
+    m_Address: Assets/Audio/SFX/UI/GameOver.mp3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Audio

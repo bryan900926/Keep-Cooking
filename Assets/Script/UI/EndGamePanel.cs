@@ -45,6 +45,8 @@ public class EndGamePanel : MonoBehaviour
     {
         isShown = true;
 
+        UISFX.Instance.PlayGameOver();
+
         revenueText.SetText($"Revenue: ${ScoreManager.Instance.Revenue:F2}");
         serverdCntText.SetText($"Customers Served: {ScoreManager.Instance.ServedCnt}");
         StartCoroutine(FadeInRoutine());
