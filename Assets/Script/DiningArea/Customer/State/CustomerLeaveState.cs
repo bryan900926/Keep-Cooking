@@ -13,6 +13,7 @@ public class CustomerLeaveState : CustomerState
     {
         exitPoint = GameObject.FindGameObjectWithTag(EXIT_TAG).transform;
         customerStateManager.DestinationSetter.target = exitPoint;
+
     }
 
     public override void Update()
@@ -20,6 +21,9 @@ public class CustomerLeaveState : CustomerState
         if (IsAtExit())
         {
             DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
+            ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
+            CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
+            Debug.Log("Customer is leaving. Decreased reputation by " + customerStateManager.customerProperty.minusreputation);
             Object.Destroy(customerStateManager.gameObject);
         }
 

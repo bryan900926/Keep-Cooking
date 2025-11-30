@@ -9,7 +9,7 @@ public class CustomerEatingState : CustomerState
     public CustomerEatingState(CustomerStateManager customerStateManager, float freashness) : base(customerStateManager)
     {
         this.freshness = freashness;
-        eatingDuration = Random.Range(5f, 10f);
+        eatingDuration = customerStateManager.EatingDuration;
     }
 
     public override void Enter()
@@ -49,10 +49,11 @@ public class CustomerEatingState : CustomerState
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
         if (freshness > 0)
         {
-            ReputationSystem.Instance.IncreaseReputation(5f);
-            ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice);
+            ReputationSystem.Instance.IncreaseReputation(customerStateManager.customerProperty.addreputation);
+            ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx]);
         }
         customerStateManager.CustomerSFX.StopEating();
         customerStateManager.CustomerSFX.PaidMoney();
+        CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
     }
 }

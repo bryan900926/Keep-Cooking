@@ -35,4 +35,9 @@ public class ReputationSystem : MonoBehaviour
     {
         return reputationLevel / maxReputation;
     }
+
+    public float GetReputationLevel()
+    {
+        return reputationLevel;
+    }
 }

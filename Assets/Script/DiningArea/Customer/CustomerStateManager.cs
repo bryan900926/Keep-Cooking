@@ -10,6 +10,29 @@ public class CustomerStateManager : MonoBehaviour
     private GameObject queueObj;
 
 
+    // Customer Propertis
+
+    // ------ Begin ------
+
+
+    private float[] buyingPrice;
+    public float[] BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
+    private float eatingDuration;
+    public float EatingDuration { get => eatingDuration; set => eatingDuration = value; }
+    private float tipsratio;
+    public float Tipsratio { get => tipsratio; set => tipsratio = value; }
+    private float addreputation;
+    public float Addreputation { get => addreputation; set => addreputation = value; }
+    private float minusreputation;
+    public float Minusreputation { get => minusreputation; set => minusreputation = value; }
+
+    public CustomerProperty customerProperty;
+
+    // ------ End ------
+
+
+
+
     private DiningSystem diningSystem;
 
 
@@ -35,9 +58,6 @@ public class CustomerStateManager : MonoBehaviour
     private ViewEffect viewEffect;
     public ViewEffect ViewEffect => viewEffect;
 
-    private float buyingPrice;
-    public float BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
-
     private CustomerSFX customerSFX;
     public CustomerSFX CustomerSFX { get => customerSFX; set => customerSFX = value; }
 
@@ -56,6 +76,16 @@ public class CustomerStateManager : MonoBehaviour
         currentState.Enter();
     }
 
+    public void Attributeprop(int index)
+    {
+        CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
+        BuyingPrice = (float[])customerProperty.truevalue.Clone();
+        EatingDuration = customerProperty.eatingDuration;
+        Tipsratio = customerProperty.tipsratio;
+        Addreputation = customerProperty.addreputation;
+        Minusreputation = customerProperty.minusreputation;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -66,7 +96,6 @@ public class CustomerStateManager : MonoBehaviour
         }
         if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
         {
-            ReputationSystem.Instance.DecreaseReputation(10f);
             ChangeState(new CustomerLeaveState(this));
         }
         currentState?.Update();

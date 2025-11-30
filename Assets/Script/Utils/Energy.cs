@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Energy : MonoBehaviour
@@ -62,6 +63,13 @@ public class Energy : MonoBehaviour
         currentEnergy += amount;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
         floatingEnergyBar.UpdateEnergy(currentEnergy / maxEnergy);
+    }
+
+    public void UpdateEnergy(int index)
+    {
+        CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
+        maxEnergy = customerProperty.energy;
+        energyDecay = 5 * ( 2 - customerProperty.satisfactory/5); 
     }
 
 
