@@ -8,6 +8,8 @@ public class WaiterServeFoodState : WaiterState
 
     private Holding holding;
 
+    private int orderIndex = 0;
+
     public WaiterServeFoodState(WaiterStateManager waiterStateManager, List<OrderInfo> orderInfos)
         : base(waiterStateManager)
     {
@@ -21,7 +23,6 @@ public class WaiterServeFoodState : WaiterState
     public override void Enter()
     {
         holding = waiterStateManager.Holding;
-        Debug.Log($"Waiter {waiterStateManager.name} starts serving food.");
         if (pendingOrders.Count == 0)
         {
             Debug.LogWarning("Waiter has no orders to serve.");
@@ -35,7 +36,7 @@ public class WaiterServeFoodState : WaiterState
     public override void Update()
     {
         // If no more dishes, return to Idle
-        if (pendingOrders.Count == 0)
+        if (pendingOrders.Count == 0 || orderIndex >= pendingOrders.Count)
         {
             waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
         }
@@ -51,11 +52,6 @@ public class WaiterServeFoodState : WaiterState
     {
         Debug.Log($"Waiter {waiterStateManager.name} finished serving all dishes.");
         waiterStateManager.Holding.RemoveAllHolding();
-        foreach (OrderInfo order in pendingOrders)
-        {
-            OrderSystem.Instance.AddFailOrder(order, true);
-        }
-
     }
 
     private void MoveToNextTable()
@@ -106,8 +102,7 @@ public class WaiterServeFoodState : WaiterState
         {
             Debug.LogWarning($"No customer found at table {order.TableIdx}");
         }
-
-        // After serving, move to the next table (if any left)
+        orderIndex++;
         MoveToNextTable();
     }
 }
