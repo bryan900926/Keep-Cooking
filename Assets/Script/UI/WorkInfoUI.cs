@@ -30,6 +30,7 @@ public class WorkInfoUI : MonoBehaviour
         workerLevel.LevelUp();
         int currentLevel = workerLevel.LevelValue;
         levelUpInfoText.text = $"Lv{currentLevel} → Lv{currentLevel + 1}";
+        UISFX.Instance.PlayLevelUp();
     }
 
     public void SetWorker(GameObject workerObj, bool isCooker = true)

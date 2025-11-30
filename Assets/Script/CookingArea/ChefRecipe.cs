@@ -35,6 +35,14 @@ public class ChefRecipe : MonoBehaviour
 
         bool isCorrect = Recipe.instance.CheckRecipeCorrect(foodIdx, recipeCopy);
         correctRecipeStats[foodIdx] = isCorrect;
+        if (isCorrect)
+        {
+            UISFX.Instance.PlaySuccess();
+        }
+        else
+        {
+            UISFX.Instance.PlayWrong();
+        }
         OnRecipeChanged?.Invoke(RecipeIsCorrect());
 
     }

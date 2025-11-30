@@ -32,13 +32,13 @@ namespace Accident.Spot
             playerInside = true;
             ShowHint(true);
 
-            if (other.TryGetComponent<Holding>(out Holding holding))
+            if (other.TryGetComponent(out Holding holding))
             {
                 holding.RemoveAllHolding();
             }
-            if (other.TryGetComponent<WaiterStateManager>(out WaiterStateManager waiterStateManager))
+            if (other.TryGetComponent(out WaiterStateManager waiterStateManager))
             {
-                waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
+                waiterStateManager.SlowDown();
             }
         }
 

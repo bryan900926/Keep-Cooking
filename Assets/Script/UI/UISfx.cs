@@ -52,4 +52,28 @@ public class UISFX : BaseSFX
         PlayOneShot("Pencil");
     }
 
+    public void PlayGameOver()
+    {
+        PlayOneShot("GameOver");
+    }
+
+    public void PlayLevelUp()
+    {
+        PlayOneShot("LevelUp");
+    }
+    public void PlayMoney()
+    {
+        PlayOneShot("money");
+    }
+
+    public void PlayWrong()
+    {
+        PlayOneShot("Wrong");
+    }
+
+    public void PlaySuccess()
+    {
+        PlayOneShot("Success");
+    }
+
 }

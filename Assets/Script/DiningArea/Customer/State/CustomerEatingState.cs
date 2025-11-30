@@ -51,6 +51,8 @@ public class CustomerEatingState : CustomerState
         {
             ReputationSystem.Instance.IncreaseReputation(customerStateManager.customerProperty.addreputation);
             ScoreManager.Instance.AddRevenue(customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx]);
+            GameObject coin = Object.Instantiate(customerStateManager.CoinPrefab);
+            coin.GetComponent<Coin>().InitData((int)(customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx] * 0.5f), customerStateManager.transform);
         }
         customerStateManager.CustomerSFX.StopEating();
         customerStateManager.CustomerSFX.PaidMoney();
