@@ -21,9 +21,6 @@ public class CustomerLeaveState : CustomerState
         if (IsAtExit())
         {
             DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
-            ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
-            CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
-            Debug.Log("Customer is leaving. Decreased reputation by " + customerStateManager.customerProperty.minusreputation);
             Object.Destroy(customerStateManager.gameObject);
         }
 

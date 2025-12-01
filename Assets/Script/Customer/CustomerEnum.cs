@@ -1,6 +1,10 @@
 public enum CustomerTypeEnum
 {
-    Child = 0,
-    Elder = 1,
-    Worker = 2,
+    Elf = 0,
+    Demon = 1,
+    Witch = 2,
+    Orc = 3,
+    Slime = 4,
+    Gargoyle = 5,
+    Masked = 6
 }

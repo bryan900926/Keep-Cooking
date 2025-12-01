@@ -5886,15 +5886,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7319824464744170851, guid: dc634883b52b44a4283985648a2dab62, type: 3}
       propertyPath: 'menuPrices.Array.data[0]'
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7319824464744170851, guid: dc634883b52b44a4283985648a2dab62, type: 3}
       propertyPath: 'menuPrices.Array.data[1]'
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7319824464744170851, guid: dc634883b52b44a4283985648a2dab62, type: 3}
       propertyPath: 'menuPrices.Array.data[2]'
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7319824464744170851, guid: dc634883b52b44a4283985648a2dab62, type: 3}
       propertyPath: 'priceFields.Array.data[0]'
@@ -34831,13 +34831,45 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: spawnedCustomer.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[0]'
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[1]'
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5116683599938769100, guid: b48609fc1852c8b46bd9a6839550785d, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3508003164012057248, guid: 74126b039c001c2499ba7589cefa8f35, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1269170931827739272, guid: 1f25f28511dfd804eb75bc12136cf8ce, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[3]'
+      value: 
+      objectReference: {fileID: 3929299554181587624, guid: dea463beb91124649b1f8f9a90ad0352, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8146312580942151268, guid: b2df0acffb03bbc46af2e42b90e254fb, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[5]'
+      value: 
+      objectReference: {fileID: 5317792360576382975, guid: d86c98487c8401348bde2f5857ad0c22, type: 3}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: 'spawnedCustomer.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2115297378900159815, guid: f6952a48e30ebeb49b4d06ed90fec07e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34866,49 +34898,113 @@ MonoBehaviour:
   customerProperties:
   - type: 0
     lowertruevalue:
-    - 70
     - 80
-    - 90
+    - 75
+    - 85
     uppertruevalue:
     - 100
-    - 110
-    - 120
+    - 105
+    - 95
     truevalue: []
-    energy: 100
+    energy: 120
     tipsratio: 0.01
-    eatingDuration: 8
+    eatingDuration: 6
     satisfactory: 0
     addreputation: 5
     minusreputation: 3
   - type: 1
     lowertruevalue:
-    - 100
-    - 100
-    - 100
+    - 25
+    - 35
+    - 30
     uppertruevalue:
-    - 150
-    - 150
-    - 150
+    - 175
+    - 165
+    - 170
     truevalue: []
-    energy: 50
+    energy: 75
     tipsratio: 0.1
     eatingDuration: 12
     satisfactory: 0
     addreputation: 3
-    minusreputation: 2
+    minusreputation: 3
   - type: 2
     lowertruevalue:
-    - 80
-    - 80
-    - 80
+    - 50
+    - 45
+    - 40
     uppertruevalue:
-    - 130
-    - 125
-    - 120
+    - 150
+    - 155
+    - 160
     truevalue: []
-    energy: 70
+    energy: 100
     tipsratio: 0.05
-    eatingDuration: 6
+    eatingDuration: 8
+    satisfactory: 0
+    addreputation: 7
+    minusreputation: 5
+  - type: 3
+    lowertruevalue:
+    - 50
+    - 45
+    - 40
+    uppertruevalue:
+    - 150
+    - 155
+    - 160
+    truevalue: []
+    energy: 100
+    tipsratio: 0.05
+    eatingDuration: 8
+    satisfactory: 0
+    addreputation: 7
+    minusreputation: 5
+  - type: 4
+    lowertruevalue:
+    - 50
+    - 45
+    - 40
+    uppertruevalue:
+    - 150
+    - 155
+    - 160
+    truevalue: []
+    energy: 100
+    tipsratio: 0.05
+    eatingDuration: 8
+    satisfactory: 0
+    addreputation: 7
+    minusreputation: 5
+  - type: 5
+    lowertruevalue:
+    - 50
+    - 45
+    - 40
+    uppertruevalue:
+    - 150
+    - 155
+    - 160
+    truevalue: []
+    energy: 100
+    tipsratio: 0.05
+    eatingDuration: 8
+    satisfactory: 0
+    addreputation: 7
+    minusreputation: 5
+  - type: 6
+    lowertruevalue:
+    - 50
+    - 45
+    - 40
+    uppertruevalue:
+    - 150
+    - 155
+    - 160
+    truevalue: []
+    energy: 100
+    tipsratio: 0.05
+    eatingDuration: 8
     satisfactory: 0
     addreputation: 7
     minusreputation: 5

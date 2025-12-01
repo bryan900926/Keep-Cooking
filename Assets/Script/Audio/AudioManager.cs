@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
     public void OnBGMVolumeChange(float value)
     {
         int volume = Mathf.RoundToInt(100 * value);
-        bgmvolume = value;
+        bgmvolume = value/5;
         bgmvalue.text = volume.ToString();
         UISFX.Instance.PlayBGM("BGM");
     }
@@ -62,7 +62,7 @@ public class AudioManager : MonoBehaviour
     public void OnSFXVolumeChange(float value)
     {
         int volume = Mathf.RoundToInt(100 * value);
-        sfxvolume = value;
+        sfxvolume = value/5;
         sfxvalue.text = volume.ToString();
     }
 

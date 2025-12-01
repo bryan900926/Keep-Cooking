@@ -30,8 +30,11 @@ public class CustomerStateManager : MonoBehaviour
 
     // ------ End ------
 
+    public float sellprice;
 
+    private int foodlength = 3;
 
+    private bool leave = false;
 
     private DiningSystem diningSystem;
 
@@ -98,7 +101,14 @@ public class CustomerStateManager : MonoBehaviour
 
         }
         if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
-        {
+        {   
+            if (!leave)
+            {
+                leave = true;
+                ReputationSystem.Instance.DecreaseReputation(minusreputation);
+                CustomerPropertyManager.Instance.Addsatisfactory(customerProperty, -1);
+                CustomerPropertyManager.Instance.Updateprop(customerProperty);
+            }
             ChangeState(new CustomerLeaveState(this));
         }
         currentState?.Update();

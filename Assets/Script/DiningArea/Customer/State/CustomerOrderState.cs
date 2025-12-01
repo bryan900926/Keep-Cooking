@@ -58,18 +58,19 @@ public class CustomerOrderState : CustomerState
     private void GetOrderedFood()
     {
         customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);
+        customerStateManager.sellprice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
         Debug.Log($"{customerStateManager.gameObject.name} ordered food index {customerStateManager.OrderedFoodIdx}.");
-        float desiredPrice = PriceEditor.Instance.GetPriceForCustomer(customerStateManager.OrderedFoodIdx);
-        float sellingPrice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
+        float desiredPrice = customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx];
+        float sellingPrice = customerStateManager.sellprice;
         if (desiredPrice > sellingPrice)
         {
-            customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx] = sellingPrice;
             ifDine = true;
         }
         else
         {
             ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
             CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
+            CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, -1);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }
