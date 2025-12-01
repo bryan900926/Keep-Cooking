@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Audio
   m_GUID: 0de81c64b812ab0418ef26670486ffe2
   m_SerializeEntries:
+  - m_GUID: 0532ac07e345ec1448b3a612cde5af28
+    m_Address: Assets/Audio/SFX/UI/success.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32d1f5ee13cc30f4193f1bec0ab44ed1
     m_Address: Assets/Audio/SFX/UI/ChangePage.wav
     m_ReadOnly: 0
@@ -71,6 +77,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c628af48975166743ae9c8f5dee04a05
     m_Address: Assets/Audio/SFX/UI/PlaceItem.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Audio
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccaa4ced3ac327a43a09b4c37f789726
+    m_Address: Assets/Audio/SFX/UI/wrong.mp3
     m_ReadOnly: 0
     m_SerializedLabels:
     - Audio
