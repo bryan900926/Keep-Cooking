@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedCustomer:
-  - {fileID: 1269170931827739272, guid: 1f25f28511dfd804eb75bc12136cf8ce, type: 3}
-  - {fileID: 3508003164012057248, guid: 74126b039c001c2499ba7589cefa8f35, type: 3}
   - {fileID: 5116683599938769100, guid: b48609fc1852c8b46bd9a6839550785d, type: 3}
+  - {fileID: 3508003164012057248, guid: 74126b039c001c2499ba7589cefa8f35, type: 3}
+  - {fileID: 1269170931827739272, guid: 1f25f28511dfd804eb75bc12136cf8ce, type: 3}
   lining: {fileID: 0}
+  spawnIntervals: []

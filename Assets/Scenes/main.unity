@@ -3761,8 +3761,8 @@ MonoBehaviour:
   bgmvalue: {fileID: 1484650899}
   sfxvalue: {fileID: 2075997544}
   poolSize: 20
-  sfxvolume: 0.08
-  bgmvolume: 0.02
+  sfxvolume: 0.25
+  bgmvolume: 0.25
 --- !u!114 &1593054129
 MonoBehaviour:
   m_ObjectHideFlags: 0
