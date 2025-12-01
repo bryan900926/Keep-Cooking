@@ -35970,8 +35970,77 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7454051967425962574, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8959600978429623147}
   m_SourcePrefab: {fileID: 100100000, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+--- !u!1 &8959600978429623146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7454051967425962574, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+  m_PrefabInstance: {fileID: 8959600978429623145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8959600978429623147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959600978429623146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42154bee414df6499d322ea3c0dd34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerProperties:
+  - type: 0
+    lowertruevalue:
+    - 70
+    - 80
+    - 90
+    uppertruevalue:
+    - 100
+    - 110
+    - 120
+    truevalue: []
+    energy: 100
+    tipsratio: 0.01
+    eatingDuration: 8
+    satisfactory: 0
+    addreputation: 5
+    minusreputation: 3
+  - type: 1
+    lowertruevalue:
+    - 100
+    - 100
+    - 100
+    uppertruevalue:
+    - 150
+    - 150
+    - 150
+    truevalue: []
+    energy: 50
+    tipsratio: 0.1
+    eatingDuration: 12
+    satisfactory: 0
+    addreputation: 3
+    minusreputation: 2
+  - type: 2
+    lowertruevalue:
+    - 80
+    - 80
+    - 80
+    uppertruevalue:
+    - 130
+    - 125
+    - 120
+    truevalue: []
+    energy: 70
+    tipsratio: 0.05
+    eatingDuration: 6
+    satisfactory: 0
+    addreputation: 7
+    minusreputation: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

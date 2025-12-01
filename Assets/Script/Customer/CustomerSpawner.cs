@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
@@ -24,13 +26,24 @@ public class CustomerSpawner : MonoBehaviour
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();
-            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]) * (1f - ReputationSystem.Instance.GetReputationRatio());
+            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
     }
 
     void SpawnCustomer()
     {
-        int randomIndex = Random.Range(0, spawnedCustomer.Length);
-        Instantiate(spawnedCustomer[randomIndex], transform.position, Quaternion.identity);
+        int Index = Random.Range(0, spawnedCustomer.Length);
+        GameObject Customer = spawnedCustomer[Index];
+        GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
+        CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+        Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(Index);
+        Energy Energy = Custom.GetComponent<Energy>();
+        CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+
+        Custom.Attributeprop(Index);
+        Energy.UpdateEnergy(Index);
+
     }
+
+
 }
