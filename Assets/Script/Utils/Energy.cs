@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Energy : MonoBehaviour
@@ -69,7 +68,7 @@ public class Energy : MonoBehaviour
     {
         CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
         maxEnergy = customerProperty.energy;
-        energyDecay = 5 * ( 2 - customerProperty.satisfactory/5); 
+        energyDecay = 5 * (2 - customerProperty.satisfactory / 5);
     }
 
 

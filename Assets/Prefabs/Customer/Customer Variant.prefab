@@ -316,6 +316,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerData: {fileID: 0}
+  customerProperty:
+    type: 0
+    lowertruevalue: []
+    uppertruevalue: []
+    truevalue: []
+    energy: 0
+    tipsratio: 0
+    eatingDuration: 0
+    satisfactory: 0
+    addreputation: 0
+    minusreputation: 0
   energy: {fileID: -8817391628698140055}
   coinPrefab: {fileID: 6470850332338638030, guid: a0fb19ef8de679e40b155ecb3003700b, type: 3}
 --- !u!114 &352996976105228518
@@ -548,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 30, y: -550}
+  m_AnchoredPosition: {x: 35, y: -585}
   m_SizeDelta: {x: -1817.44, y: -1049.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974677175722850797

@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AIDestinationSetter))]
@@ -107,7 +105,6 @@ public class ChefStateManager : MonoBehaviour
         chefRecipe = GetComponent<ChefRecipe>();
         holding = GetComponent<Holding>();
         chefSFX = GetComponent<ChefSFX>();
-        sweatEffect.SetActive(false);
     }
 
     void Start()
@@ -117,6 +114,7 @@ public class ChefStateManager : MonoBehaviour
             chefRecipe.OnRecipeChanged += SetChefHasCorrectRecipe;
         }
         lowStockSprite.enabled = false;
+        sweatEffect.SetActive(false);
     }
     public void Initialize(int cookIdx)
     {
