@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingEnergyBar: {fileID: 3970975571277822089}
   maxEnergy: 100
-  energyDecay: 2
+  energyDecay: 10
 --- !u!114 &3099655717142004623
 MonoBehaviour:
   m_ObjectHideFlags: 0

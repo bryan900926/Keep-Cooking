@@ -85,8 +85,7 @@ public class WaiterServeFoodState : WaiterState
             {
                 Debug.Log($"Waiter served correct dish {order.FoodIdx} to table {order.TableIdx}");
                 GameObject servedItem = holding.HoldingItem.Find(i => i.GetComponent<PickUpV2>().FoodIdx == order.FoodIdx);
-                float freshness = servedItem.GetComponent<DishProperty>().Freshness;
-                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager, freshness));
+                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager, 10));
                 // Remove the served item from waiter’s hands
                 if (servedItem != null)
                     holding.RemoveHoldingItem(servedItem);
