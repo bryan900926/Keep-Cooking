@@ -27,8 +27,7 @@ public class BeerMachineFilledState : BeerMachineState
             int counterIndex = CounterManager.Instance.FetchAvailSeat();
             if (counterIndex != -1)
             {
-                GameObject beer = Menu.Instance.SpawnForPlayer(3, stateManager.transform.position);
-                CounterManager.Instance.ChefFoodToCounter(counterIndex, beer);
+                GameObject beer = Menu.Instance.SpawnForPlayer(3, stateManager.SpawnPoint.position);
                 stateManager.ChangeState(new BeerMachineNormalState(stateManager));
             }
         }

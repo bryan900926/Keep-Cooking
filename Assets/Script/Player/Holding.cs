@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Holding : MonoBehaviour
@@ -80,5 +82,20 @@ public class Holding : MonoBehaviour
             Vector3 offset = baseOffset + new Vector3(startX + i * horizontalSpacing, 0, 0);
             holdingItem[i].transform.localPosition = offset;
         }
+    }
+
+    public bool FindPropObj(PropData.Tools propDataName)
+    {
+        foreach (var item in holdingItem)
+        {
+            if (item.TryGetComponent(out PropData propData))
+            {
+                if (propData.Type == propDataName)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

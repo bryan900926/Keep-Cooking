@@ -101,7 +101,7 @@ public class CustomerStateManager : MonoBehaviour
 
         }
         if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
-        {   
+        {
             if (!leave)
             {
                 leave = true;
