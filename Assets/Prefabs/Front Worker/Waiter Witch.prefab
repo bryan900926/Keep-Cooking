@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3d431a27311d4624a99f2c7647c20e8c, type: 2}
     - target: {fileID: 643545912579834569, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
       propertyPath: m_Name
-      value: Waiter Ghost
+      value: Waiter Witch
       objectReference: {fileID: 0}
     - target: {fileID: 1866872290307040329, guid: 8a8d879449e6dd54f976aa4709b77766, type: 3}
       propertyPath: m_LocalPosition.x

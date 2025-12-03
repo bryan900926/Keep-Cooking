@@ -44,6 +44,7 @@ public class CustomerPropertyManager : MonoBehaviour
                     float lowerBound = customerProp.lowertruevalue[i]* (1 + reputation/200) + satisfactory * 10;
                     float upperBound = customerProp.uppertruevalue[i]* (1 + reputation/100);
                     customerProp.truevalue[i] = Random.Range(lowerBound, upperBound);
+
                 }
                 Debug.Log($"Updated truevalue for {customerProp.type}: [{string.Join(", ", customerProp.truevalue)}]");
 

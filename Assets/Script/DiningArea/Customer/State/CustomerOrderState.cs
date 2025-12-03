@@ -60,17 +60,40 @@ public class CustomerOrderState : CustomerState
         customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);
         customerStateManager.sellprice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
         Debug.Log($"{customerStateManager.gameObject.name} ordered food index {customerStateManager.OrderedFoodIdx}.");
+        Debug.Log($"Desired Price: {customerStateManager.BuyingPrice.Length}, Selling Price: {customerStateManager.sellprice}");
         float desiredPrice = customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx];
         float sellingPrice = customerStateManager.sellprice;
-        if (desiredPrice > sellingPrice)
+        float upperbound = customerStateManager.customerProperty.uppertruevalue[customerStateManager.OrderedFoodIdx];
+        float lowerbound = customerStateManager.customerProperty.lowertruevalue[customerStateManager.OrderedFoodIdx];
+        if (desiredPrice >= sellingPrice)
         {
             ifDine = true;
+            if (sellingPrice <= lowerbound)
+            {
+                customerStateManager.ReactGreat();
+                CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, 2);
+            }
+            else
+            {
+                customerStateManager.ReactGood();
+                CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, 1);
+            }
         }
         else
-        {
+        {   
+            if (sellingPrice >= upperbound)
+            {
+                customerStateManager.ReactTerrible();
+                CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, -2);
+            }
+            else
+            {
+                customerStateManager.ReactBad();
+                CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, -1);
+            }
+            
             ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
             CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
-            CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, -1);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }

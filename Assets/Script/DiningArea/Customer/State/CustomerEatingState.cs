@@ -56,7 +56,6 @@ public class CustomerEatingState : CustomerState
         }
         customerStateManager.CustomerSFX.StopEating();
         customerStateManager.CustomerSFX.PaidMoney();
-        CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, 1);
         CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
     }
 }

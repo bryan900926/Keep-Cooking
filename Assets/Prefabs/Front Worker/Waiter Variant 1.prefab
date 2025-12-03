@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waiter Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5266254257423421990, guid: a9020501fccf5ce4fbf29f2cc5e15041, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 8510976688276810663}
     - target: {fileID: 5991900518896007669, guid: a9020501fccf5ce4fbf29f2cc5e15041, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.42569
@@ -73,3 +77,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9020501fccf5ce4fbf29f2cc5e15041, type: 3}
+--- !u!212 &8510976688276810663 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5202312772130753781, guid: a9020501fccf5ce4fbf29f2cc5e15041, type: 3}
+  m_PrefabInstance: {fileID: 4480874729066620754}
+  m_PrefabAsset: {fileID: 0}
