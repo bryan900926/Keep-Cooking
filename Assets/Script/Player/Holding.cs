@@ -5,7 +5,7 @@ public class Holding : MonoBehaviour
 {
     private readonly List<GameObject> holdingItem = new();
 
-    public static Vector3 baseOffset = new(0, 2f, 0); // Base height above the player
+    public static Vector3 baseOffset = new(0, 1.5f, 0); // Base height above the player
     public float horizontalSpacing = 1f; // Distance between items
     private int maxHoldingItem = 1;      // You can increase as needed
 

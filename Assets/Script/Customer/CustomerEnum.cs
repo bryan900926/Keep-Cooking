@@ -4,7 +4,7 @@ public enum CustomerTypeEnum
     Demon = 1,
     Witch = 2,
     Orc = 3,
-    Slime = 4,
-    Gargoyle = 5,
+    Gargoyle = 4,
+    Slime = 5,
     Masked = 6
 }

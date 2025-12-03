@@ -76,4 +76,14 @@ public class UISFX : BaseSFX
         PlayOneShot("Success");
     }
 
+    public void Addreputation()
+    {
+        PlayOneShot("plus");
+    }
+
+    public void Minusreputation()
+    {
+        PlayOneShot("minus");
+    }
+
 }

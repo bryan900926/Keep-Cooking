@@ -9,12 +9,14 @@ public class CustomerStateManager : MonoBehaviour
     public QueueSystem QueueSystem => queueSystem;
     private GameObject queueObj;
 
+    [SerializeField] private Sprite emoji_great;
+    [SerializeField] private Sprite emoji_good;
+    [SerializeField] private Sprite emoji_bad;
+    [SerializeField] private Sprite emoji_terrible;
 
     // Customer Propertis
 
     // ------ Begin ------
-
-
     private float[] buyingPrice;
     public float[] BuyingPrice { get => buyingPrice; set => buyingPrice = value; }
     private float eatingDuration;
@@ -27,12 +29,13 @@ public class CustomerStateManager : MonoBehaviour
     public float Minusreputation { get => minusreputation; set => minusreputation = value; }
 
     public CustomerProperty customerProperty;
-
     // ------ End ------
 
     public float sellprice;
 
-    private int foodlength = 3;
+    public Customrep feedbackUI; // Customer's current expression
+
+    private static readonly Color feedbackTextColor = new Color(0.15f, 0.15f, 0.15f);
 
     private bool leave = false;
 
@@ -71,6 +74,7 @@ public class CustomerStateManager : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = workerData.image;
+        feedbackUI = GetComponent<Customrep>();
         queueObj = GameObject.FindGameObjectWithTag("Queue");
         diningSystem = DiningSystem.Instance;
         queueSystem = queueObj.GetComponent<QueueSystem>();
@@ -85,11 +89,32 @@ public class CustomerStateManager : MonoBehaviour
     public void Attributeprop(int index)
     {
         CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
+        Debug.Log($"Attribute Property for Customer Type: {customerProperty.truevalue.Length}");
         BuyingPrice = (float[])customerProperty.truevalue.Clone();
         EatingDuration = customerProperty.eatingDuration;
         Tipsratio = customerProperty.tipsratio;
         Addreputation = customerProperty.addreputation;
         Minusreputation = customerProperty.minusreputation;
+    }
+
+    public void ReactBad()
+    {
+        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey¡K", feedbackTextColor); // Orange color
+    }
+
+    public void ReactTerrible()
+    {
+        feedbackUI.ShowFeedback(emoji_terrible, "Way too much!", feedbackTextColor);
+    }
+
+    public void ReactGood()
+    {
+        feedbackUI.ShowFeedback(emoji_good, "Nice deal!", feedbackTextColor);
+    }
+
+    public void ReactGreat()
+    {
+        feedbackUI.ShowFeedback(emoji_great, "Sweet bargain!", feedbackTextColor);
     }
 
     // Update is called once per frame

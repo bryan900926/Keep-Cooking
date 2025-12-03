@@ -4,9 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(AIPath), typeof(Animator))]
 public class NpcAnimation : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private AIPath aiPath;
     private Animator animator;
     private Vector2 lastDirection = Vector2.up;
+    private float deadZone = 0.5f;
+    private bool lastFlipX = false;
+
 
     private void Awake()
     {
@@ -36,9 +40,23 @@ public class NpcAnimation : MonoBehaviour
         animator.SetFloat("MoveY", direction.y);
 
         // Flip sprite only if horizontal
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        //if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        //{
+        //    transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
+        //}
+
+
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y) && Mathf.Abs(direction.x) > deadZone)
         {
-            transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
+
+            bool newFlipX = direction.x < 0;
+            if (newFlipX != lastFlipX)
+            {
+                lastFlipX = newFlipX;
+            }
         }
+
+        spriteRenderer.flipX = lastFlipX;
     }
 }
+
