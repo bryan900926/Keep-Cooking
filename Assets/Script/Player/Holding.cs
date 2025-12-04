@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Holding : MonoBehaviour
@@ -84,14 +82,16 @@ public class Holding : MonoBehaviour
         }
     }
 
-    public bool FindPropObj(PropData.Tools propDataName)
+    public bool FindBeer()
     {
         foreach (var item in holdingItem)
         {
-            if (item.TryGetComponent(out PropData propData))
+            if (item.TryGetComponent(out PickUpV2 pickUpV2))
             {
-                if (propData.Type == propDataName)
+                if (pickUpV2.FoodIdx == 3)
                 {
+                    RemoveHoldingItem(item);
+                    Destroy(item);
                     return true;
                 }
             }

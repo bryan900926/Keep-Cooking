@@ -14,9 +14,11 @@ public class Level : MonoBehaviour
 
     public void LevelUp()
     {
+        if (level >= 3) return;
         levelUpHint.ShowLevelUpHint();
         level++;
         textMeshPro.text = "Lv: " + level;
+        ScoreManager.Instance.AddRevenue(-100 * level);
         holdingSystem.AddCapacity();
     }
 

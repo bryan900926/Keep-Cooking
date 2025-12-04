@@ -6,7 +6,7 @@ public class CustomerWaitLineState : CustomerState
 
     public override void Update()
     {
-        if (customerStateManager.DiningIdx == -1 && customerStateManager.LiningIdx != -1 && customerStateManager.AiPath.reachedDestination)
+        if (customerStateManager.DiningIdx == -1 && customerStateManager.LiningIdx != -1)
         {
             TryToReceipt(customerStateManager);
         }

@@ -8,7 +8,7 @@ namespace DiningArea.Customer
 
         private Energy energy;
         private const string PLAYER_TAG = "Player";
-        private bool playerInside = false; // track if player is in trigger
+        private Holding playerHolding; // track if player is in trigger
 
         void Start()
         {
@@ -18,35 +18,27 @@ namespace DiningArea.Customer
         {
             if (other.CompareTag(PLAYER_TAG))
             {
-                playerInside = true;
+                playerHolding = other.GetComponent<Holding>();
             }
         }
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag(PLAYER_TAG))
             {
-                playerInside = false;
+                playerHolding = null;
             }
         }
         void Update()
         {
-            if (playerInside && Keyboard.current.eKey.isPressed)
+            if (playerHolding != null && Keyboard.current.eKey.isPressed)
             {
-                energy.IsReplenishing = true;
-                ServeDrink();
+                if (playerHolding.FindBeer())
+                {
+                    energy.FeedDrink();
+                }
             }
         }
-        public void ServeDrink()
-        {
-            if (Keyboard.current.eKey.isPressed && energy.IsReplenishing)
-            {
-                energy.Replenish(1f);
-            }
-            else
-            {
-                energy.IsReplenishing = false;
-            }
-        }
+
     }
 }
 

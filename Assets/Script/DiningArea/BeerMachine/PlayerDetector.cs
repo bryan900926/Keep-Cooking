@@ -17,7 +17,7 @@ namespace DiningArea.BeerMachine
 
         void Update()
         {
-            if (playerInside && Keyboard.current.rKey.wasPressedThisFrame && stateManager.CurrentState is BeerMachineNormalState)
+            if (playerInside && Keyboard.current.eKey.wasPressedThisFrame && stateManager.CurrentState is BeerMachineNormalState)
             {
                 stateManager.ChangeState(new BeerMachineFilledState(stateManager, 5f));
             }

@@ -1,3 +1,4 @@
+using System.Collections;
 using Pathfinding;
 using UnityEngine;
 
@@ -83,6 +84,7 @@ public class CustomerStateManager : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
         customerSFX = GetComponent<CustomerSFX>();
+        aiPath.maxSpeed = 4f;
         currentState.Enter();
     }
 
@@ -99,7 +101,7 @@ public class CustomerStateManager : MonoBehaviour
 
     public void ReactBad()
     {
-        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey¡K", feedbackTextColor); // Orange color
+        feedbackUI.ShowFeedback(emoji_bad, "Kinda priceyï¿½K", feedbackTextColor); // Orange color
     }
 
     public void ReactTerrible()
