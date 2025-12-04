@@ -12,4 +12,14 @@ public class MarketEvent : ScriptableObject
     public string[] goods;
     public int[] limits;
     public float[] prices;
+
+    [Header("Customer Effects")]
+    public float eatingDurationMultiplier;
+    public float priceMultiplier;
+    public float movingSpeedMultiplier;
+    public float reputationMultiplier;
+    public float energyMultiplier;
+    public float satisfactionMultiplier;
+    public float tipsRatioMultiplier;
+
 }

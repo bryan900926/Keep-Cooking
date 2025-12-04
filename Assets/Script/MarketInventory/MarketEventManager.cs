@@ -18,7 +18,7 @@ public class MarketEventManager : MonoBehaviour
 
     public void RecoverEvent(MarketEvent e)
     {
-        MarketInventory.Instance.RecoverLimit(20);
+        MarketInventory.Instance.RecoverLimit(10);
 
         string[] goods = e.goods;
         float[] prices = e.prices;

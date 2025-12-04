@@ -28,6 +28,9 @@ public class CustomerStateManager : MonoBehaviour
     private float minusreputation;
     public float Minusreputation { get => minusreputation; set => minusreputation = value; }
 
+    private float maxspeed;
+    public float Maxspeed { get => maxspeed; set => maxspeed = value; }
+
     public CustomerProperty customerProperty;
     // ------ End ------
 
@@ -95,6 +98,10 @@ public class CustomerStateManager : MonoBehaviour
         Tipsratio = customerProperty.tipsratio;
         Addreputation = customerProperty.addreputation;
         Minusreputation = customerProperty.minusreputation;
+        maxspeed = customerProperty.maxspeed;
+        aiPath = GetComponent<AIPath>();
+        Debug.Log("aiPath is: " + aiPath);
+        aiPath.maxSpeed = maxspeed;
     }
 
     public void ReactBad()

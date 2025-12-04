@@ -35,13 +35,12 @@ public class Dailyspecial : MonoBehaviour
     private void SetSpecial(int index)
     {
         if (preindex == index) return;
-        // ������_��W
+
         pickone1.text = originalname1;
         pickone2.text = originalname2;
         pickone3.text = originalname3;
 
 
-        // ���w�����ӥ[ (*)
         switch (index)
         {
             case 1:
@@ -76,7 +75,5 @@ public class Dailyspecial : MonoBehaviour
         //}
 
         preindex = index;
-
-        // Debug.Log("�S�\�󴫬��G" + index + " ���\");
     }
 }

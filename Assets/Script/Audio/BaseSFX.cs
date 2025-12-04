@@ -55,12 +55,12 @@ public class BaseSFX : MonoBehaviour
     }
 
     // One-shot SFX (attack, jump, hurt, pickup…)
-    public void PlayOneShot(string clipName)
+    public void PlayOneShot(string clipName, float multiplier = 1f)
     {
         if (AudioManager.Instance.TryGetClip(clipName, out var clip))
         {
             var source = GetSource(clipName, false);
-            source.volume = AudioManager.Instance.sfxvolume;
+            source.volume = multiplier * AudioManager.Instance.sfxvolume;
             source.PlayOneShot(clip);
         }
     }

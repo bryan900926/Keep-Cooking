@@ -68,7 +68,7 @@ public class Energy : MonoBehaviour
     {
         CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
         maxEnergy = customerProperty.energy;
-        energyDecay = 7 * ( 1 - customerProperty.satisfactory/8); 
+        energyDecay = 8 - customerProperty.satisfactory ; 
     }
 
 

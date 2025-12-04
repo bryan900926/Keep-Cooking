@@ -78,6 +78,7 @@ public class CustomerOrderState : CustomerState
                 customerStateManager.ReactGood();
                 CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, 1);
             }
+            CustomerPropertyManager.Instance.NiceCustomer += 1;
         }
         else
         {   
@@ -91,7 +92,8 @@ public class CustomerOrderState : CustomerState
                 customerStateManager.ReactBad();
                 CustomerPropertyManager.Instance.Addsatisfactory(customerStateManager.customerProperty, -1);
             }
-            
+            CustomerPropertyManager.Instance.BadCustomer += 1;
+
             ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
             CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));

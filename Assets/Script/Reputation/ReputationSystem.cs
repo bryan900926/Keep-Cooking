@@ -98,5 +98,7 @@ public class ReputationSystem : MonoBehaviour
         fillImage.DOColor(Color.red, 0.1f)
                  .SetLoops(2, LoopType.Yoyo)
                  .OnComplete(() => fillImage.color = originalColor);
+
+        slider.transform.DOShakePosition(0.2f, 5f, 20, 90);
     }
 }

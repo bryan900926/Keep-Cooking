@@ -26628,6 +26628,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 5
     minusreputation: 3
+    maxspeed: 5
     ratio: 0.5
   - type: 1
     lowertruevalue:
@@ -26645,6 +26646,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 3
     minusreputation: 3
+    maxspeed: 5
     ratio: 0.1
   - type: 2
     lowertruevalue:
@@ -26662,6 +26664,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 7
     minusreputation: 5
+    maxspeed: 5
     ratio: 0.3
   - type: 3
     lowertruevalue:
@@ -26679,6 +26682,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 7
     minusreputation: 5
+    maxspeed: 5
     ratio: 0.1
   - type: 4
     lowertruevalue:
@@ -26696,6 +26700,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 7
     minusreputation: 5
+    maxspeed: 5
     ratio: 0
   - type: 5
     lowertruevalue:
@@ -26713,6 +26718,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 7
     minusreputation: 5
+    maxspeed: 5
     ratio: 0
   - type: 6
     lowertruevalue:
@@ -26730,7 +26736,11 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 7
     minusreputation: 5
+    maxspeed: 5
     ratio: 0
+  NiceCustomer: 0
+  BadCustomer: 0
+  TotalCustomer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

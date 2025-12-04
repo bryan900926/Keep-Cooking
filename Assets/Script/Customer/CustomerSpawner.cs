@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEditor.Timeline;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class CustomerSpawner : MonoBehaviour
     {
         pdf = (float[])originalpdf.Clone();
         qs = lining.GetComponent<QueueSystem>();
-        spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
+        spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         Initpdf();
         UpdateDistribution();
     }
@@ -31,7 +32,16 @@ public class CustomerSpawner : MonoBehaviour
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
             SpawnCustomer();
-            spawnedTime = Random.Range(spawnIntervals[0], spawnIntervals[1]);
+            spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
+        }
+
+        if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 40)
+        {
+            SpecialSpawner(true);
+        }
+        else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 40)
+        {
+            SpecialSpawner(false);
         }
     }
 
@@ -64,7 +74,7 @@ public class CustomerSpawner : MonoBehaviour
         foreach (float w in weights)
             totalWeight += w;
 
-        float randomValue = Random.Range(0f, totalWeight);
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
 
         for (int i = 0; i < weights.Length; i++)
         {
@@ -78,8 +88,31 @@ public class CustomerSpawner : MonoBehaviour
         return 0; 
     }
 
-    void SpawnCustomer()
+    void SpecialSpawner(bool state)
     {
+        UpdateDistribution();
+        GameObject Customer = spawnedCustomer[6];
+        GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
+        CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+        Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(6);
+        Energy Energy = Custom.GetComponent<Energy>();
+        if (state)
+            Custom.customerProperty = CustomerPropertyManager.Instance.Specialpropertypositive(CustomerPropertyManager.Instance.NiceCustomer);
+        else
+            Custom.customerProperty = CustomerPropertyManager.Instance.Specialpropertynegative(CustomerPropertyManager.Instance.BadCustomer);
+        CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+        Custom.Attributeprop(6);
+        Energy.UpdateEnergy(6);
+        CustomerPropertyManager.Instance.NiceCustomer = 0;
+        CustomerPropertyManager.Instance.BadCustomer = 0;
+        spawnIntervals[0] -= 1;
+        spawnIntervals[1] -= 1;
+
+    }
+
+    void SpawnCustomer()
+    {   
+        CustomerPropertyManager.Instance.TotalCustomer += 1;
         UpdateDistribution();
         int Index = RandomIndex(pdf);
         if (Index != 5)
@@ -95,7 +128,7 @@ public class CustomerSpawner : MonoBehaviour
         }
         else
         {
-            int randomindex = Random.Range(0, 5);
+            int randomindex = UnityEngine.Random.Range(0, 5);
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
