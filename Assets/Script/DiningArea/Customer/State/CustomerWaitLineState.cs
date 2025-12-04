@@ -30,6 +30,7 @@ public class CustomerWaitLineState : CustomerState
         if (idx != -1)
         {
             customer.QueueSystem.FreeSeat(customer.LiningIdx);
+            customer.DestinationSetter.target = null;
             customer.ChangeState(new CustomerOrderState(customer, idx));
         }
     }

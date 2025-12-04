@@ -9,7 +9,6 @@ public class NpcAnimation : MonoBehaviour
     private Animator animator;
     private Vector2 lastDirection = Vector2.up;
     private float deadZone = 0.5f;
-    private bool lastFlipX = false;
 
 
     private void Awake()
@@ -39,24 +38,12 @@ public class NpcAnimation : MonoBehaviour
         animator.SetFloat("MoveX", direction.x);
         animator.SetFloat("MoveY", direction.y);
 
-        // Flip sprite only if horizontal
-        //if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        //{
-        //    transform.localScale = new Vector3(direction.x > 0 ? 1 : -1, 1, 1);
-        //}
-
-
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y) && Mathf.Abs(direction.x) > deadZone)
         {
 
             bool newFlipX = direction.x < 0;
-            if (newFlipX != lastFlipX)
-            {
-                lastFlipX = newFlipX;
-            }
+            spriteRenderer.flipX = newFlipX;
         }
-
-        spriteRenderer.flipX = lastFlipX;
     }
 }
 

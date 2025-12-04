@@ -23,7 +23,7 @@ public class CustomerPropertyManager : MonoBehaviour
 
     public void Addsatisfactory(CustomerProperty prop, int number)
     {
-        prop.satisfactory += (int)number;
+        prop.satisfactory = Mathf.Clamp(prop.satisfactory + number, 0, 5);
     }
 
     public void Updateprop(CustomerProperty prop)

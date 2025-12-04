@@ -101,7 +101,7 @@ public class CustomerStateManager : MonoBehaviour
 
     public void ReactBad()
     {
-        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey�K", feedbackTextColor); // Orange color
+        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey", feedbackTextColor); // Orange color
     }
 
     public void ReactTerrible()
