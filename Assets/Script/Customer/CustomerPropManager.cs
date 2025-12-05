@@ -63,6 +63,7 @@ public class CustomerPropertyManager : MonoBehaviour
     public void Addsatisfactory(CustomerProperty prop, int number)
     {
         prop.satisfactory = Mathf.Clamp(prop.satisfactory + number, 0, 5);
+
     }
 
     public void Updateeveryone(float multiplier, string name, bool normal)
@@ -113,6 +114,7 @@ public class CustomerPropertyManager : MonoBehaviour
                     break;
             }
         }
+
     }
 
     public void Updateprop(CustomerProperty prop)
