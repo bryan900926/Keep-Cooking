@@ -8,12 +8,15 @@ public class UImanager : MonoBehaviour
         option,
         main,
         setting,
+
+        tutorial
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static UImanager Instance;
     [SerializeField] private GameObject options;
     [SerializeField] private GameObject main;
     [SerializeField] private GameObject setting;
+    [SerializeField] private GameObject tutorial;
     private Dictionary<MenuOptions, CanvasGroup> canvasgroup = new();
     private MenuOptions currentMenu;
     private MenuOptions previousMenu;
@@ -33,9 +36,10 @@ public class UImanager : MonoBehaviour
         canvasgroup.Add(MenuOptions.option, options.GetComponent<CanvasGroup>());
         canvasgroup.Add(MenuOptions.main, main.GetComponent<CanvasGroup>());
         canvasgroup.Add(MenuOptions.setting, setting.GetComponent<CanvasGroup>());
+        canvasgroup.Add(MenuOptions.tutorial, tutorial.GetComponent<CanvasGroup>());
         currentMenu = MenuOptions.main;
         previousMenu = MenuOptions.main;
-        
+
         HideAllUI();
         ShowUI(canvasgroup[currentMenu]);
     }
@@ -70,7 +74,7 @@ public class UImanager : MonoBehaviour
     }
 
     public void ClickShowUI(MenuOptions name)
-    {   
+    {
         previousMenu = currentMenu;
         UISFX.Instance.PlayButtonClick();
         currentMenu = name;

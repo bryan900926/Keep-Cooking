@@ -14,6 +14,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject customerTutorialObject;
     [SerializeField] private GameObject waiterTutorialObject;
     [SerializeField] private GameObject repuationTutorialObject;
+    [SerializeField] private GameObject beerTutorialObject;
 
     readonly private Dictionary<TutorialPage, string> tutorialPagesText = new()
     {
@@ -21,7 +22,8 @@ public class Tutorial : MonoBehaviour
         { TutorialPage.CHEF, chef },
         { TutorialPage.CUSTOMER, customer },
         { TutorialPage.WAITER, waiter },
-        { TutorialPage.REPUATION, repuation }
+        { TutorialPage.REPUATION, repuation },
+        { TutorialPage.BEER, beer }
     };
     readonly Dictionary<TutorialPage, GameObject> tutorialPagesObjects = new()
     {
@@ -36,7 +38,8 @@ public class Tutorial : MonoBehaviour
         TutorialPage.CHEF,
         TutorialPage.CUSTOMER,
         TutorialPage.WAITER,
-        TutorialPage.REPUATION
+        TutorialPage.REPUATION,
+        TutorialPage.BEER
     };
     private const string backGroundStory = "You are now transported to another world and have become a tavern owner. You must manage both front- and back-of-house staff and handle all kinds of issues in the restaurant… Good luck!";
     private const string chef = "When chef forget the food recipe, you would see a sweat drop on the chef's head. You can click on the chef to correct what recipe they are trying to cook (corrent recipe is at keyboard M). When the food stock is low, the yellow warning sign will appear above the chef's head. Make sure to restock the ingredients in time with keyboard I!";
@@ -44,6 +47,8 @@ public class Tutorial : MonoBehaviour
     private const string waiter = "Waiters would deliver food from counter to customerers. They would be slowed down if they step on the oil spill on the ground. Make sure to clean them up with keyboard R!";
 
     private const string repuation = "Higher reputation would bring in more generous customers. Keep your repuatation high by providing good service and delicious food!";
+
+    private const string beer = "Get close to the beer machine and Press R to make the beer which can help increase customer patience!";
     void Start()
     {
         backButton.onClick.AddListener(OnBackButtonClicked);
@@ -53,6 +58,7 @@ public class Tutorial : MonoBehaviour
         tutorialPagesObjects[TutorialPage.CUSTOMER] = customerTutorialObject;
         tutorialPagesObjects[TutorialPage.WAITER] = waiterTutorialObject;
         tutorialPagesObjects[TutorialPage.REPUATION] = repuationTutorialObject;
+        tutorialPagesObjects[TutorialPage.BEER] = beerTutorialObject;
         ShowMessage(tutorialPagesText[pages[curPageIdx]]);
     }
     private void ShowTutorialGameObject(TutorialPage page)
@@ -117,6 +123,16 @@ public class Tutorial : MonoBehaviour
         }
         ShowMessage(tutorialPagesText[pages[curPageIdx]]);
     }
+    public void ClearAllObJects()
+    {
+        foreach (var obj in tutorialPagesObjects.Values)
+        {
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
 }
 
 public enum TutorialPage
@@ -125,5 +141,6 @@ public enum TutorialPage
     CHEF,
     CUSTOMER,
     WAITER,
-    REPUATION
+    REPUATION,
+    BEER
 }
