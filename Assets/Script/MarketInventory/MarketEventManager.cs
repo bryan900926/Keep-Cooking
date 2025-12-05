@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarketEventManager : MonoBehaviour
 {
@@ -7,18 +8,24 @@ public class MarketEventManager : MonoBehaviour
 
     public MarketEvent currentEvent;
 
+    public Image background;
+
 
     public List<MarketEvent> allEvents = new List<MarketEvent>();
 
+    public GameObject[] Eventsprefab;
+
+    private BlackOverlayController blackOverlayController;
 
     private void Awake()
     {
         Instance = this;
+        blackOverlayController = GetComponent<BlackOverlayController>();    
     }
 
     public void RecoverEvent(MarketEvent e)
     {
-        MarketInventory.Instance.RecoverLimit(20);
+        MarketInventory.Instance.RecoverLimit(10);
 
         string[] goods = e.goods;
         float[] prices = e.prices;
@@ -79,5 +86,20 @@ public class MarketEventManager : MonoBehaviour
         }
 
         Debug.Log("Triggered Market Event: " + e.eventName);
+
+        switch (e.eventName)
+        {
+                case "Ghostly Thief":
+                GameObject ghost = Instantiate(Eventsprefab[0], transform.position, Quaternion.identity);
+                if (ghost!= null)
+                {
+                    ghost.GetComponent<Ghost>().Appear();   
+                }
+                MarketInventory.Instance.Disappear();
+                MarketInventory.Instance.UpdateMenu();
+                break;
+
+                 
+        }
     }
 }

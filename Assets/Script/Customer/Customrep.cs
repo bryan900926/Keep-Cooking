@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Customrep : MonoBehaviour
 {
-    [Header("UI ����")]
+    [Header("UI elements")]
     public CanvasGroup canvasGroup;
     public Image emojiImage;
     public TextMeshProUGUI text;
 
-    [Header("�ʵe�Ѽ�")]
+    [Header("animation parameters")]
     public float popupScale = 1.3f;
     public float popupDuration = 0.25f;
     public float fadeDuration = 0.4f;
@@ -34,7 +34,8 @@ public class Customrep : MonoBehaviour
         canvasGroup.alpha = 1;
         transform.localScale = baseScale * 0.6f;
 
-        seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence().SetLink(gameObject);
+
 
         seq.Append(canvasGroup.DOFade(1, 0.1f));
         seq.Join(transform.DOScale(popupScale, popupDuration).SetEase(Ease.OutBack));
@@ -45,9 +46,13 @@ public class Customrep : MonoBehaviour
 
         seq.OnComplete(() =>
         {
-            canvasGroup.alpha = 0;
-            transform.localScale = baseScale;
-        });
+            if (canvasGroup != null)
+                canvasGroup.alpha = 0;
+
+            if (transform != null)
+                transform.localScale = baseScale;
+        })
+    .SetLink(gameObject);
     }
 
     void OnDestroy()

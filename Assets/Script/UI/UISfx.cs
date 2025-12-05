@@ -78,12 +78,12 @@ public class UISFX : BaseSFX
 
     public void Addreputation()
     {
-        PlayOneShot("plus");
+        PlayOneShot("plus", 1.5f);
     }
 
     public void Minusreputation()
     {
-        PlayOneShot("minus");
+        PlayOneShot("minus", 1.5f);
     }
 
 }

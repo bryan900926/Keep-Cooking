@@ -23,8 +23,8 @@ public class Toggle : MonoBehaviour
 
     private readonly Dictionary<Key, KeysForUI> keyMapping = new()
     {
-        { Key.I, KeysForUI.Inventory },
-        { Key.V, KeysForUI.Menu },
+        { Key.Z, KeysForUI.Inventory },
+        { Key.C, KeysForUI.Menu },
         { Key.Tab, KeysForUI.Settings },
     };
 

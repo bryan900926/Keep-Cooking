@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class FoodContainer : MonoBehaviour
+public class EventTrigger : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public MarketEvent[] marketEvents;
     void Start()
     {
         
@@ -13,4 +14,6 @@ public class FoodContainer : MonoBehaviour
     {
         
     }
+
+    
 }

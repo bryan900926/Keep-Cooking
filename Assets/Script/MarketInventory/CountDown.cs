@@ -5,7 +5,7 @@ using System.Collections;
 public class CountdownTimer : MonoBehaviour
 {
     public TMP_Text timeText;
-    public float countdownTime = 45f;
+    public float countdownTime = 10f;
 
     private float currentTime;
 

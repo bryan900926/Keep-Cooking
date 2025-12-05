@@ -80,7 +80,15 @@ public class MarketInventory : MonoBehaviour
     {
         if (slotDict.ContainsKey(name))
         {
-            slotDict[name].amount -= amount;
+            slotDict[name].amount = Mathf.Clamp(slotDict[name].amount - amount, 0 , slotDict[name].amount);
+        }
+    }
+
+    public void Disappear()
+    {
+        foreach (var key in slotDict.Keys)
+        {
+            slotDict[key].amount = 0;
         }
     }
 

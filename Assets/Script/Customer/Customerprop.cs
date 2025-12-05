@@ -11,6 +11,6 @@ public class CustomerProperty
     public int satisfactory; // Manage prob , energy decay and eating speed 
     public int addreputation;
     public int minusreputation;
-    public float ratio;
-
+    public float maxspeed;
+    public float ratio; // Spawn ratio
 }
