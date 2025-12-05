@@ -6,21 +6,39 @@ namespace DiningArea.Customer
     public class PlayerDetector : MonoBehaviour
     {
 
+        private Energy energy;
         private const string PLAYER_TAG = "Player";
+        private Holding playerHolding; // track if player is in trigger
 
+        void Start()
+        {
+            energy = GetComponent<Energy>();
+        }
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (other.CompareTag(PLAYER_TAG) && GetComponent<CustomerStateManager>().CurrentState is CustomerWaitFoodState && Keyboard.current.rKey.isPressed)
+            if (other.CompareTag(PLAYER_TAG))
             {
-                int idx = HoldingSystem.Instance.FindProp(PropData.Tools.SCROLL);
-                if (idx != -1)
+                playerHolding = other.GetComponent<Holding>();
+            }
+        }
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag(PLAYER_TAG))
+            {
+                playerHolding = null;
+            }
+        }
+        void Update()
+        {
+            if (playerHolding != null && Keyboard.current.eKey.isPressed)
+            {
+                if (playerHolding.FindBeer())
                 {
-                    HoldingSystem.Instance.RemoveProp(idx);
-                    BackControl.Instance.RecruitChef(gameObject);
+                    energy.FeedDrink();
                 }
             }
-
         }
+
     }
 }
 

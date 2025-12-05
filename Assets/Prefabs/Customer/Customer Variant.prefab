@@ -332,6 +332,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 0
     minusreputation: 0
+    maxspeed: 0
     ratio: 0
   sellprice: 0
   feedbackUI: {fileID: 0}
@@ -444,9 +445,9 @@ MonoBehaviour:
   canvasGroup: {fileID: 1489814193004476977}
   emojiImage: {fileID: 4247809960432776364}
   text: {fileID: 1280673673788452797}
-  popupScale: 1.3
-  popupDuration: 0.25
-  fadeDuration: 0.4
+  popupScale: 1.2
+  popupDuration: 0.2
+  fadeDuration: 0.3
 --- !u!1 &2022000037028445228
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,8 +540,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

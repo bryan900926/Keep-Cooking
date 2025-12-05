@@ -33,7 +33,7 @@ public class Customrep : MonoBehaviour
         canvasGroup.alpha = 1;
         transform.localScale = baseScale * 0.6f;
 
-        Sequence seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence().SetLink(gameObject);
 
         seq.Append(canvasGroup.DOFade(1, 0.1f));
         seq.Join(transform.DOScale(popupScale, popupDuration).SetEase(Ease.OutBack));
@@ -41,12 +41,15 @@ public class Customrep : MonoBehaviour
         seq.AppendInterval(0.4f);
 
         seq.Append(canvasGroup.DOFade(0, fadeDuration));
-        seq.Join(transform.DOMoveY(transform.position.y + 0.4f, fadeDuration));
 
         seq.OnComplete(() =>
         {
-            canvasGroup.alpha = 0;
-            transform.localScale = baseScale;
-        });
+            if (canvasGroup != null)
+                canvasGroup.alpha = 0;
+
+            if (transform != null)
+                transform.localScale = baseScale;
+        })
+    .SetLink(gameObject);
     }
 }

@@ -31,11 +31,6 @@ namespace Accident.Spot
             Debug.Log(other.name + " entered oil spot");
             playerInside = true;
             ShowHint(true);
-
-            if (other.TryGetComponent(out Holding holding))
-            {
-                holding.RemoveAllHolding();
-            }
             if (other.TryGetComponent(out WaiterStateManager waiterStateManager))
             {
                 waiterStateManager.SlowDown();

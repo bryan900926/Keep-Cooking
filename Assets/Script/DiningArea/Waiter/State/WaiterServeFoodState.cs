@@ -3,27 +3,24 @@ using UnityEngine;
 
 public class WaiterServeFoodState : WaiterState
 {
-    private readonly Queue<OrderInfo> pendingOrders = new();
     private OrderInfo currentOrder;
 
     private Holding holding;
 
     private int orderIndex = 0;
 
+    readonly private List<OrderInfo> orderInfos;
+
     public WaiterServeFoodState(WaiterStateManager waiterStateManager, List<OrderInfo> orderInfos)
         : base(waiterStateManager)
     {
-        foreach (var order in orderInfos)
-        {
-            if (order != null)
-                pendingOrders.Enqueue(order);
-        }
+        this.orderInfos = orderInfos;
     }
 
     public override void Enter()
     {
         holding = waiterStateManager.Holding;
-        if (pendingOrders.Count == 0)
+        if (orderInfos.Count == 0)
         {
             Debug.LogWarning("Waiter has no orders to serve.");
             waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
@@ -36,12 +33,12 @@ public class WaiterServeFoodState : WaiterState
     public override void Update()
     {
         // If no more dishes, return to Idle
-        if (pendingOrders.Count == 0 || orderIndex >= pendingOrders.Count)
+        if (orderIndex >= orderInfos.Count)
         {
             waiterStateManager.ChangeState(new WaiterIdleState(waiterStateManager));
         }
 
-        if (pendingOrders.Count > 0 && waiterStateManager.aiPath.reachedDestination && currentOrder != null)
+        if (orderInfos.Count > 0 && waiterStateManager.aiPath.reachedDestination && currentOrder != null)
         {
             TryServeDish(currentOrder);
         }
@@ -56,15 +53,10 @@ public class WaiterServeFoodState : WaiterState
 
     private void MoveToNextTable()
     {
-        if (pendingOrders.Count == 0)
+        if (orderIndex >= orderInfos.Count)
             return;
 
-        currentOrder = pendingOrders.Peek();
-        if (currentOrder.TableIdx < 0 || currentOrder.TableIdx >= DiningSystem.Instance.seats.Length)
-        {
-            Debug.LogWarning($"Invalid table index {currentOrder.TableIdx} for order.");
-            return;
-        }
+        currentOrder = orderInfos[orderIndex];
         var targetSeat = DiningSystem.Instance.seats[currentOrder.TableIdx].transform;
         waiterStateManager.destinationSetter.target = targetSeat;
 
@@ -77,25 +69,23 @@ public class WaiterServeFoodState : WaiterState
         if (customer != null)
         {
             var customerStateManager = customer.GetComponent<CustomerStateManager>();
-            if (customerStateManager.CurrentState is not CustomerWaitFoodState)
+            if (customerStateManager.CurrentState is CustomerWaitFoodState)
             {
-                return;
+                if (customerStateManager.OrderedFoodIdx == order.FoodIdx)
+                {
+                    Debug.Log($"Waiter served correct dish {order.FoodIdx} to table {order.TableIdx}");
+                    GameObject servedItem = holding.HoldingItem.Find(i => i.GetComponent<PickUpV2>().FoodIdx == order.FoodIdx);
+                    customerStateManager.ChangeState(new CustomerEatingState(customerStateManager, 10));
+                    // Remove the served item from waiter’s hands
+                    if (servedItem != null)
+                        holding.RemoveHoldingItem(servedItem);
+                    Object.Destroy(servedItem);
+                }
+                else
+                {
+                    Debug.LogWarning($"Wrong dish! Expected {customerStateManager.OrderedFoodIdx}, got {order.FoodIdx}");
+                }
             }
-            if (customerStateManager.OrderedFoodIdx == order.FoodIdx)
-            {
-                Debug.Log($"Waiter served correct dish {order.FoodIdx} to table {order.TableIdx}");
-                GameObject servedItem = holding.HoldingItem.Find(i => i.GetComponent<PickUpV2>().FoodIdx == order.FoodIdx);
-                customerStateManager.ChangeState(new CustomerEatingState(customerStateManager, 10));
-                // Remove the served item from waiter’s hands
-                if (servedItem != null)
-                    holding.RemoveHoldingItem(servedItem);
-                Object.Destroy(servedItem);
-            }
-            else
-            {
-                Debug.LogWarning($"Wrong dish! Expected {customerStateManager.OrderedFoodIdx}, got {order.FoodIdx}");
-            }
-            pendingOrders.Dequeue();
         }
         else
         {

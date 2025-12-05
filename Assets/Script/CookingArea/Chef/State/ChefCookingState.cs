@@ -12,7 +12,6 @@ public class ChefCookingState : ChefState
     private bool hasConsumedIngredients = false;   // 🔒 NEW: prevents multi-consume
 
     readonly private Energy energy;
-    float wastedIngredientProb = 0f;
 
     readonly Dictionary<int, int> totalRequirements = new();
 
@@ -22,7 +21,6 @@ public class ChefCookingState : ChefState
         this.cookingTime = Random.Range(3f, 5f);
         this.orderInfos = orderInfos;
         energy = chefStateManager.GetComponent<Energy>();
-        wastedIngredientProb = 0f;
     }
 
     public override void Enter()
@@ -122,7 +120,6 @@ public class ChefCookingState : ChefState
 
     private void EnterWaitingState()
     {
-        Debug.Log("ChefCookingState: EnterWaitingState, waiting for ingredients");
 
         chefStateManager.CookingMachine
             .GetComponent<CookingMachineStateManager>()
@@ -140,7 +137,6 @@ public class ChefCookingState : ChefState
         if (!isWaitingForIngredients || hasConsumedIngredients)
             return;
 
-        Debug.Log("@ChefCookingState → OnInventoryReplenished");
 
         bool success = MarketInventory.Instance.TryConsumeIngredientsForBatch(
             totalRequirements,
@@ -149,7 +145,6 @@ public class ChefCookingState : ChefState
 
         if (success)
         {
-            Debug.Log("@ChefCookingState → Ingredients obtained after wait");
 
             hasConsumedIngredients = true;
             isWaitingForIngredients = false;

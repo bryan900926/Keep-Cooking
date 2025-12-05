@@ -81,4 +81,21 @@ public class Holding : MonoBehaviour
             holdingItem[i].transform.localPosition = offset;
         }
     }
+
+    public bool FindBeer()
+    {
+        foreach (var item in holdingItem)
+        {
+            if (item.TryGetComponent(out PickUpV2 pickUpV2))
+            {
+                if (pickUpV2.FoodIdx == 3)
+                {
+                    RemoveHoldingItem(item);
+                    Destroy(item);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

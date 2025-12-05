@@ -1,3 +1,4 @@
+using System.Collections;
 using Pathfinding;
 using UnityEngine;
 
@@ -86,6 +87,7 @@ public class CustomerStateManager : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
         customerSFX = GetComponent<CustomerSFX>();
+        aiPath.maxSpeed = 4f;
         currentState.Enter();
     }
 
@@ -106,7 +108,7 @@ public class CustomerStateManager : MonoBehaviour
 
     public void ReactBad()
     {
-        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey¡K", feedbackTextColor); // Orange color
+        feedbackUI.ShowFeedback(emoji_bad, "Kinda pricey...", feedbackTextColor); // Orange color
     }
 
     public void ReactTerrible()
@@ -133,7 +135,7 @@ public class CustomerStateManager : MonoBehaviour
 
         }
         if (energy.CurrentEnergy <= 0 && currentState is not CustomerToChefState)
-        {   
+        {
             if (!leave)
             {
                 leave = true;

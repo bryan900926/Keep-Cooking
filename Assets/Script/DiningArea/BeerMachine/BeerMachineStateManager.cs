@@ -6,6 +6,10 @@ public class BeerMachineStateManager : MonoBehaviour
     public BeerMachineState CurrentState => currentState;
     [SerializeField] private CanvasGroup fillProgressCanvasGroup;
 
+    [SerializeField] private Transform spawnPoint;
+
+    public Transform SpawnPoint => spawnPoint;
+
     public CanvasGroup FillProgressCanvasGroup {
         get => fillProgressCanvasGroup;
         set => fillProgressCanvasGroup = value;

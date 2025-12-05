@@ -1,12 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
+    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
     [Header("Energy")]
     [SerializeField] private FloatingEnergyBar floatingEnergyBar;
     [SerializeField] private float maxEnergy;
     [SerializeField] private float energyDecay;
     private float currentEnergy;
+
+    private Coroutine drinkCoroutine;
 
     public float CurrentEnergy
     {
@@ -68,8 +72,28 @@ public class Energy : MonoBehaviour
     {
         CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
         maxEnergy = customerProperty.energy;
-        energyDecay = 8 - customerProperty.satisfactory ; 
+        energyDecay = 8 - customerProperty.satisfactory;
     }
 
+    public IEnumerator DrinkCoroutine()
+    {
+        isReplenishing = true;
 
+        while (currentEnergy < maxEnergy)
+        {
+            Replenish(maxEnergy * 0.1f);
+            yield return _waitForSeconds1;
+        }
+
+        isReplenishing = false;
+    }
+
+    public void FeedDrink()
+    {
+        if (drinkCoroutine != null)
+        {
+            StopCoroutine(drinkCoroutine);
+        }
+        drinkCoroutine = StartCoroutine(DrinkCoroutine());
+    }
 }
