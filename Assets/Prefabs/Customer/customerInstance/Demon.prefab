@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: workerData
       value: 
       objectReference: {fileID: 11400000, guid: d41995fc4f640a64ea2ced6a0b5786e8, type: 2}
+    - target: {fileID: 9088886544764339852, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: ghostPrefab
+      value: 
+      objectReference: {fileID: 3658917667237655734}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

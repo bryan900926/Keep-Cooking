@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Time-Loop Bargain Hour
   m_EditorClassIdentifier: 
   eventName: Time-Loop Hour
-  description: A time ripple traps customers in a repeating moment, making them buy
-    the same items again and again.
+  description: A time ripple traps customers in a repeating moment
   goods:
   - Dumplings
   - Broccoli

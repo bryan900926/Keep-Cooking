@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,9 @@ public class MarketEventManager : MonoBehaviour
 
     private bool First = true;
 
+    [SerializeField] private int interval = 0;
+
+    [SerializeField] private int totaltime = 0;
     readonly private Dictionary<string, Action> eventActions = new();
 
     private void Awake()
@@ -35,7 +39,7 @@ public class MarketEventManager : MonoBehaviour
     void Start()
     {
         eventActions.Add("Ghostly Thief", GhostThief);
-        eventActions.Add("Time-Loop Hour", TimeLoopHour);
+        eventActions.Add("Time-Loop Hour", () => StartCoroutine(PlayTimedropMultiple(interval, totaltime)));
         eventActions.Add("Sandworm Invasion", SandwormInvasion);
         eventActions.Add("Unstable Portal", UnstablePortal);
     }
@@ -127,20 +131,6 @@ public class MarketEventManager : MonoBehaviour
         MarketInventory.Instance.UpdateMenu();
     }
 
-    private void TimeLoopHour()
-    {
-        GameObject timedrop = Instantiate(Eventsprefab[0], new Vector3(0f, 10f, 0f), Quaternion.identity);
-        if (timedrop != null)
-        {
-            Vector3 startposition = timedrop.GetComponent<Timedrop>().startposition;
-            Vector3 hitposition = timedrop.GetComponent<Timedrop>().hitposition;
-            timedrop.GetComponent<Timedrop>().PlayWaterDrop(startposition, hitposition);
-        }
-        MarketInventory.Instance.UpdateMenu();
-        eventmultiplier = 0.5f;
-        propname = "MovingSpeed";
-        CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier, propname, true);
-    }
 
     private void SandwormInvasion()
     {
@@ -153,5 +143,32 @@ public class MarketEventManager : MonoBehaviour
         if (Eventsprefab.Length == 0) return;
         GameObject crack = Instantiate(Eventsprefab[0], new Vector3(2f, 2f, 0f), Quaternion.identity); // location needs to adjust
         crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
+    }
+
+    private IEnumerator PlayTimedropMultiple(int interval, int totalDuration)
+    {
+
+        int count = totalDuration / interval;
+        for (int i = 0; i < count; i++)
+        {
+            // �ͦ� timedrop
+            GameObject timedrop = Instantiate(
+                Eventsprefab[0],
+                new Vector3(0f, 10f, 0f),
+                Quaternion.identity
+            );
+
+            if (timedrop != null)
+            {
+                Timedrop drop = timedrop.GetComponent<Timedrop>();
+                drop.PlayWaterDrop(drop.startposition, drop.hitposition);
+            }
+
+            // ��s���]�p�G�n�C������s�^
+            MarketInventory.Instance.UpdateMenu();
+
+            // ���U�@��
+            yield return new WaitForSeconds(interval);
+        }
     }
 }

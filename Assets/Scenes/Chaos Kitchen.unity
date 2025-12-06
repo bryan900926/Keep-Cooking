@@ -167,11 +167,9 @@ MonoBehaviour:
   currentEvent: {fileID: 0}
   background: {fileID: 2110055769}
   allEvents:
-  - {fileID: 11400000, guid: e9d4c17e9b4b4434fb68aad4e4a56ab8, type: 2}
-  - {fileID: 11400000, guid: 6cd0d876adbd3f74a898e9af207cc4e6, type: 2}
+  - {fileID: 11400000, guid: 59ab9213204584944a1deb30fb3ff04e, type: 2}
   Eventsprefab:
   - {fileID: 7066992687346572692, guid: 6e7e8ba491a680e488f870a8ba4718c4, type: 3}
-  - {fileID: 628382906680581188, guid: 12d402ebd4e195a4b8bccf8e0aa8f814, type: 3}
 --- !u!114 &9685432
 MonoBehaviour:
   m_ObjectHideFlags: 0

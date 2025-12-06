@@ -86,9 +86,21 @@ public class MarketInventory : MonoBehaviour
 
     public void Disappear()
     {
-        foreach (var key in slotDict.Keys)
+        var keys = slotDict.Keys.ToList();
+        int count = Mathf.Min(3, keys.Count);
+
+        var rnd = new System.Random();
+        var selected = new HashSet<int>();
+
+        while (selected.Count < count)
         {
-            slotDict[key].amount = 0;
+            int index = rnd.Next(keys.Count);
+            selected.Add(index); 
+        }
+
+        foreach (int i in selected)
+        {
+            slotDict[keys[i]].amount = 0;
         }
     }
 
