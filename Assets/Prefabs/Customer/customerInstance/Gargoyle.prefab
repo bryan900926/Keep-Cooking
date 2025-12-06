@@ -65,12 +65,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4700619750520157867, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700619750520157867, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4700619750520157867, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766253158261020677, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766253158261020677, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6888022811926264675, guid: 7d6c4c53547f9ed4ab6aeb194135d580, type: 3}
       propertyPath: emoji_bad

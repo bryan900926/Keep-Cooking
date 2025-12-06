@@ -6,7 +6,7 @@ public class MarketEventManager : MonoBehaviour
 {
     public static MarketEventManager Instance;
 
-    public MarketEvent currentEvent;
+    public MarketEvent currentEvent = null;
 
     public Image background;
 
@@ -16,6 +16,12 @@ public class MarketEventManager : MonoBehaviour
     public GameObject[] Eventsprefab;
 
     private BlackOverlayController blackOverlayController;
+
+    private float eventmultiplier;
+
+    private string propname;
+
+    private bool First = true;
 
     private void Awake()
     {
@@ -49,13 +55,15 @@ public class MarketEventManager : MonoBehaviour
         MarketEvent randomEvent = allEvents[randomIndex];
         ApplyMarketEvent(randomEvent);
         currentEvent = randomEvent;
+        First = false;
         allEvents.RemoveAt(randomIndex);
     }
 
     private void ApplyMarketEvent(MarketEvent e)
     {
-        if (currentEvent != null)
+        if (currentEvent != null && First == false)
             RecoverEvent(currentEvent);
+            CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier, propname, false);
         CenterMessage.Instance.ShowMessage(e.description);
         MarketInventory.Instance.UpdateMenu();
 
@@ -99,7 +107,28 @@ public class MarketEventManager : MonoBehaviour
                 MarketInventory.Instance.UpdateMenu();
                 break;
 
-                 
+                case "Time-Loop Hour":
+                GameObject timedrop = Instantiate(Eventsprefab[0], new Vector3(0f,10f,0f) , Quaternion.identity);
+                if (timedrop != null)
+                {   
+                    Vector3 startposition = timedrop.GetComponent<Timedrop>().startposition;
+                    Vector3 hitposition = timedrop.GetComponent<Timedrop>().hitposition;
+                    timedrop.GetComponent<Timedrop>().PlayWaterDrop(startposition,hitposition);
+                }
+                MarketInventory.Instance.UpdateMenu();
+                eventmultiplier = 0.5f;
+                propname = "MovingSpeed";
+                CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier,propname, true);
+                break;
+
+                case "Sandworm Invasion":
+                var holemanager = GetComponent<Holemanager>();
+                holemanager.SandwormEvent(2f, 50f);
+                break;
+                
+
+
+
         }
     }
 }

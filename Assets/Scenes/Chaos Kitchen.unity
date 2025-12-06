@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 9685429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.56, y: -2.04, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,9 +167,9 @@ MonoBehaviour:
   currentEvent: {fileID: 0}
   background: {fileID: 2110055769}
   allEvents:
-  - {fileID: 11400000, guid: e9d4c17e9b4b4434fb68aad4e4a56ab8, type: 2}
+  - {fileID: 11400000, guid: 6cd0d876adbd3f74a898e9af207cc4e6, type: 2}
   Eventsprefab:
-  - {fileID: 628382906680581188, guid: 12d402ebd4e195a4b8bccf8e0aa8f814, type: 3}
+  - {fileID: 7208147375568156016, guid: 3462f5cbb111a4146bc1c1820df380ee, type: 3}
 --- !u!114 &9685432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9685429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9411afe197474c419bc75bce03d7986, type: 3}
+  m_Script: {fileID: 11500000, guid: c30bd2dd52a728849a4d86686f17dacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackOverlay: {fileID: 2110055769}
+  HolePrefab: {fileID: 5318319994816646560, guid: 87b67271a5dd278428d6d579123ed4e4, type: 3}
 --- !u!1 &26967845
 GameObject:
   m_ObjectHideFlags: 0
@@ -29511,7 +29511,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 5
     minusreputation: 3
-    maxspeed: 5
+    maxspeed: 8
     ratio: 0.5
   - type: 1
     lowertruevalue:

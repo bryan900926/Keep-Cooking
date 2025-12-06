@@ -88,6 +88,7 @@ public class CustomerPropertyManager : MonoBehaviour
 
                 case "MovingSpeed":
                     prop.maxspeed *= applyMultiplier;
+                    Debug.Log($"maxspeed:{prop.maxspeed}");
                     break;
 
                 case "Energy":

@@ -87,7 +87,6 @@ public class CustomerStateManager : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
         customerSFX = GetComponent<CustomerSFX>();
-        aiPath.maxSpeed = 4f;
         currentState.Enter();
     }
 
@@ -101,9 +100,11 @@ public class CustomerStateManager : MonoBehaviour
         Addreputation = customerProperty.addreputation;
         Minusreputation = customerProperty.minusreputation;
         maxspeed = customerProperty.maxspeed;
+        Debug.Log("maxspeed:" + maxspeed);
         aiPath = GetComponent<AIPath>();
         Debug.Log("aiPath is: " + aiPath);
         aiPath.maxSpeed = maxspeed;
+        Debug.Log("aimaxspeed:" + aiPath.maxSpeed);
     }
 
     public void ReactBad()

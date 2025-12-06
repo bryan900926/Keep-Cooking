@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
-  m_Name: Toxic Mushroom Subspecies
+  m_Name: Sandworm Invasion
   m_EditorClassIdentifier: 
-  eventName: Toxic Mushroom Subspecies
-  description: A previously harmless mushroom species is discovered to have a poisonous
-    subspecies, causing panic among buyers. Mushroom demand drops
+  eventName: Sandworm Invasion
+  description: 
   goods:
   - Mushroom
   limits: 05000000
   prices:
   - 1.5
+  eatingDurationMultiplier: 0
+  priceMultiplier: 0
+  movingSpeedMultiplier: 0
+  reputationMultiplier: 0
+  energyMultiplier: 0
+  satisfactionMultiplier: 0
+  tipsRatioMultiplier: 0
