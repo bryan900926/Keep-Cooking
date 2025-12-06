@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,10 @@ public class MarketEventManager : MonoBehaviour
     private string propname;
 
     private bool First = true;
+
+    [SerializeField] private int interval = 0;
+
+    [SerializeField] private int totaltime = 0;
 
     private void Awake()
     {
@@ -108,17 +113,10 @@ public class MarketEventManager : MonoBehaviour
                 break;
 
                 case "Time-Loop Hour":
-                GameObject timedrop = Instantiate(Eventsprefab[0], new Vector3(0f,10f,0f) , Quaternion.identity);
-                if (timedrop != null)
-                {   
-                    Vector3 startposition = timedrop.GetComponent<Timedrop>().startposition;
-                    Vector3 hitposition = timedrop.GetComponent<Timedrop>().hitposition;
-                    timedrop.GetComponent<Timedrop>().PlayWaterDrop(startposition,hitposition);
-                }
-                MarketInventory.Instance.UpdateMenu();
-                eventmultiplier = 0.5f;
-                propname = "MovingSpeed";
-                CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier,propname, true);
+                StartCoroutine(PlayTimedropMultiple(5, 30));
+                //eventmultiplier = 0.5f;
+                //propname = "MovingSpeed";
+                //CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier,propname, true);
                 break;
 
                 case "Sandworm Invasion":
@@ -137,6 +135,33 @@ public class MarketEventManager : MonoBehaviour
 
 
 
+        }
+    }
+
+    private IEnumerator PlayTimedropMultiple(int interval , int totalDuration)
+    {
+
+        int count = totalDuration / interval;
+        for (int i = 0; i < count; i++)
+        {
+            // 生成 timedrop
+            GameObject timedrop = Instantiate(
+                Eventsprefab[0],
+                new Vector3(0f, 10f, 0f),
+                Quaternion.identity
+            );
+
+            if (timedrop != null)
+            {
+                Timedrop drop = timedrop.GetComponent<Timedrop>();
+                drop.PlayWaterDrop(drop.startposition, drop.hitposition);
+            }
+
+            // 更新菜單（如果要每次都更新）
+            MarketInventory.Instance.UpdateMenu();
+
+            // 等下一次
+            yield return new WaitForSeconds(interval);
         }
     }
 }
