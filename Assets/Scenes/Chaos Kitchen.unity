@@ -167,9 +167,9 @@ MonoBehaviour:
   currentEvent: {fileID: 0}
   background: {fileID: 2110055769}
   allEvents:
-  - {fileID: 11400000, guid: 6cd0d876adbd3f74a898e9af207cc4e6, type: 2}
+  - {fileID: 11400000, guid: 59ab9213204584944a1deb30fb3ff04e, type: 2}
   Eventsprefab:
-  - {fileID: 7208147375568156016, guid: 3462f5cbb111a4146bc1c1820df380ee, type: 3}
+  - {fileID: 7066992687346572692, guid: 6e7e8ba491a680e488f870a8ba4718c4, type: 3}
 --- !u!114 &9685432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29511,7 +29511,7 @@ MonoBehaviour:
     satisfactory: 0
     addreputation: 5
     minusreputation: 3
-    maxspeed: 8
+    maxspeed: 6
     ratio: 0.5
   - type: 1
     lowertruevalue:

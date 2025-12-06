@@ -125,6 +125,14 @@ public class MarketEventManager : MonoBehaviour
                 var holemanager = GetComponent<Holemanager>();
                 holemanager.SandwormEvent(2f, 50f);
                 break;
+
+                case "Unstable Portal":
+                GameObject crack = Instantiate(Eventsprefab[0], new Vector3(2f, 2f, 0f), Quaternion.identity); // location needs to adjust
+                if (crack != null)
+                {
+                    crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
+                }
+                break;
                 
 
 

@@ -77,8 +77,8 @@ public class ReputationSystem : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(reputationText.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutBack));
         seq.Append(reputationText.transform.DOScale(1f, 0.1f));
-        seq.Join(reputationText.transform.DOMoveY(startPos.y + 1f, 1f).SetEase(Ease.OutCubic));
-        seq.Join(reputationText.DOFade(0, 1f).SetDelay(0.5f));
+        seq.Join(reputationText.transform.DOMoveY(startPos.y + 1f, 0.5f).SetEase(Ease.OutCubic));
+        seq.Join(reputationText.DOFade(0, 0.3f));
         seq.OnComplete(() =>
         {
             reputationText.gameObject.SetActive(false);
