@@ -80,7 +80,7 @@ public class MarketInventory : MonoBehaviour
     {
         if (slotDict.ContainsKey(name))
         {
-            slotDict[name].amount = Mathf.Clamp(slotDict[name].amount - amount, 0 , slotDict[name].amount);
+            slotDict[name].amount = Mathf.Clamp(slotDict[name].amount - amount, 0, slotDict[name].amount);
         }
     }
 
@@ -144,6 +144,16 @@ public class MarketInventory : MonoBehaviour
                 slot.Currentcount = 0;
                 MarketUI.Instance.RefreshUI(page);
                 anyItemPurchased = true;
+
+                var mask = slot.item.Mask;
+                if (slot.amount > 0)
+                {
+                    LowStockReminder.Instance.RemoveLowStockIngredient(mask);
+                }
+                else
+                {
+                    LowStockReminder.Instance.AddLowStockIngredient(mask);
+                }
             }
         }
         if (anyItemPurchased)
@@ -177,7 +187,6 @@ public class MarketInventory : MonoBehaviour
             int mask = req.Key;
             int amountNeeded = req.Value;
 
-            // Already satisfied → skip
             if (amountNeeded <= 0) continue;
 
             string name = Mask2String[mask];
@@ -192,6 +201,14 @@ public class MarketInventory : MonoBehaviour
             int takenCnt = Mathf.Min(amountNeeded, slot.amount);
 
             slot.amount -= takenCnt;
+            if (slot.amount > 0)
+            {
+                LowStockReminder.Instance.RemoveLowStockIngredient(mask);
+            }
+            else if (slot.amount == 0)
+            {
+                LowStockReminder.Instance.AddLowStockIngredient(mask);
+            }
             totalRequirements[mask] -= takenCnt;
         }
 

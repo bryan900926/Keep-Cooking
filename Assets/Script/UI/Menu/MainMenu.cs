@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button optionBtn;
     [SerializeField] private Button exitBtn;
 
+    [SerializeField] private Button tutorialBtn;
+
     void Start()
     {
         startBtn.onClick.AddListener(() =>
@@ -23,6 +25,10 @@ public class MainMenu : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("main");
             UImanager.Instance.ClickShowUI(UImanager.MenuOptions.main);
+        });
+        tutorialBtn.onClick.AddListener(() =>
+        {
+            UImanager.Instance.ClickShowUI(UImanager.MenuOptions.tutorial);
         });
     }
     void OnDestroy()

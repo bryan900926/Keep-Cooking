@@ -39,7 +39,7 @@ public class PickUpV2 : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && pickable)
+        if (pickable)
         {
             if (!pickedUp && inRange && playerInRange != null && playerInRange.GetComponent<Holding>().HasSpace())
             {
