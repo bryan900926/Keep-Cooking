@@ -30,14 +30,13 @@ public class Holemanager : MonoBehaviour
     {
         var dining = DiningSystem.Instance;
         Vector3 pos = dining.seats[index].transform.position;
-        Vector3 holePos = pos + new Vector3(0f, -0.4f, 0f); // 往下 0.8 單位
+        Vector3 holePos = pos + new Vector3(0f, -0.4f, 0f); 
         GameObject Hole = Instantiate(HolePrefab, holePos, Quaternion.identity);
         Hole.GetComponent<Hole>().HoleAction();
     }
 
     public void TriggerHole(GameObject customer)
     {
-        // 動畫或粒子效果（可選）
         PlayHoleAnimation(customer);
     }
 
@@ -45,7 +44,6 @@ public class Holemanager : MonoBehaviour
     {
         if (customer == null) return;
 
-        // Tween 動畫
         customer.transform.DOMoveY(customer.transform.position.y - 0.4f, 0.4f)
             .SetEase(Ease.InQuad)
             .OnComplete(() =>

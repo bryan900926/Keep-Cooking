@@ -49,7 +49,7 @@ public class CustomerEatingState : CustomerState
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
         if (freshness > 0)
         {
-            ReputationSystem.Instance.IncreaseReputation(customerStateManager.customerProperty.addreputation);
+            ReputationSystem.Instance.IncreaseReputation(customerStateManager.Addreputation);
             ScoreManager.Instance.AddRevenue(customerStateManager.sellprice);
             GameObject coin = Object.Instantiate(customerStateManager.CoinPrefab);
             coin.GetComponent<Coin>().InitData((int)(customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx] * customerStateManager.Tipsratio), customerStateManager.transform);

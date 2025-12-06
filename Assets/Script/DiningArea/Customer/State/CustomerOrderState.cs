@@ -62,6 +62,7 @@ public class CustomerOrderState : CustomerState
         Debug.Log($"{customerStateManager.gameObject.name} ordered food index {customerStateManager.OrderedFoodIdx}.");
         Debug.Log($"Desired Price: {customerStateManager.BuyingPrice.Length}, Selling Price: {customerStateManager.sellprice}");
         float desiredPrice = customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx];
+
         float sellingPrice = customerStateManager.sellprice;
         float upperbound = customerStateManager.customerProperty.uppertruevalue[customerStateManager.OrderedFoodIdx];
         float lowerbound = customerStateManager.customerProperty.lowertruevalue[customerStateManager.OrderedFoodIdx];
@@ -94,7 +95,7 @@ public class CustomerOrderState : CustomerState
             }
             CustomerPropertyManager.Instance.BadCustomer += 1;
 
-            ReputationSystem.Instance.DecreaseReputation(customerStateManager.customerProperty.minusreputation);
+            ReputationSystem.Instance.DecreaseReputation(customerStateManager.Minusreputation);
             CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }

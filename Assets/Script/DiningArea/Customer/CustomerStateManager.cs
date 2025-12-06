@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using Pathfinding;
 using UnityEngine;
 
@@ -107,6 +108,23 @@ public class CustomerStateManager : MonoBehaviour
         Debug.Log("aimaxspeed:" + aiPath.maxSpeed);
     }
 
+    public void Attributedizzyprop(int index)
+    {
+        CustomerProperty customerProperty = CustomerPropertyManager.Instance.customerProperties[index];
+        Debug.Log($"Attribute Property for Customer Type: {customerProperty.truevalue.Length}");
+        BuyingPrice = (float[])customerProperty.truevalue.Clone();
+        EatingDuration = customerProperty.eatingDuration;
+        Tipsratio = 0;
+        Addreputation = 0;
+        Minusreputation = 10;
+        maxspeed = 3;
+        Debug.Log("maxspeed:" + maxspeed);
+        aiPath = GetComponent<AIPath>();
+        Debug.Log("aiPath is: " + aiPath);
+        aiPath.maxSpeed = maxspeed;
+        Debug.Log("aimaxspeed:" + aiPath.maxSpeed);
+    }
+
     public void ReactBad()
     {
 
@@ -126,6 +144,19 @@ public class CustomerStateManager : MonoBehaviour
     public void ReactGreat()
     {
         feedbackUI.ShowFeedback(emoji_great, "Sweet bargain!", feedbackTextColor);
+    }
+
+    public void CustomerAnimation(GameObject customer)
+    {
+        if (customer == null) return;
+
+        customer.transform.localScale = Vector3.zero;
+        customer.transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
+
+        // 跳出裂縫一點點
+        customer.transform.DOMoveY(customer.transform.position.y + 0.5f, 0.3f).SetEase(Ease.OutQuad);
+
+        customer.GetComponent<Dizzy>().StartDizzy();
     }
 
     // Update is called once per frame
