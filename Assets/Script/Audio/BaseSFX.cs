@@ -54,7 +54,6 @@ public class BaseSFX : MonoBehaviour
         }
     }
 
-    // One-shot SFX (attack, jump, hurt, pickup…)
     public void PlayOneShot(string clipName, float multiplier = 1f)
     {
         if (AudioManager.Instance.TryGetClip(clipName, out var clip))
@@ -62,6 +61,12 @@ public class BaseSFX : MonoBehaviour
             var source = GetSource(clipName, false);
             source.volume = multiplier * AudioManager.Instance.sfxvolume;
             source.PlayOneShot(clip);
+            Debug.Log($"Playing one shot sound: {clipName} " +
+                      $"at volume: {source.volume}");
+        }
+        else
+        {
+            Debug.LogWarning($"Audio clip '{clipName}' not found in AudioManager!");
         }
     }
 

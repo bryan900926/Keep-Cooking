@@ -63,7 +63,7 @@ public class UISFX : BaseSFX
     }
     public void PlayMoney()
     {
-        PlayOneShot("money");
+        PlayOneShot("money", 0.5f);
     }
 
     public void PlayWrong()
@@ -84,6 +84,11 @@ public class UISFX : BaseSFX
     public void Minusreputation()
     {
         PlayOneShot("minus", 1.5f);
+    }
+
+    public void PlayGhostlySound()
+    {
+        PlayOneShot("Ghost");
     }
 
 }

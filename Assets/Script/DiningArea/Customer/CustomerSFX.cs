@@ -24,6 +24,11 @@ public class CustomerSFX : BaseSFX
 
     public void PaidMoney()
     {
-        PlayOneShot("money");
+        PlayOneShot("money", 0.5f);
+    }
+
+    public void FallInHole()
+    {
+        PlayOneShot("Whoosh");
     }
 }
