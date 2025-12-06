@@ -108,6 +108,7 @@ public class Tutorial : MonoBehaviour
         {
             curPageIdx = pages.Length - 1;
         }
+        UISFX.Instance.PlayChangePage();
         ShowMessage(tutorialPagesText[pages[curPageIdx]]);
     }
 
@@ -121,6 +122,7 @@ public class Tutorial : MonoBehaviour
         {
             curPageIdx = 0;
         }
+        UISFX.Instance.PlayChangePage();
         ShowMessage(tutorialPagesText[pages[curPageIdx]]);
     }
     public void ClearAllObJects()
