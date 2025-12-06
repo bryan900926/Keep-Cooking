@@ -51,5 +51,25 @@ public class DiningSystem : SeatingSystem
         }
     }
 
+    public void RemoveCustomer(GameObject customer) 
+    {
+        if (customer == null) return;
+        int seatNumber = -1;
+        foreach (var kvp in SeatToCustomer)
+        {
+            if (kvp.Value == customer)
+            {
+                seatNumber = kvp.Key;
+                break;
+            }
+        }
+        FreeSeat(seatNumber);
+        var ai = customer.GetComponent<CustomerStateManager>();
+        if (ai != null)
+        {
+            ai.enabled = false;
+        }
+    }
+
 
 }

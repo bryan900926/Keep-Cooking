@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: -8817391628698140055}
   - component: {fileID: 3099655717142004623}
   - component: {fileID: 5479678404585622370}
+  - component: {fileID: 909324018809222739}
   m_Layer: 13
   m_Name: Customer Variant
   m_TagString: Customer
@@ -218,7 +219,7 @@ MonoBehaviour:
   radius: 0.5
   height: 0.2
   canMove: 1
-  maxSpeed: 5
+  maxSpeed: 1
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -265,7 +266,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382719886654397292}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -302,7 +303,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0284195, y: 0.34783173}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &6888022811926264675
 MonoBehaviour:
@@ -386,7 +387,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.023185253, y: 0}
-  m_Size: {x: 2.3814626, y: 2.3814626}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &926344961493348779
 MonoBehaviour:
@@ -448,6 +449,33 @@ MonoBehaviour:
   popupScale: 1.2
   popupDuration: 0.2
   fadeDuration: 0.3
+--- !u!50 &909324018809222739
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382719886654397292}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2022000037028445228
 GameObject:
   m_ObjectHideFlags: 0
