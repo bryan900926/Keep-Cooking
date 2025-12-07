@@ -21,7 +21,12 @@ public class CustomerStateManager : MonoBehaviour
     // ------ Begin ------
 
     public bool largecoin;
+
     //public bool Largecoin { get => largecoin; set => largecoin = value; }
+
+    public Vector3 pos;
+
+
 
 
     // ------ End ------
@@ -92,7 +97,8 @@ public class CustomerStateManager : MonoBehaviour
     public bool IsAngry { get => isAngry; set => isAngry = value; }
 // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        pos = transform.position;
         GetComponent<SpriteRenderer>().sprite = workerData.image;
         feedbackUI = GetComponent<Customrep>();
         queueObj = GameObject.FindGameObjectWithTag("Queue");
@@ -168,7 +174,6 @@ public class CustomerStateManager : MonoBehaviour
         customer.transform.localScale = Vector3.zero;
         customer.transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
 
-        // ���X���_�@�I�I
         customer.transform.DOMoveY(customer.transform.position.y + 0.5f, 0.3f).SetEase(Ease.OutQuad);
 
         customer.GetComponent<Dizzy>().StartDizzy();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
   m_Name: Exploding Potatoes
   m_EditorClassIdentifier: 
-  eventName: Exploding Potatoes
+  eventName: Goblin Rampage
   description: Some magical potatoes suddenly explode when handled, causing panic
     among customers. Potato demand drops
   goods:
@@ -20,3 +20,10 @@ MonoBehaviour:
   limits: 08000000
   prices:
   - 1.3
+  eatingDurationMultiplier: 0
+  priceMultiplier: 0
+  movingSpeedMultiplier: 0
+  reputationMultiplier: 0
+  energyMultiplier: 0
+  satisfactionMultiplier: 0
+  tipsRatioMultiplier: 0

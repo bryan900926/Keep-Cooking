@@ -44,7 +44,8 @@ public class GoblinRobbingState : GoblinState
             if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
             {
                 Holding customerHolding = customer.GetComponent<Holding>();
-                List<GameObject> customerItems = customerHolding.HoldingItem;
+                List<GameObject> customerItems = new List<GameObject>(customerHolding.HoldingItem); 
+                //List<GameObject> customerItems = customerHolding.HoldingItem;
                 foreach (var item in customerItems)
                 {
                     customerHolding.RemoveHoldingItem(item);

@@ -34,12 +34,8 @@ public class GoblinStateManager : MonoBehaviour
     }
 
     public Transform ExitPoint
-    {
-        get
-        {
-            return exitPoint;
-        }
-    }
+    { get => exitPoint; set => exitPoint = value; }
+
 
     void Awake()
     {
@@ -74,10 +70,10 @@ public class GoblinStateManager : MonoBehaviour
     // Helper method to keep Awake clean
     private void ValidateRef(Object obj, string label)
     {
-        if (obj == null)
-        {
-            Debug.LogError($"[GoblinStateManager] Missing Reference: {label} on {name}", this);
-            enabled = false; // Stop Update() from running to prevent crashes
-        }
+        //if (obj == null)
+        //{
+        //    Debug.LogError($"[GoblinStateManager] Missing Reference: {label} on {name}", this);
+        //    enabled = false; // Stop Update() from running to prevent crashes
+        //}
     }
 }

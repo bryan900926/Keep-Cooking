@@ -19,7 +19,6 @@ public class Holemanager : MonoBehaviour
             int randomindex = Random.Range(1, DiningSystem.Instance.seats.Length);
             HoleGenerator(randomindex);
 
-            // ���� interval ��
             yield return new WaitForSeconds(interval);
             elapsed += interval;
         }
@@ -42,14 +41,14 @@ public class Holemanager : MonoBehaviour
     {
         if (customer == null) return;
 
-        customer.transform.DOMoveY(customer.transform.position.y - 1f, 1f)
+        customer.transform.DOMoveY(customer.transform.position.y - 0.5f, 0.5f)
             .SetEase(Ease.InQuad)
             .OnComplete(() =>
             {
                 DiningSystem.Instance.RemoveCustomer(customer);
                 DOTween.Kill(customer.transform, false);
                 customer.GetComponentInChildren<SpriteRenderer>().enabled = false;
-                Destroy(customer, 2f);
+                Destroy(customer, 0.5f);
             });
     }
 }

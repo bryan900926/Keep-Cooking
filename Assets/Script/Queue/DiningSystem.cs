@@ -54,10 +54,10 @@ public class DiningSystem : SeatingSystem
         if (customer == null) return;
         int seatIdx = SeatToCustomer.FirstOrDefault(x => x.Value == customer).Key;
         FreeSeat(seatIdx);
-        if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
-        {
-            customerStateManager.enabled = false;
-        }
+        //if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
+        //{
+        //    customerStateManager.enabled = false;
+        //}
     }
 
 }

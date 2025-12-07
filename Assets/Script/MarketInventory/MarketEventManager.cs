@@ -13,7 +13,9 @@ public class MarketEventManager : MonoBehaviour
     public Image background;
 
 
-    [SerializeField] private MarketEvent[] allEvents;
+    [SerializeField] private List<MarketEvent> allEvents;
+
+    private List<MarketEvent> availableEvents;
 
     public GameObject[] Eventsprefab;
 
@@ -25,24 +27,26 @@ public class MarketEventManager : MonoBehaviour
 
     private bool First = true;
 
-    [SerializeField] private int interval = 0;
+    [SerializeField] private float interval = 0;
 
-    [SerializeField] private int totaltime = 0;
+    [SerializeField] private float totaltime = 0;
     readonly private Dictionary<string, Action> eventActions = new();
 
     private void Awake()
     {
         Instance = this;
         blackOverlayController = GetComponent<BlackOverlayController>();
+        availableEvents = new List<MarketEvent>(allEvents);
     }
 
     void Start()
     {
         eventActions.Add("Ghostly Thief", GhostThief);
         eventActions.Add("Time-Loop Hour", () => StartCoroutine(PlayTimedropMultiple(interval, totaltime)));
-        eventActions.Add("Sandworm Invasion", SandwormInvasion);
-        eventActions.Add("Unstable Portal", UnstablePortal);
+        eventActions.Add("Sandworm Invasion", () =>  SandwormInvasion(interval, totaltime));
+        eventActions.Add("Unstable Portal", () =>  UnstablePortal(interval, totaltime));
         eventActions.Add("Large Coin", () => StartCoroutine(LargeCoin(totaltime)));
+        eventActions.Add("Goblin Rampage", () => StartCoroutine(Goblin(interval, totaltime)));
     }
 
     public void RecoverEvent(MarketEvent e)
@@ -66,18 +70,23 @@ public class MarketEventManager : MonoBehaviour
 
     public void TriggerRandomEvent()
     {
-        if (allEvents.Length == 0) return;
-        int randomIndex = UnityEngine.Random.Range(0, allEvents.Length);
-        MarketEvent randomEvent = allEvents[2];
+        if (availableEvents.Count == 0) return;
+
+        int randomIndex = UnityEngine.Random.Range(0, availableEvents.Count);
+        MarketEvent randomEvent = availableEvents[randomIndex];
+
         ApplyMarketEvent(randomEvent);
         currentEvent = randomEvent;
-        First = false;
+
+        // 從可用列表移除，避免重複
+        availableEvents.RemoveAt(randomIndex);
     }
 
     private void ApplyMarketEvent(MarketEvent e)
     {
         if (currentEvent != null && First == false)
             RecoverEvent(currentEvent);
+
         CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier, propname, false);
         CenterMessage.Instance.ShowMessage(e.description);
         MarketInventory.Instance.UpdateMenu();
@@ -133,24 +142,24 @@ public class MarketEventManager : MonoBehaviour
     }
 
 
-    private void SandwormInvasion()
+    private void SandwormInvasion(float interval , float totalTime)
     {
         var holemanager = GetComponent<Holemanager>();
-        holemanager.SandwormEvent(2f, 50f);
+        holemanager.SandwormEvent(interval, totalTime);
     }
 
-    private void UnstablePortal()
+    private void UnstablePortal(float interval, float totalTime)
     {
         if (Eventsprefab.Length == 0) return;
         GameObject crack = Instantiate(Eventsprefab[0], new Vector3(2f, 2f, 0f), Quaternion.identity); // location needs to adjust
-        crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
+        crack.GetComponent<Crack>().ExpandCrack(interval, totalTime);
     }
     
 
-    private IEnumerator PlayTimedropMultiple(int interval, int totalDuration)
+    private IEnumerator PlayTimedropMultiple(float interval, float totalDuration)
     {
 
-        int count = totalDuration / interval;
+        float count = totalDuration / interval;
         for (int i = 0; i < count; i++)
         {
             GameObject timedrop = Instantiate(
@@ -171,7 +180,7 @@ public class MarketEventManager : MonoBehaviour
         }
     }
 
-    private IEnumerator LargeCoin(int totalDuration)
+    private IEnumerator LargeCoin(float totalDuration)
     {
         var spawner = FindFirstObjectByType<CustomerSpawner>();
         Debug.Log(spawner);
@@ -182,5 +191,22 @@ public class MarketEventManager : MonoBehaviour
         yield return new WaitForSeconds(totalDuration);
         spawner.LargeCoin = false;
 
+    }
+
+    private IEnumerator Goblin(float interval, float totalDuration)
+    {
+        var spawner = FindFirstObjectByType<CustomerSpawner>();
+        Vector3 pos = spawner.gameObject.transform.position;
+        float count = totalDuration / interval;
+        
+        if (spawner != null)
+        {   
+            for (int i = 0 ; i < count; i++)
+            {
+                GameObject goblin = Instantiate(Eventsprefab[3], pos, Quaternion.identity);
+                goblin.GetComponent<GoblinStateManager>().ExitPoint = spawner.gameObject.transform;
+                yield return new WaitForSeconds(interval);
+            }
+        }
     }
 }
