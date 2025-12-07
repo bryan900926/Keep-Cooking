@@ -29684,11 +29684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[0]'
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[1]'
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnedCustomer.Array.data[0]'

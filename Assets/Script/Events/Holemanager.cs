@@ -45,7 +45,10 @@ public class Holemanager : MonoBehaviour
             .SetEase(Ease.InQuad)
             .OnComplete(() =>
             {
-                DiningSystem.Instance.RemoveCustomer(customer);
+                if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
+                {
+                    customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
+                }
                 DOTween.Kill(customer.transform, false);
                 customer.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 Destroy(customer, 0.5f);

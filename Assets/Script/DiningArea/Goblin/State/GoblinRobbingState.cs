@@ -44,7 +44,7 @@ public class GoblinRobbingState : GoblinState
             if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
             {
                 Holding customerHolding = customer.GetComponent<Holding>();
-                List<GameObject> customerItems = new List<GameObject>(customerHolding.HoldingItem); 
+                List<GameObject> customerItems = new List<GameObject>(customerHolding.HoldingItem);
                 //List<GameObject> customerItems = customerHolding.HoldingItem;
                 foreach (var item in customerItems)
                 {
@@ -53,7 +53,6 @@ public class GoblinRobbingState : GoblinState
                 }
                 customerStateManager.IsAngry = true;
                 customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
-                DiningSystem.Instance.RemoveCustomer(customer);
             }
         }
 

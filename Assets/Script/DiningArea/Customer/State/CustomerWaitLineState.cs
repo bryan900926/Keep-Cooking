@@ -8,30 +8,38 @@ public class CustomerWaitLineState : CustomerState
     {
         if (customerStateManager.DiningIdx == -1 && customerStateManager.LiningIdx != -1)
         {
-            TryToReceipt(customerStateManager);
+            if (TryToReceipt(customerStateManager))
+            {
+                return;
+            }
         }
         TryToWaitLine(customerStateManager);
     }
 
     private void TryToWaitLine(CustomerStateManager customer)
     {
-        if (customer.LiningIdx != -1) return; // Already in line
-        int idx = customer.QueueSystem.FetchAvailSeat();
+        if (customer.LiningIdx != -1) return;
+        int idx = customer.Qs.FetchAvailSeat();
         if (idx != -1)
         {
             customer.LiningIdx = idx;
-            customer.DestinationSetter.target = customer.QueueSystem.seats[idx].transform;
+            customer.DestinationSetter.target = customer.Qs.seats[idx].transform;
         }
     }
-    private void TryToReceipt(CustomerStateManager customer)
+
+    private bool TryToReceipt(CustomerStateManager customer)
     {
-        if (customer.DiningIdx != -1 ) return; // Already dining
+        if (customer.DiningIdx != -1) return false;
+
         int idx = ReceiptSystem.Instance.FetchAvailSeat();
         if (idx != -1)
         {
-            customer.QueueSystem.FreeSeat(customer.LiningIdx);
-            customer.DestinationSetter.target = null;
+            customer.Qs.FreeSeat(customer.LiningIdx);
+            customer.LiningIdx = -1;
             customer.ChangeState(new CustomerOrderState(customer, idx));
+
+            return true;
         }
+        return false;
     }
 }

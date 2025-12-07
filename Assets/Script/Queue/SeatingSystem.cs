@@ -34,6 +34,9 @@ public abstract class SeatingSystem : MonoBehaviour
         {
             occupiedSeats.Remove(seatIndex);
             availSeats.AddLast(seatIndex); // back to the queue
+        } else
+        {
+            Debug.LogWarning("Trying to free a seat that is not occupied: " + seatIndex);
         }
     }
 }
