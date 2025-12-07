@@ -8,6 +8,7 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] private GameObject[] spawnedCustomer;
     [SerializeField] private GameObject lining;
     [SerializeField] private float[] spawnIntervals;
+    [SerializeField] private DoorController doorController;
 
     private float[] originalpdf = new float[7];
     private float[] pdf;
@@ -24,7 +25,7 @@ public class CustomerSpawner : MonoBehaviour
         UpdateDistribution();
     }
 
-    // Update is called once per frame
+    // Update is called once per 
     void Update()
     {
         spawnedTime -= Time.deltaTime;
@@ -91,6 +92,7 @@ public class CustomerSpawner : MonoBehaviour
     void SpecialSpawner(bool state)
     {
         UpdateDistribution();
+        TriggerDoorOpen();
         GameObject Customer = spawnedCustomer[6];
         GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
         CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
@@ -115,6 +117,7 @@ public class CustomerSpawner : MonoBehaviour
         CustomerPropertyManager.Instance.TotalCustomer += 1;
         UpdateDistribution();
         int Index = RandomIndex(pdf);
+        TriggerDoorOpen();
         if (Index != 5)
         {
             GameObject Customer = spawnedCustomer[Index];
@@ -139,6 +142,11 @@ public class CustomerSpawner : MonoBehaviour
             Energy.UpdateEnergy(randomindex);
         }
         
+    }
+
+    private void TriggerDoorOpen()
+    {
+        doorController?.TriggerDoorOpen();
     }
 
 

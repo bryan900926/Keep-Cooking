@@ -7515,6 +7515,7 @@ GameObject:
   - component: {fileID: 985616391}
   - component: {fileID: 985616392}
   - component: {fileID: 985616393}
+  - component: {fileID: 985616394}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -7581,7 +7582,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7132002008521023377, guid: 9d4fc1c20a3514ec2a7fda4923a514bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7bb10f9da8d8fd8489a4c297f8c471b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7614,6 +7615,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &985616394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985616390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bdbe077c6484114a9251b51cd4cb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
+  openTriggerName: Open
+  reopenCooldown: 0.25
 --- !u!1 &988230588 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4438359118636786400, guid: 12e374d03c860284398939214b9384b1, type: 3}
@@ -29452,6 +29468,10 @@ PrefabInstance:
       propertyPath: lining
       value: 
       objectReference: {fileID: 157192013}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: doorController
+      value: 
+      objectReference: {fileID: 985616394}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: spawnIntervals.Array.size
       value: 2
