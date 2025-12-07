@@ -57,7 +57,7 @@ public class CustomerOrderState : CustomerState
 
     private void GetOrderedFood()
     {
-        customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject);
+        customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject, customerStateManager.trans);
         customerStateManager.sellprice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
         Debug.Log($"{customerStateManager.gameObject.name} ordered food index {customerStateManager.OrderedFoodIdx}.");
         Debug.Log($"Desired Price: {customerStateManager.BuyingPrice.Length}, Selling Price: {customerStateManager.sellprice}");

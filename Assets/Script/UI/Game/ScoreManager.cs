@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
 
     readonly private PriorityQueue<Loan> loanQueue = new();
 
-    [SerializeField] private float interestRate = 0.01f; // 1% interest rate
+    [SerializeField] private float interestRate = 0.1f; // 10% interest rate
 
     private int servedCnt = 0;
 
@@ -66,10 +66,10 @@ public class ScoreManager : MonoBehaviour
     }
     private void UpdateRevenueText()
     {
-        revenueText.SetText("$" + revenue.ToString());
+        revenueText.SetText(":" + revenue.ToString());
         if (revenueTextInInventory != null)
         {
-            revenueTextInInventory.SetText("$" + revenue.ToString());
+            revenueTextInInventory.SetText(":" + revenue.ToString());
         }
     }
 }

@@ -39,8 +39,8 @@ public class Customer : MonoBehaviour
             TryToDine();
         }
         else if (orderedFoodIdx == -1 && diningIdx != -1 && Vector2.Distance(ds.seats[diningIdx].transform.position, transform.position) <= 0.5f)
-        {
-            orderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(gameObject);
+        {   
+            orderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(gameObject, false);
         }
 
     }
