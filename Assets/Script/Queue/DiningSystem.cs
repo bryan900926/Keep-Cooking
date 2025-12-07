@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DiningSystem : SeatingSystem
@@ -9,7 +10,6 @@ public class DiningSystem : SeatingSystem
     private Dictionary<int, GameObject> seatToCustomer = new();
 
     public Dictionary<int, GameObject> SeatToCustomer { get { return seatToCustomer; } set { seatToCustomer = value; } }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
     {
@@ -25,8 +25,6 @@ public class DiningSystem : SeatingSystem
             seat.GetComponent<Seat>().SetSeatNumber(i);
             availSeats.AddLast(i);
         }
-        // Debug.Log("Dining system initialized with " + availSeats.Count + " seats.");
-
     }
 
     public GameObject GetCustomerAtSeat(int idx)
@@ -51,25 +49,15 @@ public class DiningSystem : SeatingSystem
         }
     }
 
-    public void RemoveCustomer(GameObject customer) 
+    public void RemoveCustomer(GameObject customer)
     {
         if (customer == null) return;
-        int seatNumber = -1;
-        foreach (var kvp in SeatToCustomer)
+        int seatIdx = SeatToCustomer.FirstOrDefault(x => x.Value == customer).Key;
+        FreeSeat(seatIdx);
+        if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
         {
-            if (kvp.Value == customer)
-            {
-                seatNumber = kvp.Key;
-                break;
-            }
-        }
-        FreeSeat(seatNumber);
-        var ai = customer.GetComponent<CustomerStateManager>();
-        if (ai != null)
-        {
-            ai.enabled = false;
+            customerStateManager.enabled = false;
         }
     }
-
 
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class MarketEventManager : MonoBehaviour
     public Image background;
 
 
-    public List<MarketEvent> allEvents = new List<MarketEvent>();
+    [SerializeField] private MarketEvent[] allEvents;
 
     public GameObject[] Eventsprefab;
 
@@ -27,11 +28,21 @@ public class MarketEventManager : MonoBehaviour
     [SerializeField] private int interval = 0;
 
     [SerializeField] private int totaltime = 0;
+    readonly private Dictionary<string, Action> eventActions = new();
 
     private void Awake()
     {
         Instance = this;
-        blackOverlayController = GetComponent<BlackOverlayController>();    
+        blackOverlayController = GetComponent<BlackOverlayController>();
+    }
+
+    void Start()
+    {
+        eventActions.Add("Ghostly Thief", GhostThief);
+        eventActions.Add("Time-Loop Hour", () => StartCoroutine(PlayTimedropMultiple(interval, totaltime)));
+        eventActions.Add("Sandworm Invasion", SandwormInvasion);
+        eventActions.Add("Unstable Portal", UnstablePortal);
+        eventActions.Add("Large Coin", () => StartCoroutine(LargeCoin(totaltime)));
     }
 
     public void RecoverEvent(MarketEvent e)
@@ -55,20 +66,19 @@ public class MarketEventManager : MonoBehaviour
 
     public void TriggerRandomEvent()
     {
-        if (allEvents.Count == 0) return;
-        int randomIndex = Random.Range(0, allEvents.Count);
-        MarketEvent randomEvent = allEvents[randomIndex];
+        if (allEvents.Length == 0) return;
+        int randomIndex = UnityEngine.Random.Range(0, allEvents.Length);
+        MarketEvent randomEvent = allEvents[2];
         ApplyMarketEvent(randomEvent);
         currentEvent = randomEvent;
         First = false;
-        allEvents.RemoveAt(randomIndex);
     }
 
     private void ApplyMarketEvent(MarketEvent e)
     {
         if (currentEvent != null && First == false)
             RecoverEvent(currentEvent);
-            CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier, propname, false);
+        CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier, propname, false);
         CenterMessage.Instance.ShowMessage(e.description);
         MarketInventory.Instance.UpdateMenu();
 
@@ -100,57 +110,51 @@ public class MarketEventManager : MonoBehaviour
 
         Debug.Log("Triggered Market Event: " + e.eventName);
 
-        switch (e.eventName)
+        if (eventActions.TryGetValue(e.eventName, out Action action))
         {
-                case "Ghostly Thief":
-                GameObject ghost = Instantiate(Eventsprefab[0], transform.position, Quaternion.identity);
-                if (ghost!= null)
-                {
-                    ghost.GetComponent<Ghost>().Appear();   
-                }
-                MarketInventory.Instance.Disappear();
-                MarketInventory.Instance.UpdateMenu();
-                break;
-
-                case "Time-Loop Hour":
-                StartCoroutine(PlayTimedropMultiple(5, 30));
-                //eventmultiplier = 0.5f;
-                //propname = "MovingSpeed";
-                //CustomerPropertyManager.Instance.Updateeveryone(eventmultiplier,propname, true);
-                break;
-
-                case "Sandworm Invasion":
-                var holemanager = GetComponent<Holemanager>();
-                holemanager.SandwormEvent(2f, 50f);
-                break;
-
-                case "Unstable Portal":
-                GameObject crack = Instantiate(Eventsprefab[0], new Vector3(2f, 2f, 0f), Quaternion.identity); // location needs to adjust
-                if (crack != null)
-                {
-                    crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
-                }
-                break;
-
-                case "Large Coin":
-                StartCoroutine(LargeCoin(20));
-                break;
-                
-
-
-
+            action.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning("No action defined for event: " + e.eventName);
         }
     }
 
-    private IEnumerator PlayTimedropMultiple(int interval , int totalDuration)
+    private void GhostThief()
+    {
+        GameObject ghost = Instantiate(Eventsprefab[1], transform.position, Quaternion.identity);
+        if (ghost != null)
+        {
+            ghost.GetComponent<Ghost>().Appear();
+            UISFX.Instance.PlayGhostlySound();
+        }
+        MarketInventory.Instance.Disappear();
+        MarketInventory.Instance.UpdateMenu();
+    }
+
+
+    private void SandwormInvasion()
+    {
+        var holemanager = GetComponent<Holemanager>();
+        holemanager.SandwormEvent(2f, 50f);
+    }
+
+    private void UnstablePortal()
+    {
+        if (Eventsprefab.Length == 0) return;
+        GameObject crack = Instantiate(Eventsprefab[0], new Vector3(2f, 2f, 0f), Quaternion.identity); // location needs to adjust
+        crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
+    }
+    
+
+    private IEnumerator PlayTimedropMultiple(int interval, int totalDuration)
     {
 
         int count = totalDuration / interval;
         for (int i = 0; i < count; i++)
         {
-            // 生成 timedrop
             GameObject timedrop = Instantiate(
-                Eventsprefab[0],
+                Eventsprefab[2],
                 new Vector3(0f, 10f, 0f),
                 Quaternion.identity
             );
@@ -161,10 +165,8 @@ public class MarketEventManager : MonoBehaviour
                 drop.PlayWaterDrop(drop.startposition, drop.hitposition);
             }
 
-            // 更新菜單（如果要每次都更新）
             MarketInventory.Instance.UpdateMenu();
 
-            // 等下一次
             yield return new WaitForSeconds(interval);
         }
     }

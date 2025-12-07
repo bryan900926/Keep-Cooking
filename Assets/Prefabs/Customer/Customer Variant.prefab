@@ -433,6 +433,7 @@ MonoBehaviour:
   profiles:
   - {fileID: 11400000, guid: 657d1ac672ea2434b9db62930937b6e8, type: 2}
   - {fileID: 11400000, guid: 5f47cbdb46ed1fa4784455e26010a734, type: 2}
+  - {fileID: 11400000, guid: c10b5bf36d86895429ec3b1591831e59, type: 2}
 --- !u!114 &5479678404585622370
 MonoBehaviour:
   m_ObjectHideFlags: 0

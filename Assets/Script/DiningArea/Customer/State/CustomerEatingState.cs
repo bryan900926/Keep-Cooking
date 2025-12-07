@@ -6,9 +6,9 @@ public class CustomerEatingState : CustomerState
     private float elapsedTime = 0f;
     private readonly float freshness;
 
-    public CustomerEatingState(CustomerStateManager customerStateManager, float freashness) : base(customerStateManager)
+    public CustomerEatingState(CustomerStateManager customerStateManager, float freshness) : base(customerStateManager)
     {
-        this.freshness = freashness;
+        this.freshness = freshness;
         eatingDuration = customerStateManager.EatingDuration;
     }
 
@@ -37,7 +37,6 @@ public class CustomerEatingState : CustomerState
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= eatingDuration)
         {
-            // Finished eating, transition to leaving state
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
     }
@@ -45,11 +44,11 @@ public class CustomerEatingState : CustomerState
     public override void Exit()
     {
         DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
-        customerStateManager.DiningIdx = -1;
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
-        if (freshness > 0)
+        if (freshness > 0 && !customerStateManager.IsAngry)
         {
             ReputationSystem.Instance.IncreaseReputation(customerStateManager.Addreputation);
+            customerStateManager.CustomerSFX.PaidMoney();
             ScoreManager.Instance.AddRevenue(customerStateManager.sellprice);
             if (!customerStateManager.largecoin)
             {
@@ -64,7 +63,6 @@ public class CustomerEatingState : CustomerState
             
         }
         customerStateManager.CustomerSFX.StopEating();
-        customerStateManager.CustomerSFX.PaidMoney();
         CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
     }
 }

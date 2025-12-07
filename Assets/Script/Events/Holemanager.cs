@@ -1,14 +1,12 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 public class Holemanager : MonoBehaviour
 {
     [SerializeField] private GameObject HolePrefab;
-    
+
     public void SandwormEvent(float interval, float duration)
     {
         StartCoroutine(SandwormInvasionCoroutine(interval, duration));
@@ -17,11 +15,11 @@ public class Holemanager : MonoBehaviour
     {
         float elapsed = 0f;
         while (elapsed < duration)
-        { 
+        {
             int randomindex = Random.Range(1, DiningSystem.Instance.seats.Length);
             HoleGenerator(randomindex);
-            
-            // µ¥«Ý interval ¬í
+
+            // ï¿½ï¿½ï¿½ï¿½ interval ï¿½ï¿½
             yield return new WaitForSeconds(interval);
             elapsed += interval;
         }
@@ -30,7 +28,7 @@ public class Holemanager : MonoBehaviour
     {
         var dining = DiningSystem.Instance;
         Vector3 pos = dining.seats[index].transform.position;
-        Vector3 holePos = pos + new Vector3(0f, -0.4f, 0f); 
+        Vector3 holePos = pos + new Vector3(0f, -0.4f, 0f);
         GameObject Hole = Instantiate(HolePrefab, holePos, Quaternion.identity);
         Hole.GetComponent<Hole>().HoleAction();
     }
@@ -44,13 +42,14 @@ public class Holemanager : MonoBehaviour
     {
         if (customer == null) return;
 
-        customer.transform.DOMoveY(customer.transform.position.y - 0.4f, 0.4f)
+        customer.transform.DOMoveY(customer.transform.position.y - 1f, 1f)
             .SetEase(Ease.InQuad)
             .OnComplete(() =>
             {
                 DiningSystem.Instance.RemoveCustomer(customer);
                 DOTween.Kill(customer.transform, false);
-                Destroy(customer);
+                customer.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                Destroy(customer, 2f);
             });
     }
 }

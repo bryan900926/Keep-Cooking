@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e618eb8ba07e71e45ae3c1a7a8a6a611, type: 3}
-  m_Name: money
+  m_Name: Ghost
   m_EditorClassIdentifier: 
-  clipName: money
+  clipName: Ghost
   loop: 0
-  volume: 0.261
+  volume: 1
   minDistance: 2
   maxDistance: 10
   spatialBlend: 0
