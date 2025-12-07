@@ -415,6 +415,7 @@ MonoBehaviour:
   feedbackUI: {fileID: 0}
   energy: {fileID: -8817391628698140055}
   coinPrefab: {fileID: 6470850332338638030, guid: a0fb19ef8de679e40b155ecb3003700b, type: 3}
+  largecoinPrefab: {fileID: 6297203670158804340, guid: eeed33cb1d3a9ff47bf61b6dd3ec0195, type: 3}
 --- !u!114 &352996976105228518
 MonoBehaviour:
   m_ObjectHideFlags: 0

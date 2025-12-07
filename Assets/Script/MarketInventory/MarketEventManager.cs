@@ -131,6 +131,10 @@ public class MarketEventManager : MonoBehaviour
                     crack.GetComponent<Crack>().ExpandCrack(3f, 15f);
                 }
                 break;
+
+                case "Large Coin":
+                StartCoroutine(LargeCoin(20));
+                break;
                 
 
 
@@ -163,5 +167,18 @@ public class MarketEventManager : MonoBehaviour
             // 等下一次
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    private IEnumerator LargeCoin(int totalDuration)
+    {
+        var spawner = FindFirstObjectByType<CustomerSpawner>();
+        Debug.Log(spawner);
+        if (spawner != null)
+        {
+            spawner.LargeCoin = true;
+        }
+        yield return new WaitForSeconds(totalDuration);
+        spawner.LargeCoin = false;
+
     }
 }

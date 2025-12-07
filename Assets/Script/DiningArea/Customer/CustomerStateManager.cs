@@ -16,6 +16,16 @@ public class CustomerStateManager : MonoBehaviour
     [SerializeField] private Sprite emoji_bad;
     [SerializeField] private Sprite emoji_terrible;
 
+    // Events
+
+    // ------ Begin ------
+
+    public bool largecoin;
+    //public bool Largecoin { get => largecoin; set => largecoin = value; }
+
+
+    // ------ End ------
+
     // Customer Propertis
 
     // ------ Begin ------
@@ -74,6 +84,9 @@ public class CustomerStateManager : MonoBehaviour
 
     [SerializeField] private GameObject coinPrefab;
     public GameObject CoinPrefab { get => coinPrefab; set => coinPrefab = value; }
+
+    [SerializeField] private GameObject largecoinPrefab;
+    public GameObject LargecoinPrefab { get => largecoinPrefab; set => largecoinPrefab = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

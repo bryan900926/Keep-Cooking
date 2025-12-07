@@ -14,6 +14,7 @@ public class CustomerSpawner : MonoBehaviour
     
     private QueueSystem qs;
     private float spawnedTime = 0;
+    public bool LargeCoin; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,17 +32,17 @@ public class CustomerSpawner : MonoBehaviour
         // Debug.Log("Available Seats: " + qs.availSeats.Count);
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
-            SpawnCustomer();
+            SpawnCustomer(LargeCoin);
             spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
 
         if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 40)
         {
-            SpecialSpawner(true);
+            SpecialSpawner(true, LargeCoin);
         }
         else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 40)
         {
-            SpecialSpawner(false);
+            SpecialSpawner(false, LargeCoin);
         }
     }
 
@@ -88,12 +89,13 @@ public class CustomerSpawner : MonoBehaviour
         return 0; 
     }
 
-    void SpecialSpawner(bool state)
+    void SpecialSpawner(bool state, bool Largecoin)
     {
         UpdateDistribution();
         GameObject Customer = spawnedCustomer[6];
         GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
         CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+        Custom.largecoin = Largecoin;
         Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(6);
         Energy Energy = Custom.GetComponent<Energy>();
         if (state)
@@ -110,7 +112,7 @@ public class CustomerSpawner : MonoBehaviour
 
     }
 
-    void SpawnCustomer()
+    void SpawnCustomer(bool Largecoin)
     {   
         CustomerPropertyManager.Instance.TotalCustomer += 1;
         UpdateDistribution();
@@ -120,6 +122,7 @@ public class CustomerSpawner : MonoBehaviour
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+            Custom.largecoin = Largecoin;
             Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(Index);
             Energy Energy = Custom.GetComponent<Energy>();
             CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
@@ -132,6 +135,7 @@ public class CustomerSpawner : MonoBehaviour
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+            Custom.largecoin = Largecoin;
             Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(randomindex);
             Energy Energy = Custom.GetComponent<Energy>();
             CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
