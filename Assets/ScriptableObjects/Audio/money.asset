@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clipName: money
   loop: 0
-  volume: 0.72
+  volume: 0.261
   minDistance: 2
   maxDistance: 10
   spatialBlend: 0

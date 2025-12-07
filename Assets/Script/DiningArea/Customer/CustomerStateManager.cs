@@ -75,6 +75,9 @@ public class CustomerStateManager : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     public GameObject CoinPrefab { get => coinPrefab; set => coinPrefab = value; }
 
+    private bool isAngry = false;
+    public bool IsAngry { get => isAngry; set => isAngry = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -153,7 +156,7 @@ public class CustomerStateManager : MonoBehaviour
         customer.transform.localScale = Vector3.zero;
         customer.transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
 
-        // ¸õ¥XµõÁ_¤@ÂIÂI
+        // ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½_ï¿½@ï¿½Iï¿½I
         customer.transform.DOMoveY(customer.transform.position.y + 0.5f, 0.3f).SetEase(Ease.OutQuad);
 
         customer.GetComponent<Dizzy>().StartDizzy();

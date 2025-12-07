@@ -16,7 +16,7 @@ MonoBehaviour:
   loop: 0
   volume: 1
   minDistance: 2
-  maxDistance: 10
+  maxDistance: 15
   spatialBlend: 1
   useRandomPitch: 0
   minPitch: 0.9

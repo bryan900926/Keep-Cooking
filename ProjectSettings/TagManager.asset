@@ -24,6 +24,7 @@ TagManager:
   - PostProcess
   - GameRoot
   - UIRoot
+  - GoblinIdlePosition
   layers:
   - Default
   - TransparentFX

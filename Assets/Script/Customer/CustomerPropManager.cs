@@ -17,7 +17,7 @@ public class CustomerPropertyManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-    }   
+    }
 
     public CustomerProperty GetPropertyByTypeNumber(int Number)
     {
@@ -119,7 +119,7 @@ public class CustomerPropertyManager : MonoBehaviour
     }
 
     public void Updateprop(CustomerProperty prop)
-    {   
+    {
         int satisfactory = prop.satisfactory;
         float reputation = ReputationSystem.Instance.GetReputationLevel();
         // Update truevalue based on satisfactory and reputation
@@ -133,8 +133,8 @@ public class CustomerPropertyManager : MonoBehaviour
                 }
                 for (int i = 0; i < customerProp.truevalue.Length; i++)
                 {
-                    float lowerBound = customerProp.lowertruevalue[i]* (1 + reputation/200) + satisfactory * 10;
-                    float upperBound = customerProp.uppertruevalue[i]* (1 + reputation/100);
+                    float lowerBound = customerProp.lowertruevalue[i] * (1 + reputation / 200) + satisfactory * 10;
+                    float upperBound = customerProp.uppertruevalue[i] * (1 + reputation / 100);
                     customerProp.truevalue[i] = Random.Range(lowerBound, upperBound);
 
                 }

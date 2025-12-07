@@ -67,7 +67,7 @@ public class MarketEventManager : MonoBehaviour
     {
         if (allEvents.Length == 0) return;
         int randomIndex = UnityEngine.Random.Range(0, allEvents.Length);
-        MarketEvent randomEvent = allEvents[1];
+        MarketEvent randomEvent = allEvents[2];
         ApplyMarketEvent(randomEvent);
         currentEvent = randomEvent;
         First = false;
@@ -151,9 +151,8 @@ public class MarketEventManager : MonoBehaviour
         int count = totalDuration / interval;
         for (int i = 0; i < count; i++)
         {
-            // �ͦ� timedrop
             GameObject timedrop = Instantiate(
-                Eventsprefab[0],
+                Eventsprefab[2],
                 new Vector3(0f, 10f, 0f),
                 Quaternion.identity
             );
@@ -164,10 +163,8 @@ public class MarketEventManager : MonoBehaviour
                 drop.PlayWaterDrop(drop.startposition, drop.hitposition);
             }
 
-            // ��s���]�p�G�n�C������s�^
             MarketInventory.Instance.UpdateMenu();
 
-            // ���U�@��
             yield return new WaitForSeconds(interval);
         }
     }

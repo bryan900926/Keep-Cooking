@@ -82,7 +82,7 @@ public class CustomerOrderState : CustomerState
             CustomerPropertyManager.Instance.NiceCustomer += 1;
         }
         else
-        {   
+        {
             if (sellingPrice >= upperbound)
             {
                 customerStateManager.ReactTerrible();
