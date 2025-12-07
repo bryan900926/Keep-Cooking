@@ -19,11 +19,6 @@ public class CustomerEatingState : CustomerState
         {
             Debug.LogError("Customer has no food to eat!");
         }
-        if (freshness <= 0)
-        {
-            customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
-            return;
-        }
         GameObject holdingFood = customerStateManager.GetComponent<Holding>().HoldingItem[0];
         if (holdingFood != null)
         {
@@ -43,7 +38,6 @@ public class CustomerEatingState : CustomerState
 
     public override void Exit()
     {
-        DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
         customerStateManager.GetComponent<Holding>().RemoveAllHolding();
         if (freshness > 0 && !customerStateManager.IsAngry)
         {
@@ -60,7 +54,7 @@ public class CustomerEatingState : CustomerState
                 GameObject Largecoin = Object.Instantiate(customerStateManager.LargecoinPrefab);
                 Largecoin.GetComponent<LargeCoin>().InitData((int)(customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx] * customerStateManager.Tipsratio * 3), customerStateManager.transform);
             }
-            
+
         }
         customerStateManager.CustomerSFX.StopEating();
         CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);

@@ -13,14 +13,24 @@ public class CustomerLeaveState : CustomerState
     {
         exitPoint = GameObject.FindGameObjectWithTag(EXIT_TAG).transform;
         customerStateManager.DestinationSetter.target = exitPoint;
-
+        if (customerStateManager.DiningIdx != -1)
+        {
+            Debug.Log("@Customer is leaving from dining seat." + customerStateManager.DiningIdx);
+            DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
+            customerStateManager.DiningIdx = -1;
+        }
+        if (customerStateManager.LiningIdx != -1)
+        {
+            customerStateManager.Qs.FreeSeat(customerStateManager.LiningIdx);
+            customerStateManager.LiningIdx = -1;
+        }
     }
 
     public override void Update()
     {
         if (IsAtExit())
         {
-            DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
+            DoorController.Instance.TriggerDoorOpen();
             Object.Destroy(customerStateManager.gameObject);
         }
 

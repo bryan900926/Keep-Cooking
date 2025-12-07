@@ -49,15 +49,4 @@ public class DiningSystem : SeatingSystem
         }
     }
 
-    public void RemoveCustomer(GameObject customer)
-    {
-        if (customer == null) return;
-        int seatIdx = SeatToCustomer.FirstOrDefault(x => x.Value == customer).Key;
-        FreeSeat(seatIdx);
-        //if (customer.TryGetComponent<CustomerStateManager>(out var customerStateManager))
-        //{
-        //    customerStateManager.enabled = false;
-        //}
-    }
-
 }

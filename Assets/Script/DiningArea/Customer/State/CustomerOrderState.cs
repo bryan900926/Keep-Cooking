@@ -4,7 +4,9 @@ public class CustomerOrderState : CustomerState
 {
     private GameObject receipt;
     private int receiptIdx;
-    private bool ifDine;
+    private bool ifDine = false;
+
+    private bool beenToReceipt = false;
     public CustomerOrderState(CustomerStateManager customerStateManager, int receiptIdx) : base(customerStateManager)
     {
         this.receipt = ReceiptSystem.Instance.seats[receiptIdx];
@@ -18,11 +20,11 @@ public class CustomerOrderState : CustomerState
 
     public override void Update()
     {
-        if (IsReachedReceipt() && !ifDine)
+        if (IsReachedReceipt() && !beenToReceipt)
         {
             GetOrderedFood();
         }
-        if (ifDine)
+        if (ifDine && customerStateManager.DiningIdx == -1)
         {
             TryToDine(customerStateManager);
             if (customerStateManager.DiningIdx != -1)
@@ -35,7 +37,10 @@ public class CustomerOrderState : CustomerState
     public override void Exit()
     {
         ReceiptSystem.Instance.FreeSeat(receiptIdx);
-        OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
+        if (ifDine)
+        {
+            OrderSystem.Instance.AddNewOrder(customerStateManager.OrderedFoodIdx, customerStateManager.DiningIdx, customerStateManager.Energy.SurviveTime, customerStateManager.gameObject);
+        }
     }
 
     private void TryToDine(CustomerStateManager customer)
@@ -59,8 +64,6 @@ public class CustomerOrderState : CustomerState
     {
         customerStateManager.OrderedFoodIdx = Menu.Instance.RandomSpawnForCustomer(customerStateManager.gameObject, customerStateManager.trans);
         customerStateManager.sellprice = PriceEditor.Instance.GetSellingPrice(customerStateManager.OrderedFoodIdx);
-        Debug.Log($"{customerStateManager.gameObject.name} ordered food index {customerStateManager.OrderedFoodIdx}.");
-        Debug.Log($"Desired Price: {customerStateManager.BuyingPrice.Length}, Selling Price: {customerStateManager.sellprice}");
         float desiredPrice = customerStateManager.BuyingPrice[customerStateManager.OrderedFoodIdx];
 
         float sellingPrice = customerStateManager.sellprice;
@@ -99,5 +102,6 @@ public class CustomerOrderState : CustomerState
             CustomerPropertyManager.Instance.Updateprop(customerStateManager.customerProperty);
             customerStateManager.ChangeState(new CustomerLeaveState(customerStateManager));
         }
+        beenToReceipt = true;
     }
 }

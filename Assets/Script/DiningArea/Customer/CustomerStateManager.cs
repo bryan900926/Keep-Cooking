@@ -8,7 +8,7 @@ public class CustomerStateManager : MonoBehaviour
     [SerializeField] private WorkerData workerData;
     public WorkerData WorkerData { get => workerData; set => workerData = value; }
     private QueueSystem queueSystem;
-    public QueueSystem QueueSystem => queueSystem;
+    public QueueSystem Qs => queueSystem;
     private GameObject queueObj;
 
     [SerializeField] private Sprite emoji_great;
@@ -195,7 +195,10 @@ public class CustomerStateManager : MonoBehaviour
                 CustomerPropertyManager.Instance.Addsatisfactory(customerProperty, -1);
                 CustomerPropertyManager.Instance.Updateprop(customerProperty);
             }
-            ChangeState(new CustomerLeaveState(this));
+            if (currentState is not CustomerLeaveState)
+            {
+                ChangeState(new CustomerLeaveState(this));
+            }
         }
         currentState?.Update();
     }

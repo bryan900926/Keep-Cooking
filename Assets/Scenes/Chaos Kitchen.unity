@@ -7592,6 +7592,8 @@ GameObject:
   m_Component:
   - component: {fileID: 985616391}
   - component: {fileID: 985616392}
+  - component: {fileID: 985616393}
+  - component: {fileID: 985616394}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -7669,6 +7671,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &985616393
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985616390}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b74c1854ea2ff48d0af1a6f643c5441b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &985616394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985616390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40bdbe077c6484114a9251b51cd4cb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
+  openTriggerName: Open
+  reopenCooldown: 0.25
 --- !u!1 &988230588 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4438359118636786400, guid: 12e374d03c860284398939214b9384b1, type: 3}
@@ -29669,11 +29708,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3172927990534813353, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.2
+      value: 10.25
       objectReference: {fileID: 0}
     - target: {fileID: 3172927990534813353, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.96
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3172927990534813353, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29731,10 +29770,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CustomerSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7454051967425962574, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: lining
       value: 
       objectReference: {fileID: 157192013}
+    - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
+      propertyPath: doorController
+      value: 
+      objectReference: {fileID: 985616394}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: spawnIntervals.Array.size
       value: 2
@@ -29745,11 +29792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[0]'
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnIntervals.Array.data[1]'
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8840886099194994449, guid: 0e97afa42ed762c41a9e70d1a17dd2ec, type: 3}
       propertyPath: 'spawnedCustomer.Array.data[0]'
