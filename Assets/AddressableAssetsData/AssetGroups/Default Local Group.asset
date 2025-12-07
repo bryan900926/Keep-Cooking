@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d4fc1c20a3514ec2a7fda4923a514bb
+    m_Address: Assets/element/open_door.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6a8ee8100b58e714992f45d35a3cc6d5, type: 2}
   m_SchemaSet:
