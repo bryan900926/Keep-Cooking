@@ -5,6 +5,7 @@ using UnityEngine;
 /// </summary>
 public class DoorController : MonoBehaviour
 {
+    public static DoorController Instance { get; private set; }
     [SerializeField] private Animator doorAnimator;
     [SerializeField] private string openTriggerName = "Open";
     [SerializeField] private float reopenCooldown = 0.25f;
@@ -13,6 +14,16 @@ public class DoorController : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (doorAnimator == null)
             doorAnimator = GetComponent<Animator>();
     }

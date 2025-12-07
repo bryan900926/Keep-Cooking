@@ -15,6 +15,7 @@ public class GoblinLeaveState : GoblinState
     {
         if (Vector3.Distance(stateManager.transform.position, stateManager.ExitPoint.position) < 0.1f)
         {
+            DoorController.Instance.TriggerDoorOpen();
             Object.Destroy(stateManager.gameObject);
         }
     }

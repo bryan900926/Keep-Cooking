@@ -21,6 +21,7 @@ public class CustomerLeaveState : CustomerState
         if (IsAtExit())
         {
             DiningSystem.Instance.FreeSeat(customerStateManager.DiningIdx);
+            DoorController.Instance.TriggerDoorOpen();
             Object.Destroy(customerStateManager.gameObject);
         }
 
