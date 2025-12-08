@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sandworm Invasion
   m_EditorClassIdentifier: 
   eventName: Sandworm Invasion
-  description: 
+  description: Watch your step! The floor is turning into a trap!
   goods:
   - Mushroom
   limits: 05000000

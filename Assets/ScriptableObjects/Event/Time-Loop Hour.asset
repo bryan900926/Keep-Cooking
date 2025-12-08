@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
-  m_Name: Time-Loop Bargain Hour
+  m_Name: Time-Loop Hour
   m_EditorClassIdentifier: 
   eventName: Time-Loop Hour
-  description: A time ripple traps customers in a repeating moment
+  description: The timeline is fracturing... Contact with ripples causes stasis!
   goods:
   - Dumplings
   - Broccoli

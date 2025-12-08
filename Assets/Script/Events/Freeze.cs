@@ -5,8 +5,7 @@ using Pathfinding;
 
 public class Freeze : MonoBehaviour
 {
-    public float minFreezeTime = 1.5f;
-    public float maxFreezeTime = 2f;
+    public float FreezeTime = 3f;
     [SerializeField] private GameObject ghostPrefab;
     private bool CanFreeze = true;
 
@@ -15,11 +14,12 @@ public class Freeze : MonoBehaviour
         if (!CanFreeze) return;
         
         CanFreeze = false;
-        
-        float freezeDuration = Random.Range(minFreezeTime, maxFreezeTime);
+
+        float freezeDuration = FreezeTime;
 
         Vector3 originalPos = customer.transform.position;
 
+        customer.GetComponent<CustomerStateManager>().EatingDuration += freezeDuration;
 
 
         if (ghostPrefab != null)

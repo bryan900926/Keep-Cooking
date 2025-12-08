@@ -9,9 +9,12 @@ public class ReputationSystem : MonoBehaviour
     public static ReputationSystem Instance { get; private set; }
     float reputationLevel = 0f;
     readonly float maxReputation = 100f;
+    private bool First = true;
     [SerializeField] private TextMeshProUGUI reputationText;
     [SerializeField] private Image fillImage;
     [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI reputation;
+    [SerializeField] private Vector3 pos;
 
 
     public static Action OnReputationChanged;
@@ -35,16 +38,24 @@ public class ReputationSystem : MonoBehaviour
         reputationLevel += amount;
         reputationLevel = Mathf.Clamp(reputationLevel, 0, maxReputation);
         OnReputationChanged?.Invoke();
+        GetReputaionText();
         UISFX.Instance.Addreputation();
 
         if (reputationText != null)
             ShowPopupText(amount, Color.green, "+");
+
+        //if (First && reputationLevel > 5)
+        //{
+        //    First = false;
+        //    MessageSpawner.Instance.SpawnMessage("You can try to increase the menu's prices.", new Vector3(700f,500f,0), MessageFlip.Up);
+        //}
     }
     public void DecreaseReputation(float amount)
     {
         reputationLevel -= amount;
         reputationLevel = Mathf.Clamp(reputationLevel, 0, maxReputation);
         OnReputationChanged?.Invoke();
+        GetReputaionText();
         UISFX.Instance.Minusreputation();
 
         if (reputationText != null)
@@ -63,6 +74,11 @@ public class ReputationSystem : MonoBehaviour
     public float GetReputationLevel()
     {
         return reputationLevel;
+    }
+
+    public void GetReputaionText()
+    {
+        reputation.text = $"{reputationLevel} / {maxReputation}";
     }
 
     private void ShowPopupText(float amount , Color color , String sign)

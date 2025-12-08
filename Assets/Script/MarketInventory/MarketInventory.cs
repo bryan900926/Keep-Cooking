@@ -210,11 +210,11 @@ public class MarketInventory : MonoBehaviour
 
     }
 
-    public void UpdateMenu() // Inflation every 45 seconds
+    public void UpdateMenu() // Inflation every 40 seconds
     {
-        float multiplier = Mathf.Pow(2, 0.15f);
+        float multiplier = Mathf.Pow(2, 0.2f);
         float elapsedTime = Time.time - startTime;
-        int intervals = (int)(elapsedTime / 45f);
+        int intervals = (int)(elapsedTime / 40f);
         foreach (var slot in slots)
         {
             slot.price = (int)(initPrice[slot.item.Name] * Mathf.Pow(multiplier, intervals));
