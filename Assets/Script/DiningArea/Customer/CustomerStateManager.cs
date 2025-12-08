@@ -26,8 +26,7 @@ public class CustomerStateManager : MonoBehaviour
 
     public Vector3 pos;
 
-
-
+    public bool trans;
 
     // ------ End ------
 

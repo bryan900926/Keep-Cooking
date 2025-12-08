@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3172927990534813353}
   - component: {fileID: 4204989790893384056}
   - component: {fileID: 8840886099194994449}
+  - component: {fileID: -5447135316964703572}
   m_Layer: 0
   m_Name: CustomerSpawn
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MonoBehaviour:
   - {fileID: 1269170931827739272, guid: 1f25f28511dfd804eb75bc12136cf8ce, type: 3}
   lining: {fileID: 0}
   spawnIntervals: []
+  LargeCoin: 0
+  Trans: 0
+--- !u!114 &-5447135316964703572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454051967425962574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6469d86620ac8d49a186872ae5151a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  invisibleTime: 10

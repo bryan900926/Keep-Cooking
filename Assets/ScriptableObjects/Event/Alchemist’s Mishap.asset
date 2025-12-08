@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
   m_Name: "Alchemist\u2019s Mishap"
   m_EditorClassIdentifier: 
-  eventName: "Alchemist\u2019s Mishap"
+  eventName: Transparent customers
   description: A local alchemist accidentally turned a batch of peppers into gold
     dust, causing pepper prices to skyrocket.
   goods:
@@ -20,3 +20,10 @@ MonoBehaviour:
   limits: 05000000
   prices:
   - 1.5
+  eatingDurationMultiplier: 0
+  priceMultiplier: 0
+  movingSpeedMultiplier: 0
+  reputationMultiplier: 0
+  energyMultiplier: 0
+  satisfactionMultiplier: 0
+  tipsRatioMultiplier: 0

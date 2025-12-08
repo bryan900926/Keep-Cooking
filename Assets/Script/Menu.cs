@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Menu : MonoBehaviour
@@ -31,16 +32,16 @@ public class Menu : MonoBehaviour
     }
 
     // Spawn a random food for the customer
-    public int RandomSpawnForCustomer(GameObject customer)
+    public int RandomSpawnForCustomer(GameObject customer, bool trans)
     {
         if (foodPrefabs.Length == 0) return -1;
 
         int index = Random.Range(0, foodPrefabs.Length - 1);
-
         GameObject newPickup = Instantiate(orderFoodsPrefabs[index], customer.transform.position, Quaternion.identity);
         newPickup.transform.SetParent(customer.transform);
         newPickup.transform.localPosition = new Vector3(0, 1f, 0);
         customer.GetComponent<Holding>().PickUpItem(newPickup);
+        if (trans) newPickup.GetComponent<SpriteRenderer>().DOFade(0f, 1f);
 
         return index;
     }

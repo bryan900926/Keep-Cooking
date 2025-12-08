@@ -15,12 +15,15 @@ public class CustomerSpawner : MonoBehaviour
     
     private QueueSystem qs;
     private float spawnedTime = 0;
-    public bool LargeCoin; 
+    public bool LargeCoin;
+    public bool Trans = false;
+    private Transparency trans;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pdf = (float[])originalpdf.Clone();
         qs = lining.GetComponent<QueueSystem>();
+        trans = GetComponent<Transparency>();
         spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         Initpdf();
         UpdateDistribution();
@@ -33,17 +36,17 @@ public class CustomerSpawner : MonoBehaviour
         // Debug.Log("Available Seats: " + qs.availSeats.Count);
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
-            SpawnCustomer(LargeCoin);
+            SpawnCustomer(LargeCoin, Trans);
             spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
 
-        if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 40)
+        if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 30)
         {
-            SpecialSpawner(true, LargeCoin);
+            SpecialSpawner(true, LargeCoin, Trans);
         }
-        else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 40)
+        else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 15)
         {
-            SpecialSpawner(false, LargeCoin);
+            SpecialSpawner(false, LargeCoin, Trans);
         }
     }
 
@@ -90,13 +93,15 @@ public class CustomerSpawner : MonoBehaviour
         return 0; 
     }
 
-    void SpecialSpawner(bool state, bool Largecoin)
+    void SpecialSpawner(bool state, bool Largecoin, bool Trans)
     {
         UpdateDistribution();
         TriggerDoorOpen();
         GameObject Customer = spawnedCustomer[6];
         GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
-        CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+        if (Trans) trans.StartInvisible(RealCustomer); 
+        CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>(); 
+        Custom.trans = Trans;
         Custom.largecoin = Largecoin;
         Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(6);
         Energy Energy = Custom.GetComponent<Energy>();
@@ -114,7 +119,7 @@ public class CustomerSpawner : MonoBehaviour
 
     }
 
-    void SpawnCustomer(bool Largecoin)
+    void SpawnCustomer(bool Largecoin, bool Trans)
     {   
         CustomerPropertyManager.Instance.TotalCustomer += 1;
         UpdateDistribution();
@@ -124,7 +129,9 @@ public class CustomerSpawner : MonoBehaviour
         {
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
+            if (Trans) trans.StartInvisible(RealCustomer);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+            Custom.trans = Trans;
             Custom.largecoin = Largecoin;
             Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(Index);
             Energy Energy = Custom.GetComponent<Energy>();
@@ -137,7 +144,9 @@ public class CustomerSpawner : MonoBehaviour
             int randomindex = UnityEngine.Random.Range(0, 5);
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
+            if (Trans) trans.StartInvisible(RealCustomer);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
+            Custom.trans = Trans;
             Custom.largecoin = Largecoin;
             Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(randomindex);
             Energy Energy = Custom.GetComponent<Energy>();

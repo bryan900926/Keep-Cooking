@@ -47,6 +47,7 @@ public class MarketEventManager : MonoBehaviour
         eventActions.Add("Unstable Portal", () =>  UnstablePortal(interval, totaltime));
         eventActions.Add("Large Coin", () => StartCoroutine(LargeCoin(totaltime)));
         eventActions.Add("Goblin Rampage", () => StartCoroutine(Goblin(interval, totaltime)));
+        eventActions.Add("Transparent customers", () => StartCoroutine(Transparent(totaltime)));
     }
 
     public void RecoverEvent(MarketEvent e)
@@ -208,5 +209,17 @@ public class MarketEventManager : MonoBehaviour
                 yield return new WaitForSeconds(interval);
             }
         }
+    }
+
+    private IEnumerator Transparent(float totalDuration)
+    {
+        var spawner = FindFirstObjectByType<CustomerSpawner>();
+        Debug.Log(spawner);
+        if (spawner != null)
+        {
+            spawner.Trans = true;
+        }
+        yield return new WaitForSeconds(totalDuration);
+        spawner.Trans = false;
     }
 }

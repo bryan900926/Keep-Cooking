@@ -69,6 +69,39 @@ public class MarketInventory : MonoBehaviour
         }
     }
 
+    public void BuyFive(int number)
+    {   
+        bool anyItemPurchased = false;
+        int totalcost = 0;
+        for (int i = (number-1)*3; i< number*3; i++)
+        {
+            int realbought = 0;
+            realbought = Mathf.Min(5, slots[i].limited);
+            slots[i].limited -= realbought;
+            AddItem(slots[i].item.Name, realbought);
+            totalcost += realbought * slots[i].price;
+            MarketUI.Instance.RefreshUI(page);
+            if (realbought >= 0) anyItemPurchased = true;
+
+
+            var mask = slots[i].item.Mask;
+            if (slots[i].amount > 0)
+            {
+                LowStockReminder.Instance.RemoveLowStockIngredient(mask);
+            }
+            else
+            {
+                LowStockReminder.Instance.AddLowStockIngredient(mask);
+            }
+        }
+        if (anyItemPurchased)
+        {
+            ScoreManager.Instance.AddRevenue(-totalcost);
+            UISFX.Instance.PlayPurchaseItem();
+            OnInventoryUpdated?.Invoke();
+        }
+    }
+
     public void AddItem(string name, int amount)
     {
         if (slotDict.ContainsKey(name))
