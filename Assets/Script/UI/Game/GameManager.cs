@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 disabledScripts.Add(mb);
             }
         }
-
+        UISFX.Instance.StopLoop("BGM");
         Debug.Log("Game Paused");
     }
 
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 mb.enabled = true;
 
         disabledScripts.Clear();
-
+        UISFX.Instance.PlayBGM("BGM");
         Debug.Log("Game Resumed");
     }
 

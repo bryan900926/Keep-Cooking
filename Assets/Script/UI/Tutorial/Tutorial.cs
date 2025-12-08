@@ -52,7 +52,7 @@ public class Tutorial : MonoBehaviour
 
     private const string repuation = "Higher reputation would bring in more generous customers. Keep your repuatation high by providing good service and delicious food!";
 
-    private const string beer = "Get close to the beer machine and Press R to make the beer which can help increase customer patience!";
+    private const string beer = "Get close to the beer machine and Press R to make the beer which can help increase customer patience with keyboard F!";
     private const string recipient = "Get close to the recipient and Press R to level up your recipient which can help increase the level of workers in the restaurant!";
     void Start()
     {

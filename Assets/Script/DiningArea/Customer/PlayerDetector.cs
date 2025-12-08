@@ -30,7 +30,7 @@ namespace DiningArea.Customer
         }
         void Update()
         {
-            if (playerHolding != null && Keyboard.current.eKey.isPressed)
+            if (playerHolding != null && Keyboard.current.fKey.isPressed)
             {
                 if (playerHolding.FindBeer())
                 {
