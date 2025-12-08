@@ -28,7 +28,6 @@ namespace Accident.Spot
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.name + " entered oil spot");
             playerInside = true;
             ShowHint(true);
             if (other.TryGetComponent(out WaiterStateManager waiterStateManager))

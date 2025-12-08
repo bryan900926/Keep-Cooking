@@ -13,7 +13,7 @@ public class TutorialMenu : MonoBehaviour
         backBtn.onClick.AddListener(() =>
         {
             UISFX.Instance.PlayButtonClick();
-            tutorial.ClearAllObJects();
+            tutorial.gameObject.SetActive(false);
             UImanager.Instance.ReturnUI();
         });
     }

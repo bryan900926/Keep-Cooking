@@ -23,8 +23,8 @@ public class Toggle : MonoBehaviour
 
     private readonly Dictionary<Key, KeysForUI> keyMapping = new()
     {
-        { Key.Z, KeysForUI.Inventory },
-        { Key.C, KeysForUI.Menu },
+        { Key.Q, KeysForUI.Inventory },
+        { Key.E, KeysForUI.Menu },
         { Key.Tab, KeysForUI.Settings },
     };
 
@@ -106,7 +106,7 @@ public class Toggle : MonoBehaviour
         if (keyToPanel.ContainsKey(key))
         {
             keyToPanel[key] = panel;
-            toggleStates[key] = false; 
+            toggleStates[key] = false;
             Debug.Log($"[Toggle] Updated existing panel for key: {key}");
         }
         else

@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private Button tutorialBtn;
 
+    [SerializeField] private Tutorial tutorial;
+
     void Start()
     {
         startBtn.onClick.AddListener(() =>
@@ -28,6 +30,7 @@ public class MainMenu : MonoBehaviour
         });
         tutorialBtn.onClick.AddListener(() =>
         {
+            tutorial.gameObject.SetActive(true);
             UImanager.Instance.ClickShowUI(UImanager.MenuOptions.tutorial);
         });
     }

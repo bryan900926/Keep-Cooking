@@ -8,10 +8,13 @@ namespace DiningArea.BeerMachine
         private const string PLAYER_TAG = "Player";
         private BeerMachineStateManager stateManager;
 
+        [SerializeField] private GameObject hint;
+
         private bool playerInside = false;
 
         void Start()
         {
+            hint.SetActive(false);
             stateManager = GetComponent<BeerMachineStateManager>();
         }
 
@@ -26,13 +29,19 @@ namespace DiningArea.BeerMachine
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(PLAYER_TAG))
+            {
                 playerInside = true;
+                hint.SetActive(true);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag(PLAYER_TAG))
+            {
                 playerInside = false;
+                hint.SetActive(false);
+            }
         }
     }
 }

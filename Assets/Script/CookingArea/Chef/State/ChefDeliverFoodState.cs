@@ -29,6 +29,10 @@ public class ChefDeliverFoodState : ChefState
     public override void Exit()
     {
         counterIndex = -1;
+        if (chefStateManager.Holding.HoldingItem.Count > 0)
+        {
+            Debug.LogWarning("Chef exited DeliverFoodState but is still holding food!");
+        }
     }
 
     private void FindCounterForFood()

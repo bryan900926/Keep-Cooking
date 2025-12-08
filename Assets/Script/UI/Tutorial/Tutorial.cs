@@ -16,6 +16,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject repuationTutorialObject;
     [SerializeField] private GameObject beerTutorialObject;
 
+    [SerializeField] private GameObject recipientTutorialObject;
+
     readonly private Dictionary<TutorialPage, string> tutorialPagesText = new()
     {
         { TutorialPage.BACKGROUND, backGroundStory },
@@ -23,7 +25,8 @@ public class Tutorial : MonoBehaviour
         { TutorialPage.CUSTOMER, customer },
         { TutorialPage.WAITER, waiter },
         { TutorialPage.REPUATION, repuation },
-        { TutorialPage.BEER, beer }
+        { TutorialPage.BEER, beer },
+        { TutorialPage.RECIPIENT, recipient }
     };
     readonly Dictionary<TutorialPage, GameObject> tutorialPagesObjects = new()
     {
@@ -39,16 +42,18 @@ public class Tutorial : MonoBehaviour
         TutorialPage.CUSTOMER,
         TutorialPage.WAITER,
         TutorialPage.REPUATION,
-        TutorialPage.BEER
+        TutorialPage.BEER,
+        TutorialPage.RECIPIENT
     };
     private const string backGroundStory = "You are now transported to another world and have become a tavern owner. You must manage both front- and back-of-house staff and handle all kinds of issues in the restaurant… Good luck!";
-    private const string chef = "When chef forget the food recipe, you would see a sweat drop on the chef's head. You can click on the chef to correct what recipe they are trying to cook (corrent recipe is at keyboard M). When the food stock is low, the yellow warning sign will appear above the chef's head. Make sure to restock the ingredients in time with keyboard I!";
-    private const string customer = "Customers will come in and order food. If the food is too expensive (you can change the price with keyboard M) or if they have to wait too long, your repuatation would decrease. Keep an eye on their patience which is shown above their head! They would tip you more for better service and cheaper food.";
+    private const string chef = "When chef forget the food recipe, you would see a sweat drop on the chef's head. You can click on the chef to correct what recipe they are trying to cook (corrent recipe is at keyboard E). When the food stock is low, the yellow warning sign will appear above the chef's head. Make sure to restock the ingredients in time with keyboard Q!";
+    private const string customer = "Customers will come in and order food. If the food is too expensive (you can change the price with keyboard E) or if they have to wait too long, your repuatation would decrease. Keep an eye on their patience which is shown above their head! They would tip you more for better service and cheaper food.";
     private const string waiter = "Waiters would deliver food from counter to customerers. They would be slowed down if they step on the oil spill on the ground. Make sure to clean them up with keyboard R!";
 
     private const string repuation = "Higher reputation would bring in more generous customers. Keep your repuatation high by providing good service and delicious food!";
 
     private const string beer = "Get close to the beer machine and Press R to make the beer which can help increase customer patience!";
+    private const string recipient = "Get close to the recipient and Press R to level up your recipient which can help increase the level of workers in the restaurant!";
     void Start()
     {
         backButton.onClick.AddListener(OnBackButtonClicked);
@@ -59,6 +64,7 @@ public class Tutorial : MonoBehaviour
         tutorialPagesObjects[TutorialPage.WAITER] = waiterTutorialObject;
         tutorialPagesObjects[TutorialPage.REPUATION] = repuationTutorialObject;
         tutorialPagesObjects[TutorialPage.BEER] = beerTutorialObject;
+        tutorialPagesObjects[TutorialPage.RECIPIENT] = recipientTutorialObject;
         ShowMessage(tutorialPagesText[pages[curPageIdx]]);
     }
     private void ShowTutorialGameObject(TutorialPage page)
@@ -93,7 +99,7 @@ public class Tutorial : MonoBehaviour
         foreach (string word in words)
         {
             messageText.text += (messageText.text.Length > 0 ? " " : "") + word;
-            yield return new WaitForSeconds(2f / words.Length);
+            yield return new WaitForSecondsRealtime(2f / words.Length);
         }
 
     }
@@ -144,5 +150,6 @@ public enum TutorialPage
     CUSTOMER,
     WAITER,
     REPUATION,
-    BEER
+    BEER,
+    RECIPIENT
 }
