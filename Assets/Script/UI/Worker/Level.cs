@@ -18,8 +18,7 @@ public class Level : MonoBehaviour
         levelUpHint.ShowLevelUpHint();
         level++;
         textMeshPro.text = "Lv: " + level;
-        ScoreManager.Instance.AddRevenue(-100 * level);
+        ScoreManager.Instance.AddRevenue(-100 * (2 * (level - 1)));
         holdingSystem.AddCapacity();
     }
-
 }

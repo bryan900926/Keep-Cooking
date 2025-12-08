@@ -5,4 +5,5 @@ public enum KeysForUI
     Settings,
     ControlLevel,
     Crafting,
+    CustomerDistribution,
 }

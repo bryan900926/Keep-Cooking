@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         // Freeze time
         Time.timeScale = 0f;
+        AudioListener.pause = true;
 
         // Disable all scripts inside GameplayRoot (but not UI)
         disabledScripts.Clear();
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
 
         // Resume time
         Time.timeScale = 1f;
+        AudioListener.pause = false;
 
         // Re-enable scripts that were disabled
         foreach (var mb in disabledScripts)

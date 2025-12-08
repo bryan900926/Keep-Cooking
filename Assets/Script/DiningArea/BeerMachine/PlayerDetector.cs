@@ -22,7 +22,7 @@ namespace DiningArea.BeerMachine
         {
             if (playerInside && Keyboard.current.rKey.wasPressedThisFrame && stateManager.CurrentState is BeerMachineNormalState)
             {
-                stateManager.ChangeState(new BeerMachineFilledState(stateManager, 5f));
+                stateManager.ChangeState(new BeerMachineFilledState(stateManager, 3f));
             }
         }
 

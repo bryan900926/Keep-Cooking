@@ -26,6 +26,7 @@ public class Toggle : MonoBehaviour
         { Key.Q, KeysForUI.Inventory },
         { Key.E, KeysForUI.Menu },
         { Key.Tab, KeysForUI.Settings },
+        { Key.Space, KeysForUI.CustomerDistribution },
     };
 
     public CanvasGroup UIRootCanvasGroup

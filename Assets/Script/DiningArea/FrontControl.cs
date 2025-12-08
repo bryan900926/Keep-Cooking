@@ -32,7 +32,7 @@ public class FrontControl : MonoBehaviour
         // Wait until UI manager instance is initialized
         yield return new WaitUntil(() => FrontWorkerUIManager.Instance != null);
 
-        for (int i = 0; i < WorkerManager.Instance.Waiters.Length - 1; i++)
+        for (int i = 0; i < WorkerManager.Instance.Waiters.Length; i++)
         {
             AssignTask(i);
             occupiedWaiters.Add(i);

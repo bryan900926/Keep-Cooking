@@ -9,7 +9,6 @@ public class ReputationSystem : MonoBehaviour
     public static ReputationSystem Instance { get; private set; }
     float reputationLevel = 0f;
     readonly float maxReputation = 100f;
-    private bool First = true;
     [SerializeField] private TextMeshProUGUI reputationText;
     [SerializeField] private Image fillImage;
     [SerializeField] private Slider slider;

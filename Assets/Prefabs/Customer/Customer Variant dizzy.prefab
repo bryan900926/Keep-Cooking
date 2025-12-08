@@ -239,7 +239,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 8
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -398,6 +398,9 @@ MonoBehaviour:
   emoji_good: {fileID: 21300000, guid: a5329f5e99bd1a54cad20137e049c94e, type: 3}
   emoji_bad: {fileID: 21300000, guid: dc75e626733deca4a90fd2c0502ed36e, type: 3}
   emoji_terrible: {fileID: 21300000, guid: d52bcac2d49f6c94db3a851bb91f1ccb, type: 3}
+  largecoin: 0
+  pos: {x: 0, y: 0, z: 0}
+  trans: 0
   customerProperty:
     type: 0
     lowertruevalue: []
@@ -965,7 +968,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!114 &2485097236736726140
 MonoBehaviour:

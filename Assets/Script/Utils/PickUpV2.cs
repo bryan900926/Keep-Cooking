@@ -45,11 +45,6 @@ public class PickUpV2 : MonoBehaviour
             {
                 Pick(playerInRange.gameObject);
             }
-            else if (pickedUp)
-            {
-                Drop();
-
-            }
         }
     }
 
@@ -60,14 +55,5 @@ public class PickUpV2 : MonoBehaviour
         if (!picker.GetComponent<Holding>().HasSpace()) return;
         picker.GetComponent<Holding>().PickUpItem(gameObject);
         currentHolder = picker.transform;
-    }
-
-    public void Drop()
-    {
-        // Drop
-        pickedUp = false;
-        transform.SetParent(null);
-        currentHolder.GetComponent<Holding>().RemoveHoldingItem(gameObject);
-        currentHolder  = null;
     }
 }
