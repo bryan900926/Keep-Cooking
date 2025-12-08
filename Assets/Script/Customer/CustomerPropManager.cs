@@ -36,8 +36,8 @@ public class CustomerPropertyManager : MonoBehaviour
             special.truevalue[i] = Random.Range(lowerBound, upperBound);
         }
         special.eatingDuration = 1f;
-        special.energy = 60f + Good * 1;
-        special.tipsratio = 0.2f + Good * 0.01f;
+        special.energy = 50f + Good * 1;
+        special.tipsratio = 1f + Good * 0.1f;
         special.addreputation = Good * 1;
         special.minusreputation = 0;
         return special;
@@ -52,9 +52,9 @@ public class CustomerPropertyManager : MonoBehaviour
             float lowerBound = special.lowertruevalue[i] + Bad * 10;
             special.truevalue[i] = Random.Range(lowerBound, upperBound);
         }
-        special.eatingDuration = 15f;
+        special.eatingDuration = 20f;
         special.energy = 100f - Bad * 1;
-        special.tipsratio = 1f + Bad * 0.05f;
+        special.tipsratio = 1f + Bad * 0.2f;
         special.addreputation = 0;
         special.minusreputation = Bad;
         return special;

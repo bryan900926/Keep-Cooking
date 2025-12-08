@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Large Coin
   m_EditorClassIdentifier: 
   eventName: Large Coin
-  description: "A witch\u2019s spilled potion made nearby crops grow legs and run
-    away, causing harvest shortages."
+  description: Fortune Smiles! Guests are leaving Giant Coins as tips!
   goods:
   - Broccoli
   - Lettuce

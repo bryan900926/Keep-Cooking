@@ -2,13 +2,16 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] spawnedCustomer;
     [SerializeField] private GameObject lining;
-    [SerializeField] private float[] spawnIntervals;
     [SerializeField] private DoorController doorController;
+    [SerializeField] private TextMeshProUGUI[] ratio;
+    public float[] spawnIntervals;
 
     private float[] originalpdf = new float[7];
     private float[] pdf;
@@ -18,6 +21,7 @@ public class CustomerSpawner : MonoBehaviour
     public bool LargeCoin;
     public bool Trans = false;
     private Transparency trans;
+    private int random;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +31,7 @@ public class CustomerSpawner : MonoBehaviour
         spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         Initpdf();
         UpdateDistribution();
+        random = UnityEngine.Random.Range(0, 6);
     }
 
     // Update is called once per 
@@ -36,7 +41,7 @@ public class CustomerSpawner : MonoBehaviour
         // Debug.Log("Available Seats: " + qs.availSeats.Count);
         if (qs.availSeats.Count > 0 && spawnedTime <= 0)
         {
-            SpawnCustomer(LargeCoin, Trans);
+            SpawnCustomer(LargeCoin, Trans, random);
             spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
 
@@ -44,7 +49,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             SpecialSpawner(true, LargeCoin, Trans);
         }
-        else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 15)
+        else if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.BadCustomer >= 10)
         {
             SpecialSpawner(false, LargeCoin, Trans);
         }
@@ -55,6 +60,7 @@ public class CustomerSpawner : MonoBehaviour
         for (int i = 0; i < spawnedCustomer.Length; i++)
         {
             originalpdf[i] = CustomerPropertyManager.Instance.customerProperties[i].ratio;
+            ratio[i].text = (100 * originalpdf[i]).ToString("F0") + "%";
         }
     }
 
@@ -63,12 +69,30 @@ public class CustomerSpawner : MonoBehaviour
         for (int i = 0; i < spawnedCustomer.Length; i++)
         {
             pdf[i] = originalpdf[i];
-            if (i==0) pdf[i] -= ReputationSystem.Instance.GetReputationRatio()/2.5f;
-            else if (i==1) pdf[i] -= ReputationSystem.Instance.GetReputationRatio() / 5f;
-            else if (i==2) pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 20f;
-            else if (i==3) pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 10f;
-            else if (i==4) pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 10f;
-            else if (i==5) pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 5f;
+            switch (i)
+            {
+                case 0:
+                    pdf[i] -= ReputationSystem.Instance.GetReputationRatio() / 2.5f;
+                    ratio[i].text = (100 * pdf[i]).ToString("F0") + "%";
+                    break;
+                case 1:
+                    pdf[i] -= ReputationSystem.Instance.GetReputationRatio() / 5f;
+                    ratio[i].text = (100 * pdf[i]).ToString("F0") + "%";
+                    break;
+                case 2:
+                    pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 20f;
+                    ratio[i].text = (100 * pdf[i]).ToString("F0") + "%";
+                    break;
+                case 3:
+                case 4: // 3 和 4 的邏輯一樣，可以合併寫
+                    pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 10f;
+                    ratio[i].text = (100 * pdf[i]).ToString("F0") + "%";
+                    break;
+                case 5:
+                    pdf[i] += ReputationSystem.Instance.GetReputationRatio() / 5f;
+                    ratio[i].text = (100 * pdf[i]).ToString("F0") + "%";
+                    break;
+            }
         }
     }
 
@@ -114,12 +138,10 @@ public class CustomerSpawner : MonoBehaviour
         Energy.UpdateEnergy(6);
         CustomerPropertyManager.Instance.NiceCustomer = 0;
         CustomerPropertyManager.Instance.BadCustomer = 0;
-        spawnIntervals[0] -= 1;
-        spawnIntervals[1] -= 1;
 
     }
 
-    void SpawnCustomer(bool Largecoin, bool Trans)
+    void SpawnCustomer(bool Largecoin, bool Trans, int random)
     {   
         CustomerPropertyManager.Instance.TotalCustomer += 1;
         UpdateDistribution();
@@ -133,26 +155,50 @@ public class CustomerSpawner : MonoBehaviour
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
             Custom.trans = Trans;
             Custom.largecoin = Largecoin;
-            Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(Index);
             Energy Energy = Custom.GetComponent<Energy>();
-            CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
-            Custom.Attributeprop(Index);
-            Energy.UpdateEnergy(Index);
+            if (Trans)
+            {
+                trans.StartInvisible(RealCustomer);
+                Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(random);
+                CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+                Custom.Attributeprop(random);
+                Energy.UpdateEnergy(random);
+
+            }
+            else
+            {
+                Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(Index);
+                CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+                Custom.Attributeprop(Index);
+                Energy.UpdateEnergy(Index);
+            }
         }
         else
         {
             int randomindex = UnityEngine.Random.Range(0, 5);
             GameObject Customer = spawnedCustomer[Index];
             GameObject RealCustomer = Instantiate(Customer, transform.position, Quaternion.identity);
-            if (Trans) trans.StartInvisible(RealCustomer);
             CustomerStateManager Custom = RealCustomer.GetComponent<CustomerStateManager>();
             Custom.trans = Trans;
             Custom.largecoin = Largecoin;
-            Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(randomindex);
             Energy Energy = Custom.GetComponent<Energy>();
-            CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
-            Custom.Attributeprop(randomindex);
-            Energy.UpdateEnergy(randomindex);
+            if (Trans)
+            {
+                trans.StartInvisible(RealCustomer);
+                Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(random);
+                CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+                Custom.Attributeprop(random);
+                Energy.UpdateEnergy(random);
+
+            }
+            else
+            {
+                Custom.customerProperty = CustomerPropertyManager.Instance.GetPropertyByTypeNumber(randomindex);
+                CustomerPropertyManager.Instance.Updateprop(Custom.customerProperty);
+                Custom.Attributeprop(randomindex);
+                Energy.UpdateEnergy(randomindex);
+            }
+                
         }
         
     }

@@ -346,7 +346,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.8149035, y: 1}
+  m_Size: {x: 4, y: 1.5}
   m_EdgeRadius: 0
 --- !u!58 &3570024726112507922
 CircleCollider2D:
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillProgressCanvasGroup: {fileID: 6705878219435868720}
+  spawnPoint: {fileID: 0}
 --- !u!1 &3227068709900714831
 GameObject:
   m_ObjectHideFlags: 0

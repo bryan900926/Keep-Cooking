@@ -5,7 +5,7 @@ using System.Collections;
 public class CountdownTimer : MonoBehaviour
 {
     public TMP_Text timeText;
-    public float countdownTime = 10f;
+    public float countdownTime = 45f;
 
     private float currentTime;
 
@@ -34,9 +34,17 @@ public class CountdownTimer : MonoBehaviour
 
             timeText.text = "0S";
 
+            foreach (var kv in MarketInventory.Instance.slotDict)
+            {
+                MarketInventory.Instance.ChangeLimit(kv.Key, 8);
+            }
+
+
             MarketEventManager.Instance.TriggerRandomEvent();
 
         }
-    }
 
+    }
 }
+
+

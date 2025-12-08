@@ -5,7 +5,7 @@ public class Coin : MonoBehaviour
 {
     private int tipAmount = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private float existingTime = 10f;
+    [SerializeField] private float existingTime = 5f;
 
     private const string PLAYER_TAG = "Player";
 
@@ -14,7 +14,7 @@ public class Coin : MonoBehaviour
     public void InitData(int tip, Transform seatTransform)
     {
         tipAmount = tip;
-        transform.position = seatTransform.position + new Vector3(0, 2f, 0f);
+        transform.position = seatTransform.position + new Vector3(0, 1.5f, 0f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

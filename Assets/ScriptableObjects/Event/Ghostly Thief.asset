@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Ghostly Thief
   m_EditorClassIdentifier: 
   eventName: Ghostly Thief
-  description: A mischievous ghost sneaks into the market and steals ingredients
-    only when customers try to buy them, causing sudden shortages and panic.
+  description: '[THEFT REPORT] The Ghostly Thief escaped with supplies'
   goods:
   - Dumplings
   - Brocooli
@@ -25,7 +24,7 @@ MonoBehaviour:
   - Chicken
   - Corn
   - Potato
-  limits: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
+  limits: 0c0000000c0000000c0000000c0000000c0000000c0000000c0000000c0000000c000000
   prices:
   - 0.6
   - 0.6

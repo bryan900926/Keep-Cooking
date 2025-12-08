@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f4abb25f45fa6f489939d86ab68e79a, type: 3}
-  m_Name: Exploding Potatoes
+  m_Name: Goblin Rampage
   m_EditorClassIdentifier: 
   eventName: Goblin Rampage
-  description: Some magical potatoes suddenly explode when handled, causing panic
-    among customers. Potato demand drops
+  description: RAID ALERT! A swarm of hungry Goblins is looting the dining hall!
   goods:
   - Potato
   limits: 08000000

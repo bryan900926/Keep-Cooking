@@ -27,9 +27,10 @@ public class MarketEventManager : MonoBehaviour
 
     private bool First = true;
 
-    [SerializeField] private float interval = 0;
+    [SerializeField] private float interval;
 
-    [SerializeField] private float totaltime = 0;
+    [SerializeField] private float totaltime;
+
     readonly private Dictionary<string, Action> eventActions = new();
 
     private void Awake()
@@ -42,11 +43,11 @@ public class MarketEventManager : MonoBehaviour
     void Start()
     {
         eventActions.Add("Ghostly Thief", GhostThief);
-        eventActions.Add("Time-Loop Hour", () => StartCoroutine(PlayTimedropMultiple(interval, totaltime)));
-        eventActions.Add("Sandworm Invasion", () =>  SandwormInvasion(interval, totaltime));
-        eventActions.Add("Unstable Portal", () =>  UnstablePortal(interval, totaltime));
+        eventActions.Add("Time-Loop Hour", () => StartCoroutine(PlayTimedropMultiple(10, totaltime)));
+        eventActions.Add("Sandworm Invasion", () =>  SandwormInvasion(2, totaltime));
+        eventActions.Add("Unstable Portal", () =>  UnstablePortal(5, totaltime));
         eventActions.Add("Large Coin", () => StartCoroutine(LargeCoin(totaltime)));
-        eventActions.Add("Goblin Rampage", () => StartCoroutine(Goblin(interval, totaltime)));
+        eventActions.Add("Goblin Rampage", () => StartCoroutine(Goblin(5, totaltime)));
         eventActions.Add("Transparent customers", () => StartCoroutine(Transparent(totaltime)));
     }
 

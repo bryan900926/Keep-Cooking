@@ -5,8 +5,11 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
     [SerializeField] private float gameDuration = 10f; // 5 minutes
+    private CustomerSpawner customerSpawner;
 
     private float remainingTime;
+    private bool First = true;
+    private bool Second = true;
 
     public float RemainingTime => remainingTime;
     private TextMeshProUGUI timerText;
@@ -24,6 +27,7 @@ public class TimeManager : MonoBehaviour
         timerText = GetComponent<TextMeshProUGUI>();
         remainingTime = gameDuration;
         SetTimeText();
+        customerSpawner = FindFirstObjectByType<CustomerSpawner>();
     }
 
     // Update is called once per frame
@@ -35,6 +39,21 @@ public class TimeManager : MonoBehaviour
             remainingTime = 0;
         }
         SetTimeText();
+
+        if (GetRemainingTimeRatio() <= 0.8 && First == true)
+        {   
+            First = false;
+            customerSpawner.spawnIntervals[0] -= 1;
+            customerSpawner.spawnIntervals[1] -= 1;
+        }
+
+        if (GetRemainingTimeRatio() <= 0.4 && Second == true)
+        {
+            Second = false;
+            customerSpawner.spawnIntervals[0] -= 1;
+            customerSpawner.spawnIntervals[1] -= 1;
+        }
+
 
     }
 
@@ -53,6 +72,8 @@ public class TimeManager : MonoBehaviour
     public void ResetTimer()
     {
         remainingTime = gameDuration;
+        First = true;
+        Second = true;
         SetTimeText();
     }
 }
