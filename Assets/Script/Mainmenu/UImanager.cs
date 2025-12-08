@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UImanager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class UImanager : MonoBehaviour
     private MenuOptions currentMenu;
     private MenuOptions previousMenu;
 
+    private Canvas canvas;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,6 +33,7 @@ public class UImanager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        canvas = GetComponent<Canvas>();
     }
     void Start()
     {
@@ -39,6 +43,7 @@ public class UImanager : MonoBehaviour
         canvasgroup.Add(MenuOptions.tutorial, tutorial.GetComponent<CanvasGroup>());
         currentMenu = MenuOptions.main;
         previousMenu = MenuOptions.main;
+
 
         HideAllUI();
         ShowUI(canvasgroup[currentMenu]);
@@ -89,4 +94,20 @@ public class UImanager : MonoBehaviour
             HideUI(kvp.Value);
         }
     }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        canvas.worldCamera = Camera.main;
+    }
+
 }

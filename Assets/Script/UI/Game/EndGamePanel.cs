@@ -9,9 +9,6 @@ public class EndGamePanel : MonoBehaviour
     [SerializeField] private Button exitBtn;
     [SerializeField] private CanvasGroup canvasGroup;
 
-    [SerializeField] private TextMeshProUGUI revenueText;
-    [SerializeField] private TextMeshProUGUI serverdCntText;
-
     [SerializeField] private float fadeDuration = 2.0f;
 
     private bool isShown = false;
@@ -46,9 +43,7 @@ public class EndGamePanel : MonoBehaviour
         isShown = true;
 
         UISFX.Instance.PlayGameOver();
-
-        revenueText.SetText($"Revenue: ${ScoreManager.Instance.Revenue:F2}");
-        serverdCntText.SetText($"Customers Served: {ScoreManager.Instance.ServedCnt}");
+        LeaderboardManager.Instance.SubmitScore(ScoreManager.Instance.Revenue);
         StartCoroutine(FadeInRoutine());
         GameManager.Instance.PauseGame();
         Toggle.Instance.UIRootCanvasGroup.blocksRaycasts = true;
