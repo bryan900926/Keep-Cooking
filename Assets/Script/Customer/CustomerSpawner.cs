@@ -45,7 +45,7 @@ public class CustomerSpawner : MonoBehaviour
             spawnedTime = UnityEngine.Random.Range(spawnIntervals[0], spawnIntervals[1]);
         }
 
-        if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 30)
+        if (qs.availSeats.Count > 0 && CustomerPropertyManager.Instance.NiceCustomer >= 25)
         {
             SpecialSpawner(true, LargeCoin, Trans);
         }
